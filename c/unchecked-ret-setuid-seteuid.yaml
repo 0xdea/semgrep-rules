@@ -34,5 +34,5 @@ rules:
           - pattern-not-inside: $RET = seteuid(...)
           - pattern-not-inside: seteuid(...) == $VAL
           - pattern-not-inside: seteuid(...) != $VAL
-          - pattern-not-inside: setuid(...) < $VAL
-          - pattern-not-inside: return setuid(...);
+          - pattern-not-inside: seteuid(...) < $VAL
+          - pattern-not-inside: return seteuid(...);

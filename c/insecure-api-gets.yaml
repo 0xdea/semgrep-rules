@@ -1,0 +1,19 @@
+rules:
+  - id: insecure-api-gets
+    metadata:
+      author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      references:
+        - https://cwe.mitre.org/data/definitions/242
+        - https://cwe.mitre.org/data/definitions/120
+      confidence: HIGH
+    message: >-
+      Never use gets(). Because it is impossible to tell without knowing
+      the data in advance how many characters gets() will read, and because
+      gets() will continue to store characters past the end of the
+      destination buffer, it is extremely dangerous to use. Use fgets()
+      instead.
+    severity: ERROR
+    languages:
+      - c
+      - cpp
+    pattern: gets(...)

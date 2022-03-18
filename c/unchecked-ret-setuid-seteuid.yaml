@@ -1,0 +1,38 @@
+rules:
+  - id: unchecked-ret-setuid-seteuid
+    metadata:
+      author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      references:
+        - https://cwe.mitre.org/data/definitions/252
+        - https://lwn.net/Articles/451985/
+        - https://www.usenix.org/legacy/events/sec02/full_papers/chen/chen.pdf
+      confidence: MEDIUM
+    message: >-
+      The setuid() function sets the effective user ID of the calling
+      process; it is commonly used by privileged processes to permanently
+      drop root privileges.
+      The seteuid() function sets the effective user ID of the calling
+      process; it is commonly used by privileged processes to temporarily
+      drop root privileges.
+      There are cases where setuid() and seteuid() can fail even when the
+      caller is UID 0; it is a security error to omit checking for a
+      failure return from these functions.
+    severity: WARNING
+    languages:
+      - c
+      - cpp
+    pattern-either:
+      - patterns:
+          - pattern: setuid(...)
+          - pattern-not-inside: $RET = setuid(...)
+          - pattern-not-inside: setuid(...) == $VAL
+          - pattern-not-inside: setuid(...) != $VAL
+          - pattern-not-inside: setuid(...) < $VAL
+          - pattern-not-inside: return setuid(...);
+      - patterns:
+          - pattern: seteuid(...)
+          - pattern-not-inside: $RET = seteuid(...)
+          - pattern-not-inside: seteuid(...) == $VAL
+          - pattern-not-inside: seteuid(...) != $VAL
+          - pattern-not-inside: setuid(...) < $VAL
+          - pattern-not-inside: return setuid(...);

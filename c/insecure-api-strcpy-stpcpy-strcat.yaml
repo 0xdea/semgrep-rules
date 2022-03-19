@@ -6,7 +6,7 @@ rules:
         - https://cwe.mitre.org/data/definitions/676
         - https://cwe.mitre.org/data/definitions/120
         - https://cwe.mitre.org/data/definitions/787
-      confidence: MEDIUM
+      confidence: HIGH
     message: >-
       If the destination string of a strcpy(), stpcpy(), or strcat() is not
       large enough, then program behavior is unpredictable; buffer overruns

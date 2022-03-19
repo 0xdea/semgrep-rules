@@ -1,0 +1,68 @@
+rules:
+  - id: interesting-api-calls
+    metadata:
+      author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      references:
+        - https://github.com/0xdea/ghidra-scripts/blob/main/Rhabdomancer.java
+        - https://github.com/x509cert/banned/blob/master/banned.h
+      confidence: MEDIUM
+    message: >-
+      Locate all calls to interesting and potentially insecure API
+      functions (candidate points). The auditor can backtrace from these
+      candidate points to find pathways allowing access from untrusted
+      input.
+    severity: INFO
+    languages:
+      - c
+      - cpp
+    pattern-either:
+      # priv family
+      - pattern-regex: \w*set\w*(u|g)id\s*\(.*\)
+      - pattern-regex: \w*(init|set)groups\s*\(.*\)
+      # str family
+      - pattern-regex: \w*str\w?cpy\s*\(.*\)
+      - pattern-regex: \w*stpn?cpy\s*\(.*\)
+      - pattern-regex: \w*str\w?cat\s*\(.*\)
+      - pattern-regex: \w*strtok\s*\(.*\)
+      # (s)printf family
+      - pattern-regex: \w*s\w?printf\w*\(.*\)
+      - pattern-regex: \w*sn\w?printf\w*\(.*\)
+        # - pattern-regex: \w*printf\w*\(.*\)
+      # scanf family
+      - pattern-regex: \w*scanf\s*\(.*\)
+      # get family
+      - pattern-regex: \w*get(s|pw|env|opt|opt_long)\s*\(.*\)
+      # mem family
+      - pattern-regex: \w*memc?cpy\s*\(.*\)
+      - pattern-regex: \w*memmove\s*\(.*\)
+      - pattern-regex: \w*bcopy\s*\(.*\)
+      # alloc family
+        # - pattern-regex: \w*alloca?\s*\(.*\)
+        # - pattern-regex: \w*free\s*\(.*\)
+      # exec family
+      - pattern-regex: \w*exec(l|v)?(p|e)?e?\s*\(.*\)
+      - pattern-regex: \w*system\s*\(.*\)
+      # i/o family
+      - pattern-regex: \w*open(at)?(64)?\s*\(.*\)
+      - pattern-regex: \w*pipe\s*\(.*\)
+      - pattern-regex: \w*connect\s*\(.*\)
+      - pattern-regex: \w*read\s*\(.*\)
+      - pattern-regex: \w*recv(from)?\s*\(.*\)
+        # - pattern-regex: \w*write\s*\(.*\)
+      # process family
+      - pattern-regex: \w*fork\s*\(.*\)
+      - pattern-regex: \w*clone\s*\(.*\)
+      # file family
+      - pattern-regex: \w*mk\w?temp(64)?\s*\(.*\)
+      - pattern-regex: \w*te?mpnam\s*\(.*\)
+      - pattern-regex: \w*tmpfile\s*\(.*\)
+      - pattern-regex: \w*mkdir\s*\(.*\)
+      - pattern-regex: \w*creat\s*\(.*\)
+      - pattern-regex: \w*link(at)?\s*\(.*\)
+      - pattern-regex: \w*rename(at)?\s*\(.*\)
+      - pattern-regex: \w*ch(own|mod)(at)?\s*\(.*\)
+        # - pattern-regex: \w*stat(at)?\s*\(.*\)
+        # - pattern-regex: \w*access(at)?\s*\(.*\)
+        # - pattern-regex: \w*locale\s*\(.*\)
+        # - pattern-regex: \w*(make|split)path\s*\(.*\)
+      # missing: kill/sig/jmp, sem/mutex, new/delete

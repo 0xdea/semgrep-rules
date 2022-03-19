@@ -1,0 +1,32 @@
+rules:
+  - id: unsafe-ret-strlcpy-strlcat
+    metadata:
+      author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      references:
+        - https://lwn.net/Articles/507319/
+        - https://g.co/kgs/PCHQjJ
+      confidence: MEDIUM
+    message: >-
+      The strlcpy() and strlcat() functions return the total length of the
+      string they tried to create. For strlcpy() that means the length of
+      the source string. For strlcat() that means the initial length of the
+      destination string plus the length of of the source string.
+      Therefore, this return value can be larger than the size of the
+      destination buffer. If it is used unsafely, e.g. as an index to write
+      to the destination buffer, memory corruption might occur.
+      Vulnerabilities such as this are not common because the return value
+      is usually discarded. However, ignoring the result of these functions
+      can result in data truncation.
+    severity: WARNING
+    languages:
+      - c
+      - cpp
+    pattern-either:
+      - pattern: |
+          $RET = strlcpy($DST, $SRC, $N);
+          ...
+          $DST[$RET] = $SOMEVAL;
+      - pattern: |
+          $RET = strlcat($DST, $SRC, $N);
+          ...
+          $DST[$RET] = $SOMEVAL;

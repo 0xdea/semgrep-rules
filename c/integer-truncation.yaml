@@ -1,0 +1,66 @@
+rules:
+  - id: integer-truncation
+    metadata:
+      author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      references:
+        - https://cwe.mitre.org/data/definitions/197
+        - https://cwe.mitre.org/data/definitions/681
+        - https://github.com/struct/mms
+      confidence: MEDIUM
+    message: >-
+      Truncation errors occur when a primitive is cast to a primitive of a
+      smaller size and data is lost in the conversion.
+      When a primitive is cast to a smaller primitive, the high order bits
+      of the large value are lost in the conversion, potentially resulting
+      in an unexpected value that is not equal to the original value. This
+      value may be required as an index into a buffer, a loop iterator, or
+      simply necessary state data. In any case, the value cannot be trusted
+      and the system will be in an undefined state. While this method may
+      be employed viably to isolate the low bits of a value, this usage is
+      rare, and truncation usually implies that an implementation error has
+      occurred.
+    severity: WARNING
+    languages:
+      - c
+      - cpp
+    pattern-either:
+      # char
+      - pattern: (char $NARROW) = (short $LARGE)
+      - pattern: (char $NARROW) = (short int $LARGE)
+      - pattern: (char $NARROW) = (unsigned short $LARGE)
+      - pattern: (char $NARROW) = (unsigned short int $LARGE)
+      - pattern: (char $NARROW) = (int $LARGE)
+      - pattern: (char $NARROW) = (unsigned $LARGE)
+      - pattern: (char $NARROW) = (unsigned int $LARGE)
+      - pattern: (char $NARROW) = (long $LARGE)
+      - pattern: (char $NARROW) = (long int $LARGE)
+      - pattern: (char $NARROW) = (unsigned long $LARGE)
+      - pattern: (char $NARROW) = (unsigned long int $LARGE)
+      # short
+      - pattern: (short $NARROW) = (unsigned short $LARGE)
+      - pattern: (short int $NARROW) = (unsigned short int $LARGE)
+      - pattern: (short $NARROW) = (int $LARGE)
+      - pattern: (short $NARROW) = (unsigned $LARGE)
+      - pattern: (short int $NARROW) = (unsigned int $LARGE)
+      - pattern: (short $NARROW) = (long $LARGE)
+      - pattern: (short int $NARROW) = (long int $LARGE)
+      - pattern: (short $NARROW) = (unsigned long $LARGE)
+      - pattern: (short int $NARROW) = (unsigned long int $LARGE)
+      - pattern: (unsigned short $NARROW) = (int $LARGE)
+      - pattern: (unsigned short $NARROW) = (unsigned $LARGE)
+      - pattern: (unsigned short int $NARROW) = (unsigned int $LARGE)
+      - pattern: (unsigned short $NARROW) = (long $LARGE)
+      - pattern: (unsigned short int $NARROW) = (long int $LARGE)
+      - pattern: (unsigned short $NARROW) = (unsigned long $LARGE)
+      - pattern: (unsigned short int $NARROW) = (unsigned long int $LARGE)
+      # int
+      - pattern: (int $NARROW) = (unsigned $LARGE)
+      - pattern: (int $NARROW) = (unsigned int $LARGE)
+      - pattern: (int $NARROW) = (long $LARGE)
+      - pattern: (int $NARROW) = (long int $LARGE)
+      - pattern: (int $NARROW) = (unsigned long $LARGE)
+      - pattern: (int $NARROW) = (unsigned long int $LARGE)
+      # long
+      - pattern: (long $NARROW) = (unsigned long $LARGE)
+      - pattern: (long int $NARROW) = (unsigned long int $LARGE)
+      # some use cases (including notably comparisons) are missing

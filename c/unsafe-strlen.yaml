@@ -30,7 +30,10 @@ rules:
       - c
       - cpp
     pattern-either:
+      # signed and unsigned short
       - pattern: (short $LEN) = strlen(...);
       - pattern: (short int $LEN) = strlen(...);
       - pattern: (unsigned short $LEN) = strlen(...);
       - pattern: (unsigned short int $LEN) = strlen(...);
+      # signed int
+        # - pattern: (int $LEN) = strlen(...);

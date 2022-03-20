@@ -32,10 +32,10 @@ rules:
         - pattern-not: vprintf("...", ...)
         - pattern-not: wprintf("...", ...)
         - pattern-not: vwprintf("...", ...)
-        # - pattern-not: vcprintf("...", ...)
-        # - pattern-not: vcwprintf("...", ...)
-        # - pattern-not: vscprintf("...", ...)
-        # - pattern-not: vscwprintf("...", ...)
+          # - pattern-not: vcprintf("...", ...)
+          # - pattern-not: vcwprintf("...", ...)
+          # - pattern-not: vscprintf("...", ...)
+          # - pattern-not: vscwprintf("...", ...)
         # format string in 2nd arg
         - pattern-not: fprintf($ARG1, "...", ...)
         - pattern-not: vfprintf($ARG1, "...", ...)
@@ -47,7 +47,7 @@ rules:
         - pattern-not: vasprintf($ARG1, "...", ...)
         - pattern-not: dprintf($ARG1, "...", ...)
         - pattern-not: vdprintf($ARG1, "...", ...)
-        # - pattern-not: wsprintf($ARG1, "...", ...)
+          # - pattern-not: wsprintf($ARG1, "...", ...)
         # format string in 3rd arg
         - pattern-not: snprintf($ARG1, $ARG2, "...", ...)
         - pattern-not: vsnprintf($ARG1, $ARG2, "...", ...)

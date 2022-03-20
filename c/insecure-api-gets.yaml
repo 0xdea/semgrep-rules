@@ -7,11 +7,14 @@ rules:
         - https://cwe.mitre.org/data/definitions/120
       confidence: HIGH
     message: >-
-      Never use gets(). Because it is impossible to tell without knowing
-      the data in advance how many characters gets() will read, and because
-      gets() will continue to store characters past the end of the
-      destination buffer, it is extremely dangerous to use. Use fgets()
-      instead.
+      The program calls a function that can never be guaranteed to work
+      safely.
+      Certain functions behave in dangerous ways regardless of how they are
+      used. Functions in this category were often implemented without
+      taking security concerns into account. The gets() function is unsafe
+      because it does not perform bounds checking on the size of its input.
+      An attacker can easily send arbitrarily-sized input to gets() and
+      overflow the destination buffer.
     severity: ERROR
     languages:
       - c

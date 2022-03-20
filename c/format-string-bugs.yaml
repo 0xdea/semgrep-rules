@@ -1,0 +1,78 @@
+rules:
+  - id: format-string-bugs
+    metadata:
+      author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      references:
+        - https://cwe.mitre.org/data/definitions/134
+        - https://julianor.tripod.com/bc/formatstring-1.2.pdf
+        - http://phrack.org/issues/70/13.html#article
+      confidence: MEDIUM
+    message: >-
+      The software uses a function that accepts a format string as an
+      argument, but the format string originates from an external source.
+      When an attacker can modify an externally-controlled format string,
+      this can lead to buffer overflows, denial of service, or data
+      representation problems.
+      It should be noted that in some circumstances, such as
+      internationalization, the set of format strings is externally
+      controlled by design. If the source of these format strings is
+      trusted (e.g. only contained in library files that are only
+      modifiable by the system administrator), then the external control
+      might not itself pose a vulnerability.
+    severity: ERROR
+    languages:
+      - c
+      - cpp
+    pattern-either:
+      # printf family
+      - patterns:
+        - pattern-regex: \w*printf\s*\(.*\)
+        # format string in 1st arg
+        - pattern-not: printf("...", ...)
+        - pattern-not: vprintf("...", ...)
+        - pattern-not: wprintf("...", ...)
+        - pattern-not: vwprintf("...", ...)
+        # - pattern-not: vcprintf("...", ...)
+        # - pattern-not: vcwprintf("...", ...)
+        # - pattern-not: vscprintf("...", ...)
+        # - pattern-not: vscwprintf("...", ...)
+        # format string in 2nd arg
+        - pattern-not: fprintf($ARG1, "...", ...)
+        - pattern-not: vfprintf($ARG1, "...", ...)
+        - pattern-not: fwprintf($ARG1, "...", ...)
+        - pattern-not: vfwprintf($ARG1, "...", ...)
+        - pattern-not: sprintf($ARG1, "...", ...)
+        - pattern-not: vsprintf($ARG1, "...", ...)
+        - pattern-not: asprintf($ARG1, "...", ...)
+        - pattern-not: vasprintf($ARG1, "...", ...)
+        - pattern-not: dprintf($ARG1, "...", ...)
+        - pattern-not: vdprintf($ARG1, "...", ...)
+        # - pattern-not: wsprintf($ARG1, "...", ...)
+        # format string in 3rd arg
+        - pattern-not: snprintf($ARG1, $ARG2, "...", ...)
+        - pattern-not: vsnprintf($ARG1, $ARG2, "...", ...)
+        - pattern-not: swprintf($ARG1, $ARG2, "...", ...)
+        - pattern-not: vswprintf($ARG1, $ARG2, "...", ...)
+      # scanf family
+      - patterns:
+        - pattern-regex: \w*scanf\s*\(.*\)
+        # format string in 1st arg
+        - pattern-not: scanf("...", ...)
+        - pattern-not: vscanf("...", ...)
+        - pattern-not: wscanf("...", ...)
+        - pattern-not: vwscanf("...", ...)
+        # format string in 2nd arg
+        - pattern-not: fscanf($ARG1, "...", ...)
+        - pattern-not: vfscanf($ARG1, "...", ...)
+        - pattern-not: fwscanf($ARG1, "...", ...)
+        - pattern-not: vfwscanf($ARG1, "...", ...)
+        - pattern-not: sscanf($ARG1, "...", ...)
+        - pattern-not: vsscanf($ARG1, "...", ...)
+        - pattern-not: swscanf($ARG1, "...", ...)
+        - pattern-not: vswscanf($ARG1, "...", ...)
+      # syslog family
+      - patterns:
+        - pattern-regex: v?syslog\s*\(.*\)
+        # format string in 2nd arg
+        - pattern-not: syslog($ARG1, "...", ...)
+        - pattern-not: vsyslog($ARG1, "...", ...)

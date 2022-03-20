@@ -8,15 +8,16 @@ rules:
         - https://www.usenix.org/legacy/events/sec02/full_papers/chen/chen.pdf
       confidence: MEDIUM
     message: >-
-      The setuid() function sets the effective user ID of the calling
-      process; it is commonly used by privileged processes to permanently
-      drop root privileges.
-      The seteuid() function sets the effective user ID of the calling
-      process; it is commonly used by privileged processes to temporarily
-      drop root privileges.
-      There are cases where setuid() and seteuid() can fail even when the
-      caller is UID 0; it is a security error to omit checking for a
-      failure return from these functions.
+      The software does not check the return value from a method or
+      function, which can prevent it from detecting unexpected states and
+      conditions.
+      If an attacker can force the function to fail or otherwise return a
+      value that is not expected, then the subsequent program logic could
+      lead to a vulnerability, because the software is not in a state that
+      the programmer assumes. For example, if the program calls a function
+      to drop privileges but does not check the return code to ensure that
+      privileges were successfully dropped, then the program will continue
+      to operate with the higher privileges.
     severity: WARNING
     languages:
       - c

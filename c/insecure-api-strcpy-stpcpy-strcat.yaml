@@ -8,14 +8,17 @@ rules:
         - https://cwe.mitre.org/data/definitions/787
       confidence: HIGH
     message: >-
-      If the destination string of a strcpy(), stpcpy(), or strcat() is not
-      large enough, then program behavior is unpredictable; buffer overruns
-      are a favorite avenue for attacking programs. Any time a program
-      copies or appends data into a buffer, the program first needs to
-      check that there's enough space.
-      This may be unnecessary if you can show that overflow is impossible,
-      but be careful, as programs can get changed over time, in ways that
-      may make the impossible possible.
+      The program invokes a potentially dangerous function that could
+      introduce a vulnerability if it is used incorrectly, but the function
+      can also be used safely.
+      A buffer overflow condition exists when a program attempts to put
+      more data in a buffer than it can hold, or when a program attempts to
+      put data in a memory area outside of the boundaries of a buffer. The
+      simplest type of error, and the most common cause of buffer
+      overflows, is the classic case in which the program copies the buffer
+      without restricting how much is copied. Other variants exist, but the
+      existence of a classic overflow strongly suggests that the programmer
+      is not considering even the most basic of security protections.
     severity: WARNING
     languages:
       - c

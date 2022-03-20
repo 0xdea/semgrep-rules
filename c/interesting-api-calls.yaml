@@ -24,7 +24,8 @@ rules:
       - pattern-regex: \w*stpn?cpy\s*\(.*\)
       - pattern-regex: \w*str\w?cat\s*\(.*\)
       - pattern-regex: \w*strtok\s*\(.*\)
-      # (s)printf family
+        # - pattern-regex: \w*strlen\s*\(.*\)
+      # printf family
       - pattern-regex: \w*s\w?printf\w*\(.*\)
       - pattern-regex: \w*sn\w?printf\w*\(.*\)
         # - pattern-regex: \w*printf\w*\(.*\)
@@ -37,6 +38,7 @@ rules:
       - pattern-regex: \w*memmove\s*\(.*\)
       - pattern-regex: \w*bcopy\s*\(.*\)
       # alloc family
+      - pattern-regex: \w*alloca\s*\(.*\)
         # - pattern-regex: \w*alloca?\s*\(.*\)
         # - pattern-regex: \w*free\s*\(.*\)
       # exec family

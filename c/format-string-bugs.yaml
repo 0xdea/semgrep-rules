@@ -76,3 +76,8 @@ rules:
         # format string in 2nd arg
         - pattern-not: syslog($ARG1, "...", ...)
         - pattern-not: vsyslog($ARG1, "...", ...)
+      # printk
+      - patterns:
+        - pattern-regex: printk\s*\(.*\)
+        # format string in 1st arg
+        - pattern-not: printk("...", ...)

@@ -1,0 +1,40 @@
+rules:
+  - id: insecure-api-sprintf-vsprintf
+    metadata:
+      author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      references:
+        - https://cwe.mitre.org/data/definitions/676
+        - https://cwe.mitre.org/data/definitions/120
+        - https://cwe.mitre.org/data/definitions/787
+      confidence: HIGH
+    message: >-
+      The program invokes a potentially dangerous function that could
+      introduce a vulnerability if it is used incorrectly, but the function
+      can also be used safely.
+      A buffer overflow condition exists when a program attempts to put
+      more data in a buffer than it can hold, or when a program attempts to
+      put data in a memory area outside of the boundaries of a buffer. The
+      simplest type of error, and the most common cause of buffer
+      overflows, is the classic case in which the program copies the buffer
+      without restricting how much is copied. Other variants exist, but the
+      existence of a classic overflow strongly suggests that the programmer
+      is not considering even the most basic of security protections.
+    severity: WARNING
+    languages:
+      - c
+      - cpp
+    options:
+      # disable constant propagation (unsupported in c/c++ anyway)
+      # this rule should be rewritten to support constant propagation
+      constant_propagation: false
+    pattern-either:
+      - patterns:
+        - pattern: sprintf($BUF, $FMT, ...)
+        - metavariable-regex:
+            metavariable: $FMT
+            regex: (".*%s.*"|[a-zA-Z_][a-zA-Z0-9_]*)
+      - patterns:
+        - pattern: vsprintf($BUF, $FMT, ...)
+        - metavariable-regex:
+            metavariable: $FMT
+            regex: (".*%s.*"|[a-zA-Z_][a-zA-Z0-9_]*)

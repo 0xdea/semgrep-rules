@@ -12,7 +12,8 @@ int copy_string(char *string)
 
 	// ruleid: unsafe-ret-strlcpy-strlcat
 	length = strlcpy(buf, string, BUFSIZE);
-	buf[length] = 'A';
+
+	// use length to access buf, e.g. with strncat()
 }
 
 int append_string(char *string)
@@ -22,7 +23,8 @@ int append_string(char *string)
 
 	// ruleid: unsafe-ret-strlcpy-strlcat
 	length = strlcat(buf, string, BUFSIZE);
-	buf[length] = 'A';
+
+	// use length to access buf
 }
 
 int main() 

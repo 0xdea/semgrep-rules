@@ -22,11 +22,5 @@ rules:
       - c
       - cpp
     pattern-either:
-      - pattern: |
-          $RET = strlcpy($DST, $SRC, $N);
-          ...
-          $DST[$RET] = $SOMEVAL;
-      - pattern: |
-          $RET = strlcat($DST, $SRC, $N);
-          ...
-          $DST[$RET] = $SOMEVAL;
+      - pattern: $RET = strlcpy(...)
+      - pattern: $RET = strlcat(...)

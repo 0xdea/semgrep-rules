@@ -1,0 +1,22 @@
+// Marco Ivaldi <raptor@0xdeadbeef.info>
+
+#include <stdio.h>
+
+#define BUFSIZE 256
+
+int copy_string(char *string)
+{
+	char buf[BUFSIZE];
+	size_t length;
+
+	// ruleid: unsafe-ret-snprintf-vsnprintf.c
+	length = snprintf(buf, BUFSIZE, "%s", string);
+
+	// use length to access buf
+}
+
+int main() 
+{
+	printf("Hello, World!");
+	return 0;
+}

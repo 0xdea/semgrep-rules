@@ -19,7 +19,7 @@ rules:
       without restricting how much is copied. Other variants exist, but the
       existence of a classic overflow strongly suggests that the programmer
       is not considering even the most basic of security protections.
-    severity: WARNING
+    severity: ERROR
     languages:
       - c
       - cpp

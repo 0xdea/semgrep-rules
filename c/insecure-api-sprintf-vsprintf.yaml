@@ -6,7 +6,7 @@ rules:
         - https://cwe.mitre.org/data/definitions/676
         - https://cwe.mitre.org/data/definitions/120
         - https://cwe.mitre.org/data/definitions/787
-      confidence: HIGH
+      confidence: MEDIUM
     message: >-
       The program invokes a potentially dangerous function that could
       introduce a vulnerability if it is used incorrectly, but the function

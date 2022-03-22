@@ -16,45 +16,45 @@ rules:
       - c
       - cpp
     pattern-either:
-      # priv family
+      # priv
       - pattern-regex: \w*set\w*(u|g)id\s*\(.*\)
       - pattern-regex: \w*(init|set)groups\s*\(.*\)
-      # str family
+      # str
       - pattern-regex: \w*str\w?cpy\s*\(.*\)
       - pattern-regex: \w*stpn?cpy\s*\(.*\)
       - pattern-regex: \w*str\w?cat\s*\(.*\)
       - pattern-regex: \w*strtok\s*\(.*\)
         # - pattern-regex: \w*strlen\s*\(.*\)
-      # printf family
+      # printf
       - pattern-regex: \w*s\w?printf\w*\(.*\)
       - pattern-regex: \w*sn\w?printf\w*\(.*\)
         # - pattern-regex: \w*printf\w*\(.*\)
-      # scanf family
+      # scanf
       - pattern-regex: \w*scanf\s*\(.*\)
-      # get family
+      # get
       - pattern-regex: \w*get(s|pw|env|opt|opt_long)\s*\(.*\)
-      # mem family
+      # mem
       - pattern-regex: \w*memc?cpy\s*\(.*\)
       - pattern-regex: \w*memmove\s*\(.*\)
       - pattern-regex: \w*bcopy\s*\(.*\)
-      # alloc family
+      # alloc
       - pattern-regex: \w*alloca\s*\(.*\)
         # - pattern-regex: \w*alloca?\s*\(.*\)
         # - pattern-regex: \w*free\s*\(.*\)
-      # exec family
+      # exec
       - pattern-regex: \w*exec(l|v)?(p|e)?e?\s*\(.*\)
       - pattern-regex: \w*system\s*\(.*\)
-      # i/o family
+      # i/o
       - pattern-regex: \w*open(at)?(64)?\s*\(.*\)
       - pattern-regex: \w*pipe\s*\(.*\)
       - pattern-regex: \w*connect\s*\(.*\)
       - pattern-regex: \w*read\s*\(.*\)
       - pattern-regex: \w*recv(from)?\s*\(.*\)
         # - pattern-regex: \w*write\s*\(.*\)
-      # process family
+      # proc
       - pattern-regex: \w*fork\s*\(.*\)
       - pattern-regex: \w*clone\s*\(.*\)
-      # file family
+      # file
       - pattern-regex: \w*mk\w?temp(64)?\s*\(.*\)
       - pattern-regex: \w*te?mpnam\s*\(.*\)
       - pattern-regex: \w*tmpfile\s*\(.*\)
@@ -67,4 +67,6 @@ rules:
         # - pattern-regex: \w*access(at)?\s*\(.*\)
         # - pattern-regex: \w*locale\s*\(.*\)
         # - pattern-regex: \w*(make|split)path\s*\(.*\)
+      # assert
+      - pattern-regex: \w*assert\s*\(.*\)
       # missing: kill/sig/jmp, sem/mutex, new/delete

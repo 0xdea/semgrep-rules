@@ -43,4 +43,4 @@ See also: https://semgrep.dev/r
 ## Generic
 
 ### miscellaneous
-* TBD
+* [**bad-words**](https://github.com/0xdea/semgrep-rules/blob/main/generic/bad-words.yaml). Keywords and comments that suggest the presence of bugs.

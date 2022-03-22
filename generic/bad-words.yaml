@@ -1,0 +1,51 @@
+rules:
+  - id: bad-words
+    metadata:
+      author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      references:
+        - https://cwe.mitre.org/data/definitions/546
+        - https://cwe.mitre.org/data/definitions/615
+        - https://btlr.dev/blog/how-to-find-vulnerabilities-in-code-bad-words
+      confidence: LOW
+    message: >-
+      The code contains comments that suggest the presence of bugs,
+      incomplete functionality, or weaknesses.
+      Many suspicious comments, such as BUG, HACK, FIXME, LATER, LATER2,
+      TODO, in the code indicate missing security functionality and
+      checking. Others indicate code problems that programmers should fix,
+      such as hard-coded variables, error handling, not using stored
+      procedures, and performance issues.
+    severity: INFO
+    languages:
+      - generic
+    pattern-either:
+      # interesting comments
+      - pattern-regex: (TODO|XXX|FIXME|BUG|HACK|LATER)
+      - pattern-regex: (?i)(unsafe|insecure|dangerous|overflow)
+      # other "bad words" examples
+      # lower level abstractions
+        # - pattern-regex: (?i)(raw)
+      # code injection
+        # - pattern-regex: (eval|run)
+      # command injection
+        # - pattern-regex: (process|system|popen|exec|spawn)
+      # credentials
+        # - pattern-regex: (?i)(password|private|token|secret|key)
+        # - pattern-regex: (?i)(JWT|JKS|JWK|JKU)
+      # privilege management
+        # - pattern-regex: (?i)(privilege|permission|capabilit|role|rbac|polic|authorization|claim)
+        # - pattern-regex: (?i)(validate|verify)
+      # memory management
+        # - pattern-regex: (?i)(alloc|free)
+      # reflection
+        # - pattern-regex: (?i)(reflect|klass|constantize|forname)
+      # serialization
+        # - pattern-regex: (?i)(pickle|yaml|serialize|marshal|objectinput)
+      # merge or clone
+        # - pattern-regex: (?i)(merge|clone)
+      # file access
+        # - pattern-regex: (?i)(parse|open|request)
+      # crypto
+        # - pattern-regex: (?i)(AES|RSA|DSA|DES|CBC|ECB|HMAC|GCM|MD5|SHA)
+      # xml
+        # - pattern-regex: (?i)(xml|xerces|sax|etree|xpath|documentbuilder)

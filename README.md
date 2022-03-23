@@ -32,7 +32,7 @@ See also: https://semgrep.dev/r
 * [**unsafe-strlen**](https://github.com/0xdea/semgrep-rules/blob/main/c/unsafe-strlen.yaml). Casting the return value of strlen() to short might be dangerous.
 
 ### memory management
-* TBD
+* [**memory-address-exposure**](https://github.com/0xdea/semgrep-rules/blob/main/c/memory-address-exposure.yaml). Potential exposure of underlying memory addresses.
 
 ### privilege management
 * [**unchecked-ret-setuid-seteuid**](https://github.com/0xdea/semgrep-rules/blob/main/c/unchecked-ret-setuid-seteuid.yaml). Unchecked return code of setuid() and seteuid() functions.

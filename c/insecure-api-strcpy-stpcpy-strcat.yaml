@@ -27,3 +27,6 @@ rules:
       - pattern: strcpy(...)
       - pattern: stpcpy(...)
       - pattern: strcat(...)
+      - pattern: wcscpy(...)
+      - pattern: wcpcpy(...)
+      - pattern: wcscat(...)

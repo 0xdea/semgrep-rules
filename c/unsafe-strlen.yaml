@@ -35,5 +35,10 @@ rules:
       - pattern: (short int $LEN) = strlen(...);
       - pattern: (unsigned short $LEN) = strlen(...);
       - pattern: (unsigned short int $LEN) = strlen(...);
+      - pattern: (short $LEN) = wcslen(...);
+      - pattern: (short int $LEN) = wcslen(...);
+      - pattern: (unsigned short $LEN) = wcslen(...);
+      - pattern: (unsigned short int $LEN) = wcslen(...);
       # signed int
         # - pattern: (int $LEN) = strlen(...);
+        # - pattern: (int $LEN) = wcslen(...);

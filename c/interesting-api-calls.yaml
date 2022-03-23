@@ -23,6 +23,9 @@ rules:
       - pattern-regex: \w*str\w?cpy\s*\(.*\)
       - pattern-regex: \w*stpn?cpy\s*\(.*\)
       - pattern-regex: \w*str\w?cat\s*\(.*\)
+      - pattern-regex: \w*wcs\w?cpy\s*\(.*\)
+      - pattern-regex: \w*wcpn?cpy\s*\(.*\)
+      - pattern-regex: \w*wcs\w?cat\s*\(.*\)
       - pattern-regex: \w*strtok\s*\(.*\)
         # - pattern-regex: \w*strlen\s*\(.*\)
       # printf

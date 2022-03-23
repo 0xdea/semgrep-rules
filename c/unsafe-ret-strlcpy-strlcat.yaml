@@ -24,3 +24,5 @@ rules:
     pattern-either:
       - pattern: $RET = strlcpy(...)
       - pattern: $RET = strlcat(...)
+      - pattern: $RET = wcslcpy(...)
+      - pattern: $RET = wcslcat(...)

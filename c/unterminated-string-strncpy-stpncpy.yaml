@@ -47,3 +47,31 @@ rules:
               stpncpy($DST, $SRC, $N);
               ...
               $DST[$POS] = 0;
+      - patterns:
+          - pattern: wcsncpy(...)
+          - pattern-not-inside: |
+              wcsncpy($DST, $SRC, $N);
+              ...
+              $DST[$POS] = NULL;
+          - pattern-not-inside: |
+              wcsncpy($DST, $SRC, $N);
+              ...
+              $DST[$POS] = '\0';
+          - pattern-not-inside: |
+              wcsncpy($DST, $SRC, $N);
+              ...
+              $DST[$POS] = 0;
+      - patterns:
+          - pattern: wcpncpy(...)
+          - pattern-not-inside: |
+              wcpncpy($DST, $SRC, $N);
+              ...
+              $DST[$POS] = NULL;
+          - pattern-not-inside: |
+              wcpncpy($DST, $SRC, $N);
+              ...
+              $DST[$POS] = '\0';
+          - pattern-not-inside: |
+              wcpncpy($DST, $SRC, $N);
+              ...
+              $DST[$POS] = 0;

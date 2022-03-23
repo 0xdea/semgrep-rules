@@ -1,0 +1,49 @@
+rules:
+  - id: memory-address-exposure
+    metadata:
+      author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      references:
+        - https://cwe.mitre.org/data/definitions/200
+        - https://cwe.mitre.org/data/definitions/209
+        - https://cwe.mitre.org/data/definitions/497
+      confidence: MEDIUM
+    message: >-
+      The software generates an error message that includes sensitive
+      information about its environment, users, or associated data.
+      In particular, exposure of memory addresses might defeat ASLR.
+    severity: WARNING
+    languages:
+      - c
+      - cpp
+    patterns:
+      - pattern-either:
+        # format string in 1st arg
+        - pattern: printf($FMT, ...)
+        - pattern: vprintf($FMT, ...)
+        - pattern: wprintf($FMT, ...)
+        - pattern: vwprintf($FMT, ...)
+          # - pattern: vcprintf($FMT, ...)
+          # - pattern: vcwprintf($FMT, ...)
+          # - pattern: vscprintf($FMT, ...)
+          # - pattern: vscwprintf($FMT, ...)
+        # format string in 2nd arg
+        - pattern: fprintf($ARG1, $FMT, ...)
+        - pattern: vfprintf($ARG1, $FMT, ...)
+        - pattern: fwprintf($ARG1, $FMT, ...)
+        - pattern: vfwprintf($ARG1, $FMT, ...)
+        - pattern: sprintf($ARG1, $FMT, ...)
+        - pattern: vsprintf($ARG1, $FMT, ...)
+        - pattern: asprintf($ARG1, $FMT, ...)
+        - pattern: vasprintf($ARG1, $FMT, ...)
+        - pattern: dprintf($ARG1, $FMT, ...)
+        - pattern: vdprintf($ARG1, $FMT, ...)
+          # - pattern: wsprintf($ARG1, $FMT, ...)
+        # format string in 3rd arg
+        - pattern: snprintf($ARG1, $ARG2, $FMT, ...)
+        - pattern: vsnprintf($ARG1, $ARG2, $FMT, ...)
+        - pattern: swprintf($ARG1, $ARG2, $FMT, ...)
+        - pattern: vswprintf($ARG1, $ARG2, $FMT, ...)
+      - metavariable-regex:
+          metavariable: $FMT
+          # some format string modifiers are not handled
+          regex: (".*%\w*x.*"|".*%\w*X.*"|".*%\w*p.*")

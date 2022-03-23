@@ -27,64 +27,21 @@ rules:
       # disable constant propagation (unsupported in c/c++ anyway)
       # this rule should be rewritten to support constant propagation
       constant_propagation: false
-    pattern-either:
-      - patterns:
+    patterns:
+      - pattern-either:
         - pattern: scanf($FMT, ...)
-        - metavariable-regex:
-            metavariable: $FMT
-            regex: (".*%s.*"|[a-zA-Z_][a-zA-Z0-9_]*)
-      - patterns:
         - pattern: vscanf($FMT, ...)
-        - metavariable-regex:
-            metavariable: $FMT
-            regex: (".*%s.*"|[a-zA-Z_][a-zA-Z0-9_]*)
-      - patterns:
         - pattern: fscanf($FS, $FMT, ...)
-        - metavariable-regex:
-            metavariable: $FMT
-            regex: (".*%s.*"|[a-zA-Z_][a-zA-Z0-9_]*)
-      - patterns:
         - pattern: vfscanf($FS, $FMT, ...)
-        - metavariable-regex:
-            metavariable: $FMT
-            regex: (".*%s.*"|[a-zA-Z_][a-zA-Z0-9_]*)
-      - patterns:
         - pattern: sscanf($BUF, $FMT, ...)
-        - metavariable-regex:
-            metavariable: $FMT
-            regex: (".*%s.*"|[a-zA-Z_][a-zA-Z0-9_]*)
-      - patterns:
         - pattern: vsscanf($BUF, $FMT, ...)
-        - metavariable-regex:
-            metavariable: $FMT
-            regex: (".*%s.*"|[a-zA-Z_][a-zA-Z0-9_]*)
-      - patterns:
         - pattern: wscanf($FMT, ...)
-        - metavariable-regex:
-            metavariable: $FMT
-            regex: (".*%s.*"|[a-zA-Z_][a-zA-Z0-9_]*)
-      - patterns:
         - pattern: vwscanf($FMT, ...)
-        - metavariable-regex:
-            metavariable: $FMT
-            regex: (".*%s.*"|[a-zA-Z_][a-zA-Z0-9_]*)
-      - patterns:
         - pattern: fwscanf($FS, $FMT, ...)
-        - metavariable-regex:
-            metavariable: $FMT
-            regex: (".*%s.*"|[a-zA-Z_][a-zA-Z0-9_]*)
-      - patterns:
         - pattern: vfwscanf($FS, $FMT, ...)
-        - metavariable-regex:
-            metavariable: $FMT
-            regex: (".*%s.*"|[a-zA-Z_][a-zA-Z0-9_]*)
-      - patterns:
         - pattern: swscanf($BUF, $FMT, ...)
-        - metavariable-regex:
-            metavariable: $FMT
-            regex: (".*%s.*"|[a-zA-Z_][a-zA-Z0-9_]*)
-      - patterns:
         - pattern: vswscanf($BUF, $FMT, ...)
-        - metavariable-regex:
-            metavariable: $FMT
-            regex: (".*%s.*"|[a-zA-Z_][a-zA-Z0-9_]*)
+      - metavariable-regex:
+          metavariable: $FMT
+          # some format string modifiers are not handled
+          regex: (".*%l?s.*"|".*%S.*"|[a-zA-Z_][a-zA-Z0-9_]*)

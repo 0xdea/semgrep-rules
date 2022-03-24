@@ -1,0 +1,23 @@
+rules:
+  - id: insecure-api-mktemp-tmpnam-tempnam
+    metadata:
+      author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      references:
+        - https://cwe.mitre.org/data/definitions/377
+        - https://cwe.mitre.org/data/definitions/367
+      confidence: HIGH
+    message: >-
+      Creating and using insecure temporary files can leave application and
+      system data vulnerable to attack.
+    severity: WARNING
+    languages:
+      - c
+      - cpp
+    pattern-either:
+      - pattern: mktemp(...)
+      - pattern: tmpnam(...)
+      - pattern: tempnam(...)
+        # - pattern: _mktemp(...)
+        # - pattern: _tmpnam(...)
+        # - pattern: _tempnam(...)
+        # - pattern: GetTempFileName(...)

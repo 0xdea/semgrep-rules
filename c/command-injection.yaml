@@ -1,0 +1,27 @@
+rules:
+  - id: command-injection
+    metadata:
+      author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      references:
+        - https://cwe.mitre.org/data/definitions/676
+        - https://cwe.mitre.org/data/definitions/78
+        - https://cwe.mitre.org/data/definitions/88
+      confidence: MEDIUM
+    message: >-
+      The program invokes a potentially dangerous function that could
+      introduce a vulnerability if it is used incorrectly, but the function
+      can also be used safely.
+      The software constructs all or part of an OS command using
+      externally-influenced input from an upstream component, but it does
+      not neutralize or incorrectly neutralizes special elements that could
+      modify the intended OS command when it is sent to a downstream
+      component.
+    severity: ERROR
+    languages:
+      - c
+      - cpp
+    patterns:
+      - pattern-either:
+        - pattern: system(...)
+        - pattern: popen(...)
+      - pattern-not: $FUN("...", ...)

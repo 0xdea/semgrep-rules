@@ -23,10 +23,6 @@ rules:
     languages:
       - c
       - cpp
-    options:
-      # disable constant propagation (unsupported in c/c++ anyway)
-      # this rule should be rewritten to support constant propagation
-      constant_propagation: false
     pattern-either:
       # printf family
       - patterns:

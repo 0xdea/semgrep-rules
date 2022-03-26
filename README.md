@@ -11,6 +11,8 @@
 
 A collection of my Semgrep rules to facilitate vulnerability research.
 
+Blog post: TBD
+
 See also: https://semgrep.dev/r
 
 ## C/C++

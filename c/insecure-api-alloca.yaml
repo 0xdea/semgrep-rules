@@ -1,0 +1,23 @@
+rules:
+  - id: insecure-api-alloca
+    metadata:
+      author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      references:
+        - https://cwe.mitre.org/data/definitions/676
+        - https://cwe.mitre.org/data/definitions/1325
+        - https://nullprogram.com/blog/2019/10/28/
+      confidence: MEDIUM
+    message: >-
+      The program invokes a potentially dangerous function that could
+      introduce a vulnerability if it is used incorrectly, but the function
+      can also be used safely.
+      Use of alloca() is discouraged. It is unsafe because it cannot ensure
+      that the pointer returned points to a valid and usable block of
+      memory. The allocation made may exceed the bounds of the stack, or
+      even go further into other objects in memory, and alloca() cannot
+      determine such an error.
+    severity: ERROR
+    languages:
+      - c
+      - cpp
+    pattern: alloca(...)

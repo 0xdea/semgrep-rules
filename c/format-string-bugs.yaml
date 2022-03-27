@@ -23,10 +23,35 @@ rules:
     languages:
       - c
       - cpp
+    options:
+      constant_propagation: false
     pattern-either:
       # printf family
       - patterns:
-        - pattern-regex: \w*printf\s*\(.*\)
+        - pattern-either:
+          - pattern: printf(...)
+          - pattern: vprintf(...)
+          - pattern: wprintf(...)
+          - pattern: vwprintf(...)
+            # - pattern: vcprintf(...)
+            # - pattern: vcwprintf(...)
+            # - pattern: vscprintf(...)
+            # - pattern: vscwprintf(...)
+          - pattern: fprintf(...)
+          - pattern: vfprintf(...)
+          - pattern: fwprintf(...)
+          - pattern: vfwprintf(...)
+          - pattern: sprintf(...)
+          - pattern: vsprintf(...)
+          - pattern: asprintf(...)
+          - pattern: vasprintf(...)
+          - pattern: dprintf(...)
+          - pattern: vdprintf(...)
+            # - pattern: wsprintf(...)
+          - pattern: snprintf(...)
+          - pattern: vsnprintf(...)
+          - pattern: swprintf(...)
+          - pattern: vswprintf(...)
         # format string in 1st arg
         - pattern-not: printf("...", ...)
         - pattern-not: vprintf("...", ...)
@@ -55,7 +80,19 @@ rules:
         - pattern-not: vswprintf($ARG1, $ARG2, "...", ...)
       # scanf family
       - patterns:
-        - pattern-regex: \w*scanf\s*\(.*\)
+        - pattern-either:
+          - pattern: scanf(...)
+          - pattern: vscanf(...)
+          - pattern: wscanf(...)
+          - pattern: vwscanf(...)
+          - pattern: fscanf(...)
+          - pattern: vfscanf(...)
+          - pattern: fwscanf(...)
+          - pattern: vfwscanf(...)
+          - pattern: sscanf(...)
+          - pattern: vsscanf(...)
+          - pattern: swscanf(...)
+          - pattern: vswscanf(...)
         # format string in 1st arg
         - pattern-not: scanf("...", ...)
         - pattern-not: vscanf("...", ...)
@@ -72,12 +109,14 @@ rules:
         - pattern-not: vswscanf($ARG1, "...", ...)
       # syslog family
       - patterns:
-        - pattern-regex: v?syslog\s*\(.*\)
+        - pattern-either:
+          - pattern: syslog(...)
+          - pattern: vsyslog(...)
         # format string in 2nd arg
         - pattern-not: syslog($ARG1, "...", ...)
         - pattern-not: vsyslog($ARG1, "...", ...)
       # printk
       - patterns:
-        - pattern-regex: printk\s*\(.*\)
+        - pattern: printk(...)
         # format string in 1st arg
         - pattern-not: printk("...", ...)

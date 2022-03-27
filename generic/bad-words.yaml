@@ -21,7 +21,7 @@ rules:
     pattern-either:
       # interesting comments
       - pattern-regex: (TODO|XXX|FIXME|BUG|HACK|LATER)
-      - pattern-regex: (?i)(unsafe|insecure|dangerous|overflow)
+      - pattern-regex: (?i)(unsafe|insecure|dangerous|warning|overflow)
       # other "bad words" examples
       # lower level abstractions
         # - pattern-regex: (?i)(raw)

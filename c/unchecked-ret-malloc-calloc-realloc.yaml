@@ -1,0 +1,97 @@
+rules:
+  - id: unchecked-ret-malloc-calloc-realloc
+    metadata:
+      author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      references:
+        - https://cwe.mitre.org/data/definitions/252
+        - https://cwe.mitre.org/data/definitions/690
+      confidence: MEDIUM
+    message: >-
+      The software does not check the return value from a method or
+      function, which can prevent it from detecting unexpected states and
+      conditions.
+      The software does not check for an error after calling a function
+      that can return with a NULL pointer if the function fails, which
+      leads to a resultant NULL pointer dereference or, in some cases, even
+      arbitrary code execution.
+    severity: WARNING
+    languages:
+      - c
+      - cpp
+    pattern-either:
+      # malloc
+      - patterns:
+        - pattern-either:
+          - pattern: $RET = malloc(...)
+          - pattern: $RET = ($CAST)malloc(...)
+        - pattern-not-inside: |
+            malloc(...);
+            ...
+            if (<... $RET == NULL ...>) ...
+        - pattern-not-inside: |
+            malloc(...);
+            ...
+            if (<... $RET != NULL ...>) ...
+        - pattern-not-inside: |
+            malloc(...);
+            ...
+            if (<... !$RET ...>) ...
+        - pattern-not-inside: |
+            malloc(...);
+            ...
+            if (<... $RET ...>) ...
+        - pattern-not-inside: (<... $ALLOC == NULL ...>)
+        - pattern-not-inside: (<... $ALLOC != NULL ...>)
+        - pattern-not-inside: (<... !$ALLOC ...>)
+          # - pattern-not-inside: (<... $ALLOC ...>)
+      # calloc
+      - patterns:
+        - pattern-either:
+          - pattern: $RET = calloc(...)
+          - pattern: $RET = ($CAST)calloc(...)
+        - pattern-not-inside: |
+            calloc(...);
+            ...
+            if (<... $RET == NULL ...>) ...
+        - pattern-not-inside: |
+            calloc(...);
+            ...
+            if (<... $RET != NULL ...>) ...
+        - pattern-not-inside: |
+            calloc(...);
+            ...
+            if (<... !$RET ...>) ...
+        - pattern-not-inside: |
+            alloc(...);
+            ...
+            if (<... $RET ...>) ...
+        - pattern-not-inside: (<... $ALLOC == NULL ...>)
+        - pattern-not-inside: (<... $ALLOC != NULL ...>)
+        - pattern-not-inside: (<... !$ALLOC ...>)
+          # - pattern-not-inside: (<... $ALLOC ...>)
+      # realloc
+      - patterns:
+        - pattern-either:
+          - pattern: $RET = realloc(...)
+          - pattern: $RET = ($CAST)realloc(...)
+        - pattern-not-inside: |
+            realloc(...);
+            ...
+            if (<... $RET == NULL ...>) ...
+        - pattern-not-inside: |
+            realloc(...);
+            ...
+            if (<... $RET != NULL ...>) ...
+        - pattern-not-inside: |
+            realloc(...);
+            ...
+            if (<... !$RET ...>) ...
+        - pattern-not-inside: |
+            realloc(...);
+            ...
+            if (<... $RET ...>) ...
+        - pattern-not-inside: (<... $ALLOC == NULL ...>)
+        - pattern-not-inside: (<... $ALLOC != NULL ...>)
+        - pattern-not-inside: (<... !$ALLOC ...>)
+          # - pattern-not-inside: (<... $ALLOC ...>)
+      # missing: reallocf(), valloc(), aligned_alloc()

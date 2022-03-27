@@ -40,10 +40,9 @@ rules:
             malloc(...);
             ...
             if (<... $RET ...>) ...
-        - pattern-not-inside: (<... $ALLOC == NULL ...>)
-        - pattern-not-inside: (<... $ALLOC != NULL ...>)
-        - pattern-not-inside: (<... !$ALLOC ...>)
-          # - pattern-not-inside: (<... $ALLOC ...>)
+        - pattern-not-inside: <... $ALLOC == NULL ...>
+        - pattern-not-inside: <... $ALLOC != NULL ...>
+        - pattern-not-inside: <... !$ALLOC ...>
       # calloc
       - patterns:
         - pattern-either:
@@ -62,13 +61,12 @@ rules:
             ...
             if (<... !$RET ...>) ...
         - pattern-not-inside: |
-            alloc(...);
+            calloc(...);
             ...
             if (<... $RET ...>) ...
-        - pattern-not-inside: (<... $ALLOC == NULL ...>)
-        - pattern-not-inside: (<... $ALLOC != NULL ...>)
-        - pattern-not-inside: (<... !$ALLOC ...>)
-          # - pattern-not-inside: (<... $ALLOC ...>)
+        - pattern-not-inside: <... $ALLOC == NULL ...>
+        - pattern-not-inside: <... $ALLOC != NULL ...>
+        - pattern-not-inside: <... !$ALLOC ...>
       # realloc
       - patterns:
         - pattern-either:
@@ -90,8 +88,7 @@ rules:
             realloc(...);
             ...
             if (<... $RET ...>) ...
-        - pattern-not-inside: (<... $ALLOC == NULL ...>)
-        - pattern-not-inside: (<... $ALLOC != NULL ...>)
-        - pattern-not-inside: (<... !$ALLOC ...>)
-          # - pattern-not-inside: (<... $ALLOC ...>)
+        - pattern-not-inside: <... $ALLOC == NULL ...>
+        - pattern-not-inside: <... $ALLOC != NULL ...>
+        - pattern-not-inside: <... !$ALLOC ...>
       # missing: reallocf(), valloc(), aligned_alloc()

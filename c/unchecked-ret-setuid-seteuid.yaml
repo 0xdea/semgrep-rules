@@ -26,14 +26,16 @@ rules:
       - patterns:
           - pattern: setuid(...)
           - pattern-not-inside: $RET = setuid(...)
-          - pattern-not-inside: setuid(...) == $VAL
-          - pattern-not-inside: setuid(...) != $VAL
-          - pattern-not-inside: setuid(...) < $VAL
+          - pattern-not-inside: <... setuid(...) == $VAL ...>
+          - pattern-not-inside: <... setuid(...) != $VAL ...>
+          - pattern-not-inside: <... setuid(...) < $VAL ...>
+          - pattern-not-inside: <... !setuid(...) ...>
           - pattern-not-inside: return setuid(...);
       - patterns:
           - pattern: seteuid(...)
           - pattern-not-inside: $RET = seteuid(...)
-          - pattern-not-inside: seteuid(...) == $VAL
-          - pattern-not-inside: seteuid(...) != $VAL
-          - pattern-not-inside: seteuid(...) < $VAL
+          - pattern-not-inside: <... seteuid(...) == $VAL ...>
+          - pattern-not-inside: <... seteuid(...) != $VAL ...>
+          - pattern-not-inside: <... seteuid(...) < $VAL ...>
+          - pattern-not-inside: <... !seteuid(...) ...>
           - pattern-not-inside: return seteuid(...);

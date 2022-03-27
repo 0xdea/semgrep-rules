@@ -9,10 +9,29 @@ int drop_priv_perm()
 	setuid(getuid());
 }
 
+int drop_priv_perm2()
+{
+	// ok
+	if (!setuid(getuid())) {
+		// do stuff
+		return 0;
+	}
+	return -1;
+}
+
 int drop_priv_temp()
 {
 	// ruleid: unchecked-ret-setuid-seteuid
 	seteuid(getuid());
+}
+
+int drop_priv_temp2()
+{
+	// ok
+	if (seteuid(getuid()) < 0)
+		return -1;
+
+	// do stuff
 }
 
 int main() 

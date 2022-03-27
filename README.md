@@ -33,16 +33,16 @@ See also: https://semgrep.dev/r
 * [**integer-truncation**](https://github.com/0xdea/semgrep-rules/blob/main/c/integer-truncation.yaml). Potential integer truncation errors.
 * [**unsafe-strlen**](https://github.com/0xdea/semgrep-rules/blob/main/c/unsafe-strlen.yaml). Casting the return value of strlen() to short might be dangerous.
 
+### memory management
+* [**insecure-api-alloca**](https://github.com/0xdea/semgrep-rules/blob/main/c/insecure-api-alloca.yaml). Use of the potentially insecure API function alloca().
+* [**unchecked-ret-malloc-calloc-realloc**](https://github.com/0xdea/semgrep-rules/blob/main/c/unchecked-ret-malloc-calloc-realloc.yaml). Unchecked return code of malloc(), calloc(), realloc().
+* [**memory-address-exposure**](https://github.com/0xdea/semgrep-rules/blob/main/c/memory-address-exposure.yaml). Potential exposure of underlying memory addresses.
+
 ### command injection
 * [**command-injection**](https://github.com/0xdea/semgrep-rules/blob/main/c/command-injection.yaml). Potential OS command injection via system() or popen().
 
 ### race conditions
 * [**insecure-api-mktemp-tmpnam-tempnam**](https://github.com/0xdea/semgrep-rules/blob/main/c/insecure-api-mktemp-tmpnam-tempnam.yaml). Use of insecure API functions mktemp(), tmpnam(), tempnam().
-
-### memory management
-* [**insecure-api-alloca**](https://github.com/0xdea/semgrep-rules/blob/main/c/insecure-api-alloca.yaml). Use of the potentially insecure API function alloca().
-* [**unchecked-ret-malloc-calloc-realloc**](https://github.com/0xdea/semgrep-rules/blob/main/c/unchecked-ret-malloc-calloc-realloc.yaml). Unchecked return code of malloc(), calloc(), realloc().
-* [**memory-address-exposure**](https://github.com/0xdea/semgrep-rules/blob/main/c/memory-address-exposure.yaml). Potential exposure of underlying memory addresses.
 
 ### privilege management
 * [**unchecked-ret-setuid-seteuid**](https://github.com/0xdea/semgrep-rules/blob/main/c/unchecked-ret-setuid-seteuid.yaml). Unchecked return code of setuid() and seteuid().

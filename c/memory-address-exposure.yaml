@@ -22,10 +22,10 @@ rules:
         - pattern: vprintf($FMT, ...)
         - pattern: wprintf($FMT, ...)
         - pattern: vwprintf($FMT, ...)
-          # - pattern: vcprintf($FMT, ...)
-          # - pattern: vcwprintf($FMT, ...)
-          # - pattern: vscprintf($FMT, ...)
-          # - pattern: vscwprintf($FMT, ...)
+        - pattern: vcprintf($FMT, ...)
+        - pattern: vcwprintf($FMT, ...)
+        - pattern: vscprintf($FMT, ...)
+        - pattern: vscwprintf($FMT, ...)
         # format string in 2nd arg
         - pattern: fprintf($ARG1, $FMT, ...)
         - pattern: vfprintf($ARG1, $FMT, ...)
@@ -37,7 +37,7 @@ rules:
         - pattern: vasprintf($ARG1, $FMT, ...)
         - pattern: dprintf($ARG1, $FMT, ...)
         - pattern: vdprintf($ARG1, $FMT, ...)
-          # - pattern: wsprintf($ARG1, $FMT, ...)
+        - pattern: wsprintf($ARG1, $FMT, ...)
         # format string in 3rd arg
         - pattern: snprintf($ARG1, $ARG2, $FMT, ...)
         - pattern: vsnprintf($ARG1, $ARG2, $FMT, ...)

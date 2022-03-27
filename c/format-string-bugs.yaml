@@ -26,17 +26,29 @@ rules:
     options:
       constant_propagation: false
     pattern-either:
-      # printf family
+      # format string in 1st arg
       - patterns:
         - pattern-either:
+          # printf family
           - pattern: printf(...)
           - pattern: vprintf(...)
           - pattern: wprintf(...)
           - pattern: vwprintf(...)
-            # - pattern: vcprintf(...)
-            # - pattern: vcwprintf(...)
-            # - pattern: vscprintf(...)
-            # - pattern: vscwprintf(...)
+          - pattern: vcprintf(...)
+          - pattern: vcwprintf(...)
+          - pattern: vscprintf(...)
+          - pattern: vscwprintf(...)
+          - pattern: printk(...)
+          # scanf family
+          - pattern: scanf(...)
+          - pattern: vscanf(...)
+          - pattern: wscanf(...)
+          - pattern: vwscanf(...)
+        - pattern-not: $FUN("...", ...)
+      # format string in 2nd arg
+      - patterns:
+        - pattern-either:
+          # printf family
           - pattern: fprintf(...)
           - pattern: vfprintf(...)
           - pattern: fwprintf(...)
@@ -47,44 +59,8 @@ rules:
           - pattern: vasprintf(...)
           - pattern: dprintf(...)
           - pattern: vdprintf(...)
-            # - pattern: wsprintf(...)
-          - pattern: snprintf(...)
-          - pattern: vsnprintf(...)
-          - pattern: swprintf(...)
-          - pattern: vswprintf(...)
-        # format string in 1st arg
-        - pattern-not: printf("...", ...)
-        - pattern-not: vprintf("...", ...)
-        - pattern-not: wprintf("...", ...)
-        - pattern-not: vwprintf("...", ...)
-          # - pattern-not: vcprintf("...", ...)
-          # - pattern-not: vcwprintf("...", ...)
-          # - pattern-not: vscprintf("...", ...)
-          # - pattern-not: vscwprintf("...", ...)
-        # format string in 2nd arg
-        - pattern-not: fprintf($ARG1, "...", ...)
-        - pattern-not: vfprintf($ARG1, "...", ...)
-        - pattern-not: fwprintf($ARG1, "...", ...)
-        - pattern-not: vfwprintf($ARG1, "...", ...)
-        - pattern-not: sprintf($ARG1, "...", ...)
-        - pattern-not: vsprintf($ARG1, "...", ...)
-        - pattern-not: asprintf($ARG1, "...", ...)
-        - pattern-not: vasprintf($ARG1, "...", ...)
-        - pattern-not: dprintf($ARG1, "...", ...)
-        - pattern-not: vdprintf($ARG1, "...", ...)
-          # - pattern-not: wsprintf($ARG1, "...", ...)
-        # format string in 3rd arg
-        - pattern-not: snprintf($ARG1, $ARG2, "...", ...)
-        - pattern-not: vsnprintf($ARG1, $ARG2, "...", ...)
-        - pattern-not: swprintf($ARG1, $ARG2, "...", ...)
-        - pattern-not: vswprintf($ARG1, $ARG2, "...", ...)
-      # scanf family
-      - patterns:
-        - pattern-either:
-          - pattern: scanf(...)
-          - pattern: vscanf(...)
-          - pattern: wscanf(...)
-          - pattern: vwscanf(...)
+          - pattern: wsprintf(...)
+          # scanf family
           - pattern: fscanf(...)
           - pattern: vfscanf(...)
           - pattern: fwscanf(...)
@@ -93,30 +69,15 @@ rules:
           - pattern: vsscanf(...)
           - pattern: swscanf(...)
           - pattern: vswscanf(...)
-        # format string in 1st arg
-        - pattern-not: scanf("...", ...)
-        - pattern-not: vscanf("...", ...)
-        - pattern-not: wscanf("...", ...)
-        - pattern-not: vwscanf("...", ...)
-        # format string in 2nd arg
-        - pattern-not: fscanf($ARG1, "...", ...)
-        - pattern-not: vfscanf($ARG1, "...", ...)
-        - pattern-not: fwscanf($ARG1, "...", ...)
-        - pattern-not: vfwscanf($ARG1, "...", ...)
-        - pattern-not: sscanf($ARG1, "...", ...)
-        - pattern-not: vsscanf($ARG1, "...", ...)
-        - pattern-not: swscanf($ARG1, "...", ...)
-        - pattern-not: vswscanf($ARG1, "...", ...)
-      # syslog family
-      - patterns:
-        - pattern-either:
+          # syslog family
           - pattern: syslog(...)
           - pattern: vsyslog(...)
-        # format string in 2nd arg
-        - pattern-not: syslog($ARG1, "...", ...)
-        - pattern-not: vsyslog($ARG1, "...", ...)
-      # printk
+        - pattern-not: $FUN($ARG1, "...", ...)
+      # format string in 3rd arg
       - patterns:
-        - pattern: printk(...)
-        # format string in 1st arg
-        - pattern-not: printk("...", ...)
+        - pattern-either:
+          - pattern: snprintf(...)
+          - pattern: vsnprintf(...)
+          - pattern: swprintf(...)
+          - pattern: vswprintf(...)
+        - pattern-not: $FUN($ARG1, $ARG2, "...", ...)

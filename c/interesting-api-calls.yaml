@@ -35,7 +35,7 @@ rules:
       # scanf
       - pattern-regex: \w*scanf\s*\(.*\)
       # get
-      - pattern-regex: \w*get(s|pw|env|opt|opt_long)\s*\(.*\)
+      - pattern-regex: \w*get(s|pw|pass|wd|env|opt|opt_long)\s*\(.*\)
       # mem
       - pattern-regex: \w*memc?cpy\s*\(.*\)
       - pattern-regex: \w*memmove\s*\(.*\)
@@ -65,11 +65,11 @@ rules:
       - pattern-regex: \w*creat\s*\(.*\)
       - pattern-regex: \w*link(at)?\s*\(.*\)
       - pattern-regex: \w*rename(at)?\s*\(.*\)
+      - pattern-regex: \w*access(at)?\s*\(.*\)
       - pattern-regex: \w*ch(own|mod)(at)?\s*\(.*\)
         # - pattern-regex: \w*stat(at)?\s*\(.*\)
-        # - pattern-regex: \w*access(at)?\s*\(.*\)
         # - pattern-regex: \w*locale\s*\(.*\)
         # - pattern-regex: \w*(make|split)path\s*\(.*\)
       # assert
       - pattern-regex: \w*assert\s*\(.*\)
-      # missing: kill/sig/jmp, sem/mutex, new/delete
+      # missing: goto, kill/sig/jmp, sem/mutex, new/delete

@@ -46,4 +46,4 @@ rules:
       - metavariable-regex:
           metavariable: $FMT
           # some format string modifiers are not handled
-          regex: (".*%\w*x.*"|".*%\w*X.*"|".*%\w*p.*")
+          regex: '(".*%\w*x.*"|".*%\w*X.*"|".*%\w*p.*")'

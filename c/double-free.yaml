@@ -28,18 +28,6 @@ rules:
       - pattern-not: |
           free($PTR);
           ...
-          $PTR = NULL;
-          ...
-          free($PTR);
-      - pattern-not: |
-          free($PTR);
-          ...
-          $PTR = $FUN(...);
-          ...
-          free($PTR);
-      - pattern-not: |
-          free($PTR);
-          ...
-          $PTR = ($CAST)$FUN(...);
+          $PTR = $EXPR;
           ...
           free($PTR);

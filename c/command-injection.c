@@ -7,10 +7,10 @@ int invoke1(char *string)
 {
 	char buf[] = "uname -a; id";
 
-	// ok
+	// ok: raptor-command-injection
 	system(buf);
 
-	// ok
+	// ok: raptor-command-injection
 	system("whoami");
 
 	// ruleid: raptor-command-injection
@@ -21,10 +21,10 @@ int invoke2(char *string)
 {
 	char buf[] = "uname -a; id";
 
-	// ok
+	// ok: raptor-command-injection
 	popen(buf, "r");
 
-	// ok
+	// ok: raptor-command-injection
 	popen("whoami", "r");
 
 	// ruleid: raptor-command-injection

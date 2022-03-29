@@ -13,7 +13,7 @@ int alloc_memory()
 
 int alloc_memory_and_check1()
 {
-	// ok
+	// ok: raptor-unchecked-ret-malloc-calloc-realloc
 	char *ptr = (char *)malloc(MEMSIZE);
 	if (ptr == NULL) 
 		return -1;
@@ -26,7 +26,7 @@ int alloc_memory_and_check2()
 {
 	char *ptr;
 
-	// ok
+	// ok: raptor-unchecked-ret-malloc-calloc-realloc
 	if ( (ptr = (char *)malloc(MEMSIZE)) != NULL) {
 		// do stuff
 		return 0;
@@ -36,7 +36,7 @@ int alloc_memory_and_check2()
 
 int alloc_memory_and_check3()
 {
-	// ok
+	// ok: raptor-unchecked-ret-malloc-calloc-realloc
 	char *ptr = (char *)malloc(MEMSIZE);
 	if (!ptr) 
 		return -1;
@@ -49,7 +49,7 @@ int alloc_memory_and_check4()
 {
 	char *ptr;
 
-	// ok
+	// ok: raptor-unchecked-ret-malloc-calloc-realloc
 	if ( !(ptr = (char *)malloc(MEMSIZE)) )
 		return -1;
 

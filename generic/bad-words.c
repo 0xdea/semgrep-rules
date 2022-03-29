@@ -4,7 +4,7 @@
 
 int do_something(char *string)
 {
-	// ok
+	// ok: raptor-bad-words
 	int bug = 0;
 
 	// ruleid: raptor-bad-words

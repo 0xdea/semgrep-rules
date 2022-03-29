@@ -14,7 +14,7 @@ int read_string(char *string)
 	// ruleid: raptor-insecure-api-scanf-etc
 	scanf("%s", buf);
 
-	// probably ok
+	// ok: raptor-insecure-api-scanf-etc (probably)
 	scanf("%d", &number);
 
 	// ruleid: raptor-insecure-api-scanf-etc

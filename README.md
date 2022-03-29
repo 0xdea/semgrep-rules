@@ -35,6 +35,7 @@ See also: https://semgrep.dev/r
 
 ### memory management
 * [**insecure-api-alloca**](https://github.com/0xdea/semgrep-rules/blob/main/c/insecure-api-alloca.yaml). Use of the potentially insecure API function alloca().
+* [**use-after-free**](https://github.com/0xdea/semgrep-rules/blob/main/c/use-after-free.yaml). Potential use after free().
 * [**double-free**](https://github.com/0xdea/semgrep-rules/blob/main/c/double-free.yaml). Potential double free().
 * [**unchecked-ret-malloc-calloc-realloc**](https://github.com/0xdea/semgrep-rules/blob/main/c/unchecked-ret-malloc-calloc-realloc.yaml). Unchecked return code of malloc(), calloc(), realloc().
 * [**memory-address-exposure**](https://github.com/0xdea/semgrep-rules/blob/main/c/memory-address-exposure.yaml). Potential exposure of underlying memory addresses.

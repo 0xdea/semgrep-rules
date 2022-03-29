@@ -10,7 +10,7 @@ int copy_string(char *string)
 	char buf[BUFSIZE];
 	size_t length;
 
-	// ruleid: unsafe-ret-strlcpy-strlcat
+	// ruleid: raptor-unsafe-ret-strlcpy-strlcat
 	length = strlcpy(buf, string, BUFSIZE);
 
 	// use length to access buf, e.g. with strncat()
@@ -21,7 +21,7 @@ int append_string(char *string)
 	char buf[BUFSIZE];
 	size_t length;
 
-	// ruleid: unsafe-ret-strlcpy-strlcat
+	// ruleid: raptor-unsafe-ret-strlcpy-strlcat
 	length = strlcat(buf, string, BUFSIZE);
 
 	// use length to access buf

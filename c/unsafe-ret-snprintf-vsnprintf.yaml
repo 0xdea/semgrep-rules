@@ -1,5 +1,5 @@
 rules:
-  - id: unsafe-ret-snprintf-vsnprintf.yaml
+  - id: raptor-unsafe-ret-snprintf-vsnprintf
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       references:

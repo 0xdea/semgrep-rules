@@ -1,5 +1,5 @@
 rules:
-  - id: unchecked-ret-setuid-seteuid
+  - id: raptor-unchecked-ret-setuid-seteuid
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       references:

@@ -9,10 +9,10 @@ int copy_append_string(char *string1, char *string2)
 {
 	char buf[BUFSIZE];
 
-	// ruleid: insecure-api-strcpy-stpcpy-strcat
+	// ruleid: raptor-insecure-api-strcpy-stpcpy-strcat
 	strcpy(buf, string1);
 
-	// ruleid: insecure-api-strcpy-stpcpy-strcat
+	// ruleid: raptor-insecure-api-strcpy-stpcpy-strcat
 	strcat(buf, string2);
 }
 
@@ -20,7 +20,7 @@ int copy_string(char *string)
 {
 	char buf[BUFSIZE];
 
-	// ruleid: insecure-api-strcpy-stpcpy-strcat
+	// ruleid: raptor-insecure-api-strcpy-stpcpy-strcat
 	stpcpy(buf, string);
 }
 

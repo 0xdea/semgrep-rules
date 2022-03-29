@@ -1,5 +1,5 @@
 rules:
-  - id: interesting-api-calls
+  - id: raptor-interesting-api-calls
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       references:

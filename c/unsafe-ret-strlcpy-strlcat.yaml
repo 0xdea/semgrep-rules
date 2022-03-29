@@ -1,5 +1,5 @@
 rules:
-  - id: unsafe-ret-strlcpy-strlcat
+  - id: raptor-unsafe-ret-strlcpy-strlcat
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       references:

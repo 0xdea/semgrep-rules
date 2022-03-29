@@ -1,5 +1,5 @@
 rules:
-  - id: integer-truncation
+  - id: raptor-integer-truncation
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       references:

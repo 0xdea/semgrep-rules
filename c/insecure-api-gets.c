@@ -8,7 +8,7 @@ int get_string()
 {
 	char buf[BUFSIZE];
 
-	// ruleid: insecure-api-gets
+	// ruleid: raptor-insecure-api-gets
 	gets(buf);
 }
 

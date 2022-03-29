@@ -1,5 +1,5 @@
 rules:
-  - id: command-injection
+  - id: raptor-command-injection
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       references:

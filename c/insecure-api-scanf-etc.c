@@ -11,22 +11,22 @@ int read_string(char *string)
 	int number;
 	char fmt[] = "whatever";
 
-	// ruleid: insecure-api-scanf-etc
+	// ruleid: raptor-insecure-api-scanf-etc
 	scanf("%s", buf);
 
 	// probably ok
 	scanf("%d", &number);
 
-	// ruleid: insecure-api-scanf-etc
+	// ruleid: raptor-insecure-api-scanf-etc
 	sscanf(string, "string: %s", buf);
 
-	// ruleid: insecure-api-scanf-etc
+	// ruleid: raptor-insecure-api-scanf-etc
 	scanf(FMT, buf);
 
-	// ruleid: insecure-api-scanf-etc
+	// ruleid: raptor-insecure-api-scanf-etc
 	scanf(fmt, buf);
 
-	// ruleid: insecure-api-scanf-etc
+	// ruleid: raptor-insecure-api-scanf-etc
 	scanf(buf);
 }
 

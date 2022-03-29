@@ -1,5 +1,5 @@
 rules:
-  - id: insecure-api-alloca
+  - id: raptor-insecure-api-alloca
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       references:

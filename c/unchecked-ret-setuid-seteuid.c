@@ -5,7 +5,7 @@
 
 int drop_priv_perm()
 {
-	// ruleid: unchecked-ret-setuid-seteuid
+	// ruleid: raptor-unchecked-ret-setuid-seteuid
 	setuid(getuid());
 }
 
@@ -21,7 +21,7 @@ int drop_priv_perm2()
 
 int drop_priv_temp()
 {
-	// ruleid: unchecked-ret-setuid-seteuid
+	// ruleid: raptor-unchecked-ret-setuid-seteuid
 	seteuid(getuid());
 }
 

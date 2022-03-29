@@ -1,5 +1,5 @@
 rules:
-  - id: unchecked-ret-malloc-calloc-realloc
+  - id: raptor-unchecked-ret-malloc-calloc-realloc
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       references:

@@ -1,5 +1,5 @@
 rules:
-  - id: bad-words
+  - id: raptor-bad-words
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       references:

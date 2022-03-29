@@ -7,11 +7,11 @@ int do_something(char *string)
 	// ok
 	int bug = 0;
 
-	// ruleid: bad-words
+	// ruleid: raptor-bad-words
 	/* TODO */
 	printf("Hello, World!");
 
-	// ruleid: bad-words
+	// ruleid: raptor-bad-words
 	// this might be insecure
 	return 1;
 }

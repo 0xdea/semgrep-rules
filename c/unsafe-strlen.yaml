@@ -1,5 +1,5 @@
 rules:
-  - id: unsafe-strlen
+  - id: raptor-unsafe-strlen
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       references:

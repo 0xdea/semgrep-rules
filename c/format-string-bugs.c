@@ -9,7 +9,7 @@ int build_string(char *string)
 {
 	char buf[BUFSIZE];
 
-	// ruleid: format-string-bugs
+	// ruleid: raptor-format-string-bugs
 	snprintf(buf, BUFSIZE, string);
 
 	// ok
@@ -20,7 +20,7 @@ int print_stuff(char *string)
 {
 	char buf[BUFSIZE];
 
-	// ruleid: format-string-bugs
+	// ruleid: raptor-format-string-bugs
 	printf(string);
 
 	// ok
@@ -31,7 +31,7 @@ int log_stuff(char *string)
 {
 	char buf[BUFSIZE];
 
-	// ruleid: format-string-bugs
+	// ruleid: raptor-format-string-bugs
 	syslog(LOG_ERR, string);
 
 	// ok

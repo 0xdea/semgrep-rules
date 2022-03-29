@@ -1,5 +1,5 @@
 rules:
-  - id: insecure-api-sprintf-vsprintf
+  - id: raptor-insecure-api-sprintf-vsprintf
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       references:

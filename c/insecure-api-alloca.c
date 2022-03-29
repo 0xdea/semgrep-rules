@@ -7,7 +7,7 @@
 
 int allocate_memory()
 {
-	// ruleid: insecure-api-alloca
+	// ruleid: raptor-insecure-api-alloca
 	alloca(MEMSIZE);
 
 	// do something

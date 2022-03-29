@@ -7,7 +7,7 @@
 
 int alloc_memory()
 {
-	// ruleid: unchecked-ret-malloc-calloc-realloc
+	// ruleid: raptor-unchecked-ret-malloc-calloc-realloc
 	char *ptr = (char *)malloc(MEMSIZE);
 }
 

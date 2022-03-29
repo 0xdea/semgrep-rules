@@ -13,7 +13,7 @@ int invoke1(char *string)
 	// ok
 	system("whoami");
 
-	// ruleid: command-injection
+	// ruleid: raptor-command-injection
 	system(string);
 }
 
@@ -27,7 +27,7 @@ int invoke2(char *string)
 	// ok
 	popen("whoami", "r");
 
-	// ruleid: command-injection
+	// ruleid: raptor-command-injection
 	popen(string, "r");
 }
 

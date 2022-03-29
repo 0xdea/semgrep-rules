@@ -1,5 +1,5 @@
 rules:
-  - id: format-string-bugs
+  - id: raptor-format-string-bugs
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       references:

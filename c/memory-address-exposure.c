@@ -10,10 +10,10 @@ int print_address(char *string)
 	char buf[BUFSIZE];
 	char fmt[] = "whatever";
 
-	// ruleid: memory-address-exposure
+	// ruleid: raptor-memory-address-exposure
 	printf("address: %p\n", buf);
 
-	// ruleid: memory-address-exposure
+	// ruleid: raptor-memory-address-exposure
 	sprintf(buf, "address: %x\n", string);
 
 	// probably ok

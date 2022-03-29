@@ -9,7 +9,7 @@ int copy_string(char *string)
 	char buf[BUFSIZE];
 	size_t length;
 
-	// ruleid: unsafe-ret-snprintf-vsnprintf
+	// ruleid: raptor-unsafe-ret-snprintf-vsnprintf
 	length = snprintf(buf, BUFSIZE, "%s", string);
 
 	// use length to access buf

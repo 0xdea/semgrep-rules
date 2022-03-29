@@ -1,5 +1,5 @@
 rules:
-  - id: insecure-api-mktemp-tmpnam-tempnam
+  - id: raptor-insecure-api-mktemp-tmpnam-tempnam
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       references:

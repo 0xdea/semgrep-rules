@@ -7,7 +7,7 @@ int get_length(char *string)
 {
 	short length;
 
-	// ruleid: unsafe-strlen
+	// ruleid: raptor-unsafe-strlen
 	length = strlen(string);
 }
 

@@ -4,21 +4,21 @@
 
 int assign_int(int int_var)
 {
-	// ruleid: integer-truncation
+	// ruleid: raptor-integer-truncation
 	char char_var = int_var;
 	short short_var;
 
-	// ruleid: integer-truncation
+	// ruleid: raptor-integer-truncation
 	short_var = int_var;
 }
 
 int assign_long(long long_var)
 {
 	short short_var;
-	// ruleid: integer-truncation
+	// ruleid: raptor-integer-truncation
 	int int_var = long_var;
 
-	// ruleid: integer-truncation
+	// ruleid: raptor-integer-truncation
 	short_var = long_var;
 }
 

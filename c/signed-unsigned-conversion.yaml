@@ -1,0 +1,101 @@
+rules:
+  - id: raptor-signed-unsigned-conversion
+    metadata:
+      author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      references:
+        - https://cwe.mitre.org/data/definitions/195
+        - https://cwe.mitre.org/data/definitions/196
+        - https://cwe.mitre.org/data/definitions/194
+        - https://cwe.mitre.org/data/definitions/681
+        - https://github.com/struct/mms
+      confidence: MEDIUM
+    message: >-
+      The software uses a signed primitive and performs a cast to an
+      unsigned primitive, or uses an unsigned primitive and performs a cast
+      to a signed primitive, which can produce an unexpected value if the
+      value of the signed primitive cannot be represented using an unsigned
+      primitive, or if the value of the unsigned primitive cannot be
+      represented using a signed primitive.
+      It is dangerous to rely on implicit casts between signed and unsigned
+      numbers because the result can take on an unexpected value and
+      violate assumptions made by the program.
+      Often, functions will return negative values to indicate a failure.
+      When the result of a function is to be used as a size parameter,
+      using these negative return values can have unexpected results. For
+      example, if negative size values are passed to the standard memory
+      copy or allocation functions they will be implicitly cast to a large
+      unsigned value. This may lead to an exploitable buffer overflow or
+      underflow condition.
+      Although less frequent an issue than signed-to-unsigned conversion,
+      unsigned-to-signed conversion can be the perfect precursor to
+      dangerous buffer underwrite conditions that allow attackers to move
+      down the stack where they otherwise might not have access in a normal
+      buffer overflow condition. Buffer underwrites occur frequently when
+      large unsigned values are cast to signed values, and then used as
+      indexes into a buffer or for pointer arithmetic.
+    severity: WARNING
+    languages:
+      - c
+      - cpp
+    pattern-either:
+      # signed to unsigned
+      - pattern: (unsigned int $UNSIGNED) = (int $SIGNED)
+      - pattern: |
+          unsigned int $FUN(...)
+          {
+          ...
+          return (int $SIGNED);
+          }
+      - pattern: (unsigned $UNSIGNED) = (int $SIGNED)
+      - pattern: |
+          unsigned $FUN(...)
+          {
+          ...
+          return (int $SIGNED);
+          }
+      - pattern: (size_t $UNSIGNED) = (int $SIGNED)
+      - pattern: |
+          size_t $FUN(...)
+          {
+          ...
+          return (int $SIGNED);
+          }
+      - pattern: strncpy($DST, $SRC, (int $LEN))
+      - pattern: stpncpy($DST, $SRC, (int $LEN))
+      - pattern: strncat($DST, $SRC, (int $LEN))
+      - pattern: snprintf($BUF, (int $LEN), ...)
+      - pattern: vsnprintf($BUF, (int $LEN), ...)
+      - pattern: getcwd($BUF, (int $LEN))
+      - pattern: memcpy($DST, $SRC, (int $LEN))
+      - pattern: memccpy($DST, $SRC, $CHAR, (int $LEN))
+      - pattern: memmove($DST, $SRC, $CHAR, (int $LEN))
+      - pattern: bcopy($SRC, $DST, (int $LEN))
+      - pattern: alloca((int $LEN))
+      - pattern: malloc((int $LEN))
+      - pattern: calloc($CNT, (int $LEN))
+      - pattern: calloc((int $CNT), $LEN)
+      - pattern: realloc($PTR, (int $LEN))
+      # unsigned to signed
+      - pattern: (int $SIGNED) = (unsigned int $UNSIGNED)
+      - pattern: |
+          int $FUN(...)
+          {
+          ...
+          return (unsigned int $UNSIGNED);
+          }
+      - pattern: (int $SIGNED) = (unsigned $UNSIGNED)
+      - pattern: |
+          int $FUN(...)
+          {
+          ...
+          return (unsigned $UNSIGNED);
+          }
+      - pattern: (int $SIGNED) = (size_t $UNSIGNED)
+      - pattern: |
+          int $FUN(...)
+          {
+          ...
+          return (size_t $UNSIGNED);
+          }
+      # some types (e.g. char, short, long), functions (e.g., widechar and
+      # some alloc functions), and use cases (e.g., comparisons) are missing

@@ -16,10 +16,20 @@ int assign_long(long long_var)
 {
 	short short_var;
 	// ruleid: raptor-integer-truncation
-	int int_var = long_var;
+	int int_var = long_var + 1;
 
 	// ruleid: raptor-integer-truncation
 	short_var = long_var;
+}
+
+int test_func()
+{
+	int intPrimitive;
+	short shortPrimitive;
+	intPrimitive = (int)(~((int)0) ^ (1 << (sizeof(int)*8-1)));
+	// ruleid: raptor-integer-truncation
+	shortPrimitive = intPrimitive;
+	printf("Int MAXINT: %d\nShort MAXINT: %d\n", intPrimitive, shortPrimitive);
 }
 
 int main() 

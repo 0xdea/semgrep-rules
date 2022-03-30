@@ -25,42 +25,42 @@ rules:
       - cpp
     pattern-either:
       # char
-      - pattern: (char $NARROW) = (short $LARGE)
-      - pattern: (char $NARROW) = (short int $LARGE)
-      - pattern: (char $NARROW) = (unsigned short $LARGE)
-      - pattern: (char $NARROW) = (unsigned short int $LARGE)
-      - pattern: (char $NARROW) = (int $LARGE)
-      - pattern: (char $NARROW) = (unsigned $LARGE)
-      - pattern: (char $NARROW) = (unsigned int $LARGE)
-      - pattern: (char $NARROW) = (long $LARGE)
-      - pattern: (char $NARROW) = (long int $LARGE)
-      - pattern: (char $NARROW) = (unsigned long $LARGE)
-      - pattern: (char $NARROW) = (unsigned long int $LARGE)
+      - pattern: (char $NARROW) = <... (short $LARGE) ...>
+      - pattern: (char $NARROW) = <... (short int $LARGE) ...>
+      - pattern: (char $NARROW) = <... (unsigned short $LARGE) ...>
+      - pattern: (char $NARROW) = <... (unsigned short int $LARGE) ...>
+      - pattern: (char $NARROW) = <... (int $LARGE) ...>
+      - pattern: (char $NARROW) = <... (unsigned $LARGE) ...>
+      - pattern: (char $NARROW) = <... (unsigned int $LARGE) ...>
+      - pattern: (char $NARROW) = <... (long $LARGE) ...>
+      - pattern: (char $NARROW) = <... (long int $LARGE) ...>
+      - pattern: (char $NARROW) = <... (unsigned long $LARGE) ...>
+      - pattern: (char $NARROW) = <... (unsigned long int $LARGE) ...>
       # short
-      - pattern: (short $NARROW) = (unsigned short $LARGE)
-      - pattern: (short int $NARROW) = (unsigned short int $LARGE)
-      - pattern: (short $NARROW) = (int $LARGE)
-      - pattern: (short $NARROW) = (unsigned $LARGE)
-      - pattern: (short int $NARROW) = (unsigned int $LARGE)
-      - pattern: (short $NARROW) = (long $LARGE)
-      - pattern: (short int $NARROW) = (long int $LARGE)
-      - pattern: (short $NARROW) = (unsigned long $LARGE)
-      - pattern: (short int $NARROW) = (unsigned long int $LARGE)
-      - pattern: (unsigned short $NARROW) = (int $LARGE)
-      - pattern: (unsigned short $NARROW) = (unsigned $LARGE)
-      - pattern: (unsigned short int $NARROW) = (unsigned int $LARGE)
-      - pattern: (unsigned short $NARROW) = (long $LARGE)
-      - pattern: (unsigned short int $NARROW) = (long int $LARGE)
-      - pattern: (unsigned short $NARROW) = (unsigned long $LARGE)
-      - pattern: (unsigned short int $NARROW) = (unsigned long int $LARGE)
+      - pattern: (short $NARROW) = <... (unsigned short $LARGE) ...>
+      - pattern: (short int $NARROW) = <... (unsigned short int $LARGE) ...>
+      - pattern: (short $NARROW) = <... (int $LARGE) ...>
+      - pattern: (short $NARROW) = <... (unsigned $LARGE) ...>
+      - pattern: (short int $NARROW) = <... (unsigned int $LARGE) ...>
+      - pattern: (short $NARROW) = <... (long $LARGE) ...>
+      - pattern: (short int $NARROW) = <... (long int $LARGE) ...>
+      - pattern: (short $NARROW) = <... (unsigned long $LARGE) ...>
+      - pattern: (short int $NARROW) = <... (unsigned long int $LARGE) ...>
+      - pattern: (unsigned short $NARROW) = <... (int $LARGE) ...>
+      - pattern: (unsigned short $NARROW) = <... (unsigned $LARGE) ...>
+      - pattern: (unsigned short int $NARROW) = <... (unsigned int $LARGE) ...>
+      - pattern: (unsigned short $NARROW) = <... (long $LARGE) ...>
+      - pattern: (unsigned short int $NARROW) = <... (long int $LARGE) ...>
+      - pattern: (unsigned short $NARROW) = <... (unsigned long $LARGE) ...>
+      - pattern: (unsigned short int $NARROW) = <... (unsigned long int $LARGE) ...>
       # int
-      - pattern: (int $NARROW) = (unsigned $LARGE)
-      - pattern: (int $NARROW) = (unsigned int $LARGE)
-      - pattern: (int $NARROW) = (long $LARGE)
-      - pattern: (int $NARROW) = (long int $LARGE)
-      - pattern: (int $NARROW) = (unsigned long $LARGE)
-      - pattern: (int $NARROW) = (unsigned long int $LARGE)
+      - pattern: (int $NARROW) = <... (unsigned $LARGE) ...>
+      - pattern: (int $NARROW) = <... (unsigned int $LARGE) ...>
+      - pattern: (int $NARROW) = <... (long $LARGE) ...>
+      - pattern: (int $NARROW) = <... (long int $LARGE) ...>
+      - pattern: (int $NARROW) = <... (unsigned long $LARGE) ...>
+      - pattern: (int $NARROW) = <... (unsigned long int $LARGE) ...>
       # long
-      - pattern: (long $NARROW) = (unsigned long $LARGE)
-      - pattern: (long int $NARROW) = (unsigned long int $LARGE)
-      # some use cases (including notably comparisons) are missing
+      - pattern: (long $NARROW) = <... (unsigned long $LARGE) ...>
+      - pattern: (long int $NARROW) = <... (unsigned long int $LARGE) ...>
+      # some types and use cases (including notably comparisons) are missing

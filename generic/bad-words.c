@@ -8,8 +8,13 @@ int do_something(char *string)
 	int bug = 0;
 
 	// ruleid: raptor-bad-words
-	/* TODO */
+	/* XXX */
 	printf("Hello, World!");
+
+	if (bug) {
+		// ruleid: raptor-bad-words
+		// TODO: handle condition
+	}
 
 	// ruleid: raptor-bad-words
 	// this might be insecure

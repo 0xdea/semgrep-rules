@@ -40,6 +40,22 @@ int alloc_and_free3()
 	free(ptr);
 }
 
+int double_free(int argc, char **argv) 
+{
+	char *buf1R1;
+	char *buf2R1;
+	char *buf1R2;
+	buf1R1 = (char *) malloc(BUFSIZE2);
+	buf2R1 = (char *) malloc(BUFSIZE2);
+	free(buf1R1);
+	// ruleid: double-free
+	free(buf2R1);
+	buf1R2 = (char *) malloc(BUFSIZE1);
+	strncpy(buf1R2, argv[1], BUFSIZE1-1);
+	free(buf2R1);
+	free(buf1R2);
+}
+
 int main() 
 {
 	printf("Hello, World!");

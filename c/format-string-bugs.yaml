@@ -23,8 +23,6 @@ rules:
     languages:
       - c
       - cpp
-    options:
-      constant_propagation: false
     pattern-either:
       # format string in 1st arg
       - patterns:

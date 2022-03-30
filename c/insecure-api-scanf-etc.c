@@ -30,6 +30,14 @@ int read_string(char *string)
 	scanf(buf);
 }
 
+int test_func()
+{
+	char last_name[20];
+	printf ("Enter your last name: ");
+	// ruleid: raptor-insecure-api-scanf-etc
+	scanf ("%s", last_name);
+}
+
 int main() 
 {
 	printf("Hello, World!");

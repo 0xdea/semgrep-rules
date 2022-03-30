@@ -57,6 +57,13 @@ int alloc_memory_and_check4()
 	return 0;
 }
 
+int test_func()
+{
+	// ruleid: raptor-unchecked-ret-malloc-calloc-realloc
+	buf = (char*) malloc(req_size);
+	strncpy(buf, xfer, req_size);
+}
+
 int main() 
 {
 	printf("Hello, World!");

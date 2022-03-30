@@ -38,8 +38,16 @@ int log_stuff(char *string)
 	syslog(LOG_ERR, "%s", string);
 }
 
-int main() 
+void printWrapper(char *string) 
 {
-	printf("Hello, World!");
+	// ruleid: raptor-format-string-bugs
+	printf(string);
+}
+
+int main(int argc, char **argv) 
+{
+	char buf[5012];
+	memcpy(buf, argv[1], 5012);
+	printWrapper(argv[1]);
 	return 0;
 }

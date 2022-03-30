@@ -21,6 +21,17 @@ int copy_string2(char *string)
 	stpncpy(buf, string, BUFSIZE);
 }
 
+int test_func()
+{
+	char longString[] = "String signifying nothing";
+	char shortString[16];
+
+	// ruleid: raptor-unterminated-string-strncpy-stpncpy
+	strncpy(shortString, longString, 16);
+	printf("The last character in shortString is: %c (%1$x)\n", shortString[15]);
+	return 0;
+}
+
 int main() 
 {
 	printf("Hello, World!");

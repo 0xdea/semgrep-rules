@@ -42,6 +42,11 @@ rules:
           - pattern: vscanf(...)
           - pattern: wscanf(...)
           - pattern: vwscanf(...)
+          # err/warn family
+          - pattern: warn(...)
+          - pattern: vwarn(...)
+          - patterm: warnx(...)
+          - patterm: vwarnx(...)
         - pattern-not: $FUN("...", ...)
       # format string in 2nd arg
       - patterns:
@@ -70,12 +75,24 @@ rules:
           # syslog family
           - pattern: syslog(...)
           - pattern: vsyslog(...)
+          # err/warn family
+          - pattern: err(...)
+          - pattern: verr(...)
+          - pattern: errx(...)
+          - pattern: verrx(...)
+          - pattern: warnc(...)
+          - pattern: vwarnc(...)
         - pattern-not: $FUN($ARG1, "...", ...)
       # format string in 3rd arg
       - patterns:
         - pattern-either:
+          # printf family
           - pattern: snprintf(...)
           - pattern: vsnprintf(...)
           - pattern: swprintf(...)
           - pattern: vswprintf(...)
+          # err/warn family
+          - pattern: errc(...)
+          - pattern: verrc(...)
         - pattern-not: $FUN($ARG1, $ARG2, "...", ...)
+    # missing: generic va_list matching for custom functions

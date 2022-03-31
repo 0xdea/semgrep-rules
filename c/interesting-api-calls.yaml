@@ -32,6 +32,8 @@ rules:
       - pattern-regex: \w*s\w?printf\w*\(.*\)
       - pattern-regex: \w*sn\w?printf\w*\(.*\)
         # - pattern-regex: \w*printf\w*\(.*\)
+        # - pattern-regex: \w*err\w*\(.*\)
+        # - pattern-regex: \w*warn\w*\(.*\)
       # scanf
       - pattern-regex: \w*scanf\s*\(.*\)
       # get
@@ -66,8 +68,8 @@ rules:
       - pattern-regex: \w*link(at)?\s*\(.*\)
       - pattern-regex: \w*rename(at)?\s*\(.*\)
       - pattern-regex: \w*access(at)?\s*\(.*\)
+      - pattern-regex: \w*stat(at)?\s*\(.*\)
       - pattern-regex: \w*ch(own|mod)(at)?\s*\(.*\)
-        # - pattern-regex: \w*stat(at)?\s*\(.*\)
         # - pattern-regex: \w*locale\s*\(.*\)
         # - pattern-regex: \w*(make|split)path\s*\(.*\)
       # assert

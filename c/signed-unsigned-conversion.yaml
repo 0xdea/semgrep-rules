@@ -39,21 +39,21 @@ rules:
       - cpp
     pattern-either:
       # signed to unsigned
-      - pattern: (unsigned int $UNSIGNED) = (int $SIGNED)
+      - pattern: (unsigned int $UNSIGNED) = <... (int $SIGNED) ...>
       - pattern: |
           unsigned int $FUN(...)
           {
           ...
           return (int $SIGNED);
           }
-      - pattern: (unsigned $UNSIGNED) = (int $SIGNED)
+      - pattern: (unsigned $UNSIGNED) = <... (int $SIGNED) ...>
       - pattern: |
           unsigned $FUN(...)
           {
           ...
           return (int $SIGNED);
           }
-      - pattern: (size_t $UNSIGNED) = (int $SIGNED)
+      - pattern: (size_t $UNSIGNED) = <... (int $SIGNED) ...>
       - pattern: |
           size_t $FUN(...)
           {
@@ -82,21 +82,21 @@ rules:
       - pattern: recv($SD, $BUF, (int $LEN), $FL)
       - pattern: recvfrom($SD, $BUF, (int $LEN), $FL, ...)
       #  unsigned to signed
-      - pattern: (int $SIGNED) = (unsigned int $UNSIGNED)
+      - pattern: (int $SIGNED) = <... (unsigned int $UNSIGNED) ...>
       - pattern: |
           int $FUN(...)
           {
           ...
           return (unsigned int $UNSIGNED);
           }
-      - pattern: (int $SIGNED) = (unsigned $UNSIGNED)
+      - pattern: (int $SIGNED) = <... (unsigned $UNSIGNED) ...>
       - pattern: |
           int $FUN(...)
           {
           ...
           return (unsigned $UNSIGNED);
           }
-      - pattern: (int $SIGNED) = (size_t $UNSIGNED)
+      - pattern: (int $SIGNED) = <... (size_t $UNSIGNED) ...>
       - pattern: |
           int $FUN(...)
           {

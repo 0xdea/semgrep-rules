@@ -63,4 +63,4 @@ rules:
       # long
       - pattern: (long $NARROW) = <... (unsigned long $LARGE) ...>
       - pattern: (long int $NARROW) = <... (unsigned long int $LARGE) ...>
-      # some types and use cases (including notably comparisons) are missing
+      # some types and use cases (e.g., comparisons, function returns) are missing

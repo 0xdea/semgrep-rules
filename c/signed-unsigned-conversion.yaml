@@ -70,14 +70,18 @@ rules:
       - pattern: getcwd($BUF, (int $LEN))
       - pattern: memcpy($DST, $SRC, (int $LEN))
       - pattern: memccpy($DST, $SRC, $CHAR, (int $LEN))
-      - pattern: memmove($DST, $SRC, $CHAR, (int $LEN))
+      - pattern: memmove($DST, $SRC, (int $LEN))
+      - pattern: memset($DST, $CHAR, (int $LEN))
       - pattern: bcopy($SRC, $DST, (int $LEN))
       - pattern: alloca((int $LEN))
       - pattern: malloc((int $LEN))
       - pattern: calloc($CNT, (int $LEN))
       - pattern: calloc((int $CNT), $LEN)
       - pattern: realloc($PTR, (int $LEN))
-      # unsigned to signed
+      - pattern: read($FD, $BUF, (int $LEN))
+      - pattern: recv($SD, $BUF, (int $LEN), $FL)
+      - pattern: recvfrom($SD, $BUF, (int $LEN), $FL, ...)
+      #  unsigned to signed
       - pattern: (int $SIGNED) = (unsigned int $UNSIGNED)
       - pattern: |
           int $FUN(...)

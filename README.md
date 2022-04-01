@@ -40,6 +40,8 @@ See also: https://semgrep.dev/r
 * [**double-free**](https://github.com/0xdea/semgrep-rules/blob/main/c/double-free.yaml). Potential double free().
 * [**unchecked-ret-malloc-calloc-realloc**](https://github.com/0xdea/semgrep-rules/blob/main/c/unchecked-ret-malloc-calloc-realloc.yaml). Unchecked return code of malloc(), calloc(), realloc().
 * [**memory-address-exposure**](https://github.com/0xdea/semgrep-rules/blob/main/c/memory-address-exposure.yaml). Potential exposure of underlying memory addresses.
+* [**mismatched-memory-management**](https://github.com/0xdea/semgrep-rules/blob/main/c/mismatched-memory-management.yaml). Potentially mismatched C memory management routines.
+* [**mismatched-memory-management-cpp**](https://github.com/0xdea/semgrep-rules/blob/main/c/mismatched-memory-management-cpp.yaml). Potentially mismatched C++ memory management routines.
 
 ### command injection
 * [**command-injection**](https://github.com/0xdea/semgrep-rules/blob/main/c/command-injection.yaml). Potential OS command injection via system() or popen().

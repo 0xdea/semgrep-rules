@@ -4,6 +4,7 @@ rules:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       references:
         - https://cwe.mitre.org/data/definitions/416
+        - https://github.com/struct/mms
       confidence: MEDIUM
     message: >-
       Referencing memory after it has been freed can cause a program to

@@ -4,6 +4,7 @@ rules:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       references:
         - https://cwe.mitre.org/data/definitions/415
+        - https://github.com/struct/mms
       confidence: MEDIUM
     message: >-
       The software calls free() twice on the same memory address,

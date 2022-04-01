@@ -5,6 +5,7 @@ rules:
       references:
         - https://github.com/0xdea/ghidra-scripts/blob/main/Rhabdomancer.java
         - https://github.com/x509cert/banned/blob/master/banned.h
+        - https://g.co/kgs/PCHQjJ
       confidence: MEDIUM
     message: >-
       Locate all calls to interesting and potentially insecure API

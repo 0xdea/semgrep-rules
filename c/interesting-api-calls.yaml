@@ -75,4 +75,4 @@ rules:
         # - pattern-regex: \w*(make|split)path\s*\(.*\)
       # assert
       - pattern-regex: \w*assert\s*\(.*\)
-      # missing: goto, try/catch, kill/sig/jmp, sem/mutex, new/delete
+      # missing: goto, try/catch, kill/sig/jmp, sem/mutex, new/delete, static_cast/reinterpret_cast

@@ -13,7 +13,7 @@ int drop_priv_perm2()
 {
 	// ok: raptor-unchecked-ret-setuid-seteuid
 	if (!setuid(getuid())) {
-		// do stuff
+		// ...
 		return 0;
 	}
 	return -1;
@@ -31,7 +31,7 @@ int drop_priv_temp2()
 	if (seteuid(getuid()) < 0)
 		return -1;
 
-	// do stuff
+	// ...
 }
 
 int main() 

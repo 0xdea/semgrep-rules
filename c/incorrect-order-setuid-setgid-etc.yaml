@@ -1,0 +1,73 @@
+rules:
+  - id: raptor-incorrect-order-setuid-setgid-etc
+    metadata:
+      author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      references:
+        - https://cwe.mitre.org/data/definitions/696
+        - https://g.co/kgs/PCHQjJ
+        - https://github.com/struct/mms
+      confidence: MEDIUM
+    message: >-
+      The software performs multiple related behaviors, but the behaviors
+      are performed in the wrong order in ways which may produce resultant
+      weaknesses.
+      The set(e)gid() function must be called as root, so the order of the
+      set(e)uid() and set(e)gid() calls is important. A compromised process
+      might be able to regain elevated group privileges if set(e)gid() is
+      called after set(e)uid().
+      A similar case is when privileges are temporarily dropped with
+      seteuid() and then setuid() or seteuid() are called from while under
+      unprivileged user.
+    severity: WARNING
+    languages:
+      - c
+      - cpp
+    pattern-either:
+      # setuid()/setgid()
+      - patterns:
+        - pattern: |
+            setuid(...);
+            ...
+            setgid(...);
+      # seteuid()/setegid()
+      - patterns:
+        - pattern: |
+            seteuid(...);
+            ...
+            setegid(...);
+        - pattern-not-inside: |
+            seteuid(...);
+            ...
+            seteuid(0);
+            ...
+            setegid(...);
+      # seteuid()/setuid()
+      - patterns:
+        - pattern: |
+            seteuid(...);
+            ...
+            setuid(...);
+        - pattern-not-inside: |
+            seteuid(...);
+            ...
+            seteuid(0);
+            ...
+            setuid(...);
+      # seteuid()/seteuid()
+      - patterns:
+        - pattern: |
+            seteuid($USER1);
+            ...
+            seteuid($USER2);
+        - metavariable-comparison:
+            metavariable: $USER1
+            comparison: $USER1 != 0
+        - metavariable-comparison:
+            metavariable: $USER2
+            comparison: $USER2 != 0
+        - pattern-not-inside: |
+            seteuid($USER1);
+            ...
+            seteuid(0);
+            ...
+            seteuid($USER2);

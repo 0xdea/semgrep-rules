@@ -5,6 +5,7 @@ rules:
       references:
         - https://cwe.mitre.org/data/definitions/252
         - https://cwe.mitre.org/data/definitions/690
+        - https://github.com/struct/mms
       confidence: MEDIUM
     message: >-
       The software does not check the return value from a method or

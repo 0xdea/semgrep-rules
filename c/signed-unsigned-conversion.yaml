@@ -60,6 +60,13 @@ rules:
           ...
           return (int $SIGNED);
           }
+      - pattern: (size_t $UNSIGNED) = <... (off_t $SIGNED) ...>
+      - pattern: |
+          size_t $FUN(...)
+          {
+          ...
+          return (off_t $SIGNED);
+          }
       - pattern: strncpy($DST, $SRC, (int $LEN))
       - pattern: stpncpy($DST, $SRC, (int $LEN))
       - pattern: strncat($DST, $SRC, (int $LEN))
@@ -99,6 +106,13 @@ rules:
       - pattern: (int $SIGNED) = <... (size_t $UNSIGNED) ...>
       - pattern: |
           int $FUN(...)
+          {
+          ...
+          return (size_t $UNSIGNED);
+          }
+      - pattern: (off_t $SIGNED) = <... (size_t $UNSIGNED) ...>
+      - pattern: |
+          off_t $FUN(...)
           {
           ...
           return (size_t $UNSIGNED);

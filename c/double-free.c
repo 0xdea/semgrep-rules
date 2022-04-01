@@ -56,6 +56,30 @@ int double_free(int argc, char **argv)
 	free(buf1R2);
 }
 
+int Packet *getNextPacket() 
+{
+	Packet *y = (Packet *) malloc(1024);
+	retval = waitForPacket(y);
+	if(retval == OK) {
+		return y;
+  	} else {
+     		return NULL;
+  	}
+}
+
+int bad()
+{
+	// ruleid: double-free
+	free(logData);
+	pkt = getNextPacket();
+	if(!pkt) {
+     		return NULL;
+	}
+	logPktData(pkt);
+	free(logData);
+	processPacket(pkt);
+}
+
 int main() 
 {
 	printf("Hello, World!");

@@ -5,6 +5,7 @@
 SharedMemory* SharedMemory::New(Plugin* plugin, off_t length)
 {
 	void* map_addr = NULL;
+	// ruleid: raptor-signed-unsigned-conversion
 	size_t size = static_cast<size_t>(length);
 	NaClHandle handle = nacl::CreateMemoryObject(size);
 	struct NaClDescImcShm *imc_desc = reinterpret_cast <struct NaClDescImcShm*>(malloc( sizeof (*imc_desc)));

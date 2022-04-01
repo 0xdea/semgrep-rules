@@ -64,6 +64,13 @@ int test_func()
 	strncpy(buf, xfer, req_size);
 }
 
+int test_func2()
+{
+	// ruleid: raptor-unchecked-ret-malloc-calloc-realloc
+	AStruct *s = (AStruct *) malloc(user_len); 
+	s[user_offset] = 0xff;
+}
+
 int main() 
 {
 	printf("Hello, World!");

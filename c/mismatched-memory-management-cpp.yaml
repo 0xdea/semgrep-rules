@@ -1,0 +1,72 @@
+rules:
+  - id: raptor-mismatched-memory-management-cpp
+    metadata:
+      author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      references:
+        - https://cwe.mitre.org/data/definitions/762
+        - https://cwe.mitre.org/data/definitions/590
+        - https://github.com/struct/mms
+      confidence: LOW
+    message: >-
+      The software attempts to return a memory resource to the system, but
+      it calls a release function that is not compatible with the function
+      that was originally used to allocate that resource.
+      When the memory management functions are mismatched, the consequences
+      may be as severe as code execution, memory corruption, or program
+      crash. Consequences and ease of exploit will vary depending on the
+      implementation of the routines and the object being managed.
+      Due to inherent limitations of Semgrep, this rule might generate many
+      false positives and should therefore be customized for your codebase.
+    severity: ERROR
+    languages:
+      - cpp
+    pattern-either:
+      # free
+      - patterns:
+        - pattern: free($PTR);
+        - pattern-not-inside: |
+            $PTR = malloc(...);
+            ...
+            free($PTR);
+        - pattern-not-inside: |
+            $PTR = ($CAST)malloc(...);
+            ...
+            free($PTR);
+        - pattern-not-inside: |
+            $PTR = calloc(...);
+            ...
+            free($PTR);
+        - pattern-not-inside: |
+            $PTR = ($CAST)calloc(...);
+            ...
+            free($PTR);
+        - pattern-not-inside: |
+            $PTR = realloc(...);
+            ...
+            free($PTR);
+        - pattern-not-inside: |
+            $PTR = ($CAST)realloc(...);
+            ...
+            free($PTR); 
+      # missing: valloc(), reallocf(), aligned_alloc(), custom functions
+      # delete[]
+      - patterns:
+        - pattern: delete[]($PTR);
+        - pattern-not-inside: |
+            $PTR = new $OBJ[$SIZE];
+            ...
+            delete[]($PTR);
+      # delete
+      - patterns:
+        - pattern: delete($PTR);
+        - pattern-not-inside: |
+            $PTR = new $OBJ;
+            ...
+            delete($PTR);
+      - patterns:
+        - pattern: delete($PTR);
+        - pattern-inside: |
+            $PTR = new $OBJ[$SIZE];
+            ...
+            delete($PTR);
+      # missing: overloaded operators, VirtualAlloc()/VirtualFree(), mmap()/munmap()

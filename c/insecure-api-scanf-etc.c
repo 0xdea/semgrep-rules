@@ -60,6 +60,28 @@ undefined4 sa_setBlockName(char *block_name,int len)
 	return 0;
 }
 
+// https://www.synacktiv.com/en/publications/pwn2own-austin-2021-defeating-the-netgear-r6700v3.html
+int __fastcall updating_database(int a1, const char *update_server)
+{
+	// ...
+	char line[1020]; // [sp+894h] [bp-4FCh] BYREF
+	char db_checksum_val[256]; // [sp+D94h] [bp+4h] BYREF
+	char db_checksum[256]; // [sp+E94h] [bp+104h] BYREF
+	// ...
+ 	v7 = fopen("/tmp/circleinfo.txt", "r");
+ 	if ( v7 ) {
+  		line[0] = 0;
+  		while ( fgets(line, 1024, v7) ) {
+		// ruleid: raptor-insecure-api-scanf-etc
+   			if ( sscanf(line, "%s %s", db_checksum, db_checksum_val) == 2
+      				&& !strcmp(db_checksum, "db_checksum") ) {
+      				// ...
+      				break;
+   			}
+		}
+	}
+}
+
 int main() 
 {
 	printf("Hello, World!");

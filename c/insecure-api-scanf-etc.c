@@ -72,7 +72,7 @@ int __fastcall updating_database(int a1, const char *update_server)
  	if ( v7 ) {
   		line[0] = 0;
   		while ( fgets(line, 1024, v7) ) {
-		// ruleid: raptor-insecure-api-scanf-etc
+			// ruleid: raptor-insecure-api-scanf-etc
    			if ( sscanf(line, "%s %s", db_checksum, db_checksum_val) == 2
       				&& !strcmp(db_checksum, "db_checksum") ) {
       				// ...

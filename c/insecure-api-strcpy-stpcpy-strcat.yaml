@@ -23,10 +23,12 @@ rules:
     languages:
       - c
       - cpp
-    pattern-either:
-      - pattern: strcpy(...)
-      - pattern: stpcpy(...)
-      - pattern: strcat(...)
-      - pattern: wcscpy(...)
-      - pattern: wcpcpy(...)
-      - pattern: wcscat(...)
+    patterns:
+      - pattern-either:
+        - pattern: strcpy(...)
+        - pattern: stpcpy(...)
+        - pattern: strcat(...)
+        - pattern: wcscpy(...)
+        - pattern: wcpcpy(...)
+        - pattern: wcscat(...)
+      - pattern-not: $FUN($BUF, "...", ...)

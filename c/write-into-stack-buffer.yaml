@@ -51,6 +51,40 @@ rules:
               - pattern: wmemcpy
               - pattern: wmemmove
               - pattern: wmemset
+      # buffer in 1st arg (sprintf functions)
+      - patterns:
+        - pattern: $FUN($BUF, $FMT, ...)
+        - pattern-inside: |
+            $TYPE $BUF[$SIZE];
+            ...
+            $FUN($BUF, $FMT, ...);
+        - metavariable-regex:
+            metavariable: $FMT
+            # some format string modifiers are not handled
+            regex: '(".*%l?s.*"|".*%S.*"|[a-zA-Z_][a-zA-Z0-9_]*)'
+        - metavariable-pattern:
+            metavariable: $FUN
+            pattern-either:
+              # sprintf
+              - pattern: sprintf
+              - pattern: vsprintf
+      # buffer in 1st arg (snprintf functions)
+      - patterns:
+        - pattern: $FUN($BUF, $SIZE, $FMT, ...)
+        - pattern-inside: |
+            $TYPE $BUF[$SIZE];
+            ...
+            $FUN($BUF, $SIZE, $FMT, ...);
+        - metavariable-regex:
+            metavariable: $FMT
+            # some format string modifiers are not handled
+            regex: '(".*%l?s.*"|".*%S.*"|[a-zA-Z_][a-zA-Z0-9_]*)'
+        - metavariable-pattern:
+            metavariable: $FUN
+            pattern-either:
+              # sprintf
+              - pattern: snprintf
+              - pattern: vsnprintf
       # buffer in 1st arg (other functions)
       - patterns:
         - pattern: $FUN($BUF, ...)
@@ -61,11 +95,6 @@ rules:
         - metavariable-pattern:
             metavariable: $FUN
             pattern-either:
-              # sprintf
-              - pattern: sprintf
-              - pattern: snprintf
-              - pattern: vsprintf
-              - pattern: vsnprintf
               # get
               - pattern: gets
               - pattern: fgets

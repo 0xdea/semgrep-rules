@@ -29,10 +29,18 @@ rules:
             setuid(...);
             ...
             setgid(...);
+        - pattern-not: |
+            setuid(0);
+            ...
+            setgid(...);
       # seteuid()/setegid()
       - patterns:
         - pattern: |
             seteuid(...);
+            ...
+            setegid(...);
+        - pattern-not: |
+            seteuid(0);
             ...
             setegid(...);
         - pattern-not-inside: |
@@ -47,6 +55,10 @@ rules:
             seteuid(...);
             ...
             setuid(...);
+        - pattern-not: |
+            seteuid(0);
+            ...
+            setuid(...);
         - pattern-not-inside: |
             seteuid(...);
             ...
@@ -56,18 +68,20 @@ rules:
       # seteuid()/seteuid()
       - patterns:
         - pattern: |
-            seteuid($USER1);
+            seteuid(...);
             ...
-            seteuid($USER2);
-        - metavariable-comparison:
-            metavariable: $USER1
-            comparison: $USER1 != 0
-        - metavariable-comparison:
-            metavariable: $USER2
-            comparison: $USER2 != 0
+            seteuid(...);
+        - pattern-not: |
+            seteuid(0);
+            ...
+            seteuid(...);
+        - pattern-not: |
+            seteuid(...);
+            ...
+            seteuid(0);
         - pattern-not-inside: |
-            seteuid($USER1);
+            seteuid(...);
             ...
             seteuid(0);
             ...
-            seteuid($USER2);
+            seteuid(...);

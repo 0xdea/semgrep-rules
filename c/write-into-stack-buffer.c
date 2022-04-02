@@ -1,0 +1,46 @@
+// Marco Ivaldi <raptor@0xdeadbeef.info>
+
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+#define BUFSIZE 256
+
+int copy_string1(char *string)
+{
+	char buf[BUFSIZE];
+	char *ptr;
+
+	// ruleid: raptor-write-into-stack-buffer
+	snprintf(buf, BUFSIZE, "%s", string);
+
+	ptr = (char *)malloc(BUFSIZE);
+
+	// ok: raptor-write-into-stack-buffer
+	snprintf(ptr, BUFSIZE, "%s", string);
+}
+
+int copy_string2(char *string)
+{
+	char buf[BUFSIZE];
+
+	// ruleid: raptor-write-into-stack-buffer
+	strlcpy(buf, string, BUFSIZE);
+
+	// ok: raptor-write-into-stack-buffer
+	strlcpy(buf, "Hello, world!", BUFSIZE);
+}
+
+int copy_string3(char *string)
+{
+	char buf[BUFSIZE];
+
+	// ruleid: raptor-write-into-stack-buffer
+	memcpy(buf, string, BUFSIZE);
+}
+
+int main() 
+{
+	printf("Hello, World!");
+	return 0;
+}

@@ -19,6 +19,7 @@ rules:
       - c
       - cpp
     pattern-either:
+      # strncpy 
       - patterns:
           - pattern: strncpy(...)
           - pattern-not-inside: |
@@ -33,6 +34,7 @@ rules:
               strncpy($DST, $SRC, $N);
               ...
               $DST[$POS] = 0;
+      # stpncpy 
       - patterns:
           - pattern: stpncpy(...)
           - pattern-not-inside: |
@@ -47,6 +49,7 @@ rules:
               stpncpy($DST, $SRC, $N);
               ...
               $DST[$POS] = 0;
+      # wcsncpy 
       - patterns:
           - pattern: wcsncpy(...)
           - pattern-not-inside: |
@@ -61,6 +64,7 @@ rules:
               wcsncpy($DST, $SRC, $N);
               ...
               $DST[$POS] = 0;
+      # wcpncpy 
       - patterns:
           - pattern: wcpncpy(...)
           - pattern-not-inside: |

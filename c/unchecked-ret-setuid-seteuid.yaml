@@ -23,6 +23,7 @@ rules:
       - c
       - cpp
     pattern-either:
+      # setuid
       - patterns:
           - pattern: setuid(...)
           - pattern-not-inside: $RET = setuid(...)
@@ -31,6 +32,7 @@ rules:
           - pattern-not-inside: <... setuid(...) < $VAL ...>
           - pattern-not-inside: <... !setuid(...) ...>
           - pattern-not-inside: return setuid(...);
+      # seteuid
       - patterns:
           - pattern: seteuid(...)
           - pattern-not-inside: $RET = seteuid(...)

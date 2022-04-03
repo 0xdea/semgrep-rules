@@ -1,0 +1,37 @@
+rules:
+  - id: raptor-off-by-one
+    metadata:
+      author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      references:
+        - https://cwe.mitre.org/data/definitions/193
+        - https://github.com/struct/mms
+      confidence: MEDIUM
+    message: >-
+      The software calculates or uses an incorrect maximum or minimum value
+      that is 1 more, or 1 less, than the correct value.
+    severity: WARNING
+    languages:
+      - c
+      - cpp
+    pattern-either:
+      # array access
+      - pattern: $BUF[sizeof($BUF)] = $EXPR
+      - patterns:
+        - pattern: $BUF[$SIZE] = $EXPR
+        - pattern-inside: |
+            $TYPE $BUF[$SIZE];
+            ...
+            $BUF[$SIZE] = $EXPR;
+      # suspicious loops
+      - pattern: for ($I = 0; $I <= $SIZE; $I++) { ... }
+      - pattern: for ($TYPE $I = 0; $I <= $SIZE; $I++) { ... }
+      - pattern: while ($I <= $SIZE) { ... }
+      - pattern: do {...} while ($I <= $SIZE);
+      # potential strncat misuse
+      - patterns:
+        - pattern: strncat($DST, $SRC, $LEN)
+        - metavariable-pattern:
+            metavariable: $LEN
+            patterns:
+              - pattern-not: <... $VAL - 1 ...>
+    # missing: heap-allocated buffers, some functions

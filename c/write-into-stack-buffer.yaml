@@ -70,11 +70,11 @@ rules:
               - pattern: vsprintf
       # buffer in 1st arg (snprintf functions)
       - patterns:
-        - pattern: $FUN($BUF, $SIZE, $FMT, ...)
+        - pattern: $FUN($BUF, $LEN, $FMT, ...)
         - pattern-inside: |
             $TYPE $BUF[$SIZE];
             ...
-            $FUN($BUF, $SIZE, $FMT, ...);
+            $FUN($BUF, $LEN, $FMT, ...);
         - metavariable-regex:
             metavariable: $FMT
             # some format string modifiers are not handled

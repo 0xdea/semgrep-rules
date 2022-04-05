@@ -6,7 +6,7 @@ rules:
         - https://cwe.mitre.org/data/definitions/467
         - https://g.co/kgs/PCHQjJ
         - https://github.com/struct/mms
-      confidence: HIGH
+      confidence: MEDIUM
     message: >-
       The code calls sizeof() on a malloced pointer type, which always
       returns the wordsize/8. This can produce an unexpected result if the

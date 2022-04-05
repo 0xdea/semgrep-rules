@@ -23,7 +23,7 @@ See also: https://semgrep.dev/r
 * [**insecure-api-sprintf-vsprintf**](https://github.com/0xdea/semgrep-rules/blob/main/c/insecure-api-sprintf-vsprintf.yaml). Use of potentially insecure API functions sprintf() and vsprintf().
 * [**insecure-api-scanf-etc**](https://github.com/0xdea/semgrep-rules/blob/main/c/insecure-api-scanf-etc.yaml). Use of potentially insecure API functions in the scanf() family.
 * [**unterminated-string-strncpy-stpncpy**](https://github.com/0xdea/semgrep-rules/blob/main/c/unterminated-string-strncpy-stpncpy.yaml). Lack of explicit null-termination after strncpy() and stpncpy().
-* [**wrong-use-of-sizeof**](https://github.com/0xdea/semgrep-rules/blob/main/c/wrong-use-of-sizeof.yaml). Accidental use of the sizeof operator on a pointer instead of its target.
+* [**incorrect-use-of-sizeof**](https://github.com/0xdea/semgrep-rules/blob/main/c/incorrect-use-of-sizeof.yaml). Accidental use of the sizeof() operator on a pointer instead of its target.
 * [**off-by-one**](https://github.com/0xdea/semgrep-rules/blob/main/c/off-by-one.yaml). Potential off-by-one error.
 * [**pointer-subtraction**](https://github.com/0xdea/semgrep-rules/blob/main/c/pointer-subtraction.yaml). Potential use of pointer subtraction to determine size.
 * [**unsafe-ret-strlcpy-strlcat**](https://github.com/0xdea/semgrep-rules/blob/main/c/unsafe-ret-strlcpy-strlcat.yaml). Potentially unsafe use of the return value of strlcpy() and strlcat().

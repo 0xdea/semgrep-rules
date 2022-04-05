@@ -1,5 +1,5 @@
 rules:
-  - id: raptor-wrong-use-of-sizeof
+  - id: raptor-incorrect-use-of-sizeof
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       references:

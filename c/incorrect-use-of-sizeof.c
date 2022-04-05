@@ -9,7 +9,7 @@ int bad1()
 {
 	double *foo;
 
-	// ruleid: raptor-wrong-use-of-sizeof
+	// ruleid: raptor-incorrect-use-of-sizeof
 	foo = (double *)malloc(sizeof(foo));
 }
 
@@ -17,7 +17,7 @@ int good1()
 {
 	double *foo;
 
-	// ok: raptor-wrong-use-of-sizeof
+	// ok: raptor-incorrect-use-of-sizeof
 	foo = (double *)malloc(sizeof(*foo));
 }
 
@@ -25,7 +25,7 @@ int bad2(char *buf)
 {
 	size_t size;
 
-	// ruleid: raptor-wrong-use-of-sizeof
+	// ruleid: raptor-incorrect-use-of-sizeof
 	size = sizeof(buf);
 }
 
@@ -34,14 +34,14 @@ int good2()
 	char buf[256];
 	size_t size;
 	
-	// ok: raptor-wrong-use-of-sizeof
+	// ok: raptor-incorrect-use-of-sizeof
 	size = sizeof(buf);
 }
 
 int bad3()
 {
 	AnObj *o = (AnObj *) malloc(sizeof(AnObj));
-	// ruleid: raptor-wrong-use-of-sizeof
+	// ruleid: raptor-incorrect-use-of-sizeof
 	memset(o, 0x0, sizeof(o));
 }
 
@@ -70,7 +70,7 @@ char *read_username(int sockfd)
 	sprintf(buffer, "username=%.32s", userstring);
 
 	if (style)
-	// ruleid: raptor-wrong-use-of-sizeof
+	// ruleid: raptor-incorrect-use-of-sizeof
 		snprintf(buffer, sizeof(buffer) - strlen(buffer) - 1, ", style=%s\n", style);
 
 	return buffer;
@@ -81,18 +81,18 @@ char *pass = "password";
 
 int AuthenticateUser(char *inUser, char *inPass) 
 {
-	// ruleid: raptor-wrong-use-of-sizeof
+	// ruleid: raptor-incorrect-use-of-sizeof
 	printf("Sizeof username = %d\n", sizeof(username));
-	// ruleid: raptor-wrong-use-of-sizeof
+	// ruleid: raptor-incorrect-use-of-sizeof
 	printf("Sizeof pass = %d\n", sizeof(pass));
 
-	// ruleid: raptor-wrong-use-of-sizeof
+	// ruleid: raptor-incorrect-use-of-sizeof
 	if (strncmp(username, inUser, sizeof(username))) {
 		printf("Auth failure of username using sizeof\n");
 		return(AUTH_FAIL);
 	}
 
-	// ruleid: raptor-wrong-use-of-sizeof
+	// ruleid: raptor-incorrect-use-of-sizeof
 	if (!strncmp(pass, inPass, sizeof(pass))) {
 		printf("Auth success of password using sizeof\n");
 		return(AUTH_SUCCESS);

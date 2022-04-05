@@ -1,0 +1,52 @@
+rules:
+  - id: raptor-pointer-subtraction
+    metadata:
+      author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      references:
+        - https://cwe.mitre.org/data/definitions/469
+        - https://github.com/struct/mms
+      confidence: MEDIUM
+    message: >-
+      The software subtracts one pointer from another in order to determine
+      size, but this calculation can be incorrect if the pointers do not
+      exist in the same memory chunk.
+    severity: WARNING
+    languages:
+      - c
+      - cpp
+    pattern-either:
+      # type-based patterns (some types are missing)
+      - pattern: (char * $PTR1) - (char * $PTR2)
+      - pattern: (int * $PTR1) - (int * $PTR2)
+      - pattern: (float * $PTR1) - (float * $PTR2)
+      - pattern: (double * $PTR1) - (double * $PTR2)
+      # other patterns (function calls are not covered)
+      - patterns:
+        - pattern-either:
+          - pattern: $PTR1 - $PTR2
+          - pattern: $PTR2 - $PTR1
+        - pattern-either:
+          - pattern-inside: |
+              $TYPE * $PTR1;
+              $TYPE * $PTR2;
+              ...
+          - pattern-inside: |
+              $TYPE * $PTR1 = $EXPR1;
+              $TYPE * $PTR2 = $EXPR2;
+              ...
+          - pattern-inside: |
+              $TYPE * $PTR1 = $EXPR1;
+              $TYPE * $PTR2;
+              ...
+          - pattern-inside: |
+              $TYPE * $PTR1;
+              $TYPE * $PTR2 = $EXPR2;
+              ...
+          - pattern-inside: |
+              $TYPE * $PTR3 = $PTR1;
+              $TYPE * $PTR2;
+              ...
+          - pattern-inside: |
+              $TYPE * $PTR2;
+              $TYPE * $PTR3 = $PTR1;
+              ...

@@ -1,0 +1,65 @@
+rules:
+  - id: raptor-typo
+    metadata:
+      author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      references:
+        - https://cwe.mitre.org/data/definitions/480
+        - https://cwe.mitre.org/data/definitions/481
+        - https://cwe.mitre.org/data/definitions/482
+        - https://cwe.mitre.org/data/definitions/483
+        - https://g.co/kgs/PCHQjJ
+      confidence: LOW
+    message: >-
+      The programmer accidentally uses the wrong operator, which changes
+      the application logic in security-relevant ways.
+      These types of errors are generally the result of a typo.
+      This rule also covers some other common typo patterns.
+    severity: WARNING
+    languages:
+      - c
+      - cpp
+    pattern-either:
+      # == instead of = in assignment (the ternary operator is not supported)
+      - pattern: for ($EXPR1 == $EXPR2; $EXPR3; $EXPR4) { ... }
+      - pattern: $EXPR1 == $EXPR2;
+      # = instead of == in comparison
+      - patterns:
+        - pattern: if (<... $EXPR1 = $EXPR2 ...>) { ... }
+        - pattern-not-inside: if (<... ($EXPR1 = $EXPR2) == $EXPR ...>) { ... }
+        - pattern-not-inside: if (<... ($EXPR1 = $EXPR2) != $EXPR ...>) { ... }
+        - pattern-not-inside: if (<... ($EXPR1 = $EXPR2) < $EXPR ...>) { ... }
+        - pattern-not-inside: if (<... ($EXPR1 = $EXPR2) <= $EXPR ...>) { ... }
+        - pattern-not-inside: if (<... ($EXPR1 = $EXPR2) > $EXPR ...>) { ... }
+        - pattern-not-inside: if (<... ($EXPR1 = $EXPR2) >= $EXPR ...>) { ... }
+      # & instead of && in comparison
+      - patterns:
+        - pattern: if (<... $EXPR1 & $EXPR2 ...>) { ... }
+        - pattern-not-inside: if (<... ($EXPR1 & $EXPR2) == $EXPR ...>) { ... }
+        - pattern-not-inside: if (<... ($EXPR1 & $EXPR2) != $EXPR ...>) { ... }
+        - pattern-not-inside: if (<... ($EXPR1 & $EXPR2) < $EXPR ...>) { ... }
+        - pattern-not-inside: if (<... ($EXPR1 & $EXPR2) <= $EXPR ...>) { ... }
+        - pattern-not-inside: if (<... ($EXPR1 & $EXPR2) > $EXPR ...>) { ... }
+        - pattern-not-inside: if (<... ($EXPR1 & $EXPR2) >= $EXPR ...>) { ... }
+      # | instead of || in comparison
+      - patterns:
+        - pattern: if (<... $EXPR1 | $EXPR2 ...>) { ... }
+        - pattern-not-inside: if (<... ($EXPR1 | $EXPR2) == $EXPR ...>) { ... }
+        - pattern-not-inside: if (<... ($EXPR1 | $EXPR2) != $EXPR ...>) { ... }
+        - pattern-not-inside: if (<... ($EXPR1 | $EXPR2) < $EXPR ...>) { ... }
+        - pattern-not-inside: if (<... ($EXPR1 | $EXPR2) <= $EXPR ...>) { ... }
+        - pattern-not-inside: if (<... ($EXPR1 | $EXPR2) > $EXPR ...>) { ... }
+        - pattern-not-inside: if (<... ($EXPR1 | $EXPR2) >= $EXPR ...>) { ... }
+      # ; at the end of if() statement
+      - pattern: if ($COND);
+      - pattern: for ($EXPR1; $EXPR2; $EXPR3);
+      # accidental octal conversion
+      - patterns:
+        - pattern-either:
+          - pattern: $TYPE $ARR[$SIZE];
+          - pattern: $TYPE $ARR[$SIZE] = $EXPR;
+        - metavariable-regex:
+            metavariable: $SIZE
+            regex: '^0.*'
+      # missing {} in if() statement (too many false positives)
+        # - pattern: if ($COND) $BODY;
+      # missing: common issues with comments

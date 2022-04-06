@@ -59,6 +59,7 @@ See also: https://semgrep.dev/r
 
 ### miscellaneous
 * [**interesting-api-calls**](https://github.com/0xdea/semgrep-rules/blob/main/c/interesting-api-calls.yaml). Calls to interesting and potentially insecure API functions.
+* [**typos**](https://github.com/0xdea/semgrep-rules/blob/main/c/typos.yaml). Potential typos with security implications.
 
 ## Generic
 

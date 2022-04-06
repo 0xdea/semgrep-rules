@@ -11,7 +11,7 @@ int bad1()
 
 	while (*src && left) {
    		*dst++=*src++;
-		// ruleid: raptor-typo
+		// ruleid: raptor-typos
    		if (left = 0) {
        			die("badlen");
 		}
@@ -24,7 +24,7 @@ good1(char *path, char *dir, char *obj)
 {
 	char *last;
 
-	// ok: raptor-typo
+	// ok: raptor-typos
    	if ( (last = strrchr(path,'/')) != NULL ) {
 		strcpy(obj, last + 1);
       		if (last == path) {
@@ -44,7 +44,7 @@ int bad2(char *username)
 	int f;
 	f = get_security_flags(username);
 	
-	// ruleid: raptor-typo
+	// ruleid: raptor-typos
 	if (f = FLAG_AUTHENTICATED) {
 		return LOGIN_OK;
 	}
@@ -53,7 +53,7 @@ int bad2(char *username)
 
 int bad3(char *src, char *dst)
 {
-	// ruleid: raptor-typo
+	// ruleid: raptor-typos
 	if (get_string(src) &&
 		check_for_overflow(src) & copy_string(dst, src)) {
 		printf("string safely copied\n");
@@ -64,7 +64,7 @@ int bad4(char *src, int len)
 {
 	char dst[256];
 
-	// ruleid: raptor-typo
+	// ruleid: raptor-typos
 	if (len > 0 && len <= sizeof(dst)); 
 		memcpy(dst, src, len);
 }
@@ -72,7 +72,7 @@ int bad4(char *src, int len)
 int bad5(char *src, char *dst)
 {
 	int i;
-	// ruleid: raptor-typo
+	// ruleid: raptor-typos
 	for (i == 5; src[i] && i < 10; i++) {
 		dst[i - 5] = src[i];
 	}
@@ -80,7 +80,7 @@ int bad5(char *src, char *dst)
 
 int bad6(char *userinput)
 {
-	// ruleid: raptor-typo
+	// ruleid: raptor-typos
 	char buf[040];
 
 	snprintf(buf, 40, "%s", userinput);
@@ -88,7 +88,7 @@ int bad6(char *userinput)
 
 int bad7()
 {
-	// ruleid: raptor-typo
+	// ruleid: raptor-typos
 	if (frag_len &
 		!BUF_MEM_grow_clean(s->init_buf, (int)frag_len +
 		DTLS1_HM_HEADER_LENGTH + s->init_num)) {
@@ -99,7 +99,7 @@ int bad7()
 
 int isValid(int value) 
 {
-	// ruleid: raptor-typo
+	// ruleid: raptor-typos
 	if (value = 100) {
 		printf("Value is valid\n");
 		return(1);
@@ -116,7 +116,7 @@ void processString (char *str)
 	for(i = 0; i < strlen(str); i++) {
 		if (isalnum(str[i])){
 			processChar(str[i]);
-		// ruleid: raptor-typo
+		// ruleid: raptor-typos
 		} else if (str[i] = ':') {
 			movingToNewInput();
 		}
@@ -132,7 +132,7 @@ void push(int i)
 	if (p1 == (tos + SIZE)) {
 		printf("Print stack overflow error message and exit\n");
 	}
-	// ruleid: raptor-typo
+	// ruleid: raptor-typos
 	*p1 == i;
 }
 

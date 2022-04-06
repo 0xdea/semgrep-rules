@@ -1,5 +1,5 @@
 rules:
-  - id: raptor-typo
+  - id: raptor-typos
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       references:

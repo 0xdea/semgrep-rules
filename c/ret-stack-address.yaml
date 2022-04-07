@@ -1,0 +1,46 @@
+rules:
+  - id: raptor-ret-stack-address
+    metadata:
+      author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      references:
+        - https://cwe.mitre.org/data/definitions/562
+        - https://github.com/struct/mms
+      confidence: MEDIUM
+      # NOTE: static variables matching apparently is not supported by Semgrep.
+      # NOTE: multiple pointer assignment is not covered.
+    message: >-
+      A function returns the address of a stack variable, which will cause
+      unintended program behavior, typically in the form of a crash.
+      Because local variables are allocated on the stack, when a program
+      returns a pointer to a local variable, it is returning a stack
+      address. A subsequent function call is likely to re-use this same
+      stack address, thereby overwriting the value of the pointer, which no
+      longer corresponds to the same variable since a function's stack
+      frame is invalidated when it returns. At best this will cause the
+      value of the pointer to change unexpectedly. In many cases it causes
+      the program to crash the next time the pointer is dereferenced.
+    severity: WARNING
+    languages:
+      - c
+      - cpp
+    patterns:
+      - pattern: return $PTR;
+      - pattern-either:
+        # array
+        - pattern-inside: |
+            $TYPE $PTR[$SIZE];
+            ...
+        - pattern-inside: |
+            $TYPE $PTR[$SIZE] = $EXPR;
+            ...
+        # pointer to array
+        - pattern-inside: |
+            $TYPE $ARR[$SIZE];
+            ...
+            $PTR = $ARR;
+            ...
+        - pattern-inside: |
+            $TYPE $ARR[$SIZE] = $EXPR;
+            ...
+            $PTR = $ARR;
+            ...

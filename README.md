@@ -11,7 +11,7 @@
 
 A collection of my Semgrep rules to facilitate vulnerability research.
 
-Blog post: TBD
+Blog post: https://security.humanativaspa.it/semgrep-ruleset-for-c-c-vulnerability-research
 
 See also: https://semgrep.dev/r
 

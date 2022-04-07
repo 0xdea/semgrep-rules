@@ -48,8 +48,8 @@ rules:
           # err/warn family
           - pattern: warn(...)
           - pattern: vwarn(...)
-          - patterm: warnx(...)
-          - patterm: vwarnx(...)
+          - pattern: warnx(...)
+          - pattern: vwarnx(...)
         - pattern-not: $FUN("...", ...)
       # format string in 2nd arg
       - patterns:

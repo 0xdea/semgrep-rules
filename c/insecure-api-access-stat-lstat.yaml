@@ -1,0 +1,26 @@
+rules:
+  - id: raptor-insecure-api-access-stat-lstat
+    metadata:
+      author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      references:
+        - https://cwe.mitre.org/data/definitions/367
+        - https://g.co/kgs/PCHQjJ
+      confidence: HIGH
+    message: >-
+      The software checks the state of a resource before using that
+      resource, but the resource's state can change between the check and
+      the use in a way that invalidates the results of the check. This can
+      cause the software to perform invalid actions when the resource is in
+      an unexpected state.
+      This weakness can be security-relevant when an attacker can influence
+      the state of the resource between check and use. This can happen with
+      shared resources such as files, memory, or even variables in
+      multithreaded programs.
+    severity: WARNING
+    languages:
+      - c
+      - cpp
+    pattern-either:
+      - pattern: access(...)
+      - pattern: stat(...)
+      - pattern: lstat(...)

@@ -33,5 +33,5 @@ rules:
         - metavariable-pattern:
             metavariable: $LEN
             patterns:
-              - pattern-not: <... $VAL - 1 ...>
+              - pattern-not: $VAL - 1
     # missing: heap-allocated buffers, some functions

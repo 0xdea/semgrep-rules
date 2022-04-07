@@ -49,7 +49,7 @@ rules:
         - pattern-not-inside: if (<... ($EXPR1 | $EXPR2) <= $EXPR ...>) { ... }
         - pattern-not-inside: if (<... ($EXPR1 | $EXPR2) > $EXPR ...>) { ... }
         - pattern-not-inside: if (<... ($EXPR1 | $EXPR2) >= $EXPR ...>) { ... }
-      # ; at the end of if() statement
+      # ; at the end of if() or for() statement
       - pattern: if ($COND);
       - pattern: for ($EXPR1; $EXPR2; $EXPR3);
       # accidental octal conversion

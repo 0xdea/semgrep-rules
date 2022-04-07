@@ -38,6 +38,10 @@ rules:
       - c
       - cpp
     pattern-either:
+      #
+      # NOTE: the deep expression operator is necessary to catch some matches because C/C++
+      # integer promotions do not seem entirely supported; it may generate false positives.
+      #
       # signed to unsigned
       - pattern: (unsigned int $UNSIGNED) = <... (int $SIGNED) ...>
       - pattern: |

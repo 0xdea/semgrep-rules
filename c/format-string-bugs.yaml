@@ -7,6 +7,7 @@ rules:
         - https://julianor.tripod.com/bc/formatstring-1.2.pdf
         - http://phrack.org/issues/70/13.html#article
       confidence: MEDIUM
+      # NOTE: generic va_list matching for custom functions is not covered.
     message: >-
       The software uses a function that accepts a format string as an
       argument, but the format string originates from an external source.
@@ -24,9 +25,6 @@ rules:
       - c
       - cpp
     pattern-either:
-      #
-      # NOTE: generic va_list matching for custom functions is not covered.
-      #
       # format string in 1st arg
       - patterns:
         - pattern-either:

@@ -7,8 +7,10 @@ rules:
         - https://cwe.mitre.org/data/definitions/590
         - https://github.com/struct/mms
       confidence: LOW
-      # NOTE: valloc(), reallocf(), aligned_alloc(), custom functions are not covered.
-      # NOTE: VirtualAlloc()/VirtualFree(), mmap()/munmap() are not covered.
+      # NOTE: valloc(), reallocf(), aligned_alloc(), custom functions are
+      # not covered.
+      # NOTE: VirtualAlloc()/VirtualFree(), mmap()/munmap() are not
+      # covered.
     message: >-
       The software attempts to return a memory resource to the system, but
       it calls a release function that is not compatible with the function

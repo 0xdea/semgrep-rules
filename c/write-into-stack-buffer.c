@@ -39,6 +39,16 @@ int copy_string3(char *string)
 	memcpy(buf, string, BUFSIZE);
 }
 
+int bad(int limit) 
+{
+	char buf[BUFSIZE];
+
+	for (int i = 0; i < limit; i++) {
+		// should be catched, but too many false positives
+		buf[i] = "A";
+	}
+}
+
 int main() 
 {
 	printf("Hello, World!");

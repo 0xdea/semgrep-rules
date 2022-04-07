@@ -5,9 +5,9 @@ rules:
       references:
         - https://cwe.mitre.org/data/definitions/121
         - https://github.com/googleprojectzero/weggli
-      confidence: MEDIUM
-      # NOTE: some functions (e.g., scanf family), other ways to write into 
-      # a stack buffer are not covered.
+      confidence: LOW
+      # NOTE: some functions (e.g., scanf family) and some other ways to
+      # write into a stack buffer are not covered.
       # NOTE: static variables matching apparently is not supported by Semgrep.
     message: >-
       The software directly writes into a stack buffer. This might lead to
@@ -132,3 +132,10 @@ rules:
               # recv
               - pattern: recv
               - pattern: recvfrom
+      # assignment (too many false positives)
+        # - patterns:
+          # - pattern: $BUF[$POS] = $EXPR;
+          # - pattern-inside: |
+                # $TYPE $BUF[$SIZE];
+                # ...
+                # $BUF[$POS] = $EXPR;

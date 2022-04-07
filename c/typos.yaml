@@ -19,6 +19,9 @@ rules:
       - c
       - cpp
     pattern-either:
+      #
+      # NOTE: common issues with comments are not covered
+      #
       # == instead of = in assignment (the ternary operator is not supported)
       - pattern: for ($EXPR1 == $EXPR2; $EXPR3; $EXPR4) { ... }
       - pattern: $EXPR1 == $EXPR2;
@@ -62,4 +65,3 @@ rules:
             regex: '^0.*'
       # missing {} in if() statement (too many false positives)
         # - pattern: if ($COND) $BODY;
-      # missing: common issues with comments

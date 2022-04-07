@@ -22,6 +22,10 @@ rules:
       - c
       - cpp
     pattern-either:
+      #
+      # NOTE: valloc(), reallocf(), aligned_alloc(), custom functions are not covered.
+      # NOTE: VirtualAlloc()/VirtualFree(), mmap()/munmap() are not covered.
+      #
       # free
       - patterns:
         - pattern: free($PTR);
@@ -49,5 +53,3 @@ rules:
             $PTR = ($CAST)realloc(...);
             ...
             free($PTR); 
-      # missing: valloc(), reallocf(), aligned_alloc(), custom functions
-      # missing: VirtualAlloc()/VirtualFree(), mmap()/munmap()

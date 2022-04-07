@@ -14,6 +14,11 @@ rules:
       - c
       - cpp
     pattern-either:
+      #
+      # NOTE: some functions (e.g., scanf family), other ways to write into 
+      # a stack buffer are not covered.
+      # NOTE: static variables matching apparently is not supported by Semgrep.
+      #
       # buffer in 1st arg (buffer to buffer copy functions)
       - patterns:
         - pattern: $FUN($BUF, ...)
@@ -129,5 +134,3 @@ rules:
               # recv
               - pattern: recv
               - pattern: recvfrom
-    # missing: some functions (e.g., scanf family), other ways to write into a stack buffer
-    # static variables matching apparently is not supported

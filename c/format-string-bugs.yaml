@@ -24,6 +24,9 @@ rules:
       - c
       - cpp
     pattern-either:
+      #
+      # NOTE: generic va_list matching for custom functions is not covered.
+      #
       # format string in 1st arg
       - patterns:
         - pattern-either:
@@ -95,4 +98,3 @@ rules:
           - pattern: errc(...)
           - pattern: verrc(...)
         - pattern-not: $FUN($ARG1, $ARG2, "...", ...)
-    # missing: generic va_list matching for custom functions

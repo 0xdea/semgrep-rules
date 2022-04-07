@@ -41,6 +41,8 @@ rules:
       #
       # NOTE: the deep expression operator is necessary to catch some matches because C/C++
       # integer promotions do not seem entirely supported; it may generate false positives.
+      # NOTE: some types (e.g. char, short, long), functions (e.g., widechar and some alloc 
+      # functions), and use cases (e.g., comparisons) are not covered.
       #
       # signed to unsigned
       - pattern: (unsigned int $UNSIGNED) = <... (int $SIGNED) ...>
@@ -92,7 +94,7 @@ rules:
       - pattern: read($FD, $BUF, (int $LEN))
       - pattern: recv($SD, $BUF, (int $LEN), $FL)
       - pattern: recvfrom($SD, $BUF, (int $LEN), $FL, ...)
-      #  unsigned to signed
+      # unsigned to signed
       - pattern: (int $SIGNED) = <... (unsigned int $UNSIGNED) ...>
       - pattern: |
           int $FUN(...)
@@ -121,5 +123,3 @@ rules:
           ...
           return (size_t $UNSIGNED);
           }
-      # some types (e.g. char, short, long), functions (e.g., widechar and
-      # some alloc functions), and use cases (e.g., comparisons) are missing

@@ -27,6 +27,7 @@ rules:
       #
       # NOTE: the deep expression operator is necessary to catch some matches because C/C++
       # integer promotions do not seem entirely supported; it may generate false positives.
+      # NOTE: some types and use cases (e.g., comparisons, function returns) are not covered.
       #
       # char
       - pattern: (char $NARROW) = <... (short $LARGE) ...>
@@ -67,4 +68,3 @@ rules:
       # long
       - pattern: (long $NARROW) = <... (unsigned long $LARGE) ...>
       - pattern: (long int $NARROW) = <... (unsigned long int $LARGE) ...>
-      # some types and use cases (e.g., comparisons, function returns) are missing

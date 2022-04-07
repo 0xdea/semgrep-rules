@@ -20,6 +20,9 @@ rules:
       - c
       - cpp
     pattern-either:
+      #
+      # NOTE: reallocf(), valloc(), aligned_alloc() are not covered.
+      #
       # malloc
       - patterns:
         - pattern-either:
@@ -92,4 +95,3 @@ rules:
         - pattern-not-inside: <... $ALLOC == NULL ...>
         - pattern-not-inside: <... $ALLOC != NULL ...>
         - pattern-not-inside: <... !$ALLOC ...>
-      # missing: reallocf(), valloc(), aligned_alloc()

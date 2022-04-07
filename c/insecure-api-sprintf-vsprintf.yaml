@@ -30,5 +30,5 @@ rules:
         # swprintf() and vswprintf() should have a size parameter
       - metavariable-regex:
           metavariable: $FMT
-          # some format string modifiers are not handled
+          # NOTE: some format string modifiers are not handled
           regex: '(".*%l?s.*"|".*%S.*"|[a-zA-Z_][a-zA-Z0-9_]*)'

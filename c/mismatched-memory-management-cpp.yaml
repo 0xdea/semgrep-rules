@@ -21,6 +21,10 @@ rules:
     languages:
       - cpp
     pattern-either:
+      #
+      # NOTE: valloc(), reallocf(), aligned_alloc(), custom functions are not covered.
+      # NOTE: overloaded operators, VirtualAlloc()/VirtualFree(), mmap()/munmap() are not covered.
+      #
       # free
       - patterns:
         - pattern: free($PTR);
@@ -48,7 +52,6 @@ rules:
             $PTR = ($CAST)realloc(...);
             ...
             free($PTR); 
-      # missing: valloc(), reallocf(), aligned_alloc(), custom functions
       # delete[]
       - patterns:
         - pattern: delete[]($PTR);
@@ -69,4 +72,3 @@ rules:
             $PTR = new $OBJ[$SIZE];
             ...
             delete($PTR);
-      # missing: overloaded operators, VirtualAlloc()/VirtualFree(), mmap()/munmap()

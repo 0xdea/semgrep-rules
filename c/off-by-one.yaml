@@ -14,6 +14,9 @@ rules:
       - c
       - cpp
     pattern-either:
+      #
+      # NOTE: heap-allocated buffers, some functions are not covered.
+      #
       # array access
       - pattern: $BUF[sizeof($BUF)] = $EXPR
       - patterns:
@@ -34,4 +37,3 @@ rules:
             metavariable: $LEN
             patterns:
               - pattern-not: $VAL - 1
-    # missing: heap-allocated buffers, some functions

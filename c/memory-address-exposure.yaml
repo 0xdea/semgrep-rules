@@ -46,5 +46,5 @@ rules:
         - pattern: vswprintf($ARG1, $ARG2, $FMT, ...)
       - metavariable-regex:
           metavariable: $FMT
-          # some format string modifiers are not handled
+          # NOTE: some format string modifiers are not handled
           regex: '(".*%\w*x.*"|".*%\w*X.*"|".*%\w*p.*")'

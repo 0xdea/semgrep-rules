@@ -6,6 +6,9 @@ rules:
         - https://cwe.mitre.org/data/definitions/121
         - https://github.com/googleprojectzero/weggli
       confidence: MEDIUM
+      # NOTE: some functions (e.g., scanf family), other ways to write into 
+      # a stack buffer are not covered.
+      # NOTE: static variables matching apparently is not supported by Semgrep.
     message: >-
       The software directly writes into a stack buffer. This might lead to
       a stack-based buffer overflow.
@@ -14,11 +17,6 @@ rules:
       - c
       - cpp
     pattern-either:
-      #
-      # NOTE: some functions (e.g., scanf family), other ways to write into 
-      # a stack buffer are not covered.
-      # NOTE: static variables matching apparently is not supported by Semgrep.
-      #
       # buffer in 1st arg (buffer to buffer copy functions)
       - patterns:
         - pattern: $FUN($BUF, ...)

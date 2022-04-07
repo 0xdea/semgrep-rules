@@ -7,6 +7,8 @@ rules:
         - https://cwe.mitre.org/data/definitions/590
         - https://github.com/struct/mms
       confidence: LOW
+      # NOTE: valloc(), reallocf(), aligned_alloc(), custom functions are not covered.
+      # NOTE: overloaded operators, VirtualAlloc()/VirtualFree(), mmap()/munmap() are not covered.
     message: >-
       The software attempts to return a memory resource to the system, but
       it calls a release function that is not compatible with the function
@@ -21,10 +23,6 @@ rules:
     languages:
       - cpp
     pattern-either:
-      #
-      # NOTE: valloc(), reallocf(), aligned_alloc(), custom functions are not covered.
-      # NOTE: overloaded operators, VirtualAlloc()/VirtualFree(), mmap()/munmap() are not covered.
-      #
       # free
       - patterns:
         - pattern: free($PTR);

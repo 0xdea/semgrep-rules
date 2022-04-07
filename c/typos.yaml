@@ -9,6 +9,7 @@ rules:
         - https://cwe.mitre.org/data/definitions/483
         - https://g.co/kgs/PCHQjJ
       confidence: LOW
+      # NOTE: common issues with comments are not covered.
     message: >-
       The programmer accidentally uses the wrong operator, which changes
       the application logic in security-relevant ways.
@@ -19,10 +20,7 @@ rules:
       - c
       - cpp
     pattern-either:
-      #
-      # NOTE: common issues with comments are not covered
-      #
-      # == instead of = in assignment (the ternary operator is not supported)
+      # == instead of = in assignment (the ternary operator is not supported by Semgrep)
       - pattern: for ($EXPR1 == $EXPR2; $EXPR3; $EXPR4) { ... }
       - pattern: $EXPR1 == $EXPR2;
       # = instead of == in comparison

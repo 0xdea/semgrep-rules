@@ -7,6 +7,9 @@ rules:
         - https://cwe.mitre.org/data/definitions/681
         - https://github.com/struct/mms
       confidence: MEDIUM
+      # NOTE: the deep expression operator is necessary to catch some matches because C/C++ integer 
+      # promotions do not seem entirely supported by Semgrep; this may generate false positives.
+      # NOTE: some types and use cases (e.g., comparisons, function returns) are not covered.
     message: >-
       Truncation errors occur when a primitive is cast to a primitive of a
       smaller size and data is lost in the conversion.
@@ -24,11 +27,6 @@ rules:
       - c
       - cpp
     pattern-either:
-      #
-      # NOTE: the deep expression operator is necessary to catch some matches because C/C++
-      # integer promotions do not seem entirely supported; it may generate false positives.
-      # NOTE: some types and use cases (e.g., comparisons, function returns) are not covered.
-      #
       # char
       - pattern: (char $NARROW) = <... (short $LARGE) ...>
       - pattern: (char $NARROW) = <... (short int $LARGE) ...>

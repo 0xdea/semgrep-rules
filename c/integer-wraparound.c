@@ -29,6 +29,24 @@ int bad2()
 	}
 }
 
+u_char *make_table(unsigned int width, unsigned int height, u_char *init_row)
+{
+	unsigned int n;
+	int i;
+	u_char *buf;
+
+	n = width * height;
+
+	// ruleid: raptor-integer-wraparound
+	buf = (char *)malloc(n); 
+	if (!buf)
+		return NULL;
+   	for (i = 0; i < height; i++)
+		memcpy(&buf[i*width], init_row, width);
+
+	return buf; 
+}
+
 int main() 
 {
 	printf("Hello, World!");

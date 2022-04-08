@@ -34,9 +34,31 @@ rules:
             pattern-either:
               - pattern: malloc
               - pattern: valloc
+      - patterns:
+        - pattern: $FUN($N)
+        - pattern-inside: |
+            $N = $X * $Y;
+            ...
+        - metavariable-pattern:
+            metavariable: $FUN
+            pattern-either:
+              - pattern: malloc
+              - pattern: valloc
       # calloc, realloc, reallocf, aligned_alloc
       - patterns:
         - pattern: $FUN($ARG1, $X * $Y)
+        - metavariable-pattern:
+            metavariable: $FUN
+            pattern-either:
+              - pattern: calloc
+              - pattern: realloc
+              - pattern: reallocf
+              - pattern: aligned_alloc
+      - patterns:
+        - pattern: $FUN($ARG1, $N)
+        - pattern-inside: |
+            $N = $X * $Y;
+            ...
         - metavariable-pattern:
             metavariable: $FUN
             pattern-either:

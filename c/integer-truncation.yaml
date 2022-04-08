@@ -10,8 +10,7 @@ rules:
       # NOTE: the deep expression operator is necessary to catch some
       # matches because C/C++ integer promotions do not seem entirely
       # supported by Semgrep; this may generate false positives.
-      # NOTE: some types and use cases (e.g., comparisons, function
-      # returns) are not covered.
+      # NOTE: some types and use cases (e.g., comparisons) are not covered.
     message: >-
       Truncation errors occur when a primitive is cast to a primitive of a
       smaller size and data is lost in the conversion.
@@ -29,7 +28,7 @@ rules:
       - c
       - cpp
     pattern-either:
-      # char
+      # char: assignments
       - pattern: (char $NARROW) = <... (short $LARGE) ...>
       - pattern: (char $NARROW) = <... (short int $LARGE) ...>
       - pattern: (char $NARROW) = <... (unsigned short $LARGE) ...>
@@ -41,7 +40,26 @@ rules:
       - pattern: (char $NARROW) = <... (long int $LARGE) ...>
       - pattern: (char $NARROW) = <... (unsigned long $LARGE) ...>
       - pattern: (char $NARROW) = <... (unsigned long int $LARGE) ...>
-      # short
+      # char: some common function returns
+      - pattern: |
+          char $FUN(...)
+          {
+          ...
+          return (short $LARGE);
+          }
+      - pattern: |
+          char $FUN(...)
+          {
+          ...
+          return (int $LARGE);
+          }
+      - pattern: |
+          char $FUN(...)
+          {
+          ...
+          return (long $LARGE);
+          }
+      # short: assignments
       - pattern: (short $NARROW) = <... (unsigned short $LARGE) ...>
       - pattern: (short int $NARROW) = <... (unsigned short int $LARGE) ...>
       - pattern: (short $NARROW) = <... (int $LARGE) ...>
@@ -58,13 +76,33 @@ rules:
       - pattern: (unsigned short int $NARROW) = <... (long int $LARGE) ...>
       - pattern: (unsigned short $NARROW) = <... (unsigned long $LARGE) ...>
       - pattern: (unsigned short int $NARROW) = <... (unsigned long int $LARGE) ...>
-      # int
+      # short: some common function returns
+      - pattern: |
+          short $FUN(...)
+          {
+          ...
+          return (int $LARGE);
+          }
+      - pattern: |
+          short $FUN(...)
+          {
+          ...
+          return (long $LARGE);
+          }
+      # int: assignments
       - pattern: (int $NARROW) = <... (unsigned $LARGE) ...>
       - pattern: (int $NARROW) = <... (unsigned int $LARGE) ...>
       - pattern: (int $NARROW) = <... (long $LARGE) ...>
       - pattern: (int $NARROW) = <... (long int $LARGE) ...>
       - pattern: (int $NARROW) = <... (unsigned long $LARGE) ...>
       - pattern: (int $NARROW) = <... (unsigned long int $LARGE) ...>
-      # long
+      # short: some common function returns
+      - pattern: |
+          int $FUN(...)
+          {
+          ...
+          return (long $LARGE);
+          }
+      # long: assignments
       - pattern: (long $NARROW) = <... (unsigned long $LARGE) ...>
       - pattern: (long int $NARROW) = <... (unsigned long int $LARGE) ...>

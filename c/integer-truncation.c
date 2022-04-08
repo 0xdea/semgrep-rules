@@ -32,6 +32,13 @@ int test_func()
 	printf("Int MAXINT: %d\nShort MAXINT: %d\n", intPrimitive, shortPrimitive);
 }
 
+// ruleid: raptor-integer-truncation
+char func(void)
+{
+	int a = 42;
+	return a; 
+}
+
 int main() 
 {
 	printf("Hello, World!");

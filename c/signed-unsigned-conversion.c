@@ -133,6 +133,29 @@ int disaster()
 	snprintf(dst, len, "%s", src);
 }
 
+int watch_dns_ptr()
+{
+	char *indx;
+	int count;
+	char nameStr[256];
+
+	// ...
+	memset(nameStr, '\0', sizeof(nameStr));
+	// ...
+	indx = (char *)(pkt + rr_offset); 
+	count = (char)*indx;
+
+	while (count) {
+		(char *)indx++;
+		// ruleid: raptor-signed-unsigned-conversion
+		strncat(nameStr, (char *)indx, count); 
+		indx += count;
+		count = (char)*indx;
+		strncat(nameStr, ".", sizeof(nameStr) - strlen(nameStr)); 
+	}
+	nameStr[strlen(nameStr) - 1] = '\0';
+}
+
 int main() 
 {
 	printf("Hello, World!");

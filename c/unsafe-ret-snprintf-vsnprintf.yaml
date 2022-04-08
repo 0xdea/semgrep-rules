@@ -20,7 +20,11 @@ rules:
       - c
       - cpp
     pattern-either:
+      # =
       - pattern: $RET = snprintf(...)
       - pattern: $RET = vsnprintf(...)
+      # +=
+      - pattern: $RET += snprintf(...)
+      - pattern: $RET += vsnprintf(...)
       # swprintf() and vswprintf() return a negative value if n or more 
       # widechars were requested to be written, thus behaving more safely

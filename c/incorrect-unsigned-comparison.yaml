@@ -1,0 +1,42 @@
+rules:
+  - id: raptor-incorrect-unsigned-comparison.yaml
+    metadata:
+      author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      references:
+        - https://cwe.mitre.org/data/definitions/697
+        - https://g.co/kgs/PCHQjJ
+      confidence: HIGH
+      # NOTE: some types are not covered.
+    message: >-
+      The software compares two entities in a security-relevant context,
+      but the comparison is incorrect, which may lead to resultant
+      weaknesses.
+      Checking if an unsigned variable is negative makes no sense and is
+      usually a good indication that something is probably wrong with the
+      code.
+    severity: WARNING
+    languages:
+      - c
+      - cpp
+    pattern-either:
+      # < (always false)
+      - pattern: (unsigned short $UNSIGNED) < 0
+      - pattern: (unsigned short int $UNSIGNED) < 0
+      - pattern: (unsigned int $UNSIGNED) < 0
+      - pattern: (unsigned long $UNSIGNED) < 0
+      - pattern: (unsigned long int $UNSIGNED) < 0
+      - pattern: (size_t $UNSIGNED) < 0
+      # <=
+      - pattern: (unsigned short $UNSIGNED) <= 0
+      - pattern: (unsigned short int $UNSIGNED) <= 0
+      - pattern: (unsigned int $UNSIGNED) <= 0
+      - pattern: (unsigned long $UNSIGNED) <= 0
+      - pattern: (unsigned long int $UNSIGNED) <= 0
+      - pattern: (size_t $UNSIGNED) <= 0
+      # >= (always true)
+      - pattern: (unsigned short $UNSIGNED) >= 0
+      - pattern: (unsigned short int $UNSIGNED) >= 0
+      - pattern: (unsigned int $UNSIGNED) >= 0
+      - pattern: (unsigned long $UNSIGNED) >= 0
+      - pattern: (unsigned long int $UNSIGNED) >= 0
+      - pattern: (size_t $UNSIGNED) >= 0

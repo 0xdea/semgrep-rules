@@ -31,6 +31,7 @@ See also: https://semgrep.dev/r
 * [**write-into-stack-buffer**](https://github.com/0xdea/semgrep-rules/blob/main/c/write-into-stack-buffer.yaml). Direct writes into buffers allocated on the stack.
 
 ### integer overflows
+* [**incorrect-unsigned-comparison**](https://github.com/0xdea/semgrep-rules/blob/main/c/incorrect-unsigned-comparison). Checking if an unsigned variable is negative.
 * [**signed-unsigned-conversion**](https://github.com/0xdea/semgrep-rules/blob/main/c/signed-unsigned-conversion.yaml). Potential signed/unsigned conversion errors.
 * [**integer-truncation**](https://github.com/0xdea/semgrep-rules/blob/main/c/integer-truncation.yaml). Potential integer truncation errors.
 * [**integer-wraparound**](https://github.com/0xdea/semgrep-rules/blob/main/c/integer-wraparound.yaml). Potential integer wraparound errors.

@@ -6,6 +6,7 @@ rules:
         - https://cwe.mitre.org/data/definitions/415
         - https://github.com/struct/mms
       confidence: MEDIUM
+      # NOTE: custom wrappers are not covered.
     message: >-
       The software calls free() twice on the same memory address,
       potentially leading to modification of unexpected memory locations.

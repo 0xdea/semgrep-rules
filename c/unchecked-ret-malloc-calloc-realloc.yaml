@@ -7,7 +7,8 @@ rules:
         - https://cwe.mitre.org/data/definitions/690
         - https://github.com/struct/mms
       confidence: MEDIUM
-      # NOTE: reallocf(), valloc(), aligned_alloc() are not covered.
+      # NOTE: reallocf(), valloc(), aligned_alloc(), and custom wrappers
+      # are not covered.
     message: >-
       The software does not check the return value from a method or
       function, which can prevent it from detecting unexpected states and

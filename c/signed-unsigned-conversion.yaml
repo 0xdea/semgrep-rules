@@ -6,6 +6,7 @@ rules:
         - https://cwe.mitre.org/data/definitions/195
         - https://cwe.mitre.org/data/definitions/196
         - https://cwe.mitre.org/data/definitions/194
+        - https://cwe.mitre.org/data/definitions/191
         - https://cwe.mitre.org/data/definitions/681
         - https://github.com/struct/mms
       confidence: MEDIUM

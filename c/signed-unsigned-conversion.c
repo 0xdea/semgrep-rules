@@ -116,6 +116,14 @@ void test_func(int argc, char **argv)
 	printf("Path is: %s\n", path);
 }
 
+int blowup_stack()
+{
+	int a = 5, b = 6;
+	// ruleid: raptor-signed-unsigned-conversion
+	size_t len = a - b;
+	char buf[len];
+}
+
 int main() 
 {
 	printf("Hello, World!");

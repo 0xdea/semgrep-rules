@@ -30,6 +30,11 @@ rules:
       - pattern: for ($TYPE $I = 0; <... $I <= $SIZE ...>; <... $I++ ...>) ...
       - pattern: while (<... $I <= $SIZE ...>) ...
       - pattern: do ... while (<... $I <= $SIZE ...>);
+      # strlen vs. sizeof
+      - pattern: strlen($SRC) > sizeof($DST)
+      - pattern: strlen($SRC) <= sizeof($DST)
+      - pattern: sizeof($DST) < strlen($SRC)
+      - pattern: sizeof($DST) >= strlen($SRC)
       # potential strncat misuse
       - patterns:
         - pattern: strncat($DST, $SRC, $LEN)

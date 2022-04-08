@@ -99,6 +99,18 @@ void process_string(char *src)
 	return;
 }
 
+int get_user(char *user) 
+{
+	char buf[1024];
+
+	// ruleid: raptor-off-by-one
+	if (strlen(user) > sizeof(buf)) 
+		die("error: user string too long\n");
+
+   	strcpy(buf, user);
+	// ... 
+}
+
 int main() 
 {
 	printf("Hello, World!");

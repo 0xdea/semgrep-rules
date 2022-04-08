@@ -5,6 +5,7 @@ rules:
       references:
         - https://cwe.mitre.org/data/definitions/252
         - https://cwe.mitre.org/data/definitions/690
+        - https://g.co/kgs/PCHQjJ
         - https://github.com/struct/mms
       confidence: MEDIUM
       # NOTE: reallocf(), valloc(), aligned_alloc(), and custom wrappers

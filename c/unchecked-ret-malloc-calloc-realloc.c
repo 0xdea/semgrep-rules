@@ -71,6 +71,25 @@ int test_func2()
 	s[user_offset] = 0xff;
 }
 
+int append_data(struct databuf *buf, char *src, size_t len) 
+{
+	size_t new_size = buf->used + len + EXTRA;
+
+	if (new_size < len)
+		return -1;
+
+	if (new_size > buf->allocated_length) {
+		// ruleid: raptor-unchecked-ret-malloc-calloc-realloc
+		buf->data = (char *)realloc(buf->data, new_size);
+		buf->allocated_length = new_size; 
+	}
+
+	memcpy(buf->data + buf->used, src, len);
+	buf->used += len;
+
+	return 0; 
+}
+
 int main() 
 {
 	printf("Hello, World!");

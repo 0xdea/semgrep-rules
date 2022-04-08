@@ -111,6 +111,20 @@ int get_user(char *user)
 	// ... 
 }
 
+int get_mac(int fd, struct session *session) 
+{
+	unsigned int i, n;
+
+	n = read_network_integer(fd);
+   	if (n > MAX_MAC)
+		return 1;
+
+	// ruleid: raptor-off-by-one
+	for (i = 0; i <= n; i++)
+		session->mac[i] = read_network_integer(fd);
+	return 0; 
+}
+
 int main() 
 {
 	printf("Hello, World!");

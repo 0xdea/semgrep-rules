@@ -4,6 +4,7 @@ rules:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       references:
         - https://cwe.mitre.org/data/definitions/193
+        - https://g.co/kgs/PCHQjJ
         - https://github.com/struct/mms
       confidence: MEDIUM
       # NOTE: heap-allocated buffers and some functions are not covered.

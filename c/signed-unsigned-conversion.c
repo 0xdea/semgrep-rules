@@ -124,6 +124,15 @@ int blowup_stack()
 	char buf[len];
 }
 
+int disaster()
+{
+	int len;
+
+	len = get_len_field(); 
+	// ruleid: raptor-signed-unsigned-conversion
+	snprintf(dst, len, "%s", src);
+}
+
 int main() 
 {
 	printf("Hello, World!");

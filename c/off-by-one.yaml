@@ -24,10 +24,11 @@ rules:
             ...
             $BUF[$SIZE] = $EXPR;
       # suspicious loops
-      - pattern: for ($I = 0; $I <= $SIZE; $I++) { ... }
-      - pattern: for ($TYPE $I = 0; $I <= $SIZE; $I++) { ... }
-      - pattern: while ($I <= $SIZE) { ... }
-      - pattern: do {...} while ($I <= $SIZE);
+      - pattern: for (<... $I = 0 ...>; <... $I <= $SIZE ...>; <... $I++ ...>) ...
+      # <... $TYPE $I = 0 ...> is not supported by Semgrep
+      - pattern: for ($TYPE $I = 0; <... $I <= $SIZE ...>; <... $I++ ...>) ...
+      - pattern: while (<... $I <= $SIZE ...>) ...
+      - pattern: do ... while (<... $I <= $SIZE ...>);
       # potential strncat misuse
       - patterns:
         - pattern: strncat($DST, $SRC, $LEN)

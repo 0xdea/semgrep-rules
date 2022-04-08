@@ -86,6 +86,19 @@ int processRawStr(uint8_t *s, size_t sz)
 	// ...
 }
 
+void process_string(char *src) 
+{
+	char dest[32];
+
+	// ruleid: raptor-off-by-one
+	for (i = 0; src[i] && (i <= sizeof(dest)); i++)
+		dest[i] = src[i];
+
+	// ...
+
+	return;
+}
+
 int main() 
 {
 	printf("Hello, World!");

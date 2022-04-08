@@ -7,7 +7,7 @@ rules:
         - https://github.com/struct/mms
       confidence: MEDIUM
       # NOTE: static variables matching apparently is not supported by Semgrep.
-      # NOTE: multiple pointer assignment is not covered.
+      # NOTE: multiple pointer assignments are not covered.
     message: >-
       A function returns the address of a stack variable, which will cause
       unintended program behavior, typically in the form of a crash.

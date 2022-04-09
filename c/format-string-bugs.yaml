@@ -6,6 +6,7 @@ rules:
         - https://cwe.mitre.org/data/definitions/134
         - https://julianor.tripod.com/bc/formatstring-1.2.pdf
         - http://phrack.org/issues/70/13.html#article
+        - https://g.co/kgs/PCHQjJ
       confidence: MEDIUM
       # NOTE: generic va_list matching for custom functions is not covered.
     message: >-

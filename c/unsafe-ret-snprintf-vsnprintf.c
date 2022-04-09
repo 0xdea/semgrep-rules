@@ -26,6 +26,29 @@ int bad()
 	ptr += snprintf(ptr, SIZE(buf, ptr), "pass: %s\n", password);
 }
 
+int log(int fd, char *fmt, ...) 
+{
+	char buffer[BUFSIZE]; 
+	int n;
+	va_list ap;
+
+	va_start(ap, fmt);
+
+	// ruleid: raptor-unsafe-ret-snprintf-vsnprintf
+	n = vsnprintf(buffer, sizeof(buffer), fmt, ap);
+
+	if (n >= BUFSIZE - 2) 
+		buffer[sizeof(buffer) - 2] = '\0';
+
+	strcat(buffer, "\n");
+
+	va_end(ap);
+
+	write_log(fd, buffer, strlen(buffer));
+
+	return 0; 
+}
+
 int main() 
 {
 	printf("Hello, World!");

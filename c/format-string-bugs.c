@@ -38,6 +38,19 @@ int log_stuff(char *string)
 	syslog(LOG_ERR, "%s", string);
 }
 
+int log_error(char *fmt, ...) 
+{
+	char buf[BUFSIZE];
+	va_list ap;
+
+	va_start(ap, fmt);
+	// ruleid: raptor-format-string-bugs
+	vsnprintf(buf, sizeof(buf), fmt, ap); 
+	va_end(ap);
+	// ruleid: raptor-format-string-bugs
+	syslog(LOG_NOTICE, buf);
+}
+
 void printWrapper(char *string) 
 {
 	// ruleid: raptor-format-string-bugs

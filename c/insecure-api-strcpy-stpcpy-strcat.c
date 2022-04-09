@@ -53,6 +53,76 @@ int test_func()
 	// ...
 }
 
+char *read_command(int sockfd) 
+{
+	char username[32], buffer[1024]; 
+	int n;
+
+	if ((n = read(sockfd, buffer, sizeof(buffer) - 1) <= 0)) 
+		return NULL;
+	buffer[n] = '\0';
+
+	switch (buffer[0]) { 
+	case 'U':
+		// ruleid: raptor-insecure-api-strcpy-stpcpy-strcat
+		strcpy(username, &buffer[1]);
+		break;
+	// ... 
+	}
+}
+
+int process_email(char *email) 
+{
+	char username[32], domain[128], *delim; 
+	int c;
+
+	delim = strchr(email, '@');
+
+	if (!delim)
+		return -1;
+
+   	*delim++ = '\0';
+
+	if (strlen(email) >= sizeof(username)) 
+		return -1;
+
+	// ruleid: raptor-insecure-api-strcpy-stpcpy-strcat
+	strcpy(username, email);
+
+	if (strlen(delim) >= sizeof(domain)) 
+		return -1;
+
+	// ruleid: raptor-insecure-api-strcpy-stpcpy-strcat
+	strcpy(domain, delim); 
+	
+	if (!strchr(delim, '.'))
+		// ruleid: raptor-insecure-api-strcpy-stpcpy-strcat
+		strcat(domain, default_domain);
+
+	// ...
+}
+
+int process_address(int sockfd) 
+{
+	char username[256], domain[256], netbuf[256], *ptr; 
+	
+	read_data(sockfd, netbuf, sizeof(netbuf));
+
+	ptr = strchr(netbuf, ':');
+
+	if (ptr)
+       		*ptr++ = '\0';
+
+	// ruleid: raptor-insecure-api-strcpy-stpcpy-strcat
+   	strcpy(username, netbuf);
+
+	if (ptr)
+		// ruleid: raptor-insecure-api-strcpy-stpcpy-strcat
+		strcpy(domain, ptr);
+
+	// ... 
+}
+
 int main() 
 {
 	printf("Hello, World!");

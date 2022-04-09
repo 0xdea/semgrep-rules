@@ -6,6 +6,7 @@ rules:
         - https://cwe.mitre.org/data/definitions/676
         - https://cwe.mitre.org/data/definitions/78
         - https://cwe.mitre.org/data/definitions/88
+        - https://g.co/kgs/PCHQjJ
       confidence: MEDIUM
     message: >-
       The program invokes a potentially dangerous function that could

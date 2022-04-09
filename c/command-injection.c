@@ -31,6 +31,21 @@ int invoke2(char *string)
 	popen(string, "r");
 }
 
+int send_mail(char *user) 
+{
+	char buf[1024];
+	FILE *fp;
+
+	snprintf(buf, sizeof(buf), "/usr/bin/sendmail -s \"hi\" %s", user);
+
+	// ruleid: raptor-command-injection
+   	fp = popen(buf, "w");
+
+   	if (fp == NULL)
+       		return 1;
+	// ...
+}
+
 int main() 
 {
 	printf("Hello, World!");

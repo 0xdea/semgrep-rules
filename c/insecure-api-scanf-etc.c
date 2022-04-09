@@ -38,6 +38,23 @@ int test_func()
 	scanf ("%s", last_name);
 }
 
+int read_ident(int sockfd) 
+{
+	int sport, cport;
+	char user[32], rtype[32], addinfo[32]; 
+	char buffer[1024];
+
+	if (read(sockfd, buffer, sizeof(buffer)) <= 0) { 
+		perror("read: %m");
+		return 1;
+	}
+
+	buffer[sizeof(buffer) - 1] = '\0';
+	// ruleid: raptor-insecure-api-scanf-etc
+	sscanf(buffer, "%d:%d:%s:%s:%s", &sport, &cport, rtype, user, addinfo);
+	// ... 
+}
+
 // https://github.com/pedrib/PoC/blob/master/advisories/Pwn2Own/Tokyo_2019/tokyo_drift/tokyo_drift.md
 undefined4 sa_setBlockName(char *block_name,int len)
 {

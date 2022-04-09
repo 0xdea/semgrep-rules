@@ -97,6 +97,14 @@ int bad7()
 	}
 }
 
+int bad8(int j)
+{
+	int i = 10;
+
+	// ruleid: raptor-typos
+	i =+ j;
+}
+
 int isValid(int value) 
 {
 	// ruleid: raptor-typos

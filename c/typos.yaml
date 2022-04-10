@@ -50,9 +50,9 @@ rules:
         - pattern-not-inside: if (<... ($EXPR1 | $EXPR2) <= $EXPR ...>) ...
         - pattern-not-inside: if (<... ($EXPR1 | $EXPR2) > $EXPR ...>) ...
         - pattern-not-inside: if (<... ($EXPR1 | $EXPR2) >= $EXPR ...>) ...
-      # =+ instead of += and =- instead of -=
+      # =+ instead of += (and =- instead of -=)
       - pattern: $EXPR1 =+ $EXPR2
-      - pattern: $EXPR1 =- $EXPR2
+        # - pattern: $EXPR1 =- $EXPR2
       # ; at the end of if() or for() statement
       - pattern: if ($COND);
       - pattern: for ($EXPR1; $EXPR2; $EXPR3);

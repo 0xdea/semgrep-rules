@@ -12,6 +12,7 @@ rules:
         - https://g.co/kgs/PCHQjJ
         - https://github.com/struct/mms
         - http://www.phrack.org/issues/60/10.html#article
+        - https://docs.microsoft.com/en-us/cpp/sanitizers/asan-error-examples
       confidence: MEDIUM
       # NOTE: the deep expression operator is necessary to catch some
       # matches because C/C++ integer promotions do not seem entirely

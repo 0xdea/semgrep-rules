@@ -47,6 +47,23 @@ u_char *make_table(unsigned int width, unsigned int height, u_char *init_row)
 	return buf; 
 }
 
+// http://www.phrack.org/issues/60/10.html#article
+int myfunction(int *array, int len){
+        int *myarray, i;
+
+	// ruleid: raptor-integer-wraparound
+        myarray = malloc(len * sizeof(int));
+        if(myarray == NULL){
+            return -1;
+        }
+
+        for(i = 0; i < len; i++){
+            myarray[i] = array[i];
+        }
+
+        return myarray;
+}
+
 int main() 
 {
 	printf("Hello, World!");

@@ -4,6 +4,7 @@ rules:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       references:
         - https://cwe.mitre.org/data/definitions/190
+        - http://www.phrack.org/issues/60/10.html#article
       confidence: MEDIUM
     message: >-
       The software performs a calculation that can produce an integer

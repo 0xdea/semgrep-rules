@@ -65,6 +65,18 @@ parse_dnssl(char* data, int datalen)
     return nssl;
 }
 
+// http://www.phrack.org/issues/60/10.html#article
+int copy_something(char *buf, int len){
+        char kbuf[800];
+
+        if(len > sizeof(kbuf)){
+            return -1;
+        }
+
+        // ruleid: raptor-signed-unsigned-conversion
+        return memcpy(kbuf, buf, len);
+}
+
 // ruleid: raptor-signed-unsigned-conversion
 unsigned int readdata() 
 {

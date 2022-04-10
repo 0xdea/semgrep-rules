@@ -1,0 +1,35 @@
+rules:
+  - id: raptor-incorrect-use-of-strncat
+    metadata:
+      author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      references:
+        - https://g.co/kgs/PCHQjJ
+      confidence: HIGH
+    message: >-
+      The strncat() function is intended to be a safe alternative to the
+      strcat() function.
+      However, strncat() is nearly as dangerous as strcat(), in that it's
+      quite easy to misuse. Specifically, the size parameter can be
+      confusing, as it indicates the amount of space left in the buffer.
+      The first common mistake application developers make is supplying the
+      size of the entire buffer instead of the size remaining in the
+      buffer.
+      A more subtle mistake can be made. The size parameter needs to be the
+      amount of space left in the buffer less one; otherwise, the NUL byte
+      is written one byte past the end of the buffer.
+    severity: ERROR
+    languages:
+      - c
+      - cpp
+    pattern-either:
+      # size of array
+      - patterns:
+        - pattern: strncat($DST, $SRC, $LEN)
+        - pattern-inside: |
+            $TYPE $DST[$LEN];
+            ...
+      # sizeof operator
+      - pattern: strncat($DST, $SRC, sizeof($DST))
+      # off-by-one 
+      # see also off-by-one.yaml for a slightly different pattern
+      - pattern: strncat($DST, $SRC, sizeof($DST) - strlen($DST))

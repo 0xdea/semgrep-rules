@@ -5,7 +5,7 @@ rules:
       references:
         - https://cwe.mitre.org/data/definitions/806
         - https://github.com/0xdea/advisories/blob/master/2020-07-solaris-whodo-w.txt
-      confidence: HIGH
+      confidence: MEDIUM
     message: >-
       The software uses the size of a source buffer when reading from or
       writing to a destination buffer, which may cause it to access memory
@@ -31,14 +31,10 @@ rules:
               - pattern: strlcpy
       # sizeof operator
       - patterns:
-        - pattern: $FUN($DST, $SRC, $LEN)
+        - pattern: $FUN($DST, $SRC, <... $SRC ...>)
         - metavariable-pattern:
             metavariable: $FUN
             pattern-either:
               - pattern: strncpy
               - pattern: stpncpy
               - pattern: strlcpy
-        - metavariable-pattern:
-            metavariable: $LEN
-            pattern-either:
-              - pattern: sizeof($SRC)

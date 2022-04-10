@@ -7,6 +7,7 @@ rules:
         - https://github.com/struct/mms
         - https://docs.microsoft.com/en-us/cpp/sanitizers/asan-error-examples
       confidence: MEDIUM
+      # NOTE: C++ delete and delete[] operators are not covered.
     message: >-
       Referencing memory after it has been freed can cause a program to
       crash, use unexpected values, or execute code.

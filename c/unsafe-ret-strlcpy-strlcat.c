@@ -34,7 +34,7 @@ int qualify_username(char *username)
 
 	// ruleid: raptor-unsafe-ret-strlcpy-strlcat
 	length = strlcpy(buf, username, sizeof(buf));
-	strncat(buf, "@127.0.0.1", sizeof(buf) length);
+	strncat(buf, "@127.0.0.1", sizeof(buf) - length);
    	// ...
 }
 

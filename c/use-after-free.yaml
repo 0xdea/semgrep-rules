@@ -24,6 +24,7 @@ rules:
       - c
       - cpp
     pattern-either:
+      # function call
       - patterns:
         - pattern: |
             free($PTR);
@@ -40,6 +41,7 @@ rules:
             metavariable: $FUN
             patterns:
               - pattern-not: free
+      # function call with struct member pointer
       - patterns:
         - pattern: |
             free($PTR);
@@ -51,6 +53,7 @@ rules:
             $PTR = $EXPR;
             ...
             $FUN(..., $PTR->$MEM, ...);
+      # struct member function pointer
       - patterns:
         - pattern: |
             free($PTR);
@@ -62,6 +65,7 @@ rules:
             $PTR = $EXPR;
             ...
             $PTR->$FUN(...);
+      # return pointer
       - patterns:
         - pattern: |
             free($PTR);
@@ -73,6 +77,7 @@ rules:
             $PTR = $EXPR;
             ...
             return $PTR;
+      # return array pointer
       - patterns:
         - pattern: |
             free($PTR);

@@ -49,6 +49,10 @@ rules:
       - patterns:
         # address of variable
         - pattern: return &$VAR;
-        - pattern-inside: |
-            $TYPE $VAR;
-            ...
+        - pattern-either:
+          - pattern-inside: |
+              $TYPE $VAR;
+              ...
+          - pattern-inside: |
+              $TYPE $VAR = EXPR;
+              ...

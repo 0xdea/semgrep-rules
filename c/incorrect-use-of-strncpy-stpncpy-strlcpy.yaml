@@ -20,15 +20,19 @@ rules:
       # size of array
       - patterns:
         - pattern: $FUN($DST, $SRC, $LEN)
-        - pattern-inside: |
-            $TYPE $SRC[$LEN];
-            ...
         - metavariable-pattern:
             metavariable: $FUN
             pattern-either:
               - pattern: strncpy
               - pattern: stpncpy
               - pattern: strlcpy
+        - pattern-either:
+          - pattern-inside: |
+              $TYPE $SRC[$LEN];
+              ...
+          - pattern-inside: |
+              $TYPE $SRC[$LEN] = $EXPR;
+              ...
       # sizeof operator
       - patterns:
         - pattern: $FUN($DST, $SRC, <... $SRC ...>)

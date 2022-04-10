@@ -25,9 +25,13 @@ rules:
       # size of array
       - patterns:
         - pattern: strncat($DST, $SRC, $LEN)
-        - pattern-inside: |
-            $TYPE $DST[$LEN];
-            ...
+        - pattern-either:
+          - pattern-inside: |
+              $TYPE $DST[$LEN];
+              ...
+          - pattern-inside: |
+              $TYPE $DST[$LEN] = $EXPR;
+              ...
       # sizeof operator
       - pattern: strncat($DST, $SRC, sizeof($DST))
       # off-by-one 

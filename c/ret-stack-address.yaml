@@ -5,6 +5,7 @@ rules:
       references:
         - https://cwe.mitre.org/data/definitions/562
         - https://github.com/struct/mms
+        - https://docs.microsoft.com/en-us/cpp/sanitizers/asan-error-examples
       confidence: MEDIUM
       # NOTE: static variables matching apparently is not supported by Semgrep.
       # NOTE: multiple pointer assignments are not covered.

@@ -5,7 +5,9 @@ rules:
       references:
         - https://cwe.mitre.org/data/definitions/415
         - https://github.com/struct/mms
+        - https://docs.microsoft.com/en-us/cpp/sanitizers/asan-error-examples
       confidence: MEDIUM
+      # NOTE: C++ delete and delete[] operators are not covered.
     message: >-
       The software calls free() twice on the same memory address,
       potentially leading to modification of unexpected memory locations.

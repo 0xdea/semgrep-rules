@@ -6,6 +6,7 @@ rules:
         - https://cwe.mitre.org/data/definitions/676
         - https://cwe.mitre.org/data/definitions/1325
         - https://nullprogram.com/blog/2019/10/28/
+        - https://docs.microsoft.com/en-us/cpp/sanitizers/asan-error-examples
       confidence: HIGH
     message: >-
       The program invokes a potentially dangerous function that could

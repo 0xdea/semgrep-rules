@@ -76,6 +76,17 @@ int good3(char *string)
 	}
 }
 
+int test_func()
+{
+	int id_sequence[3];
+
+	id_sequence[0] = 123;
+	id_sequence[1] = 234;
+	id_sequence[2] = 345;
+	// ok: raptor-off-by-one
+	id_sequence[3] = 456;
+}
+
 int processRawStr(uint8_t *s, size_t sz) 
 {
 	uint8_t buf[1024];

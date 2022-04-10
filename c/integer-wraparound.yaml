@@ -4,6 +4,8 @@ rules:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       references:
         - https://cwe.mitre.org/data/definitions/190
+        - https://cwe.mitre.org/data/definitions/128
+        - https://cwe.mitre.org/data/definitions/131
         - http://www.phrack.org/issues/60/10.html#article
       confidence: MEDIUM
     message: >-

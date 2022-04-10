@@ -32,6 +32,22 @@ int test_func()
 	return 0;
 }
 
+int test_func2(int argc, char **argv)
+{
+	char Filename[256];
+	char Pattern[32];
+
+	// ...
+
+	// ruleid: raptor-unterminated-string-strncpy-stpncpy
+	strncpy(Filename, argv[1], sizeof(Filename));
+	// ruleid: raptor-unterminated-string-strncpy-stpncpy
+	strncpy(Pattern, argv[2], sizeof(Pattern));
+
+	printf("Searching file: %s for the pattern: %s\n", Filename, Pattern);
+	Scan_File(Filename, Pattern);
+}
+
 int authenticate(int sockfd) 
 {
 	char user[1024], *buffer; 

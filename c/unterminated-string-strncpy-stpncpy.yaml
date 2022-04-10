@@ -4,6 +4,7 @@ rules:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       references:
         - https://cwe.mitre.org/data/definitions/170
+        - https://cwe.mitre.org/data/definitions/126
         - https://g.co/kgs/PCHQjJ
       confidence: MEDIUM
     # NOTE: other functions that do not null-terminate the destination

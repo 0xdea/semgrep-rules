@@ -7,6 +7,7 @@ rules:
         - https://cwe.mitre.org/data/definitions/128
         - https://cwe.mitre.org/data/definitions/131
         - http://www.phrack.org/issues/60/10.html#article
+        - https://docs.microsoft.com/en-us/cpp/sanitizers/asan-error-examples
       confidence: MEDIUM
     message: >-
       The software performs a calculation that can produce an integer

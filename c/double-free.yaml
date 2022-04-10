@@ -8,6 +8,7 @@ rules:
         - https://docs.microsoft.com/en-us/cpp/sanitizers/asan-error-examples
       confidence: MEDIUM
       # NOTE: C++ delete and delete[] operators are not covered.
+      # NOTE. Variations on the free() argument are not covered.
     message: >-
       The software calls free() twice on the same memory address,
       potentially leading to modification of unexpected memory locations.

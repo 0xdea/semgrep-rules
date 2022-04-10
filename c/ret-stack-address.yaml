@@ -54,5 +54,5 @@ rules:
               $TYPE $VAR;
               ...
           - pattern-inside: |
-              $TYPE $VAR = EXPR;
+              $TYPE $VAR = $EXPR;
               ...

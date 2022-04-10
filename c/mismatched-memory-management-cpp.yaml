@@ -6,6 +6,7 @@ rules:
         - https://cwe.mitre.org/data/definitions/762
         - https://cwe.mitre.org/data/definitions/590
         - https://github.com/struct/mms
+        - https://docs.microsoft.com/en-us/cpp/sanitizers/asan-error-examples
       confidence: LOW
       # NOTE: valloc(), reallocf(), aligned_alloc(), and custom wrappers
       # are not covered.

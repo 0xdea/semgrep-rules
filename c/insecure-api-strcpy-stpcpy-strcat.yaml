@@ -7,7 +7,7 @@ rules:
         - https://cwe.mitre.org/data/definitions/120
         - https://cwe.mitre.org/data/definitions/787
         - https://g.co/kgs/PCHQjJ
-      confidence: MEDIUM
+      confidence: HIGH
     message: >-
       The program invokes a potentially dangerous function that could
       introduce a vulnerability if it is used incorrectly, but the function
@@ -20,7 +20,7 @@ rules:
       without restricting how much is copied. Other variants exist, but the
       existence of a classic overflow strongly suggests that the programmer
       is not considering even the most basic of security protections.
-    severity: ERROR
+    severity: WARNING
     languages:
       - c
       - cpp

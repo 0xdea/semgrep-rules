@@ -6,7 +6,7 @@ rules:
         - https://cwe.mitre.org/data/definitions/676
         - https://cwe.mitre.org/data/definitions/1325
         - https://nullprogram.com/blog/2019/10/28/
-      confidence: MEDIUM
+      confidence: HIGH
     message: >-
       The program invokes a potentially dangerous function that could
       introduce a vulnerability if it is used incorrectly, but the function
@@ -16,7 +16,7 @@ rules:
       memory. The allocation made may exceed the bounds of the stack, or
       even go further into other objects in memory, and alloca() cannot
       determine such an error.
-    severity: ERROR
+    severity: WARNING
     languages:
       - c
       - cpp

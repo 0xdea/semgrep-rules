@@ -57,6 +57,14 @@ int recvStr(char *str)
 	}
 }
 
+int* f(void) 
+{
+	int local_auto;
+
+	// ruleid: raptor-ret-stack-address
+	return &local_auto;
+}
+
 int main() 
 {
 	printf("Hello, World!");

@@ -17,6 +17,7 @@ int bad1()
 	// ...
 }
 
+// https://vulncat.fortify.com/
 int bad2()
 {
 	int nresp = packet_get_int();

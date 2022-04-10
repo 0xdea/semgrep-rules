@@ -168,6 +168,38 @@ int watch_dns_ptr()
 	nameStr[strlen(nameStr) - 1] = '\0';
 }
 
+// https://vulncat.fortify.com/
+void TypeConvert() {
+   char input[MAX];
+   char output[MAX];
+
+   fillBuffer(input);
+   int len = getInputLength();
+
+   if (len <= MAX) {
+      // ruleid: raptor-signed-unsigned-conversion
+      memcpy(output, input, len);
+   }
+   // ...
+}
+
+// https://vulncat.fortify.com/
+char* processNext(char* strm) 
+{
+	char buf[512];
+	int len = *(int*) strm;
+
+	strm += sizeof(len);
+	if (len <= 512) {
+      		// ruleid: raptor-signed-unsigned-conversion
+		memcpy(buf, strm, len);
+		process(buf);
+		return strm + len;
+	} else {
+		return -1;
+	}
+}
+
 int main() 
 {
 	printf("Hello, World!");

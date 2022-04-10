@@ -23,24 +23,31 @@ rules:
     languages:
       - c
       - cpp
-    patterns:
-      - pattern: return $PTR;
-      - pattern-either:
-        # array
+    pattern-either:
+      - patterns:
+        - pattern: return $PTR;
+        - pattern-either:
+          # array
+          - pattern-inside: |
+              $TYPE $PTR[$SIZE];
+              ...
+          - pattern-inside: |
+              $TYPE $PTR[$SIZE] = $EXPR;
+              ...
+          # pointer to array
+          - pattern-inside: |
+              $TYPE $ARR[$SIZE];
+              ...
+              $PTR = $ARR;
+              ...
+          - pattern-inside: |
+              $TYPE $ARR[$SIZE] = $EXPR;
+              ...
+              $PTR = $ARR;
+              ...
+      - patterns:
+        # address of variable
+        - pattern: return &$VAR;
         - pattern-inside: |
-            $TYPE $PTR[$SIZE];
-            ...
-        - pattern-inside: |
-            $TYPE $PTR[$SIZE] = $EXPR;
-            ...
-        # pointer to array
-        - pattern-inside: |
-            $TYPE $ARR[$SIZE];
-            ...
-            $PTR = $ARR;
-            ...
-        - pattern-inside: |
-            $TYPE $ARR[$SIZE] = $EXPR;
-            ...
-            $PTR = $ARR;
+            $TYPE $VAR;
             ...

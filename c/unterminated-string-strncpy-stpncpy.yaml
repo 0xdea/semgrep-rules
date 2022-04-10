@@ -6,6 +6,8 @@ rules:
         - https://cwe.mitre.org/data/definitions/170
         - https://g.co/kgs/PCHQjJ
       confidence: MEDIUM
+    # NOTE: other functions that do not null-terminate the destination
+    # buffer are not covered (e.g., read(), readlink(), etc.).
     message: >-
       The software does not terminate or incorrectly terminates a string or
       array with a NUL character or equivalent terminator.

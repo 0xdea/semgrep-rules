@@ -17,7 +17,7 @@ rules:
       A more subtle mistake can be made. The size parameter needs to be the
       amount of space left in the buffer less one; otherwise, the NUL byte
       is written one byte past the end of the buffer.
-    severity: ERROR
+    severity: WARNING
     languages:
       - c
       - cpp

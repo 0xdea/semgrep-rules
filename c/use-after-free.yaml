@@ -5,6 +5,7 @@ rules:
       references:
         - https://cwe.mitre.org/data/definitions/416
         - https://github.com/struct/mms
+        - https://docs.microsoft.com/en-us/cpp/sanitizers/asan-error-examples
       confidence: MEDIUM
     message: >-
       Referencing memory after it has been freed can cause a program to

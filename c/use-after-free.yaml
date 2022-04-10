@@ -62,3 +62,25 @@ rules:
             $PTR = $EXPR;
             ...
             $PTR->$FUN(...);
+      - patterns:
+        - pattern: |
+            free($PTR);
+            ...
+            return $PTR;
+        - pattern-not: |
+            free($PTR);
+            ...
+            $PTR = $EXPR;
+            ...
+            return $PTR;
+      - patterns:
+        - pattern: |
+            free($PTR);
+            ...
+            return $PTR[$POS];
+        - pattern-not: |
+            free($PTR);
+            ...
+            $PTR = $EXPR;
+            ...
+            return $PTR;

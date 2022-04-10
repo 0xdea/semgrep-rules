@@ -1,6 +1,15 @@
 // Marco Ivaldi <raptor@0xdeadbeef.info>
-// https://raw.githubusercontent.com/illumos/illumos-gate/61aaa916808c601f9ee36d96c05ee9dac211d09e/usr/src/cmd/whodo/whodo.c
 
+int test_func()
+{
+	char source[21] = "the character string";
+	char dest[12];
+
+	// ruleid: incorrect-use-of-strncpy-stpncpy-strlcpy
+	strncpy(dest, source, sizeof(source)-1);
+}
+
+// https://raw.githubusercontent.com/illumos/illumos-gate/61aaa916808c601f9ee36d96c05ee9dac211d09e/usr/src/cmd/whodo/whodo.c
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>

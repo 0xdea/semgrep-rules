@@ -31,10 +31,14 @@ rules:
               - pattern: strlcpy
       # sizeof operator
       - patterns:
-        - pattern: $FUN($DST, $SRC, sizeof($SRC))
+        - pattern: $FUN($DST, $SRC, $LEN)
         - metavariable-pattern:
             metavariable: $FUN
             pattern-either:
               - pattern: strncpy
               - pattern: stpncpy
               - pattern: strlcpy
+        - metavariable-pattern:
+            metavariable: $LEN
+            pattern-either:
+              - pattern: sizeof($SRC)

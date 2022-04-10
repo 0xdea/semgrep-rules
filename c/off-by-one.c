@@ -33,7 +33,7 @@ int bad2(char *string)
 	fullname[0] = '\0';
 
 	// ruleid: raptor-off-by-one
-	strncat(fullname, firstname, 20);
+	strncat(fullname, firstname, 40);
 }
 
 int good2(char *string)

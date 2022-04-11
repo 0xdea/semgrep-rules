@@ -5,7 +5,7 @@ int test_func()
 	char source[21] = "the character string";
 	char dest[12];
 
-	// ruleid: incorrect-use-of-strncpy-stpncpy-strlcpy
+	// ruleid: raptor-incorrect-use-of-strncpy-stpncpy-strlcpy
 	strncpy(dest, source, sizeof(source)-1);
 }
 
@@ -302,7 +302,7 @@ retry:
 		up->p_time = 0;
 		up->p_ctime = 0;
 		up->p_igintr = 0;
-		// ruleid: incorrect-use-of-strncpy-stpncpy-strlcpy
+		// ruleid: raptor-incorrect-use-of-strncpy-stpncpy-strlcpy
 		(void) strncpy(up->p_comm, info.pr_fname,
 		    sizeof (info.pr_fname));
 		up->p_args[0] = 0;

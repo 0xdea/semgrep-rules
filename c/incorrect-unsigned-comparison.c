@@ -6,7 +6,7 @@ int bad1()
 {
 	size_t uvar;
 
-	// ruleid: incorrect-unsigned-comparison
+	// ruleid: raptor-incorrect-unsigned-comparison
 	if (uvar < 0)
 		return 1;
 
@@ -17,7 +17,7 @@ int bad2()
 {
 	size_t uvar;
 
-	// ruleid: incorrect-unsigned-comparison
+	// ruleid: raptor-incorrect-unsigned-comparison
 	if (uvar <= 0)
 		return 1;
 

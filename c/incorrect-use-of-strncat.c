@@ -8,7 +8,7 @@ int copy_data(char *username)
 	char buf[1024];
 
 	strcpy(buf, "username is: ");
-	// ruleid: incorrect-use-of-strncat
+	// ruleid: raptor-incorrect-use-of-strncat
 	strncat(buf, username, sizeof(buf));
 
 	log("%s\n", buf);
@@ -21,7 +21,7 @@ int copy_data2(char *username)
 	char buf[1024];
 
 	strcpy(buf, "username is: ");
-	// ruleid: incorrect-use-of-strncat
+	// ruleid: raptor-incorrect-use-of-strncat
 	strncat(buf, username, 1024);
 
 	log("%s\n", buf);
@@ -34,7 +34,7 @@ int copy_data3(char *username)
 	char buf[1024];
 
 	strcpy(buf, "username is: ");
-	// ruleid: incorrect-use-of-strncat
+	// ruleid: raptor-incorrect-use-of-strncat
 	strncat(buf, username, sizeof(buf) - strlen(buf));
 
 	log("%s\n", buf);
@@ -47,7 +47,7 @@ int good(char *username)
 	char buf[1024];
 
 	strcpy(buf, "username is: ");
-	// ok: incorrect-use-of-strncat
+	// ok: raptor-incorrect-use-of-strncat
 	strncat(buf, username, sizeof(buf) - strlen(buf) - 1);
 
 	log("%s\n", buf);

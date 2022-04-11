@@ -7,7 +7,7 @@ void bad1()
 {
 	BarObj *ptr = new BarObj()
 
-	// ruleid: mismatched-memory-management-cpp
+	// ruleid: raptor-mismatched-memory-management-cpp
 	free(ptr);
 }
 
@@ -15,7 +15,7 @@ void good1()
 {
 	BarObj *ptr = new BarObj()
 
-	// ok: mismatched-memory-management-cpp
+	// ok: raptor-mismatched-memory-management-cpp
 	delete ptr;
 }
 
@@ -29,7 +29,7 @@ void A::bad2()
 	int *ptr;
 	ptr = (int*)malloc(sizeof(int));
 
-	// ruleid: mismatched-memory-management-cpp
+	// ruleid: raptor-mismatched-memory-management-cpp
 	delete ptr;
 }
 
@@ -38,7 +38,7 @@ void A::good2()
 	int *ptr;
 	ptr = (int*)malloc(sizeof(int));
 
-	// ok: mismatched-memory-management-cpp
+	// ok: raptor-mismatched-memory-management-cpp
 	free(ptr);
 }
 
@@ -55,7 +55,7 @@ void B::bad3(bool heap) {
 		p = new int[2];
 	}
 
-	// ruleid: mismatched-memory-management-cpp
+	// ruleid: raptor-mismatched-memory-management-cpp
 	delete[] p;
 }
 
@@ -65,7 +65,7 @@ void B::good3() {
 
 	p = new (std::nothrow) int[2];
 
-	// ok: mismatched-memory-management-cpp
+	// ok: raptor-mismatched-memory-management-cpp
 	delete[] p;
 }
 

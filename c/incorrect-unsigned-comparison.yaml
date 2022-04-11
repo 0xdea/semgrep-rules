@@ -7,6 +7,7 @@ rules:
         - https://g.co/kgs/PCHQjJ
       confidence: HIGH
       # NOTE: some types are not covered.
+      # NOTE: incorrect unsigned assigments are not covered.
     message: >-
       The software compares two entities in a security-relevant context,
       but the comparison is incorrect, which may lead to resultant

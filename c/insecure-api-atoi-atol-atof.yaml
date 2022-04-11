@@ -1,0 +1,19 @@
+rules:
+  - id: raptor-insecure-api-atoi-atol-atof
+    metadata:
+      author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      references:
+        - https://rules.sonarsource.com/c/type/Bug/RSPEC-989
+      confidence: HIGH
+    message: >-
+      The atoi(), atol(), and atof() functions, which convert strings to
+      numbers, have undefined behavior when the strings cannot be
+      converted, and should therefore be avoided.
+    severity: WARNING
+    languages:
+      - c
+      - cpp
+    pattern-either:
+      - pattern: atoi(...)
+      - pattern: atol(...)
+      - pattern: atof(...)

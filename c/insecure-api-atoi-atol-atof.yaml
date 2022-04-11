@@ -5,6 +5,7 @@ rules:
       references:
         - https://rules.sonarsource.com/c/type/Bug/RSPEC-989
       confidence: HIGH
+      # NOTE: some function variants are missing.
     message: >-
       The atoi(), atol(), and atof() functions, which convert strings to
       numbers, have undefined behavior when the strings cannot be

@@ -6,6 +6,7 @@ rules:
         - https://cwe.mitre.org/data/definitions/467
         - https://g.co/kgs/PCHQjJ
         - https://github.com/struct/mms
+        - https://dustri.org/b/playing-with-weggli.html
       confidence: MEDIUM
     message: >-
       The code calls sizeof() on a malloced pointer type, which always

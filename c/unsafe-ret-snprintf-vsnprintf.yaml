@@ -5,6 +5,7 @@ rules:
       references:
         - https://lwn.net/Articles/507319/
         - https://g.co/kgs/PCHQjJ
+        - https://dustri.org/b/playing-with-weggli.html
       confidence: MEDIUM
     message: >-
       The snprintf() and vsnprintf() functions return the total length of

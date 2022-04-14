@@ -5,6 +5,7 @@ rules:
       references:
         - https://cwe.mitre.org/data/definitions/806
         - https://github.com/0xdea/advisories/blob/master/2020-07-solaris-whodo-w.txt
+        - https://dustri.org/b/playing-with-weggli.html
       confidence: MEDIUM
       # NOTE: some copy functions such as memcpy() are not covered.
     message: >-

@@ -8,6 +8,7 @@ rules:
         - https://cwe.mitre.org/data/definitions/131
         - http://www.phrack.org/issues/60/10.html#article
         - https://docs.microsoft.com/en-us/cpp/sanitizers/asan-error-examples
+        - https://dustri.org/b/playing-with-weggli.html
       confidence: MEDIUM
       # NOTE: some allocation functions such as kmalloc() are not covered.
     message: >-

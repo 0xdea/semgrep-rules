@@ -6,6 +6,7 @@ rules:
         - https://cwe.mitre.org/data/definitions/415
         - https://github.com/struct/mms
         - https://docs.microsoft.com/en-us/cpp/sanitizers/asan-error-examples
+        - https://dustri.org/b/playing-with-weggli.html
       confidence: MEDIUM
       # NOTE: C++ delete and delete[] operators are not covered.
       # NOTE. Variations on the free() argument are not covered.

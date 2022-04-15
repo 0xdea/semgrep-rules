@@ -13,7 +13,7 @@ int copy_string(char *string, int number)
 	// ruleid: raptor-insecure-api-sprintf-vsprintf
 	sprintf(buf, "string: %s\n", string);
 
-	// ok: raptor-insecure-api-sprintf-vsprintf (probably)
+	// ok: raptor-insecure-api-sprintf-vsprintf
 	sprintf(buf, "number: %d\n", number);
 
 	// ruleid: raptor-insecure-api-sprintf-vsprintf

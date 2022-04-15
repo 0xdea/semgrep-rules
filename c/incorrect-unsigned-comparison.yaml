@@ -1,5 +1,5 @@
 rules:
-  - id: raptor-incorrect-unsigned-comparison.yaml
+  - id: raptor-incorrect-unsigned-comparison
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       references:

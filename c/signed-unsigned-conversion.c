@@ -27,8 +27,8 @@ parse_dnssl(char* data, int datalen)
     int len, pos;
     char *nssl, *nsslp;
 
-    // ruleid: raptor-signed-unsigned-conversion (false positive)
-    if((nssl = calloc(1, datalen + 1)) == NULL) {
+    // ruleid: raptor-signed-unsigned-conversion
+    if((nssl = calloc(1, datalen + 1)) == NULL) { // false positive
         log_warn("malloc");
         return NULL;
     }

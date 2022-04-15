@@ -16,13 +16,13 @@ int print_address(char *string)
 	// ruleid: raptor-memory-address-exposure
 	sprintf(buf, "address: %x\n", string);
 
-	// ok: raptor-memory-address-exposure (probably)
+	// ok: raptor-memory-address-exposure
 	sprintf(buf, FMT, string);
 
-	// ok: raptor-memory-address-exposure (probably)
+	// ok: raptor-memory-address-exposure
 	sprintf(buf, fmt, string);
 
-	// ok: raptor-memory-address-exposure (probably)
+	// ok: raptor-memory-address-exposure
 	sprintf(buf, string);
 }
 

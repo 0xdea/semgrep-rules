@@ -83,7 +83,7 @@ int test_func()
 	id_sequence[0] = 123;
 	id_sequence[1] = 234;
 	id_sequence[2] = 345;
-	// ok: raptor-off-by-one
+	// ruleid: raptor-off-by-one
 	id_sequence[3] = 456;
 }
 

@@ -4,6 +4,7 @@ rules:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       references:
         - https://cwe.mitre.org/data/definitions/696
+        - https://www.usenix.org/legacy/events/sec02/full_papers/chen/chen.pdf
         - https://g.co/kgs/PCHQjJ
         - https://github.com/struct/mms
       confidence: MEDIUM

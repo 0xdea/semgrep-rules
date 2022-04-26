@@ -7,6 +7,7 @@ rules:
         - https://julianor.tripod.com/bc/formatstring-1.2.pdf
         - http://phrack.org/issues/70/13.html#article
         - https://g.co/kgs/PCHQjJ
+        - https://www.sei.cmu.edu/downloads/sei-cert-c-coding-standard-2016-v01.pdf
       confidence: MEDIUM
       # NOTE: generic va_list matching for custom functions is not covered.
     message: >-

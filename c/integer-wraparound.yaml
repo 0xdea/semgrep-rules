@@ -6,6 +6,7 @@ rules:
         - https://cwe.mitre.org/data/definitions/190
         - https://cwe.mitre.org/data/definitions/128
         - https://cwe.mitre.org/data/definitions/131
+        - https://www.sei.cmu.edu/downloads/sei-cert-c-coding-standard-2016-v01.pdf
         - http://www.phrack.org/issues/60/10.html#article
         - https://docs.microsoft.com/en-us/cpp/sanitizers/asan-error-examples
         - https://dustri.org/b/playing-with-weggli.html

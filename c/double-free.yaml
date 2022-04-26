@@ -5,10 +5,12 @@ rules:
       references:
         - https://cwe.mitre.org/data/definitions/415
         - https://github.com/struct/mms
+        - https://www.sei.cmu.edu/downloads/sei-cert-c-coding-standard-2016-v01.pdf
         - https://docs.microsoft.com/en-us/cpp/sanitizers/asan-error-examples
         - https://dustri.org/b/playing-with-weggli.html
       confidence: MEDIUM
-      # NOTE: C++ delete and delete[] operators are not covered.
+      # NOTE. C++ delete and delete[] operators are not covered.
+      # NOTE. The realloc() function is not covered.
       # NOTE. Variations on the free() argument are not covered.
     message: >-
       The software calls free() twice on the same memory address,

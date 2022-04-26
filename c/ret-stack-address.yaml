@@ -5,6 +5,7 @@ rules:
       references:
         - https://cwe.mitre.org/data/definitions/562
         - https://github.com/struct/mms
+        - https://www.sei.cmu.edu/downloads/sei-cert-c-coding-standard-2016-v01.pdf
         - https://docs.microsoft.com/en-us/cpp/sanitizers/asan-error-examples
         - https://rules.sonarsource.com/c/type/Bug/RSPEC-946
       confidence: MEDIUM

@@ -7,7 +7,7 @@
 
 > "Humans are more suited to recognize food than to keep large graphs in their head." 
 > 
-> -- @halvarflake
+> -- Halvar Flake
 
 A collection of my Semgrep rules to facilitate vulnerability research.
 

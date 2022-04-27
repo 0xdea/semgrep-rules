@@ -7,6 +7,7 @@ rules:
         - https://cwe.mitre.org/data/definitions/78
         - https://cwe.mitre.org/data/definitions/88
         - https://g.co/kgs/PCHQjJ
+        - https://www.sei.cmu.edu/downloads/sei-cert-c-coding-standard-2016-v01.pdf
       confidence: HIGH
     message: >-
       The program invokes a potentially dangerous function that could

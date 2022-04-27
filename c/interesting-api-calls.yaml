@@ -40,7 +40,7 @@ rules:
       # scanf
       - pattern-regex: \w*scanf\s*\(.*\)
       # get
-      - pattern-regex: \w*get(s|pw|pass|wd|cwd|env|opt|opt_long)\s*\(.*\)
+      - pattern-regex: \w*get(s|c|pw|pass|wd|cwd|env|opt|opt_long)\s*\(.*\)
       # mem
       - pattern-regex: \w*memc?cpy\s*\(.*\)
       - pattern-regex: \w*mem(move|set)\s*\(.*\)

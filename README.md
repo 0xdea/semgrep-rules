@@ -64,6 +64,7 @@ See also: https://semgrep.dev/r
 * [**unchecked-ret-setuid-seteuid**](https://github.com/0xdea/semgrep-rules/blob/main/c/unchecked-ret-setuid-seteuid.yaml). Unchecked return code of setuid() and seteuid().
 
 ### miscellaneous
+* [**insecure-api-rand-srand**](https://github.com/0xdea/semgrep-rules/blob/main/c/insecure-api-rand-srand.yaml). Use of potentially insecure API functions rand() and srand().
 * [**insecure-api-atoi-atol-atof**](https://github.com/0xdea/semgrep-rules/blob/main/c/insecure-api-atoi-atol-atof.yaml). Use of potentially insecure API functions atoi(), atol(), atof().
 * [**interesting-api-calls**](https://github.com/0xdea/semgrep-rules/blob/main/c/interesting-api-calls.yaml). Calls to interesting and potentially insecure API functions.
 * [**typos**](https://github.com/0xdea/semgrep-rules/blob/main/c/typos.yaml). Potential typos with security implications.

@@ -7,6 +7,7 @@ rules:
         - https://cwe.mitre.org/data/definitions/690
         - https://g.co/kgs/PCHQjJ
         - https://github.com/struct/mms
+        - https://www.sei.cmu.edu/downloads/sei-cert-c-coding-standard-2016-v01.pdf
       confidence: MEDIUM
       # NOTE: reallocf(), valloc(), aligned_alloc(), and custom wrappers
       # are not covered.

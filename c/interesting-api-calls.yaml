@@ -6,6 +6,7 @@ rules:
         - https://github.com/0xdea/ghidra-scripts/blob/main/Rhabdomancer.java
         - https://github.com/x509cert/banned/blob/master/banned.h
         - https://g.co/kgs/PCHQjJ
+        - https://www.sei.cmu.edu/downloads/sei-cert-c-coding-standard-2016-v01.pdf
       confidence: MEDIUM
       # NOTE: goto, try/catch, kill/sig/jmp, sem/mutex, new/delete, 
       # static_cast/reinterpret_cast are not covered.
@@ -75,5 +76,7 @@ rules:
       - pattern-regex: \w*ch(own|mod)(at)?\s*\(.*\)
         # - pattern-regex: \w*locale\s*\(.*\)
         # - pattern-regex: \w*(make|split)path\s*\(.*\)
+      # rand
+      - pattern-regex: \w*rand\s*\(.*\)
       # assert
       - pattern-regex: \w*assert\s*\(.*\)

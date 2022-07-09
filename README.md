@@ -15,6 +15,17 @@ Blog post: https://security.humanativaspa.it/semgrep-ruleset-for-c-c-vulnerabili
 
 See also: https://semgrep.dev/r
 
+## Setup and usage instructions
+
+1. Install [Semgrep](https://semgrep.dev/docs/getting-started/). 
+2. Clone this github repo.
+3. To use these rules, run:
+
+```
+semgrep --config PATH/TO/RULES_DIR/OR/RULE_FILE PATH/TO/FILE/FOR/SCANNING
+```
+
+
 ## C/C++
 
 ### buffer overflows

@@ -11,6 +11,9 @@ rules:
         - https://docs.microsoft.com/en-us/cpp/sanitizers/asan-error-examples
         - https://dustri.org/b/playing-with-weggli.html
       confidence: MEDIUM
+      # NOTE: only multiplication with two operands is covered; addition and other 
+      # arithmetic operations should also be considered, as well as any operation
+      # with more than two operands.
       # NOTE: some allocation functions such as kmalloc() are not covered.
     message: >-
       The software performs a calculation that can produce an integer

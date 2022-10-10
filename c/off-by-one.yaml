@@ -9,6 +9,7 @@ rules:
         - https://github.com/struct/mms
       confidence: MEDIUM
       # NOTE: heap-allocated buffers and some functions are not covered.
+      # NOTE: memcpy(dst + 1, p, len) and similar scenarios are not covered.
     message: >-
       The software calculates or uses an incorrect maximum or minimum value
       that is 1 more, or 1 less, than the correct value.

@@ -11,6 +11,7 @@ rules:
         - https://www.sei.cmu.edu/downloads/sei-cert-c-coding-standard-2016-v01.pdf
       confidence: LOW
       # NOTE: common issues with comments are not covered.
+      # NOTE: constructs such as assert(var == val) lead to false positives.
     message: >-
       The programmer accidentally uses the wrong operator, which changes
       the application logic in security-relevant ways.

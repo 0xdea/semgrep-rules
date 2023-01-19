@@ -20,7 +20,7 @@ rules:
       - generic
     pattern-either:
       # interesting comments
-      - pattern-regex: (TODO|XXX|FIXME|BUG|HACK|LATER)
+      - pattern-regex: (TODO|XXX|FIXME|BUG|HACK|LATER|CVE-)
       - pattern-regex: (?i)(unsafe|insecure|dangerous|warning|overflow)
       # other "bad words" examples
       # lower level abstractions

@@ -21,63 +21,63 @@ rules:
       - cpp
     pattern-either:
       # priv
-      - pattern-regex: \w*set\w*(u|g)id\s*\(.*\)
-      - pattern-regex: \w*(init|set)groups\s*\(.*\)
+      - pattern-regex: \w*set\w*(u|g)id\s*\(.*
+      - pattern-regex: \w*(init|set)groups\s*\(.*
       # str
-      - pattern-regex: \w*str\w?cpy\s*\(.*\)
-      - pattern-regex: \w*stpn?cpy\s*\(.*\)
-      - pattern-regex: \w*str\w?cat\s*\(.*\)
-      - pattern-regex: \w*wcs\w?cpy\s*\(.*\)
-      - pattern-regex: \w*wcpn?cpy\s*\(.*\)
-      - pattern-regex: \w*wcs\w?cat\s*\(.*\)
-      - pattern-regex: \w*strtok\s*\(.*\)
-      - pattern-regex: \w*wcstok\s*\(.*\)
-        # - pattern-regex: \w*(str|wcs)n?len\s*\(.*\)
+      - pattern-regex: \w*str\w?cpy\s*\(.*
+      - pattern-regex: \w*stpn?cpy\s*\(.*
+      - pattern-regex: \w*str\w?cat\s*\(.*
+      - pattern-regex: \w*wcs\w?cpy\s*\(.*
+      - pattern-regex: \w*wcpn?cpy\s*\(.*
+      - pattern-regex: \w*wcs\w?cat\s*\(.*
+      - pattern-regex: \w*strtok\s*\(.*
+      - pattern-regex: \w*wcstok\s*\(.*
+        # - pattern-regex: \w*(str|wcs)n?len\s*\(.*
       # printf
-      - pattern-regex: \w*s\w?printf\w*\(.*\)
-      - pattern-regex: \w*sn\w?printf\w*\(.*\)
-        # - pattern-regex: \w*printf\w*\(.*\)
-        # - pattern-regex: \w*err\w*\(.*\)
-        # - pattern-regex: \w*warn\w*\(.*\)
+      - pattern-regex: \w*s\w?printf\w*\(.*
+      - pattern-regex: \w*sn\w?printf\w*\(.*
+        # - pattern-regex: \w*printf\w*\(.*
+        # - pattern-regex: \w*err\w*\(.*
+        # - pattern-regex: \w*warn\w*\(.*
       # scanf
-      - pattern-regex: \w*scanf\s*\(.*\)
+      - pattern-regex: \w*scanf\s*\(.*
       # get
-      - pattern-regex: \w*get(s|c|char|pw|pass|wd|cwd|env|opt|opt_long)\s*\(.*\)
+      - pattern-regex: \w*get(s|c|char|pw|pass|wd|cwd|env|opt|opt_long)\s*\(.*
       # mem
-      - pattern-regex: \w*memc?cpy\s*\(.*\)
-      - pattern-regex: \w*mem(move|set)\s*\(.*\)
-      - pattern-regex: \w*bcopy\s*\(.*\)
+      - pattern-regex: \w*memc?cpy\s*\(.*
+      - pattern-regex: \w*mem(move|set)\s*\(.*
+      - pattern-regex: \w*bcopy\s*\(.*
       # alloc
-      - pattern-regex: \w*alloca\s*\(.*\)
-        # - pattern-regex: \w*alloca?\s*\(.*\)
-        # - pattern-regex: \w*free\s*\(.*\)
+      - pattern-regex: \w*alloca\s*\(.*
+        # - pattern-regex: \w*alloca?\s*\(.*
+        # - pattern-regex: \w*free\s*\(.*
       # exec
-      - pattern-regex: \w*exec(l|v)?(p|e)?e?\s*\(.*\)
-      - pattern-regex: \w*system\s*\(.*\)
+      - pattern-regex: \w*exec(l|v)?(p|e)?e?\s*\(.*
+      - pattern-regex: \w*system\s*\(.*
       # i/o
-      - pattern-regex: \w*open(at)?(64)?\s*\(.*\)
-      - pattern-regex: \w*pipe\s*\(.*\)
-      - pattern-regex: \w*connect\s*\(.*\)
-      - pattern-regex: \w*read\s*\(.*\)
-      - pattern-regex: \w*recv(from)?\s*\(.*\)
-        # - pattern-regex: \w*write\s*\(.*\)
+      - pattern-regex: \w*open(at)?(64)?\s*\(.*
+      - pattern-regex: \w*pipe\s*\(.*
+      - pattern-regex: \w*connect\s*\(.*
+      - pattern-regex: \w*read\s*\(.*
+      - pattern-regex: \w*recv(from)?\s*\(.*
+        # - pattern-regex: \w*write\s*\(.*
       # proc
-      - pattern-regex: \w*fork\s*\(.*\)
-      - pattern-regex: \w*clone\s*\(.*\)
+      - pattern-regex: \w*fork\s*\(.*
+      - pattern-regex: \w*clone\s*\(.*
       # file
-      - pattern-regex: \w*mk\w?temp(64)?\s*\(.*\)
-      - pattern-regex: \w*te?mpnam\s*\(.*\)
-      - pattern-regex: \w*tmpfile\s*\(.*\)
-      - pattern-regex: \w*mkdir\s*\(.*\)
-      - pattern-regex: \w*creat\s*\(.*\)
-      - pattern-regex: \w*link(at)?\s*\(.*\)
-      - pattern-regex: \w*rename(at)?\s*\(.*\)
-      - pattern-regex: \w*access(at)?\s*\(.*\)
-      - pattern-regex: \w*stat(at)?\s*\(.*\)
-      - pattern-regex: \w*ch(own|mod)(at)?\s*\(.*\)
-        # - pattern-regex: \w*locale\s*\(.*\)
-        # - pattern-regex: \w*(make|split)path\s*\(.*\)
+      - pattern-regex: \w*mk\w?temp(64)?\s*\(.*
+      - pattern-regex: \w*te?mpnam\s*\(.*
+      - pattern-regex: \w*tmpfile\s*\(.*
+      - pattern-regex: \w*mkdir\s*\(.*
+      - pattern-regex: \w*creat\s*\(.*
+      - pattern-regex: \w*link(at)?\s*\(.*
+      - pattern-regex: \w*rename(at)?\s*\(.*
+      - pattern-regex: \w*access(at)?\s*\(.*
+      - pattern-regex: \w*stat(at)?\s*\(.*
+      - pattern-regex: \w*ch(own|mod)(at)?\s*\(.*
+        # - pattern-regex: \w*locale\s*\(.*
+        # - pattern-regex: \w*(make|split)path\s*\(.*
       # rand
-      - pattern-regex: \w*rand\s*\(.*\)
+      - pattern-regex: \w*rand\s*\(.*
       # assert
-      - pattern-regex: \w*assert\s*\(.*\)
+      - pattern-regex: \w*assert\s*\(.*

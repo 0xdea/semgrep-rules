@@ -30,12 +30,8 @@ int bad2(char *file)
 	if (lstat(file, &statb) < 0)
 		goto out;
 
-	if (!(statb.st_mode & S_IFREG)
-#ifdef notdef
-	|| statb.st_mode & 077
-#endif
-	)
-	goto out;
+	if (!(statb.st_mode & S_IFREG) || statb.st_mode & 077)
+		goto out;
 	if ((fd = open(file, O_RDWR|O_SYNC, 0)) < 0) 
 		goto out;
 }

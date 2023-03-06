@@ -3,7 +3,7 @@ rules:
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       references:
-        - https://cwe.mitre.org/data/definitions/478.html
+        - https://cwe.mitre.org/data/definitions/478
         - https://g.co/kgs/PCHQjJ
         - https://github.com/struct/mms
         - https://github.com/returntocorp/semgrep/issues/4939

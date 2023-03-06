@@ -1,0 +1,22 @@
+rules:
+  - id: raptor-missing-default-in-switch
+    metadata:
+      author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      references:
+        - https://cwe.mitre.org/data/definitions/478.html
+        - https://g.co/kgs/PCHQjJ
+        - https://github.com/struct/mms
+        - https://github.com/returntocorp/semgrep/issues/4939
+      confidence: MEDIUM
+    message: >-
+      The code does not have a default case in an expression with multiple
+      conditions, such as a switch statement.
+    severity: WARNING
+    languages:
+      - c
+      - cpp
+    patterns:
+      - pattern: |
+          switch ($VAR) { }
+      - pattern-not: |
+          switch ($VAR) { default: ... }

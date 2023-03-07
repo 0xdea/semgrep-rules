@@ -1,0 +1,43 @@
+rules:
+  - id: raptor-missing-break-in-switch
+    metadata:
+      author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      references:
+        - https://cwe.mitre.org/data/definitions/484
+        - https://g.co/kgs/PCHQjJ
+        - https://github.com/struct/mms
+        - https://github.com/returntocorp/semgrep/issues/4939
+      confidence: MEDIUM
+      # NOTE: we should also check for default blocks that miss the
+      # break/return/exit or equivalent statement/function call.
+    message: >-
+      The software omits a break statement within a switch or similar
+      construct, causing code associated with multiple conditions to
+      execute. This can cause problems when the programmer only intended to
+      execute code associated with one condition.
+    severity: INFO
+    languages:
+      - c
+      - cpp
+    patterns:
+      - pattern: |
+          switch ($VAR) { case $VAL1: ... case $VAL2: ... }
+      # break
+      - pattern-not: |
+          switch ($VAR) { case $VAL1: ... break; case $VAL2: ... }
+      - pattern-not: |
+          switch ($VAR) { case $VAL1: break; case $VAL2: ... }
+      # exit
+      - pattern-not: |
+          switch ($VAR) { case $VAL1: ... exit($RET); case $VAL2: ... }
+      - pattern-not: |
+          switch ($VAR) { case $VAL1: exit($RET); case $VAL2: ... }
+      # return
+      - pattern-not: |
+          switch ($VAR) { case $VAL1: ... return; case $VAL2: ... }
+      - pattern-not: |
+          switch ($VAR) { case $VAL1: return; case $VAL2: ... }
+      - pattern-not: |
+          switch ($VAR) { case $VAL1: ... return $RET; case $VAL2: ... }
+      - pattern-not: |
+          switch ($VAR) { case $VAL1: return $RET; case $VAL2: ... }

@@ -8,13 +8,10 @@ rules:
         - https://github.com/struct/mms
         - https://github.com/returntocorp/semgrep/issues/4939
       confidence: MEDIUM
-      # NOTE: a rule to check for "CWE-484: Omitted Break Statement in 
-      # Switch" (https://cwe.mitre.org/data/definitions/484) would also
-      # be appropriate, if/when Semgrep addresses the issue above.
     message: >-
       The code does not have a default case in an expression with multiple
       conditions, such as a switch statement.
-    severity: WARNING
+    severity: INFO
     languages:
       - c
       - cpp

@@ -39,7 +39,6 @@ int good1(char *data)
 	default:
 		printf("Unknown error (%d), exiting...\n", result);
 		exit(1);
-		break;
 	}
 }
 

@@ -103,6 +103,8 @@ rules:
               - pattern: fgets
               - pattern: getwd
               - pattern: getcwd
+              # stdio
+              - pattern: fread
       # buffer in 2nd arg (buffer to buffer copy functions)
       - patterns:
         - pattern: $FUN($ARG1, $BUF, ...)

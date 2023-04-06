@@ -45,7 +45,8 @@ rules:
       - pattern-regex: \w*get(s|c|char|pw|pass|wd|cwd|env|opt|opt_long)\s*\(.*
       # mem
       - pattern-regex: \w*memc?cpy\s*\(.*
-      - pattern-regex: \w*mem(move|set)\s*\(.*
+      - pattern-regex: \w*memmove\s*\(.*
+        # - pattern-regex: \w*memset\s*\(.*
       - pattern-regex: \w*bcopy\s*\(.*
       # alloc
       - pattern-regex: \w*alloca\s*\(.*

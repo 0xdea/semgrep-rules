@@ -9,8 +9,8 @@ rules:
         - https://github.com/struct/mms
         - https://www.sei.cmu.edu/downloads/sei-cert-c-coding-standard-2016-v01.pdf
       confidence: MEDIUM
-      # NOTE: reallocf(), valloc(), aligned_alloc(), and custom wrappers
-      # are not covered.
+      # NOTE: reallocf(), valloc(), aligned_alloc(), strdup(), strndup(), and custom 
+      # wrappers are not covered.
     message: >-
       The software does not check the return value from a method or
       function, which can prevent it from detecting unexpected states and

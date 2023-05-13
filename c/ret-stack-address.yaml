@@ -8,7 +8,7 @@ rules:
         - https://www.sei.cmu.edu/downloads/sei-cert-c-coding-standard-2016-v01.pdf
         - https://docs.microsoft.com/en-us/cpp/sanitizers/asan-error-examples
         - https://rules.sonarsource.com/c/type/Bug/RSPEC-946
-      confidence: MEDIUM
+      confidence: LOW
       # NOTE: static variables matching apparently is not supported by Semgrep.
       # NOTE: multiple pointer assignments and other ways to persist after 
       # function returns (e.g., output parameter) are not covered.

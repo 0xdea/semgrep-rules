@@ -12,7 +12,7 @@ rules:
       The software generates an error message that includes sensitive
       information about its environment, users, or associated data.
       In particular, exposure of memory addresses might defeat ASLR.
-    severity: WARNING
+    severity: INFO
     languages:
       - c
       - cpp

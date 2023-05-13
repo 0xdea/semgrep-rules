@@ -21,7 +21,7 @@ rules:
       implementation of the routines and the object being managed.
       Due to inherent limitations of Semgrep, this rule might generate many
       false positives and should therefore be customized for your codebase.
-    severity: WARNING
+    severity: INFO
     languages:
       - c
       - cpp

@@ -7,7 +7,7 @@ rules:
         - https://cwe.mitre.org/data/definitions/787
         - https://g.co/kgs/PCHQjJ
         - https://github.com/struct/mms
-      confidence: MEDIUM
+      confidence: LOW
       # NOTE: heap-allocated buffers and some functions are not covered.
       # NOTE: memcpy(dst + 1, p, len) and similar scenarios are not covered.
     message: >-

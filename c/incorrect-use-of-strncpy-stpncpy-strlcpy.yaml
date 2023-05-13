@@ -16,7 +16,7 @@ rules:
       that is outside of the bounds of the buffer.
       When the size of the destination is smaller than the size of the
       source, a buffer overflow could occur.
-    severity: WARNING
+    severity: ERROR
     languages:
       - c
       - cpp

@@ -19,7 +19,7 @@ rules:
       A similar case is when privileges are temporarily dropped with
       seteuid() and then setuid() or seteuid() are called from while under
       unprivileged user.
-    severity: WARNING
+    severity: ERROR
     languages:
       - c
       - cpp

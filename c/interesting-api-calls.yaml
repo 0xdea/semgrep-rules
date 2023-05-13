@@ -15,7 +15,7 @@ rules:
       functions (candidate points). The auditor can backtrace from these
       candidate points to find pathways allowing access from untrusted
       input.
-    severity: INFO
+    severity: WARNING
     languages:
       - c
       - cpp
@@ -58,7 +58,7 @@ rules:
       # i/o
       - pattern-regex: \w*open(at)?(64)?\s*\(.*
       - pattern-regex: \w*pipe\s*\(.*
-      - pattern-regex: \w*connect\s*\(.*
+        # - pattern-regex: \w*connect\s*\(.*
       - pattern-regex: \w*read\s*\(.*
       - pattern-regex: \w*recv(from)?\s*\(.*
         # - pattern-regex: \w*write\s*\(.*

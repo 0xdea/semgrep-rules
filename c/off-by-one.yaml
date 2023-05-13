@@ -13,7 +13,7 @@ rules:
     message: >-
       The software calculates or uses an incorrect maximum or minimum value
       that is 1 more, or 1 less, than the correct value.
-    severity: WARNING
+    severity: INFO
     languages:
       - c
       - cpp

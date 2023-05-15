@@ -14,7 +14,7 @@ rules:
         - https://www.sei.cmu.edu/downloads/sei-cert-c-coding-standard-2016-v01.pdf
         - http://www.phrack.org/issues/60/10.html#article
         - https://docs.microsoft.com/en-us/cpp/sanitizers/asan-error-examples
-      confidence: MEDIUM
+      confidence: LOW
       # NOTE: the deep expression operator is necessary to catch some
       # matches because C/C++ integer promotions do not seem entirely
       # supported by Semgrep; this may generate false positives.

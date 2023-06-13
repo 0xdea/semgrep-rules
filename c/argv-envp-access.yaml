@@ -1,0 +1,18 @@
+rules:
+  - id: raptor-argv-envp-access
+    metadata:
+      author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      references:
+        - https://www.gnu.org/software/libc/manual/html_node/Program-Arguments.html
+      confidence: MEDIUM
+    message: >-
+      The program accesses command-line arguments or environment variables,
+      which are controlled by potential attackers.
+    severity: INFO
+    languages:
+      - c
+      - cpp
+    patterns:
+      - pattern-either:
+        - pattern: argv
+        - pattern: envp

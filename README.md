@@ -80,6 +80,7 @@ semgrep --config PATH/TO/RULES_DIR/OR/RULE_FILE PATH/TO/FILE/FOR/SCANNING
 * [**missing-default-in-switch**](https://github.com/0xdea/semgrep-rules/blob/main/c/missing-default-in-switch.yaml). Missing default case in a switch statement.
 * [**missing-break-in-switch**](https://github.com/0xdea/semgrep-rules/blob/main/c/missing-break-in-switch.yaml). Missing break or equivalent in a switch statement.
 * [**interesting-api-calls**](https://github.com/0xdea/semgrep-rules/blob/main/c/interesting-api-calls.yaml). Calls to interesting and potentially insecure API functions.
+* [**argv-envp-access**](https://github.com/0xdea/semgrep-rules/blob/main/c/argv-envp-access.yaml). Command-line argument or environment variable access.
 * [**typos**](https://github.com/0xdea/semgrep-rules/blob/main/c/typos.yaml). Potential typos with security implications.
 
 ## Generic

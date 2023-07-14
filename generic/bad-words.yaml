@@ -49,3 +49,7 @@ rules:
         # - pattern-regex: (?i)(AES|RSA|DSA|DES|CBC|ECB|HMAC|GCM|MD5|SHA)
       # xml
         # - pattern-regex: (?i)(xml|xerces|sax|etree|xpath|documentbuilder)
+      # other words of power, words of destruction (Vulns1001)
+        # - pattern-regex: (?i)(decode|convert|interpret|compress|fragment|reassemble)
+      # other words of power, words of destruction (Vulns1002)
+        # - pattern-regex: (?i)(mutex|lock|toctou|parallelism|semaphore|retain|release|garbage|mutual)

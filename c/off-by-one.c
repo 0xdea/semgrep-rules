@@ -136,6 +136,26 @@ int get_mac(int fd, struct session *session)
 	return 0; 
 }
 
+int variant1(int argc, char *argv[])
+{
+	char buf[10];
+
+	// ruleid: raptor-off-by-one
+	*(buf + 10) = 'A';
+
+	return 0;
+}
+
+int variant2(int argc, char *argv[])
+{
+	char bStr[10];
+	// ruleid: raptor-off-by-one
+	for (unsigned i=1;i<=10;++i) {
+		bStr[i] = (char)i + 'a';
+	}
+	return 0;
+}
+
 int main() 
 {
 	printf("Hello, World!");

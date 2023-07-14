@@ -23,11 +23,11 @@ See also: https://semgrep.dev/r
 
 ```sh
 # high severity scan
-$ semgrep --severity ERROR --config PATH/TO/RULES PATH/TO/SOURCE/FOR/SCANNING
+$ semgrep --severity ERROR --config PATH/TO/RULES PATH/TO/SOURCE
 # high and medium severity scan
-$ semgrep --severity ERROR --severity WARNING --config PATH/TO/RULES PATH/TO/SOURCE/FOR/SCANNING
+$ semgrep --severity ERROR --severity WARNING --config PATH/TO/RULES PATH/TO/SOURCE
 # full scan
-$ semgrep --config PATH/TO/RULES PATH/TO/SOURCE/FOR/SCANNING
+$ semgrep --config PATH/TO/RULES PATH/TO/SOURCE
 ```
 
 

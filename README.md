@@ -21,8 +21,13 @@ See also: https://semgrep.dev/r
 2. Clone this github repo.
 3. To use these rules, run:
 
-```
-semgrep --config PATH/TO/RULES_DIR/OR/RULE_FILE PATH/TO/FILE/FOR/SCANNING
+```sh
+# high severity scan
+$ semgrep --severity ERROR --config PATH/TO/RULES PATH/TO/SOURCE/FOR/SCANNING
+# high and medium severity scan
+$ semgrep --severity ERROR --severity WARNING --config PATH/TO/RULES PATH/TO/SOURCE/FOR/SCANNING
+# full scan
+$ semgrep --config PATH/TO/RULES PATH/TO/SOURCE/FOR/SCANNING
 ```
 
 

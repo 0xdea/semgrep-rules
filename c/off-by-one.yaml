@@ -27,7 +27,8 @@ rules:
             ...
             $BUF[$SIZE] = $EXPR;
       - patterns:
-        - pattern: *($BUF + $SIZE) = $EXPR
+        - pattern: |
+            *($BUF + $SIZE) = $EXPR
         - pattern-inside: |
             $TYPE $BUF[$SIZE];
             ...

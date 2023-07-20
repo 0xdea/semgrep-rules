@@ -81,7 +81,7 @@ rules:
       # rand
       - pattern-regex: \w*rand\s*\(.*
       # assert
-      - pattern-regex: (?i)\w*assert\w*\s*\(.*
+        # - pattern-regex: (?i)\w*assert\w*\s*\(.*
       # switch
       # - pattern: | 
             # switch ($VAR) { }

@@ -1,0 +1,32 @@
+rules:
+  - id: raptor-suspicious-assert
+    metadata:
+      author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      references:
+        - https://legends2k.github.io/note/assert_vs_if/
+        - https://github.com/struct/mms
+      confidence: MEDIUM
+      # NOTE: other kinds of assertion macros (e.g., REQUIRE, DCHECK,
+      # ENSURE, etc.) are not covered.
+    message: >-
+      Most codebases define assertion macros which compile to a no-op on
+      non-debug builds. If assertions are the only line of defense against
+      untrusted input, the software may be exposed to attacks that leverage
+      the lack of proper input checks.
+    severity: WARNING
+    languages:
+      - c
+      - cpp
+    patterns:
+      - pattern-either:
+        - pattern: $ASSERT(<... $A < $B ...>)
+        - pattern: $ASSERT(<... $A < $B ...>, ...)
+        - pattern: $ASSERT(<... $A <= $B ...>)
+        - pattern: $ASSERT(<... $A <= $B ...>, ...)
+        - pattern: $ASSERT(<... $A > $B ...>)
+        - pattern: $ASSERT(<... $A > $B ...>, ...)
+        - pattern: $ASSERT(<... $A >= $B ...>)
+        - pattern: $ASSERT(<... $A >= $B ...>, ...)
+      - metavariable-regex:
+          metavariable: $ASSERT
+          regex: '(?i)^\w*assert\w*\s*$'

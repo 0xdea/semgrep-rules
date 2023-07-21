@@ -41,7 +41,6 @@ $ semgrep --config PATH/TO/RULES PATH/TO/SOURCE
 * [**incorrect-use-of-strncat**](https://github.com/0xdea/semgrep-rules/blob/main/c/incorrect-use-of-strncat.yaml). Wrong size argument passed to strncat().
 * [**incorrect-use-of-strncpy-stpncpy-strlcpy**](https://github.com/0xdea/semgrep-rules/blob/main/c/incorrect-use-of-strncpy-stpncpy-strlcpy.yaml). Wrong size argument passed to strncpy(), stpncpy(), strlcpy().
 * [**incorrect-use-of-sizeof**](https://github.com/0xdea/semgrep-rules/blob/main/c/incorrect-use-of-sizeof.yaml). Accidental use of the sizeof() operator on a pointer instead of its target.
-* [**suspicious-assert**](https://github.com/0xdea/semgrep-rules/blob/main/c/suspicious-assert.yaml). Potentially invalid size check due to use of assertion macros. 
 * [**unterminated-string-strncpy-stpncpy**](https://github.com/0xdea/semgrep-rules/blob/main/c/unterminated-string-strncpy-stpncpy.yaml). Lack of explicit null-termination after strncpy() and stpncpy().
 * [**off-by-one**](https://github.com/0xdea/semgrep-rules/blob/main/c/off-by-one.yaml). Potential off-by-one error.
 * [**pointer-subtraction**](https://github.com/0xdea/semgrep-rules/blob/main/c/pointer-subtraction.yaml). Potential use of pointer subtraction to determine size.
@@ -83,6 +82,7 @@ $ semgrep --config PATH/TO/RULES PATH/TO/SOURCE
 ### miscellaneous
 * [**insecure-api-rand-srand**](https://github.com/0xdea/semgrep-rules/blob/main/c/insecure-api-rand-srand.yaml). Use of potentially insecure API functions rand() and srand().
 * [**insecure-api-atoi-atol-atof**](https://github.com/0xdea/semgrep-rules/blob/main/c/insecure-api-atoi-atol-atof.yaml). Use of potentially insecure API functions atoi(), atol(), atof().
+* [**suspicious-assert**](https://github.com/0xdea/semgrep-rules/blob/main/c/suspicious-assert.yaml). Potentially invalid size check due to use of assertion macros. 
 * [**missing-default-in-switch**](https://github.com/0xdea/semgrep-rules/blob/main/c/missing-default-in-switch.yaml). Missing default case in a switch statement.
 * [**missing-break-in-switch**](https://github.com/0xdea/semgrep-rules/blob/main/c/missing-break-in-switch.yaml). Missing break or equivalent in a switch statement.
 * [**interesting-api-calls**](https://github.com/0xdea/semgrep-rules/blob/main/c/interesting-api-calls.yaml). Calls to interesting and potentially insecure API functions.

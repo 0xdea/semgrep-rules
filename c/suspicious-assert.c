@@ -67,7 +67,7 @@ void arch_irq_offload(irq_offload_routine_t routine, const void *parameter)
 
 	z_arc_v2_aux_reg_write(_ARC_V2_AUX_IRQ_HINT, IRQ_OFFLOAD_LINE);
 
-	__asm__ volatile("sync");
+	/* ... */
 
 	/* If _current was aborted in the offload routine, we shouldn't be here */
 	// ok: raptor-suspicious-assert

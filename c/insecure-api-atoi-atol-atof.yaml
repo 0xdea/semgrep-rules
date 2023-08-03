@@ -4,12 +4,16 @@ rules:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       references:
         - https://rules.sonarsource.com/c/type/Bug/RSPEC-989
+        - https://wiki.sei.cmu.edu/confluence/display/c/ERR34-C.+Detect+errors+when+converting+a+string+to+a+number
       confidence: HIGH
       # NOTE: some function variants are missing.
     message: >-
       The atoi(), atol(), and atof() functions, which convert strings to
-      numbers, have undefined behavior when the strings cannot be
-      converted, and should therefore be avoided.
+      numbers, have undefined behavior if the value of the result cannot 
+      be represented, and should therefore be avoided. They return 0 (or 
+      0.0) if the string does not represent an integer (or decimal), which 
+      is indistinguishable from a correctly formatted, zero-denoting input 
+      string.
     severity: WARNING
     languages:
       - c
@@ -18,3 +22,4 @@ rules:
       - pattern: atoi(...)
       - pattern: atol(...)
       - pattern: atof(...)
+      - pattern: atoll(...)

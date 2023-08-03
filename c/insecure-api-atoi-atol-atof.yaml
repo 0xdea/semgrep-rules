@@ -8,12 +8,12 @@ rules:
       confidence: HIGH
       # NOTE: some function variants are missing.
     message: >-
-      The atoi(), atol(), and atof() functions, which convert strings to
-      numbers, have undefined behavior if the value of the result cannot 
-      be represented, and should therefore be avoided. They return 0 (or 
-      0.0) if the string does not represent an integer (or decimal), which 
-      is indistinguishable from a correctly formatted, zero-denoting input 
-      string.
+      The atoi(), atol(), atof(), and similar functions, which convert 
+      strings to numbers, have undefined behavior if the value of the 
+      result cannot be represented, and should therefore be avoided. 
+      They return 0 (or 0.0) if the string does not represent an 
+      integer (or decimal), which is indistinguishable from a correctly
+      formatted, zero-denoting input string.
     severity: WARNING
     languages:
       - c

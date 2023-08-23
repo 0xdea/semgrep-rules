@@ -11,14 +11,11 @@ rules:
     # NOTE: other functions that do not null-terminate the destination
     # buffer are not covered (e.g., read(), readlink(), etc.).
     message: >-
-      The software does not terminate or incorrectly terminates a string or
-      array with a NUL character or equivalent terminator.
       If there is no NUL character byte in the first n bytes of the source
       string, strncpy() and stpncpy() do not null-terminate the destination
       buffer. If the program does not explicitly terminate the destination
       buffer, this will almost certainly result in information disclosure,
-      and possibly a buffer overflow condition, which may be exploited to
-      execute arbitrary code.
+      and possibly a buffer overflow condition.
     severity: WARNING
     languages:
       - c

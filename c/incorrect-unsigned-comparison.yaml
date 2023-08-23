@@ -9,9 +9,6 @@ rules:
       # NOTE: some types are not covered.
       # NOTE: incorrect unsigned assigments are not covered.
     message: >-
-      The software compares two entities in a security-relevant context,
-      but the comparison is incorrect, which may lead to resultant
-      weaknesses.
       Checking if an unsigned variable is negative makes no sense and is
       usually a good indication that something is probably wrong with the
       code.

@@ -14,9 +14,8 @@ rules:
       # NOTE: constructs such as assert(var == val) lead to false positives.
     message: >-
       The programmer accidentally uses the wrong operator, which changes
-      the application logic in security-relevant ways.
-      These types of errors are generally the result of a typo.
-      This rule also covers some other common typo patterns.
+      the application logic in security-relevant ways. This rule also covers 
+      some other common typo patterns.
     severity: INFO
     languages:
       - c

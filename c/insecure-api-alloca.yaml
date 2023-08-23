@@ -9,14 +9,10 @@ rules:
         - https://docs.microsoft.com/en-us/cpp/sanitizers/asan-error-examples
       confidence: HIGH
     message: >-
-      The program invokes a potentially dangerous function that could
-      introduce a vulnerability if it is used incorrectly, but the function
-      can also be used safely.
-      Use of alloca() is discouraged. It is unsafe because it cannot ensure
-      that the pointer returned points to a valid and usable block of
-      memory. The allocation made may exceed the bounds of the stack, or
-      even go further into other objects in memory, and alloca() cannot
-      determine such an error.
+      Use of alloca() is unsafe because it cannot ensure that the pointer 
+      returned points to a valid and usable block of memory. The allocation 
+      made may exceed the bounds of the stack, or even go further into other 
+      objects in memory, and alloca() cannot determine such an error.
     severity: ERROR
     languages:
       - c

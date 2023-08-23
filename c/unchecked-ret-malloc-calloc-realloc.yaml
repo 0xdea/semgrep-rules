@@ -15,10 +15,6 @@ rules:
       The software does not check the return value from a method or
       function, which can prevent it from detecting unexpected states and
       conditions.
-      The software does not check for an error after calling a function
-      that can return with a NULL pointer if the function fails, which
-      leads to a resultant NULL pointer dereference or, in some cases, even
-      arbitrary code execution.
     severity: WARNING
     languages:
       - c

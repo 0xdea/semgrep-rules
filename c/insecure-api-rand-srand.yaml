@@ -10,18 +10,9 @@ rules:
       # NOTE: rand_r() and other non-standard PRNGs are not covered.
       # NOTE: improperly seeded strong PRNGs are not covered.
     message: >-
-      The software uses a Pseudo-Random Number Generator (PRNG) in a
-      security context, but the PRNG's algorithm is not cryptographically
-      strong.
-      When a non-cryptographic PRNG is used in a cryptographic context, it
-      can expose the cryptography to certain types of attacks.
-      Often a pseudo-random number generator (PRNG) is not designed for
-      cryptography. Sometimes a mediocre source of randomness is sufficient
-      or preferable for algorithms that use random numbers. Weak generators
-      generally take less processing power and/or do not use the precious,
-      finite, entropy sources on a system. While such PRNGs might have very
-      useful features, these same features could be used to break the
-      cryptography.
+      The rand() PRNG should not be used in applications intended to be 
+      portable when good randomness is needed. Instead, the use of random() 
+      is recommended.
     severity: WARNING
     languages:
       - c

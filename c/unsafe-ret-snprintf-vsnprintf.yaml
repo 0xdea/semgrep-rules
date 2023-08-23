@@ -13,9 +13,6 @@ rules:
       larger than the size of the destination buffer. If it is used
       unsafely, e.g. as an index to write to the destination buffer, memory
       corruption might occur.
-      Vulnerabilities such as this are not common because the return value
-      is usually discarded. However, ignoring the result of these functions
-      can result in data truncation.
     severity: WARNING
     languages:
       - c

@@ -86,18 +86,18 @@ rules:
           # - metavariable-regex:
               # metavariable: $FUN
               # regex: '^\w*memset\s*$'
-      # alloca
+      # alloc
       - patterns:
         - pattern: $FUN(...)
         - metavariable-regex:
             metavariable: $FUN
-            regex: '^\w*alloca\s*$'
-      # alloc/free
+            regex: '^\w*alloca?\s*$'
+      # free
         # - patterns:
           # - pattern: $FUN(...)
           # - metavariable-regex:
               # metavariable: $FUN
-              # regex: '^\w*alloca?\s*$|^\w*free\s*$'
+              # regex: '^\w*free\s*$'
       # exec
       - patterns:
         - pattern: $FUN(...)

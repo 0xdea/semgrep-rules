@@ -9,16 +9,10 @@ rules:
         - https://github.com/struct/mms
       confidence: MEDIUM
     message: >-
-      The software performs multiple related behaviors, but the behaviors
-      are performed in the wrong order in ways which may produce resultant
-      weaknesses.
-      The set(e)gid() function must be called as root, so the order of the
-      set(e)uid() and set(e)gid() calls is important. A compromised process
-      might be able to regain elevated group privileges if set(e)gid() is
-      called after set(e)uid().
-      A similar case is when privileges are temporarily dropped with
-      seteuid() and then setuid() or seteuid() are called from while under
-      unprivileged user.
+      A compromised process might be able to regain elevated group privileges
+      if set(e)gid() is called after set(e)uid(). A similar case is when 
+      privileges are temporarily dropped with seteuid() and then setuid() or 
+      seteuid() are called from while under unprivileged user.
     severity: ERROR
     languages:
       - c

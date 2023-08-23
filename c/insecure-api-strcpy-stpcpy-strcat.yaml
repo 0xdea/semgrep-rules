@@ -9,17 +9,9 @@ rules:
         - https://g.co/kgs/PCHQjJ
       confidence: HIGH
     message: >-
-      The program invokes a potentially dangerous function that could
-      introduce a vulnerability if it is used incorrectly, but the function
-      can also be used safely.
       A buffer overflow condition exists when a program attempts to put
       more data in a buffer than it can hold, or when a program attempts to
-      put data in a memory area outside of the boundaries of a buffer. The
-      simplest type of error, and the most common cause of buffer
-      overflows, is the classic case in which the program copies the buffer
-      without restricting how much is copied. Other variants exist, but the
-      existence of a classic overflow strongly suggests that the programmer
-      is not considering even the most basic of security protections.
+      put data in a memory area outside of the boundaries of a buffer.
     severity: ERROR
     languages:
       - c

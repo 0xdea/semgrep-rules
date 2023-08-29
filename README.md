@@ -54,8 +54,8 @@ For a better streamlined experience, I recommend saving semgrep scan output in [
 * [**incorrect-unsigned-comparison**](https://github.com/0xdea/semgrep-rules/blob/main/c/incorrect-unsigned-comparison.yaml). Checking if an unsigned variable is negative.
 * [**signed-unsigned-conversion**](https://github.com/0xdea/semgrep-rules/blob/main/c/signed-unsigned-conversion.yaml). Potential signed/unsigned conversion errors.
 * [**integer-truncation**](https://github.com/0xdea/semgrep-rules/blob/main/c/integer-truncation.yaml). Potential integer truncation errors.
-* [**integer-wraparound**](https://github.com/0xdea/semgrep-rules/blob/main/c/integer-wraparound.yaml). Potential integer wraparound errors.
 * [**unsafe-strlen**](https://github.com/0xdea/semgrep-rules/blob/main/c/unsafe-strlen.yaml). Casting the return value of strlen() to short might be dangerous.
+* [**integer-wraparound**](https://github.com/0xdea/semgrep-rules/blob/main/c/integer-wraparound.yaml). Potential integer wraparound errors.
 
 ### format strings
 * [**format-string-bugs**](https://github.com/0xdea/semgrep-rules/blob/main/c/format-string-bugs.yaml). Potential format string bugs.

@@ -133,14 +133,8 @@ rules:
         - pattern: $FUN(...)
         - metavariable-regex:
             metavariable: $FUN
-            regex: '^\w*mkdir\s*$|^\w*creat\s*$|^\w*link(at)?\s*$|^\w*rename(at)?\s*$|^\w*access(at)?\s*$|^\w*stat(at)?\s*$|^\w*ch(own|mod)(at)?\s*$'
-      # more file (CWE-785: Use of Path Manipulation Function without Maximum-sized Buffer)
-      - patterns:
-        - pattern: $FUN(...)
-        - metavariable-regex:
-            metavariable: $FUN
-            regex: '^\w*realpath\s*$|^\w*readlink\s*$|^\w*PathAppend\s*$'
-      # even more file
+            regex: '^\w*mkdir\s*$|^\w*creat\s*$|^\w*link(at)?\s*$|^\w*rename(at)?\s*$|^\w*access(at)?\s*$|^\w*stat(at)?\s*$|^\w*ch(own|mod)(at)?\s*$|^\w*realpath(at)?\s*$|^\w*readlink\s*$'
+      # more file
         # - patterns:
           # - pattern: $FUN(...)
           # - metavariable-regex:

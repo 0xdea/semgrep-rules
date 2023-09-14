@@ -46,8 +46,8 @@ For a better streamlined experience, I recommend saving semgrep scan output in [
 * [**unterminated-string-strncpy-stpncpy**](https://github.com/0xdea/semgrep-rules/blob/main/c/unterminated-string-strncpy-stpncpy.yaml). Lack of explicit null-termination after strncpy() and stpncpy().
 * [**off-by-one**](https://github.com/0xdea/semgrep-rules/blob/main/c/off-by-one.yaml). Potential off-by-one error.
 * [**pointer-subtraction**](https://github.com/0xdea/semgrep-rules/blob/main/c/pointer-subtraction.yaml). Potential use of pointer subtraction to determine size.
-* [**unsafe-ret-strlcpy-strlcat**](https://github.com/0xdea/semgrep-rules/blob/main/c/unsafe-ret-strlcpy-strlcat.yaml). Potentially unsafe use of the return value of strlcpy() and strlcat().
 * [**unsafe-ret-snprintf-vsnprintf**](https://github.com/0xdea/semgrep-rules/blob/main/c/unsafe-ret-snprintf-vsnprintf.yaml). Potentially unsafe use of the return value of snprintf() and vsnprintf().
+* [**unsafe-ret-strlcpy-strlcat**](https://github.com/0xdea/semgrep-rules/blob/main/c/unsafe-ret-strlcpy-strlcat.yaml). Potentially unsafe use of the return value of strlcpy() and strlcat().
 * [**write-into-stack-buffer**](https://github.com/0xdea/semgrep-rules/blob/main/c/write-into-stack-buffer.yaml). Direct writes into buffers allocated on the stack.
 
 ### integer overflows

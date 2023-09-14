@@ -15,7 +15,7 @@ rules:
     message: >-
       A function returns the address of a stack variable, which will cause
       unintended program behavior, typically in the form of a crash.
-    severity: WARNING
+    severity: INFO
     languages:
       - c
       - cpp

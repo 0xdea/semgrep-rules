@@ -13,7 +13,7 @@ rules:
       0 (or 0.0) if the string does not represent an integer (or decimal), 
       which is indistinguishable from a correctly formatted, zero-denoting 
       input string.
-    severity: WARNING
+    severity: INFO
     languages:
       - c
       - cpp

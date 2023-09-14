@@ -12,7 +12,7 @@ rules:
     message: >-
       The software directly writes into a stack buffer. This might lead to
       a stack-based buffer overflow.
-    severity: WARNING
+    severity: INFO
     languages:
       - c
       - cpp

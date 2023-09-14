@@ -83,8 +83,8 @@ For a better streamlined experience, I recommend saving semgrep scan output in [
 
 ### miscellaneous
 * [**insecure-api-rand-srand**](https://github.com/0xdea/semgrep-rules/blob/main/c/insecure-api-rand-srand.yaml). Use of potentially insecure API functions rand() and srand().
-* [**insecure-api-atoi-atol-atof**](https://github.com/0xdea/semgrep-rules/blob/main/c/insecure-api-atoi-atol-atof.yaml). Use of potentially insecure API functions atoi(), atol(), atof().
 * [**suspicious-assert**](https://github.com/0xdea/semgrep-rules/blob/main/c/suspicious-assert.yaml). Potentially invalid size check due to use of assertion macros. 
+* [**insecure-api-atoi-atol-atof**](https://github.com/0xdea/semgrep-rules/blob/main/c/insecure-api-atoi-atol-atof.yaml). Use of potentially insecure API functions atoi(), atol(), atof().
 * [**missing-default-in-switch**](https://github.com/0xdea/semgrep-rules/blob/main/c/missing-default-in-switch.yaml). Missing default case in a switch statement.
 * [**missing-break-in-switch**](https://github.com/0xdea/semgrep-rules/blob/main/c/missing-break-in-switch.yaml). Missing break or equivalent in a switch statement.
 * [**interesting-api-calls**](https://github.com/0xdea/semgrep-rules/blob/main/c/interesting-api-calls.yaml). Calls to interesting and potentially insecure API functions.

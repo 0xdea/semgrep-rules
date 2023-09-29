@@ -86,6 +86,12 @@ rules:
           # - metavariable-regex:
               # metavariable: $FUN
               # regex: '^\w*memset\s*$'
+      # kernel
+      - patterns:
+        - pattern: $FUN(...)
+        - metavariable-regex:
+            metavariable: $FUN
+            regex: '^\w*copy_from_user\s*$|^\w*copy_to_user\s*$|^\w*copyin\s*$|^\w*copyout\s*$'
       # alloc
       - patterns:
         - pattern: $FUN(...)

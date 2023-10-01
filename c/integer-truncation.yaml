@@ -11,7 +11,8 @@ rules:
       # NOTE: the deep expression operator is necessary to catch some
       # matches because C/C++ integer promotions do not seem entirely
       # supported by Semgrep; this may generate false positives.
-      # NOTE: some types and use cases (e.g., comparisons) are not covered.
+      # NOTE: some types (e.g., ptrs) and use cases (e.g., comparisons) 
+      # are not covered.
     message: >-
       Truncation errors occur when a primitive is cast to a primitive of a 
       smaller size and data is lost in the conversion. The value cannot be 

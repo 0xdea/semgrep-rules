@@ -61,7 +61,7 @@ rules:
           # - pattern: $FUN(...)
           # - metavariable-regex:
               # metavariable: $FUN
-              # regex: '^\w*printf\w*\s*$|^\w*err\w*\s*$|^\w*warn\w*\s*$'
+              # regex: '^\w*printf\w*\s*$|^\w*err\w*\s*$|^\w*warn\w*\s*$|^\w*syslog\w*\s*$'
       # scanf
       - patterns:
         - pattern: $FUN(...)

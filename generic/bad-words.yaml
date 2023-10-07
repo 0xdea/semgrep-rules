@@ -22,21 +22,21 @@ rules:
       # interesting comments
       - pattern-regex: (TODO|XXX|FIXME|BUG|HACK|LATER|CVE-)
       - pattern-regex: (?i)(unsafe|insecure|dangerous|warning|overflow)
+      # credentials
+      - pattern-regex: (?i)(password|private|token|secret|key)
+        # - pattern-regex: (?i)(JWT|JKS|JWK|JKU)
       # other "bad words" examples
+      # privilege management
+        # - pattern-regex: (?i)(privilege|permission|capabilit|role|rbac|polic|authorization|claim)
+        # - pattern-regex: (?i)(validate|verify)
+      # memory management
+        # - pattern-regex: (?i)(alloc|free)
       # lower level abstractions
         # - pattern-regex: (?i)(raw)
       # code injection
         # - pattern-regex: (eval|run)
       # command injection
         # - pattern-regex: (process|system|popen|exec|spawn)
-      # credentials
-        # - pattern-regex: (?i)(password|private|token|secret|key)
-        # - pattern-regex: (?i)(JWT|JKS|JWK|JKU)
-      # privilege management
-        # - pattern-regex: (?i)(privilege|permission|capabilit|role|rbac|polic|authorization|claim)
-        # - pattern-regex: (?i)(validate|verify)
-      # memory management
-        # - pattern-regex: (?i)(alloc|free)
       # reflection
         # - pattern-regex: (?i)(reflect|klass|constantize|forname)
       # serialization

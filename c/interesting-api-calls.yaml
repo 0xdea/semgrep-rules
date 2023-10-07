@@ -8,8 +8,8 @@ rules:
         - https://g.co/kgs/PCHQjJ
         - https://www.sei.cmu.edu/downloads/sei-cert-c-coding-standard-2016-v01.pdf
       confidence: MEDIUM
-      # NOTE: goto, try/catch, kill/sig/jmp, sem/mutex, new/delete, 
-      # static_cast/reinterpret_cast are not covered.
+      # NOTE: goto, try/catch, sem/mutex, new/delete, static_cast/reinterpret_cast 
+      # are not covered.
     message: >-
       Locate all calls to interesting and potentially insecure API
       functions (candidate points). The auditor can backtrace from these
@@ -152,6 +152,12 @@ rules:
           # - metavariable-regex:
               # metavariable: $FUN
               # regex: '^\w*locale\s*$|^\w*(make|split)path\s*$'
+      # signals
+        # - patterns:
+          # - pattern: $FUN(...)
+          # - metavariable-regex:
+              # metavariable: $FUN
+              # regex: '^\w*kill\s*$|^\w*signal\s*$|^\w*sigaction\s*$|^\w*(set|long)jmp\s*$'
       # rand
       - patterns:
         - pattern: $FUN(...)

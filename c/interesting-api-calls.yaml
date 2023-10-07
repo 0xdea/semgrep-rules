@@ -164,6 +164,12 @@ rules:
         - metavariable-regex:
             metavariable: $FUN
             regex: '^\w*rand\s*$'
+      # time
+        # - patterns:
+          # - pattern: $FUN(...)
+          # - metavariable-regex:
+              # metavariable: $FUN
+              # regex: '^\w*time\s*$'          
       # assert
         # - patterns:
           # - pattern: $FUN(...)

@@ -73,7 +73,13 @@ rules:
         - pattern: $FUN(...)
         - metavariable-regex:
             metavariable: $FUN
-            regex: '^\w*get(s|c|char|pw|pass|wd|cwd|env|opt|opt_long)\s*$'
+            regex: '^\w*get(s|c|char|pw|pass|wd|cwd|opt|opt_long)\s*$'
+      # environment
+      - patterns:
+        - pattern: $FUN(...)
+        - metavariable-regex:
+            metavariable: $FUN
+            regex: '^\w*(get|set)env\s*$'
       # memcpy
       - patterns:
         - pattern: $FUN(...)

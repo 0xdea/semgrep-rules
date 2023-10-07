@@ -79,7 +79,7 @@ rules:
         - pattern: $FUN(...)
         - metavariable-regex:
             metavariable: $FUN
-            regex: '^\w*(get|set)env\s*$'
+            regex: '^\w*(get|set|put|unset)env\s*$'
       # memcpy
       - patterns:
         - pattern: $FUN(...)

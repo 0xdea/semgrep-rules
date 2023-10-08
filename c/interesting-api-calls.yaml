@@ -97,7 +97,7 @@ rules:
         - pattern: $FUN(...)
         - metavariable-regex:
             metavariable: $FUN
-            regex: '^\w*copy_from_user\s*$|^\w*copy_to_user\s*$|^\w*get_user\s*$|^\w*put_user\s*$|^\w*copyin\s*$|^\w*copyout\s*$'
+            regex: '^\w*copy_(from|to)_user\s*$|^\w*(get|put)_user\s*$|^\w*copy(in|out)\s*$'
       # alloc
       - patterns:
         - pattern: $FUN(...)

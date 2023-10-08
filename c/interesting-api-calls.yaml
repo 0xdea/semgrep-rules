@@ -103,7 +103,7 @@ rules:
         - pattern: $FUN(...)
         - metavariable-regex:
             metavariable: $FUN
-            regex: '^\w*alloca?\s*$'
+            regex: '^\w*alloc(a|f)?\s*$|^\w*alloc_?array\s*$'
       # free
         # - patterns:
           # - pattern: $FUN(...)

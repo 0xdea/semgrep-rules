@@ -15,8 +15,9 @@ rules:
       # arithmetic operations should also be considered, as well as any operation 
       # with more than two operands.
       # NOTE: some allocation functions such as kmalloc() or custom functions are 
-      # not covered; in addition, functions such as calloc() can cause a wraparound
-      # based on their first argument that specifies the number of elements.
+      # not covered; in addition, some implementations of calloc() and similar 
+      # functions can cause a wraparound based on their first argument that 
+      # specifies the number of elements.
     message: >-
       The software performs a calculation that can produce an integer
       overflow or wraparound, when the logic assumes that the resulting

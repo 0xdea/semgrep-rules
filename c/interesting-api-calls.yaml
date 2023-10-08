@@ -55,7 +55,7 @@ rules:
         - pattern: $FUN(...)
         - metavariable-regex:
             metavariable: $FUN
-            regex: '^\w*s\w?printf\w*\s*$|^\w*sn\w?printf\w*\s*$'
+            regex: '^\w*s\w?printf\w*\s*$'
       # more printf
         # - patterns:
           # - pattern: $FUN(...)

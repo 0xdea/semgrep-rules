@@ -53,7 +53,7 @@ int uaf(int argc, char **argv)
 }
 
 // https://docs.microsoft.com/en-us/cpp/sanitizers/error-heap-use-after-free
-int heap-use-after-free()
+int heap_use_after_free()
 {
 	char *x = (char*)malloc(10 * sizeof(char));
 	// ruleid: raptor-use-after-free

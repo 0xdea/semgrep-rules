@@ -55,9 +55,14 @@ rules:
       - pattern: $EXPR1 =+ $EXPR2
         # - pattern: $EXPR1 =- $EXPR2
       # duplicate expressions
-      - pattern: ($EXPR || $EXPR)
       - pattern: ($EXPR && $EXPR)
+      - pattern: ($EXPR || $EXPR)
       - pattern: ($EXPR == $EXPR)
+      - pattern: ($EXPR != $EXPR)
+      - pattern: ($EXPR < $EXPR)
+      - pattern: ($EXPR <= $EXPR)
+      - pattern: ($EXPR > $EXPR)
+      - pattern: ($EXPR >= $EXPR)
       # ; at the end of if() or for() statement
       - pattern: if ($COND);
       - pattern: for ($EXPR1; $EXPR2; $EXPR3);

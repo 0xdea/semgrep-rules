@@ -1,0 +1,20 @@
+rules:
+  - id: raptor-incorrect-use-of-memset
+    metadata:
+      author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      references:
+        - https://lkml.org/lkml/2009/11/11/336
+        - https://bugs.mysql.com/bug.php?id=23181
+      confidence: HIGH
+    message: >-
+      The invocation of memset() is easy to get wrong. The second argument
+      is the character and the third argument is the size, but sometimes
+      these arguments are in the wrong order. This results in a no-op.
+    severity: ERROR
+    languages:
+      - c
+      - cpp
+    pattern-either:
+      - pattern: memset($S, $C, 0);
+      - pattern: memset($S, $C, '\0');
+      - pattern: memset($S, sizeof(...), $N);

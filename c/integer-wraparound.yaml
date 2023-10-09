@@ -109,3 +109,13 @@ rules:
               - pattern: realloc
               - pattern: reallocf
               - pattern: aligned_alloc
+      # buggy input validation (sum)
+      - pattern: $X > $MAX || ($X + $Y) > $MAX
+      - pattern: $Y > $MAX || ($X + $Y) > $MAX
+      - pattern: ($X + $Y) > $MAX || $X > $MAX
+      - pattern: ($X + $Y) > $MAX || $Y > $MAX
+      # buggy input validation (multiplication)
+      - pattern: $X > $MAX || ($X * $Y) > $MAX
+      - pattern: $Y > $MAX || ($X * $Y) > $MAX
+      - pattern: ($X * $Y) > $MAX || $X > $MAX
+      - pattern: ($X * $Y) > $MAX || $Y > $MAX

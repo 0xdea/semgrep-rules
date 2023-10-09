@@ -65,6 +65,25 @@ int myfunction(int *array, int len){
         return myarray;
 }
 
+static int
+set_cursor(struct tfb_softc *sc, struct wsdisplay_cursor *p) 
+{
+#define cc (&sc->sc_cursor)
+	u_int v, index = 0, count = 0, icount = 0; 
+	uint8_t r[2], g[2], b[2], image[512], mask[512]; 
+	int error, s;
+          
+	v = p->which;
+	if (v & WSDISPLAY_CURSOR_DOCMAP) {
+		index = p->cmap.index; // p->cmap.index is u_int 
+		count = p->cmap.count; // p->cmap.count is u_int 
+		// ruleid: raptor-integer-wraparound
+		if (index >= 2 || (index + count) > 2)
+			return (EINVAL);
+    error = copyin(p->cmap.red, &r[index], count);
+	}
+}
+
 int main() 
 {
 	printf("Hello, World!");

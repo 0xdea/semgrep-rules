@@ -153,6 +153,27 @@ int pop(void)
 	return *(p1 + 1);
 }
 
+int test1()
+{
+	// ruleid: raptor-typos
+	if ((nowtok == tok_mb_cur_max && result->mb_cur_max != 0) || (nowtok == tok_mb_cur_max && result->mb_cur_max != 0))
+		lr_error (cmfile, _("duplicate definition of <%s>"), nowtok == tok_mb_cur_min ? "mb_cur_min" : "mb_cur_max");
+}
+
+int test2()
+{
+	e = borg_extract_dir(y1, x1, y2, x2);
+
+	// ruleid: raptor-typos
+	if ((ay <= 1) && (ay <= 1)) 
+		return (e);
+
+	if (ay > ax) {
+		d = (y1 < y2) ? 2 : 8;
+		if (borg_cave_floor_bold(y1 + ddy[d], x1 + ddx[d])) return (d);
+	}
+}
+
 int main(int argc, char *argv[]) 
 {
 	tos = stack;

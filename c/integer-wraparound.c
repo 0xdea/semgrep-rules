@@ -68,7 +68,6 @@ int myfunction(int *array, int len){
 static int
 set_cursor(struct tfb_softc *sc, struct wsdisplay_cursor *p) 
 {
-#define cc (&sc->sc_cursor)
 	u_int v, index = 0, count = 0, icount = 0; 
 	uint8_t r[2], g[2], b[2], image[512], mask[512]; 
 	int error, s;

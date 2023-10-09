@@ -82,6 +82,7 @@ For a better streamlined experience, I recommend saving semgrep scan output in [
 * [**unchecked-ret-setuid-seteuid**](https://github.com/0xdea/semgrep-rules/blob/main/c/unchecked-ret-setuid-seteuid.yaml). Unchecked return code of setuid() and seteuid().
 
 ### miscellaneous
+* [**incorrect-use-of-memset**](https://github.com/0xdea/semgrep-rules/blob/main/c/incorrect-use-of-memset.yaml). Wrong order of arguments to memset().
 * [**insecure-api-rand-srand**](https://github.com/0xdea/semgrep-rules/blob/main/c/insecure-api-rand-srand.yaml). Use of potentially insecure API functions rand() and srand().
 * [**suspicious-assert**](https://github.com/0xdea/semgrep-rules/blob/main/c/suspicious-assert.yaml). Potentially invalid size check due to use of assertion macros.
 * [**interesting-api-calls**](https://github.com/0xdea/semgrep-rules/blob/main/c/interesting-api-calls.yaml). Calls to interesting and potentially insecure API functions.

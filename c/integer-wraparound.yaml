@@ -12,12 +12,14 @@ rules:
         - https://dustri.org/b/playing-with-weggli.html
       confidence: LOW
       # NOTE: only multiplication and sum with two operands are covered; other 
-      # arithmetic operations should also be considered, as well as any operation 
-      # with more than two operands.
+      # arithmetic operations should also be considered (e.g., left shift), as 
+      # well as any operation with more than two operands.
       # NOTE: some allocation functions such as kmalloc() or custom functions are 
       # not covered; in addition, some implementations of calloc() and similar 
       # functions can cause a wraparound based on their first argument that 
       # specifies the number of elements.
+      # NOTE: there might exist other buggy input validation patterns not covered
+      # here, including the same patterns with a different order of operands.
     message: >-
       The software performs a calculation that can produce an integer
       overflow or wraparound, when the logic assumes that the resulting
@@ -111,11 +113,19 @@ rules:
               - pattern: aligned_alloc
       # buggy input validation (sum)
       - pattern: $X > $MAX || ($X + $Y) > $MAX
-      - pattern: $Y > $MAX || ($X + $Y) > $MAX
-      - pattern: ($X + $Y) > $MAX || $X > $MAX
-      - pattern: ($X + $Y) > $MAX || $Y > $MAX
+      - pattern: $X >= $MAX || ($X + $Y) > $MAX
+      - pattern: $X > $MAX || ($X + $Y) >= $MAX
+      - pattern: $X >= $MAX || ($X + $Y) >= $MAX
+      - pattern: $X < $MAX && ($X + $Y) < $MAX
+      - pattern: $X <= $MAX && ($X + $Y) < $MAX
+      - pattern: $X < $MAX && ($X + $Y) <= $MAX
+      - pattern: $X <= $MAX && ($X + $Y) <= $MAX
       # buggy input validation (multiplication)
       - pattern: $X > $MAX || ($X * $Y) > $MAX
-      - pattern: $Y > $MAX || ($X * $Y) > $MAX
-      - pattern: ($X * $Y) > $MAX || $X > $MAX
-      - pattern: ($X * $Y) > $MAX || $Y > $MAX
+      - pattern: $X >= $MAX || ($X * $Y) > $MAX
+      - pattern: $X > $MAX || ($X * $Y) >= $MAX
+      - pattern: $X >= $MAX || ($X * $Y) >= $MAX
+      - pattern: $X < $MAX && ($X * $Y) < $MAX
+      - pattern: $X <= $MAX && ($X * $Y) < $MAX
+      - pattern: $X < $MAX && ($X * $Y) <= $MAX
+      - pattern: $X <= $MAX && ($X * $Y) <= $MAX

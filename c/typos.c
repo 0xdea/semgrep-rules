@@ -174,6 +174,59 @@ int test2()
 	}
 }
 
+int test3()
+{
+	char *at;
+	char mntfrombuf[MNAMELEN];
+	char *mntfromptr;
+
+	mntfromptr = mp->f_mntfromname;
+	
+	switch (mp->f_type) {
+	case MOUNT_TYPE_NFS:
+	case MOUNT_TYPE_NFS3:
+    	at = strchr(mp->f_mntfromname, '@');
+    	// ruleid: raptor-typos
+		if (at != '\0') {
+      		xstrlcpy(mntfrombuf, (at + 1), sizeof(mntfrombuf));
+    	}
+  	}
+}
+
+int test4()
+{
+	fsa_node_addr *prev_node = NULL;
+	char *cur = nodes_arg; /* point to start of string */
+
+	for (int i = 0; i < strlen(nodes_arg); i++) {
+    	if (nodes_arg[i] != ',' && (nodes_arg[i] < '0' || nodes_arg[i] > '9')) {
+          	fsa_error(LOG_ERR, "Invalid nodes argument: %s\n", nodes_arg);
+          	return 1;
+		} 
+	}
+	// ruleid: raptor-typos
+	while (cur != NULL && cur != '\0') {
+		errno = 0;
+		int node_num = (int)strtol(cur, (char **)NULL, 10); 
+		if (node_num == 0 && errno != 0) {
+			do_someting();
+		}
+	}
+}
+
+int wgetnstr ( WINDOW *win, char *str, int n ) 
+{
+    char *_str;
+	int c;
+
+	if ( n == 0 ) {
+		// ruleid: raptor-typos
+		str = '\0';
+        return OK;
+    }
+	_str = str;
+}
+
 int main(int argc, char *argv[]) 
 {
 	tos = stack;

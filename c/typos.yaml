@@ -63,6 +63,19 @@ rules:
       - pattern: ($EXPR <= $EXPR)
       - pattern: ($EXPR > $EXPR)
       - pattern: ($EXPR >= $EXPR)
+      # assigning or comparing a char literal to a pointer
+      - patterns:
+        - pattern-either:
+          - pattern: $PTR = '\0'
+          - pattern: $PTR == '\0'
+          - pattern: $PTR != '\0'
+        - pattern-either:
+          - pattern-inside: |
+              $TYPE * $PTR;
+              ...
+          - pattern-inside: |
+              $TYPE * $PTR = $EXPR;
+              ...
       # ; at the end of if() or for() statement
       - pattern: if ($COND);
       - pattern: for ($EXPR1; $EXPR2; $EXPR3);

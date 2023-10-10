@@ -166,17 +166,18 @@ static LabelText* text_create(char *orig_str, int char_width)
 	LabelText *text = 0;
 	char *str = 0;
 	text = calloc ( 1, sizeof( LabelText ) );
-	/* maybe orig_str is a constant expression; duplicate for safety */ 
+
 	str = strdup( orig_str );
-// ...
+
 	if ( char_width > 0 ) {
         for ( i = 0; i < strlen( str ); i++ )
             if ( str[i] == 10 )
                 text->count++;
-        /* maybe one unfinished line */
+
 		// ruleid: raptor-off-by-one
         if ( str[strlen( str ) - 1] != 10 )
         	text->count++;
+	}
 }
 
 int main() 

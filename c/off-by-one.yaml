@@ -55,3 +55,5 @@ rules:
               - pattern-not: $VAL - 1
       # out-of-bound indexing: strlen($STR) con be 0 leading to a -1 index
       - pattern: $STR[strlen($STR) - 1]
+      # no space allocated for NUL terminator
+      - pattern: malloc(strlen($STR))

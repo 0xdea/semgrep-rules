@@ -180,6 +180,38 @@ static LabelText* text_create(char *orig_str, int char_width)
 	}
 }
 
+void addLineAfter(struct line *whichLine, char *data) 
+{
+	struct line *temp = whichLine->next;
+	struct line *newLine = (struct line *)malloc(sizeof(struct line)); 
+	temp->prev = newLine;
+	whichLine->next = newLine;
+	newLine->next = temp;
+	newLine->prev = whichLine;
+	// ruleid: raptor-off-by-one
+	newLine->data = (char *)malloc(strlen(data));
+	strcpy(newLine->data, data);
+	newLine->length = strlen(data);
+	countTabs(newLine);
+	currentBuffer->numLines++;
+}
+
+void addLineAfter_fixed(struct line *whichLine, char *data) 
+{
+	struct line *temp = whichLine->next;
+	struct line *newLine = (struct line *)malloc(sizeof(struct line)); 
+	temp->prev = newLine;
+	whichLine->next = newLine;
+	newLine->next = temp;
+	newLine->prev = whichLine;
+	// ok: raptor-off-by-one
+	newLine->data = (char *)malloc(strlen(data) + 1);
+	strcpy(newLine->data, data);
+	newLine->length = strlen(data);
+	countTabs(newLine);
+	currentBuffer->numLines++;
+}
+
 int main() 
 {
 	printf("Hello, World!");

@@ -206,7 +206,6 @@ int test4()
 	}
 	// ruleid: raptor-typos
 	while (cur != NULL && cur != '\0') {
-		errno = 0;
 		int node_num = (int)strtol(cur, (char **)NULL, 10); 
 		if (node_num == 0 && errno != 0) {
 			do_someting();

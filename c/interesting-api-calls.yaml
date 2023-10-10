@@ -92,12 +92,6 @@ rules:
           # - metavariable-regex:
               # metavariable: $FUN
               # regex: '^\w*memset\s*$'
-      # kernel
-      - patterns:
-        - pattern: $FUN(...)
-        - metavariable-regex:
-            metavariable: $FUN
-            regex: '^\w*copy_(from|to)_user\s*$|^\w*(get|put)_user\s*$|^\w*copy(in|out)\s*$'
       # alloc
       - patterns:
         - pattern: $FUN(...)
@@ -127,13 +121,19 @@ rules:
           # - pattern: $FUN(...)
           # - metavariable-regex:
               # metavariable: $FUN
-              # regex: '^\w*connect\s*$|^\w*write\s*$'
+              # regex: '^\w*connect\s*$|^\w*write\s*$|^\w*hton(l|s)\s*$|^\w*ntoh(l|s)\s*$'
       # proc
       - patterns:
         - pattern: $FUN(...)
         - metavariable-regex:
             metavariable: $FUN
             regex: '^\w*fork\s*$|^\w*clone\s*$'
+      # rand
+      - patterns:
+        - pattern: $FUN(...)
+        - metavariable-regex:
+            metavariable: $FUN
+            regex: '^\w*rand\s*$'
       # tmp
       - patterns:
         - pattern: $FUN(...)
@@ -158,18 +158,24 @@ rules:
           # - metavariable-regex:
               # metavariable: $FUN
               # regex: '^\w*kill\s*$|^\w*signal\s*$|^\w*sigaction\s*$|^\w*(set|long)jmp\s*$'
-      # rand
-      - patterns:
-        - pattern: $FUN(...)
-        - metavariable-regex:
-            metavariable: $FUN
-            regex: '^\w*rand\s*$'
       # time
         # - patterns:
           # - pattern: $FUN(...)
           # - metavariable-regex:
               # metavariable: $FUN
-              # regex: '^\w*time\s*$'          
+              # regex: '^\w*time\s*$'
+      # kernel
+      - patterns:
+        - pattern: $FUN(...)
+        - metavariable-regex:
+            metavariable: $FUN
+            regex: '^\w*copy_(from|to)_user\s*$|^\w*(get|put)_user\s*$|^\w*copy(in|out)\s*$'          
+      # more kernel
+        # - patterns:
+          # - pattern: $FUN(...)
+          # - metavariable-regex:
+              # metavariable: $FUN
+              # regex: '^\w*cpu_to_(b|l)e(16|32|64)(p|s)?\s*$|^\w*(b|l)e(16|32|64)(p|s)?_to_cpu\s*$|^\w*xb_get_(32|64|bytes|word_array|bitmap)\s*$'
       # assert
         # - patterns:
           # - pattern: $FUN(...)

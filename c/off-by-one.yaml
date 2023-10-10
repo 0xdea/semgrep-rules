@@ -53,3 +53,5 @@ rules:
             metavariable: $LEN
             patterns:
               - pattern-not: $VAL - 1
+      # out-of-bound indexing: strlen($STR) con be 0 leading to a -1 index
+      - pattern: $STR[strlen($STR) - 1]

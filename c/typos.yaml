@@ -63,7 +63,7 @@ rules:
       - pattern: ($EXPR <= $EXPR)
       - pattern: ($EXPR > $EXPR)
       - pattern: ($EXPR >= $EXPR)
-      # assigning or comparing a char literal to a pointer
+      # assigning or comparing a char literal to a pointer (some types and literals are missing)
       - pattern-either:
         - pattern: (char * $PTR) = '\0'
         - pattern: (char * $PTR) == '\0'

@@ -5,7 +5,7 @@
 
 #define BUFSIZE 256
 
-int copy_string1(char *string)
+void copy_string1(char *string)
 {
 	char buf[BUFSIZE];
 
@@ -13,7 +13,7 @@ int copy_string1(char *string)
 	strncpy(buf, string, BUFSIZE);
 }
 
-int copy_string2(char *string)
+void copy_string2(char *string)
 {
 	char buf[BUFSIZE];
 
@@ -32,7 +32,7 @@ int test_func()
 	return 0;
 }
 
-int test_func2(int argc, char **argv)
+void test_func2(int argc, char **argv)
 {
 	char Filename[256];
 	char Pattern[32];
@@ -48,7 +48,7 @@ int test_func2(int argc, char **argv)
 	Scan_File(Filename, Pattern);
 }
 
-int authenticate(int sockfd) 
+void authenticate(int sockfd) 
 {
 	char user[1024], *buffer; 
 	size_t size;

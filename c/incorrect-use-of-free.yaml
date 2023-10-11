@@ -1,0 +1,44 @@
+rules:
+  - id: raptor-incorrect-use-of-free
+    metadata:
+      author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      references:
+        - https://cwe.mitre.org/data/definitions/590
+      confidence: MEDIUM
+      # NOTE: this rule only covers free() called on stack-allocated
+      # buffers; it does not cover other instances of free() called on
+      # non-heap-allocated buffers; it also does not cover custom wrappers
+      # to free().
+    message: >-
+      The software calls free() on a pointer to memory that was not
+      allocated using associated heap allocation functions such as
+      malloc(), calloc(), or realloc().
+    severity: ERROR
+    languages:
+      - c
+      - cpp
+    pattern-either:
+      - patterns:
+        - pattern: free($PTR)
+        - pattern-either:
+          - pattern-inside: |
+              $TYPE $PTR[$LEN];
+              ...
+          - pattern-inside: |
+              $TYPE $PTR[$LEN] = $EXPR;
+              ...
+      - patterns:
+        - pattern: free(&$PTR)
+        - pattern-either:
+          - pattern-inside: |
+              $TYPE $PTR[$LEN];
+              ...
+          - pattern-inside: |
+              $TYPE $PTR[$LEN] = $EXPR;
+              ...
+          - pattern-inside: |
+              $TYPE * $PTR;
+              ...
+          - pattern-inside: |
+              $TYPE * $PTR = $EXPR;
+              ...

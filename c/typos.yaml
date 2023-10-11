@@ -74,10 +74,10 @@ rules:
       # accidental octal conversion
       - patterns:
         - pattern-either:
-          - pattern: $TYPE $ARR[$SIZE];
-          - pattern: $TYPE $ARR[$SIZE] = $EXPR;
+          - pattern: $TYPE $ARR[$LEN];
+          - pattern: $TYPE $ARR[$LEN] = $EXPR;
         - metavariable-regex:
-            metavariable: $SIZE
+            metavariable: $LEN
             regex: '^0.*'
       # missing {} in if() statement (too many false positives)
         # - pattern: if ($COND) $BODY;

@@ -21,7 +21,7 @@ rules:
       - patterns:
         - pattern: $FUN($BUF, ...)
         - pattern-inside: |
-            $TYPE $BUF[$SIZE];
+            $TYPE $BUF[$LEN];
             ...
             $FUN($BUF, ...);
         - pattern-not: $FUN($BUF, "...", ...)
@@ -58,7 +58,7 @@ rules:
       - patterns:
         - pattern: $FUN($BUF, $FMT, ...)
         - pattern-inside: |
-            $TYPE $BUF[$SIZE];
+            $TYPE $BUF[$LEN];
             ...
             $FUN($BUF, $FMT, ...);
         - metavariable-regex:
@@ -75,7 +75,7 @@ rules:
       - patterns:
         - pattern: $FUN($BUF, $LEN, $FMT, ...)
         - pattern-inside: |
-            $TYPE $BUF[$SIZE];
+            $TYPE $BUF[$LEN];
             ...
             $FUN($BUF, $LEN, $FMT, ...);
         - metavariable-regex:
@@ -92,7 +92,7 @@ rules:
       - patterns:
         - pattern: $FUN($BUF, ...)
         - pattern-inside: |
-            $TYPE $BUF[$SIZE];
+            $TYPE $BUF[$LEN];
             ...
             $FUN($BUF, ...);
         - metavariable-pattern:
@@ -109,7 +109,7 @@ rules:
       - patterns:
         - pattern: $FUN($ARG1, $BUF, ...)
         - pattern-inside: |
-            $TYPE $BUF[$SIZE];
+            $TYPE $BUF[$LEN];
             ...
             $FUN($ARG1, $BUF, ...);
         - pattern-not: $FUN("...", $BUF, ...)
@@ -122,7 +122,7 @@ rules:
       - patterns:
         - pattern: $FUN($ARG1, $BUF, ...)
         - pattern-inside: |
-            $TYPE $BUF[$SIZE];
+            $TYPE $BUF[$LEN];
             ...
             $FUN($ARG1, $BUF, ...);
         - metavariable-pattern:
@@ -138,6 +138,6 @@ rules:
         # - patterns:
           # - pattern: $BUF[$POS] = $EXPR;
           # - pattern-inside: |
-                # $TYPE $BUF[$SIZE];
+                # $TYPE $BUF[$LEN];
                 # ...
                 # $BUF[$POS] = $EXPR;

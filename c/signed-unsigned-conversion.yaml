@@ -86,7 +86,7 @@ rules:
       - pattern: read($FD, $BUF, (int $LEN))
       - pattern: recv($SD, $BUF, (int $LEN), $FL)
       - pattern: recvfrom($SD, $BUF, (int $LEN), $FL, ...)
-      - pattern: fread($PTR, (int $SIZE), $NITEMS, $FS)
+      - pattern: fread($PTR, (int $LEN), $NITEMS, $FS)
       # unsigned to signed
       - pattern: (int $SIGNED) = <... (unsigned int $UNSIGNED) ...>
       - pattern: |

@@ -6,19 +6,19 @@
 
 #define BUFSIZE 256
 
-int drop_priv_perm()
+void drop_priv_perm()
 {
 	// ruleid: raptor-interesting-api-calls
 	setuid(getuid());
 }
 
-int drop_priv_temp()
+void drop_priv_temp()
 {
 	// ruleid: raptor-interesting-api-calls
 	seteuid(getuid());
 }
 
-int copy_append_string(char *string1, char *string2)
+void copy_append_string(char *string1, char *string2)
 {
 	char buf[BUFSIZE];
 
@@ -29,7 +29,7 @@ int copy_append_string(char *string1, char *string2)
 	strcat(buf, string2);
 }
 
-int copy_string(char *string)
+void copy_string(char *string)
 {
 	char buf[BUFSIZE];
 
@@ -37,7 +37,7 @@ int copy_string(char *string)
 	stpcpy(buf, string);
 }
 
-int copy_string1(char *string)
+void copy_string1(char *string)
 {
 	char buf[BUFSIZE];
 
@@ -45,7 +45,7 @@ int copy_string1(char *string)
 	strncpy(buf, string, BUFSIZE);
 }
 
-int copy_string2(char *string)
+void copy_string2(char *string)
 {
 	char buf[BUFSIZE];
 
@@ -53,7 +53,7 @@ int copy_string2(char *string)
 	stpncpy(buf, string, BUFSIZE);
 }
 
-int get_string()
+void get_string()
 {
 	char buf[BUFSIZE];
 

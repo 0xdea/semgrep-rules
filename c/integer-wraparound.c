@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int bad1()
+void bad1()
 {
 	img_t table_ptr;
 	int num_imgs;
@@ -18,7 +18,7 @@ int bad1()
 }
 
 // https://vulncat.fortify.com/
-int bad2()
+void bad2()
 {
 	int nresp = packet_get_int();
 

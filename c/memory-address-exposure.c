@@ -5,7 +5,7 @@
 #define BUFSIZE 256
 #define FMT "whatever"
 
-int print_address(char *string)
+void print_address(char *string)
 {
 	char buf[BUFSIZE];
 	char fmt[] = "whatever";

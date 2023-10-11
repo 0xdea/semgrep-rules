@@ -7,7 +7,7 @@
 #define FAIL 0
 #define PASS 1
 
-int bad1(char *data)
+void bad1(char *data)
 {
 	int result = security_check(data);
 
@@ -24,7 +24,7 @@ int bad1(char *data)
 	}
 }
 
-int good1(char *data)
+void good1(char *data)
 {
 	int result = security_check(data);
 
@@ -97,7 +97,7 @@ char *escape_string(char *string)
 		switch (*cp) {
 		case '\\':
 			if (escape) {
-                 		*dest++ = '\';
+                 		*dest++ = '\\';
                  		escape = 0;
              		} else
                  		escape = 1;

@@ -7,7 +7,7 @@
 #define FAIL 0
 #define PASS 1
 
-int bad1(char *data)
+void bad1(char *data)
 {
 	int result = security_check(data);
 
@@ -23,7 +23,7 @@ int bad1(char *data)
 	}
 }
 
-int good1(char *data)
+void good1(char *data)
 {
 	int result = security_check(data);
 
@@ -42,7 +42,7 @@ int good1(char *data)
 	}
 }
 
-int bad2(Pkt packet)
+void bad2(Pkt packet)
 {
 	// ruleid: raptor-missing-default-in-switch
 	switch(packet->id) {
@@ -83,7 +83,7 @@ struct object *init_object(int type)
 	return obj;
 }
 
-int test()
+void test()
 {
 	// ruleid: raptor-missing-default-in-switch
 	switch (foo() + x + y) {

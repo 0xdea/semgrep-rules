@@ -1,0 +1,40 @@
+rules:
+  - id: raptor-putenv-stack-var
+    metadata:
+      author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      references:
+        - https://cwe.mitre.org/data/definitions/686
+        - https://cwe.mitre.org/data/definitions/562
+        - https://www.sei.cmu.edu/downloads/sei-cert-c-coding-standard-2016-v01.pdf
+      confidence: LOW
+      # NOTE: static variables matching apparently is not supported by Semgrep.
+      # NOTE: multiple pointer assignments and other ways to persist after 
+      # function returns (e.g., output parameter) are not covered.
+    message: >-
+      A function calls putenv() with a variable that has a short lifetime,
+      such as a pointer to an automatic variable allocated on the stack.
+    severity: INFO
+    languages:
+      - c
+      - cpp
+    patterns:
+      - pattern: putenv($PTR);
+      - pattern-either:
+        # array
+        - pattern-inside: |
+            $TYPE $PTR[$LEN];
+            ...
+        - pattern-inside: |
+            $TYPE $PTR[$LEN] = $EXPR;
+            ...
+        # pointer to array
+        - pattern-inside: |
+            $TYPE $ARR[$LEN];
+            ...
+            $PTR = $ARR;
+            ...
+        - pattern-inside: |
+            $TYPE $ARR[$LEN] = $EXPR;
+            ...
+            $PTR = $ARR;
+            ...

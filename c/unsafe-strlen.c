@@ -9,6 +9,8 @@ int get_length(char *string)
 
 	// ruleid: raptor-unsafe-strlen
 	length = strlen(string);
+
+	return length;
 }
 
 int main() 

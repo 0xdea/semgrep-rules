@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <unistd.h>
 
-int drop_priv_perm()
+void drop_priv_perm()
 {
 	// ruleid: raptor-unchecked-ret-setuid-seteuid
 	setuid(getuid());
@@ -19,7 +19,7 @@ int drop_priv_perm2()
 	return -1;
 }
 
-int drop_priv_temp()
+void drop_priv_temp()
 {
 	// ruleid: raptor-unchecked-ret-setuid-seteuid
 	seteuid(getuid());

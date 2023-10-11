@@ -4,7 +4,7 @@
 #include <string.h>
 #include <ctype.h>
 
-int bad1()
+void bad1()
 {
 	char *src, *dst;
 	int left;
@@ -51,7 +51,7 @@ int bad2(char *username)
 	return LOGIN_FAILED;
 }
 
-int bad3(char *src, char *dst)
+void bad3(char *src, char *dst)
 {
 	// ruleid: raptor-typos
 	if (get_string(src) &&
@@ -60,7 +60,7 @@ int bad3(char *src, char *dst)
 	}
 }
 
-int bad4(char *src, int len)
+void bad4(char *src, int len)
 {
 	char dst[256];
 
@@ -69,7 +69,7 @@ int bad4(char *src, int len)
 		memcpy(dst, src, len);
 }
 
-int bad5(char *src, char *dst)
+void bad5(char *src, char *dst)
 {
 	int i;
 	// ruleid: raptor-typos
@@ -78,7 +78,7 @@ int bad5(char *src, char *dst)
 	}
 }
 
-int bad6(char *userinput)
+void bad6(char *userinput)
 {
 	// ruleid: raptor-typos
 	char buf[040];
@@ -86,7 +86,7 @@ int bad6(char *userinput)
 	snprintf(buf, 40, "%s", userinput);
 }
 
-int bad7()
+void bad7()
 {
 	// ruleid: raptor-typos
 	if (frag_len &
@@ -97,7 +97,7 @@ int bad7()
 	}
 }
 
-int bad8(int j)
+void bad8(int j)
 {
 	int i = 10;
 
@@ -153,7 +153,7 @@ int pop(void)
 	return *(p1 + 1);
 }
 
-int test1()
+void test1()
 {
 	// ruleid: raptor-typos
 	if ((nowtok == tok_mb_cur_max && result->mb_cur_max != 0) || (nowtok == tok_mb_cur_max && result->mb_cur_max != 0))
@@ -174,7 +174,7 @@ int test2()
 	}
 }
 
-int test3()
+void test3()
 {
 	char *at;
 	char mntfrombuf[MNAMELEN];

@@ -5,7 +5,7 @@
 
 #define MEMSIZE 256
 
-int alloc_memory()
+void alloc_memory()
 {
 	// ruleid: raptor-unchecked-ret-malloc-calloc-realloc
 	char *ptr = (char *)malloc(MEMSIZE);
@@ -57,14 +57,14 @@ int alloc_memory_and_check4()
 	return 0;
 }
 
-int test_func()
+void test_func()
 {
 	// ruleid: raptor-unchecked-ret-malloc-calloc-realloc
 	buf = (char*) malloc(req_size);
 	strncpy(buf, xfer, req_size);
 }
 
-int test_func2()
+void test_func2()
 {
 	// ruleid: raptor-unchecked-ret-malloc-calloc-realloc
 	AStruct *s = (AStruct *) malloc(user_len); 

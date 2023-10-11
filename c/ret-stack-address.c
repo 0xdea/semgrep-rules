@@ -45,7 +45,7 @@ void fillMem()
 	memset(a, 'Z', sizeof(a));
 }
 
-int recvStr(char *str)
+void recvStr(char *str)
 {
 	char *fPtr = findF(str);
 

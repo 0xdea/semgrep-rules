@@ -5,7 +5,7 @@
 
 #define BUFSIZE 256
 
-int copy_string(char *string)
+void copy_string(char *string)
 {
 	char buf[BUFSIZE];
 	size_t length;
@@ -16,7 +16,7 @@ int copy_string(char *string)
 	// use length to access buf, e.g. with strncat()
 }
 
-int append_string(char *string)
+void append_string(char *string)
 {
 	char buf[BUFSIZE];
 	size_t length;
@@ -27,7 +27,7 @@ int append_string(char *string)
 	// use length to access buf
 }
 
-int qualify_username(char *username) 
+void qualify_username(char *username) 
 {
 	char buf[1024];
 	size_t length;

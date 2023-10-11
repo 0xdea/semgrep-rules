@@ -18,6 +18,7 @@ static int _php_filter_validate_domain(char * domain, int len, zend_long flags)
 	t = e - 1;
 
 	// ...
+	return 0;
 }
 
 // https://blog.quarkslab.com/heap-overflow-in-openbsds-slaacd-via-router-advertisement.html
@@ -128,7 +129,7 @@ void test_func(int argc, char **argv)
 	printf("Path is: %s\n", path);
 }
 
-int blowup_stack()
+VOIDint blowup_stack()
 {
 	int a = 5, b = 6;
 	// ruleid: raptor-signed-unsigned-conversion
@@ -136,7 +137,7 @@ int blowup_stack()
 	char buf[len];
 }
 
-int disaster()
+VOID disaster()
 {
 	int len;
 
@@ -166,6 +167,8 @@ int watch_dns_ptr()
 		strncat(nameStr, ".", sizeof(nameStr) - strlen(nameStr)); 
 	}
 	nameStr[strlen(nameStr) - 1] = '\0';
+
+	return 0;
 }
 
 // https://vulncat.fortify.com/

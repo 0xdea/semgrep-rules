@@ -6,7 +6,7 @@
 
 #define BUFSIZE 256
 
-int bad1(char *string)
+void bad1(char *string)
 {
 	char buf[BUFSIZE];
 
@@ -15,7 +15,7 @@ int bad1(char *string)
 	buf[BUFSIZE] = '\0';
 }
 
-int good1(char *string)
+void good1(char *string)
 {
 	char buf[BUFSIZE];
 
@@ -24,7 +24,7 @@ int good1(char *string)
 	buf[BUFSIZE - 1] = '\0';
 }
 
-int bad2(char *string)
+void bad2(char *string)
 {
 	char firstname[20];
 	char lastname[20];
@@ -36,7 +36,7 @@ int bad2(char *string)
 	strncat(fullname, firstname, 40);
 }
 
-int good2(char *string)
+void good2(char *string)
 {
 	char firstname[20];
 	char lastname[20];
@@ -48,7 +48,7 @@ int good2(char *string)
 	strncat(fullname, firstname, sizeof(fullname) - strlen(fullname) - 1);
 }
 
-int bad3(char *string)
+void bad3(char *string)
 {
 	char filename[BUFSIZE];
 
@@ -62,7 +62,7 @@ int bad3(char *string)
 	}
 }
 
-int good3(char *string)
+void good3(char *string)
 {
 	char filename[BUFSIZE];
 
@@ -76,7 +76,7 @@ int good3(char *string)
 	}
 }
 
-int test_func()
+void test_func()
 {
 	int id_sequence[3];
 
@@ -87,7 +87,7 @@ int test_func()
 	id_sequence[3] = 456;
 }
 
-int processRawStr(uint8_t *s, size_t sz) 
+void processRawStr(uint8_t *s, size_t sz) 
 {
 	uint8_t buf[1024];
 	memset(buf, 0x0, sizeof(buf));
@@ -110,7 +110,7 @@ void process_string(char *src)
 	return;
 }
 
-int get_user(char *user) 
+void get_user(char *user) 
 {
 	char buf[1024];
 
@@ -178,6 +178,8 @@ static LabelText* text_create(char *orig_str, int char_width)
         if ( str[strlen( str ) - 1] != 10 )
         	text->count++;
 	}
+
+	return NULL;
 }
 
 void addLineAfter(struct line *whichLine, char *data) 

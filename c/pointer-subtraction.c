@@ -4,13 +4,13 @@
 #include <string.h>
 #include <stdlib.h>
 
-int bad1(char *tmp, char *ptr1, char *ptr2)
+void bad1(char *tmp, char *ptr1, char *ptr2)
 {
 	// ruleid: raptor-pointer-subtraction
 	memcpy(tmp, ptr1, (ptr2 - ptr1) - 1);
 }
 
-int bad2(char *ptr1, char *ptr2)
+void bad2(char *ptr1, char *ptr2)
 {
 	// ruleid: raptor-pointer-subtraction
 	char *tmp = (char *)malloc(ptr2 - ptr1);

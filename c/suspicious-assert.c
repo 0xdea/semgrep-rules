@@ -21,6 +21,8 @@ static inline int send_sf(struct isotp_send_ctx *ctx)
 	memcpy(&frame.data[index], data, len);
 
 	/* ... */
+
+	return 0;
 }
 
 static inline void assert_buf_len(int need, int have)
@@ -57,6 +59,7 @@ static int line_out_drop_mode(void)
 
 	/* ... */
 	}
+	return 0;
 }
 
 void arch_irq_offload(irq_offload_routine_t routine, const void *parameter)

@@ -5,7 +5,7 @@
 #define BUFSIZE 256
 #define SIZE(x, y) (sizeof(x) ((y) (x)))
 
-int copy_string(char *string)
+void copy_string(char *string)
 {
 	char buf[BUFSIZE];
 	size_t length;
@@ -16,7 +16,7 @@ int copy_string(char *string)
 	// use length to access buf
 }
 
-int bad()
+void bad()
 {
 	char buf[1024], *ptr;
 	ptr = buf;

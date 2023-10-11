@@ -99,7 +99,7 @@ unsigned int readdata2()
 	return amount;
 }
 
-int copy_memory() 
+void copy_memory() 
 {
 	int size = 256;
 
@@ -129,7 +129,7 @@ void test_func(int argc, char **argv)
 	printf("Path is: %s\n", path);
 }
 
-VOIDint blowup_stack()
+void blowup_stack()
 {
 	int a = 5, b = 6;
 	// ruleid: raptor-signed-unsigned-conversion
@@ -137,7 +137,7 @@ VOIDint blowup_stack()
 	char buf[len];
 }
 
-VOID disaster()
+void disaster()
 {
 	int len;
 

@@ -6,7 +6,7 @@
 
 #define BUFSIZE 256
 
-int copy_string1(char *string)
+void copy_string1(char *string)
 {
 	char buf[BUFSIZE];
 	char *ptr;
@@ -20,7 +20,7 @@ int copy_string1(char *string)
 	snprintf(ptr, BUFSIZE, "%s", string);
 }
 
-int copy_string2(char *string)
+void copy_string2(char *string)
 {
 	char buf[BUFSIZE];
 
@@ -31,7 +31,7 @@ int copy_string2(char *string)
 	strlcpy(buf, "Hello, world!", BUFSIZE);
 }
 
-int copy_string3(char *string)
+void copy_string3(char *string)
 {
 	char buf[BUFSIZE];
 
@@ -39,7 +39,7 @@ int copy_string3(char *string)
 	memcpy(buf, string, BUFSIZE);
 }
 
-int bad(int limit) 
+void bad(int limit) 
 {
 	char buf[BUFSIZE];
 

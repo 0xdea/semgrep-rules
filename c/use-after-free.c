@@ -5,7 +5,7 @@
 
 #define MEMSIZE 256
 
-int alloc_and_free1()
+void alloc_and_free1()
 {
 	int err = 1, bailout = 0;
 	char *ptr = (char *)malloc(MEMSIZE);
@@ -24,7 +24,7 @@ int alloc_and_free1()
 	fprintf(stderr, "error: %p\n", ptr);
 }
 
-int alloc_and_free2()
+void alloc_and_free2()
 {
 	char *ptr = (char *)malloc(MEMSIZE);
 
@@ -34,7 +34,7 @@ int alloc_and_free2()
 	fprintf(stderr, "error: %p\n", ptr);
 }
 
-int uaf(int argc, char **argv) 
+void uaf(int argc, char **argv) 
 {
 	char *buf1R1;
 	char *buf2R1;

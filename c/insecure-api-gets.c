@@ -4,7 +4,7 @@
 
 #define BUFSIZE 256
 
-int get_string()
+void get_string()
 {
 	char buf[BUFSIZE];
 

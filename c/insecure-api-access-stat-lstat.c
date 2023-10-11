@@ -8,7 +8,7 @@
 
 #define MEMSIZE 256
 
-int bad1()
+void bad1()
 {
 	// ruleid: raptor-insecure-api-access-stat-lstat
 	int res = access("/tmp/userfile", R_OK);
@@ -19,7 +19,7 @@ int bad1()
 	// ...
 }
 
-int bad2(char *file)
+void bad2(char *file)
 {
 	struct stat statb;
 	int fd;
@@ -36,7 +36,7 @@ int bad2(char *file)
 		goto out;
 }
 
-int bad3(char *fname)
+void bad3(char *fname)
 {
 	struct stat stbl;
 	int fd = open(fname, O_RDONLY); 

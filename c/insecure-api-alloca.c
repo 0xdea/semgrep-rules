@@ -5,7 +5,7 @@
 
 #define MEMSIZE 256
 
-int allocate_memory()
+void allocate_memory()
 {
 	// ruleid: raptor-insecure-api-alloca
 	alloca(MEMSIZE);
@@ -13,7 +13,7 @@ int allocate_memory()
 	// ...
 }
 
-int allocate_memory2()
+void allocate_memory2()
 {
 	int end_limit = get_nmbr_obj_from_db();
 	int i;

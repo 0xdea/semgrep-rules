@@ -2,7 +2,7 @@
 
 #include <stdio.h>
 
-int assign_int(int int_var)
+void assign_int(int int_var)
 {
 	// ruleid: raptor-integer-truncation
 	char char_var = int_var;
@@ -12,7 +12,7 @@ int assign_int(int int_var)
 	short_var = int_var;
 }
 
-int assign_long(long long_var)
+void assign_long(long long_var)
 {
 	short short_var;
 	// ruleid: raptor-integer-truncation
@@ -22,7 +22,7 @@ int assign_long(long long_var)
 	short_var = long_var;
 }
 
-int test_func()
+void test_func()
 {
 	int intPrimitive;
 	short shortPrimitive;

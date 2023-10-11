@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <unistd.h>
 
-int open_tmpfile(char *filename)
+void open_tmpfile(char *filename)
 {
 	// ruleid: raptor-insecure-api-mktemp-tmpnam-tempnam
 	mktemp(filename);

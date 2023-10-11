@@ -1,6 +1,6 @@
 // Marco Ivaldi <raptor@0xdeadbeef.info>
 
-int test_func()
+void test_func()
 {
 	char source[21] = "the character string";
 	char dest[12];

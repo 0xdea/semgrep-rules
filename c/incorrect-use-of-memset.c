@@ -34,7 +34,7 @@ int test2()
 	return 0;
 }
 
-int test3()
+void test3()
 {
 	// ...
 	if (!StartServiceCtrlDispatcher(steDispatchTable)) {

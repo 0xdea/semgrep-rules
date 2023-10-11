@@ -5,7 +5,7 @@
 #define BUFSIZE 256
 #define FMT "whatever"
 
-int copy_string(char *string, int number)
+void copy_string(char *string, int number)
 {
 	char buf[BUFSIZE];
 	char fmt[] = "whatever";

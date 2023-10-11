@@ -25,4 +25,6 @@ int main(int argc, char* argv[])
 	signal(SIGTERM, handler);
 
 	sleep(10);
+
+	return 0;
 }

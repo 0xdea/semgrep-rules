@@ -5,7 +5,7 @@
 
 #define BUFSIZE 256
 
-int copy_append_string(char *string1, char *string2)
+void copy_append_string(char *string1, char *string2)
 {
 	char buf[BUFSIZE];
 
@@ -16,7 +16,7 @@ int copy_append_string(char *string1, char *string2)
 	strcat(buf, string2);
 }
 
-int copy_string(char *string)
+void copy_string(char *string)
 {
 	char buf[BUFSIZE];
 
@@ -24,7 +24,7 @@ int copy_string(char *string)
 	stpcpy(buf, string);
 }
 
-int test_func()
+void test_func()
 {
 	struct hostent *clienthp;
 	char hostname[MAX_LEN];
@@ -102,7 +102,7 @@ int process_email(char *email)
 	// ...
 }
 
-int process_address(int sockfd) 
+void process_address(int sockfd) 
 {
 	char username[256], domain[256], netbuf[256], *ptr; 
 	

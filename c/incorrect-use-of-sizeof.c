@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-int bad1()
+void bad1()
 {
 	double *foo;
 
@@ -13,7 +13,7 @@ int bad1()
 	foo = (double *)malloc(sizeof(foo));
 }
 
-int good1()
+void good1()
 {
 	double *foo;
 
@@ -21,7 +21,7 @@ int good1()
 	foo = (double *)malloc(sizeof(*foo));
 }
 
-int bad2(char *buf)
+void bad2(char *buf)
 {
 	size_t size;
 
@@ -29,7 +29,7 @@ int bad2(char *buf)
 	size = sizeof(buf);
 }
 
-int good2()
+void good2()
 {
 	char buf[256];
 	size_t size;
@@ -38,7 +38,7 @@ int good2()
 	size = sizeof(buf);
 }
 
-int bad3()
+void bad3()
 {
 	AnObj *o = (AnObj *) malloc(sizeof(AnObj));
 	// ruleid: raptor-incorrect-use-of-sizeof
@@ -115,4 +115,5 @@ int main (int argc, char **argv)
 	} else {
 		DoAuthenticatedTask(argv[1]);
 	}
+	return 0;
 }

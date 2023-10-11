@@ -5,7 +5,7 @@
 #define BUFSIZE 256
 #define FMT "whatever"
 
-int read_string(char *string)
+void read_string(char *string)
 {
 	char buf[BUFSIZE];
 	int number;
@@ -30,7 +30,7 @@ int read_string(char *string)
 	scanf(buf);
 }
 
-int test_func()
+void test_func()
 {
 	char last_name[20];
 	printf ("Enter your last name: ");
@@ -97,6 +97,7 @@ int __fastcall updating_database(int a1, const char *update_server)
    			}
 		}
 	}
+	return 0;
 }
 
 int main() 

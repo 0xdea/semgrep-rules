@@ -9,7 +9,7 @@ rules:
       # NOTE: this rule only covers free() called on stack-allocated
       # buffers; it does not cover other instances of free() called on
       # non-heap-allocated buffers; it also does not cover custom wrappers
-      # to free().
+      # to free(). See also raptor-mismatched-memory-management.yaml.
     message: >-
       The software calls free() on a pointer to memory that was not
       allocated using associated heap allocation functions such as

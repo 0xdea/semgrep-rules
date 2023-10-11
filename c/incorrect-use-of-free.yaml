@@ -22,24 +22,43 @@ rules:
       - patterns:
         - pattern: free($PTR)
         - pattern-either:
+          # array
           - pattern-inside: |
               $TYPE $PTR[$LEN];
               ...
           - pattern-inside: |
               $TYPE $PTR[$LEN] = $EXPR;
+              ...
+          # pointer to array
+          - pattern-inside: |
+              $TYPE $ARR[$LEN];
+              ...
+              $PTR = $ARR;
+              ...
+          - pattern-inside: |
+              $TYPE $ARR[$LEN] = $EXPR;
+              ...
+              $PTR = $ARR;
               ...
       - patterns:
-        - pattern: free(&$PTR)
+        # address of local variable
+        - pattern: free(&$VAR)
         - pattern-either:
           - pattern-inside: |
-              $TYPE $PTR[$LEN];
+              $TYPE $VAR;
               ...
           - pattern-inside: |
-              $TYPE $PTR[$LEN] = $EXPR;
+              $TYPE $VAR = $EXPR;
+              ...          
+          - pattern-inside: |
+              $TYPE $VAR[$LEN];
               ...
           - pattern-inside: |
-              $TYPE * $PTR;
+              $TYPE $VAR[$LEN] = $EXPR;
               ...
           - pattern-inside: |
-              $TYPE * $PTR = $EXPR;
+              $TYPE * $VAR;
+              ...
+          - pattern-inside: |
+              $TYPE * $VAR = $EXPR;
               ...

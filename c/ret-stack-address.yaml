@@ -25,24 +25,24 @@ rules:
         - pattern-either:
           # array
           - pattern-inside: |
-              $TYPE $PTR[$SIZE];
+              $TYPE $PTR[$LEN];
               ...
           - pattern-inside: |
-              $TYPE $PTR[$SIZE] = $EXPR;
+              $TYPE $PTR[$LEN] = $EXPR;
               ...
           # pointer to array
           - pattern-inside: |
-              $TYPE $ARR[$SIZE];
+              $TYPE $ARR[$LEN];
               ...
               $PTR = $ARR;
               ...
           - pattern-inside: |
-              $TYPE $ARR[$SIZE] = $EXPR;
+              $TYPE $ARR[$LEN] = $EXPR;
               ...
               $PTR = $ARR;
               ...
       - patterns:
-        # address of variable
+        # address of local variable
         - pattern: return &$VAR;
         - pattern-either:
           - pattern-inside: |
@@ -50,4 +50,16 @@ rules:
               ...
           - pattern-inside: |
               $TYPE $VAR = $EXPR;
+              ...
+          - pattern-inside: |
+              $TYPE $VAR[$LEN];
+              ...
+          - pattern-inside: |
+              $TYPE $VAR[$LEN] = $EXPR;
+              ...
+          - pattern-inside: |
+              $TYPE * $VAR;
+              ...
+          - pattern-inside: |
+              $TYPE * $VAR = $EXPR;
               ...

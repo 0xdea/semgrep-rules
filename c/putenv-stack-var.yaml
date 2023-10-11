@@ -12,7 +12,8 @@ rules:
       # function returns (e.g., output parameter) are not covered.
     message: >-
       A function calls putenv() with a variable that has a short lifetime,
-      such as a pointer to an automatic variable allocated on the stack.
+      such as a pointer to an automatic variable allocated on the stack. The
+      correct bahavior is to putenv() a static/global string.
     severity: INFO
     languages:
       - c

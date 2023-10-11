@@ -77,6 +77,8 @@ For a better streamlined experience, I recommend saving semgrep scan output in [
 ### race conditions
 * [**insecure-api-access-stat-lstat**](https://github.com/0xdea/semgrep-rules/blob/main/c/insecure-api-access-stat-lstat.yaml). Use of insecure API functions access(), stat(), lstat().
 * [**insecure-api-mktemp-tmpnam-tempnam**](https://github.com/0xdea/semgrep-rules/blob/main/c/insecure-api-mktemp-tmpnam-tempnam.yaml). Use of insecure API functions mktemp(), tmpnam(), tempnam().
+* [**insecure-api-signal**](https://github.com/0xdea/semgrep-rules/blob/main/c/insecure-api-signal.yaml). Use of insecure API function signal().
+
 
 ### privilege management
 * [**incorrect-order-setuid-setgid-etc**](https://github.com/0xdea/semgrep-rules/blob/main/c/incorrect-order-setuid-setgid-etc.yaml). Privilege management functions called in the wrong order.

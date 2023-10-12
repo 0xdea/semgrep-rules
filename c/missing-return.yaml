@@ -1,0 +1,22 @@
+rules:
+  - id: raptor-missing-return
+    metadata:
+      author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      references:
+        - https://cwe.mitre.org/data/definitions/393
+        - https://cwe.mitre.org/data/definitions/394
+      confidence: HIGH
+    message: >-
+      A non-void function does not have a return statement. Hence, its
+      return value can be considered undefined.
+    severity: WARNING
+    languages:
+      - c
+      - cpp
+    patterns:
+      - pattern-inside: |
+          $TYPE $FUN(...) { ... }
+      - pattern-not-inside: |
+          $TYPE $FUN(...) { ... return $RET; }
+      - pattern-not-inside: |
+          void $FUN(...) { ... }

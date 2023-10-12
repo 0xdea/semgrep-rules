@@ -5,7 +5,7 @@
 
 #define MEMSIZE 256
 
-int alloc_and_free1()
+void alloc_and_free1()
 {
 	int bailout = 1;
 	char *ptr = (char *)malloc(MEMSIZE);
@@ -20,7 +20,7 @@ int alloc_and_free1()
 	free(ptr);
 }
 
-int alloc_and_free2()
+void alloc_and_free2()
 {
 	char *ptr = (char *)malloc(MEMSIZE);
 
@@ -30,7 +30,7 @@ int alloc_and_free2()
 	free(ptr);
 }
 
-int alloc_and_free3()
+void alloc_and_free3()
 {
 	char *ptr = (char *)malloc(MEMSIZE);
 
@@ -40,7 +40,7 @@ int alloc_and_free3()
 	free(ptr);
 }
 
-int double_free(int argc, char **argv) 
+void double_free(int argc, char **argv) 
 {
 	char *buf1R1;
 	char *buf2R1;

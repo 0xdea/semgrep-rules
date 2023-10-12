@@ -9,4 +9,6 @@ int main(int argc, char** argv)
 	// ruleid: raptor-argv-envp-access
 	strcat(cmd, argv[1]);
 	system(cmd);
+
+	return 0;
 }

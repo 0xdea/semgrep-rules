@@ -5,7 +5,7 @@
 
 #define BUFSIZE 256
 
-int build_string(char *string)
+void build_string(char *string)
 {
 	char buf[BUFSIZE];
 
@@ -16,7 +16,7 @@ int build_string(char *string)
 	snprintf(buf, BUFSIZE, "%s", string);
 }
 
-int print_stuff(char *string)
+void print_stuff(char *string)
 {
 	char buf[BUFSIZE];
 
@@ -27,7 +27,7 @@ int print_stuff(char *string)
 	printf("%s\n", string);
 }
 
-int log_stuff(char *string)
+void log_stuff(char *string)
 {
 	char buf[BUFSIZE];
 
@@ -38,7 +38,7 @@ int log_stuff(char *string)
 	syslog(LOG_ERR, "%s", string);
 }
 
-int log_error(char *fmt, ...) 
+void log_error(char *fmt, ...) 
 {
 	char buf[BUFSIZE];
 	va_list ap;

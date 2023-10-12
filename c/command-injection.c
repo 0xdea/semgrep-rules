@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int invoke1(char *string)
+void invoke1(char *string)
 {
 	char buf[] = "uname -a; id";
 
@@ -17,7 +17,7 @@ int invoke1(char *string)
 	system(string);
 }
 
-int invoke2(char *string)
+void invoke2(char *string)
 {
 	char buf[] = "uname -a; id";
 

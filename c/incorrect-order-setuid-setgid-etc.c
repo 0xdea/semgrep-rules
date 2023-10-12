@@ -3,21 +3,21 @@
 #include <stdio.h>
 #include <unistd.h>
 
-int drop_priv_bad()
+void drop_priv_bad()
 {
 	// ruleid: raptor-incorrect-order-setuid-setgid-etc
 	setuid(getuid());
 	setgid(getgid());
 }
 
-int drop_priv_ok()
+void drop_priv_ok()
 {
 	// ok: raptor-incorrect-order-setuid-setgid-etc
 	setgid(getgid());
 	setuid(getuid());
 }
 
-int bad1()
+void bad1()
 {
 	// ruleid: raptor-incorrect-order-setuid-setgid-etc
 	seteuid(getuid());
@@ -25,7 +25,7 @@ int bad1()
 	setuid(getuid());
 }
 
-int good1()
+void good1()
 {
 	// ok: raptor-incorrect-order-setuid-setgid-etc
 	seteuid(getuid());
@@ -35,7 +35,7 @@ int good1()
 	setuid(getuid());
 }
 
-int bad2()
+void bad2()
 {
 	int user1 = 500, user2 = 501;
 
@@ -50,7 +50,7 @@ int bad2()
 	seteuid(0);
 }
 
-int good2()
+void good2()
 {
 	int user1 = 500, user2 = 501;
 

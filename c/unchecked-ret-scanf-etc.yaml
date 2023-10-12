@@ -1,0 +1,41 @@
+rules:
+  - id: raptor-unchecked-ret-scanf-etc
+    metadata:
+      author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      references:
+        - https://cwe.mitre.org/data/definitions/252
+        - https://codeql.github.com/codeql-query-help/cpp/cpp-missing-check-scanf/
+      confidence: MEDIUM
+    message: >-
+      The software does not check the return value from a method or
+      function, which can prevent it from detecting unexpected states and
+      conditions.
+    severity: WARNING
+    languages:
+      - c
+      - cpp
+    patterns:
+      - pattern: $FUN(...)
+      - metavariable-pattern:
+          metavariable: $FUN
+          pattern-either:
+            - pattern: scanf
+            - pattern: vscanf
+            - pattern: fscanf
+            - pattern: vfscanf
+            - pattern: sscanf
+            - pattern: vsscanf
+            - pattern: wscanf
+            - pattern: vwscanf
+            - pattern: fwscanf
+            - pattern: vfwscanf
+            - pattern: swscanf
+            - pattern: vswscanf
+      - pattern-not-inside: $RET = $FUN(...)
+      - pattern-not-inside: <... $FUN(...) == $VAL ...>
+      - pattern-not-inside: <... $FUN(...) != $VAL ...>
+      - pattern-not-inside: <... $FUN(...) < $VAL ...>
+      - pattern-not-inside: <... $FUN(...) <= $VAL ...>
+      - pattern-not-inside: <... $FUN(...) > $VAL ...>
+      - pattern-not-inside: <... $FUN(...) >= $VAL ...>
+      - pattern-not-inside: return $FUN(...);

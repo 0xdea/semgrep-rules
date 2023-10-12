@@ -8,7 +8,7 @@ rules:
         - https://cwe.mitre.org/data/definitions/828
       confidence: HIGH
     message: >-
-      Today signal() must be regarded as deprecated. When possible,
+      The signal() API should be regarded as deprecated. When possible,
       sigaction() should be used instead, because it allows to precisely
       specify the desired behavior in case two signals arrive shortly after
       each other thus preventing many race conditions.

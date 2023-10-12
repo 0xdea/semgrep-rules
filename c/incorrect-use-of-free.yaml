@@ -11,9 +11,9 @@ rules:
       # non-heap-allocated buffers; it also does not cover custom wrappers
       # to free(). See also raptor-mismatched-memory-management.yaml.
     message: >-
-      The software calls free() on a pointer to memory that was not
-      allocated using associated heap allocation functions such as
-      malloc(), calloc(), or realloc().
+      The software calls free() on a pointer to memory that has a short 
+      lifetime and was not allocated using associated heap allocation 
+      functions such as malloc(), calloc(), or realloc().
     severity: ERROR
     languages:
       - c

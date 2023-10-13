@@ -40,11 +40,11 @@ rules:
           - pattern-inside: |
               $TYPE $BUF[$A][$Y];
               ...
-              $BUF[$X][$Y] = $EXPR
+              $BUF[$X][$Y] = $EXPR;
           - pattern-inside: |
               $TYPE $BUF[$X][$B];
               ...
-              $BUF[$X][$Y] = $EXPR          
+              $BUF[$X][$Y] = $EXPR;    
       # suspicious loops
       - pattern: for (<... $I = $NUM ...>; <... $I <= $LEN ...>; <... $I++ ...>) ...
       - pattern: for (<... $I = $NUM ...>; <... $I <= $LEN ...>; <... ++$I ...>) ...

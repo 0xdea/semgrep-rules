@@ -224,6 +224,18 @@ void flawed_strdup(const char *input)
 	return copy;
 }
 
+int two_dimensions(int argc, char *argv[])
+{
+	char buffer[1][256];
+	// ruleid: raptor-off-by-one
+	buffer[0][256] = '!';
+	// ruleid: raptor-off-by-one
+	buffer[1][1] = '!';
+	// ok: raptor-off-by-one
+	buffer[0][255] = '!';
+	return 0;
+}
+
 int main() 
 {
 	printf("Hello, World!");

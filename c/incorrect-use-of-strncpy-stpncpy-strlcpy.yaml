@@ -35,7 +35,7 @@ rules:
           - pattern-inside: |
               $TYPE $SRC[$LEN] = $EXPR;
               ...
-      # sizeof operator
+      # sizeof operator, strlen, and similar
       - patterns:
         - pattern: $FUN($DST, $SRC, <... $SRC ...>)
         - metavariable-pattern:

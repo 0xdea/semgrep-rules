@@ -213,6 +213,14 @@ int test4()
 	}
 }
 
+void test5()
+{
+	// ruleid: raptor-typos
+	if(strcpy(szbuf1, "Manager") == 0) {
+		do_something();
+	}
+}
+
 int wgetnstr ( WINDOW *win, char *str, int n ) 
 {
     char *_str;

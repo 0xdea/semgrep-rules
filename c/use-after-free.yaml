@@ -92,9 +92,9 @@ rules:
       # return value
       - patterns:
         - pattern: |
-          free($PTR);
-          ...
-          return *$PTR
+            free($PTR);
+            ...
+            return *$PTR
         - pattern-not: |
             free($PTR);
             ...

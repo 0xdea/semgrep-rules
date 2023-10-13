@@ -10,6 +10,9 @@ rules:
       confidence: MEDIUM
       # NOTE: C++ delete and delete[] operators are not covered.
       # NOTE: realloc() is not covered.
+      # NOTE: assignments after free() are not covered because such
+      # pattern would generate many false positives in case of
+      # subsequent allocations, especially with custom alloc functions.
     message: >-
       The use of previously-freed memory can have any number of adverse
       consequences, ranging from the corruption of valid data to the
@@ -85,4 +88,16 @@ rules:
             ...
             $PTR = $EXPR;
             ...
-            return $PTR;
+            return $PTR[$POS];
+      # return value
+      - patterns:
+        - pattern: |
+          free($PTR);
+          ...
+          return *$PTR
+        - pattern-not: |
+            free($PTR);
+            ...
+            $PTR = $EXPR;
+            ...
+            return *$PTR;

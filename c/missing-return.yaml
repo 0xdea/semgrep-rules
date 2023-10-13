@@ -28,3 +28,6 @@ rules:
       # exclude main function
       - pattern-not-inside: |
           int main(...) { ... }
+      # exclude else if
+      - pattern-not-inside: |
+          else if(...) { ... }

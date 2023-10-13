@@ -52,7 +52,7 @@ void bad3(char *string)
 {
 	char filename[BUFSIZE];
 
-	// ruleid: raptor-off-by-one
+	// commented-out because of too many false positives: raptor-off-by-one
 	for (int i = 0; i <= BUFSIZE; i++) {
 		char c = getc();
 		if (c == 'EOF') {
@@ -101,7 +101,7 @@ void process_string(char *src)
 {
 	char dest[32];
 
-	// ruleid: raptor-off-by-one
+	// commented-out because of too many false positives: raptor-off-by-one
 	for (i = 0; src[i] && (i <= sizeof(dest)); i++)
 		dest[i] = src[i];
 
@@ -130,7 +130,7 @@ int get_mac(int fd, struct session *session)
    	if (n > MAX_MAC)
 		return 1;
 
-	// ruleid: raptor-off-by-one
+	// commented-out because of too many false positives: raptor-off-by-one
 	for (i = 0; i <= n; i++)
 		session->mac[i] = read_network_integer(fd);
 	return 0; 
@@ -149,7 +149,7 @@ int variant1(int argc, char *argv[])
 int variant2(int argc, char *argv[])
 {
 	char bStr[10];
-	// ruleid: raptor-off-by-one
+	// commented-out because of too many false positives: raptor-off-by-one
 	for (unsigned i=1;i<=10;++i) {
 		bStr[i] = (char)i + 'a';
 	}

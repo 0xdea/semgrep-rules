@@ -8,8 +8,9 @@ rules:
         - https://g.co/kgs/PCHQjJ
         - https://www.sei.cmu.edu/downloads/sei-cert-c-coding-standard-2016-v01.pdf
       confidence: MEDIUM
-    # NOTE: other functions that do not null-terminate the destination
-    # buffer are not covered (e.g., read(), readlink(), etc.).
+    # NOTE: other functions that do not NUL-terminate the destination
+    # buffer are not covered (e.g., read(), readlink(), fread(), 
+    # memcpy(), etc.).
     message: >-
       If there is no NUL character byte in the first n bytes of the source
       string, strncpy() and stpncpy() do not null-terminate the destination

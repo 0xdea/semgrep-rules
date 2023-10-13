@@ -23,8 +23,8 @@ rules:
       - pattern-regex: (TODO|XXX|FIXME|BUG|HACK|LATER|CVE-)
       - pattern-regex: (?i)(unsafe|insecure|dangerous|warning|overflow)
       # credentials
-      - pattern-regex: (?i)(password|private|token|secret|key)
-        # - pattern-regex: (?i)(JWT|JKS|JWK|JKU)
+      - pattern-regex: (?i)(password|private|token|secret)
+        # - pattern-regex: (?i)(key|JWT|JKS|JWK|JKU)
       # other "bad words" examples
       # privilege management
         # - pattern-regex: (?i)(privilege|permission|capabilit|role|rbac|polic|authorization|claim)

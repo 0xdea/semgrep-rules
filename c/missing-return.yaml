@@ -30,4 +30,4 @@ rules:
           int main(...) { ... }
       # exclude else if
       - pattern-not-inside: |
-          else if(...) { ... }
+          else if ($COND) { ... }

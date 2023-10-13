@@ -77,7 +77,7 @@ rules:
             $PTR = $EXPR;
             ...
             return $PTR;
-      # return array pointer
+      # return array pointer (return *$PTR is not covered because it's not supported by Semgrep)
       - patterns:
         - pattern: |
             free($PTR);
@@ -89,15 +89,3 @@ rules:
             $PTR = $EXPR;
             ...
             return $PTR[$POS];
-      # return value
-      - patterns:
-        - pattern: |
-            free($PTR);
-            ...
-            return *$PTR
-        - pattern-not: |
-            free($PTR);
-            ...
-            $PTR = $EXPR;
-            ...
-            return *$PTR;

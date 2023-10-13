@@ -68,9 +68,10 @@ rules:
         - pattern: (char * $PTR) = '\0'
         - pattern: (char * $PTR) == '\0'
         - pattern: (char * $PTR) != '\0'
-      # ; at the end of if() or for() statement
+      # ; at the end of if() or for() statement, empty else block
       - pattern: if ($COND);
       - pattern: for ($EXPR1; $EXPR2; $EXPR3);
+      - pattern: else {}
       # accidental octal conversion
       - patterns:
         - pattern-either:

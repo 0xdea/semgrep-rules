@@ -20,3 +20,5 @@ rules:
           $TYPE $FUN(...) { ... return $RET; }
       - pattern-not-inside: |
           void $FUN(...) { ... }
+      - pattern-not-inside: |
+          int main(...) { ... }

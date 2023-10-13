@@ -5,7 +5,7 @@ rules:
       references:
         - https://cwe.mitre.org/data/definitions/393
         - https://cwe.mitre.org/data/definitions/394
-      confidence: HIGH
+      confidence: MEDIUM
     message: >-
       A non-void function does not have a return statement. Hence, its
       return value can be considered undefined.
@@ -30,4 +30,4 @@ rules:
           int main(...) { ... }
       # exclude else if
       - pattern-not-inside: |
-          else if ($COND) { ... }
+          ... if ($COND) { ... }

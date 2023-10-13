@@ -15,7 +15,7 @@ Blog post: https://security.humanativaspa.it/semgrep-ruleset-for-c-c-vulnerabili
 
 See also: https://semgrep.dev/r
 
-[![Program in C](https://img.youtube.com/vi/tas0O586t80/hqdefault.jpg)](https://www.youtube.com/embed/tas0O586t80)
+[![Program in C](https://img.youtube.com/vi/tas0O586t80/sddefault.jpg)](https://www.youtube.com/embed/tas0O586t80)
 
 ## Setup and usage instructions
 

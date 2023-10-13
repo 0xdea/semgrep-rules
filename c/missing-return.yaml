@@ -16,9 +16,15 @@ rules:
     patterns:
       - pattern-inside: |
           $TYPE $FUN(...) { ... }
+      # exclude function declarations
+      - pattern-not-inside: |
+          $TYPE $FUN(...);
+      # exclude functions with return statement
       - pattern-not-inside: |
           $TYPE $FUN(...) { ... return $RET; }
+      # exclude void functions
       - pattern-not-inside: |
           void $FUN(...) { ... }
+      # exclude main function
       - pattern-not-inside: |
           int main(...) { ... }

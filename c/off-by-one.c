@@ -214,6 +214,16 @@ void addLineAfter_fixed(struct line *whichLine, char *data)
 	currentBuffer->numLines++;
 }
 
+void flawed_strdup(const char *input)
+{
+	char *copy;
+
+	// ruleid: raptor-off-by-one
+	copy = (char *)malloc(strlen(input));
+	strcpy(copy, input);
+	return copy;
+}
+
 int main() 
 {
 	printf("Hello, World!");

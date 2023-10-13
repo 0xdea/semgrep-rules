@@ -15,6 +15,8 @@ Blog post: https://security.humanativaspa.it/semgrep-ruleset-for-c-c-vulnerabili
 
 See also: https://semgrep.dev/r
 
+[![Program in C](https://img.youtube.com/vi/tas0O586t80/hqdefault.jpg)](https://www.youtube.com/embed/tas0O586t80)
+
 ## Setup and usage instructions
 
 1. Install [Semgrep](https://semgrep.dev/docs/getting-started/). 
@@ -31,7 +33,6 @@ $ semgrep --config PATH/TO/RULES PATH/TO/SOURCE
 ```
 
 For a better streamlined experience, I recommend saving semgrep scan output in [SARIF](https://sarifweb.azurewebsites.net/) format and using [SARIF Viewer](https://marketplace.visualstudio.com/items?itemName=MS-SarifVSCode.sarif-viewer) in [VS Code](https://code.visualstudio.com/).
-
 
 ## C/C++
 
@@ -79,7 +80,6 @@ For a better streamlined experience, I recommend saving semgrep scan output in [
 * [**insecure-api-access-stat-lstat**](https://github.com/0xdea/semgrep-rules/blob/main/c/insecure-api-access-stat-lstat.yaml). Use of insecure API functions access(), stat(), lstat().
 * [**insecure-api-mktemp-tmpnam-tempnam**](https://github.com/0xdea/semgrep-rules/blob/main/c/insecure-api-mktemp-tmpnam-tempnam.yaml). Use of insecure API functions mktemp(), tmpnam(), tempnam().
 * [**insecure-api-signal**](https://github.com/0xdea/semgrep-rules/blob/main/c/insecure-api-signal.yaml). Use of insecure API function signal().
-
 
 ### privilege management
 * [**incorrect-order-setuid-setgid-etc**](https://github.com/0xdea/semgrep-rules/blob/main/c/incorrect-order-setuid-setgid-etc.yaml). Privilege management functions called in the wrong order.

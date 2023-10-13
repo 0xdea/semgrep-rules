@@ -64,10 +64,12 @@ rules:
       - pattern: ($EXPR > $EXPR)
       - pattern: ($EXPR >= $EXPR)
       # assigning or comparing a char literal to a pointer (some types and literals are missing)
-      - pattern-either:
-        - pattern: (char * $PTR) = '\0'
-        - pattern: (char * $PTR) == '\0'
-        - pattern: (char * $PTR) != '\0'
+      - pattern: (char * $PTR) = '\0'
+      - pattern: (char * $PTR) == '\0'
+      - pattern: (char * $PTR) != '\0'
+      # use of a string copy function instead of a string compare function in a condition
+      - pattern: if (<... strcpy(...) ...>) ...
+      - pattern: if (<... strncpy(...) ...>) ...
       # ; at the end of if() or for() statement (empty else block not covered)
       - pattern: if ($COND);
       - pattern: for ($EXPR1; $EXPR2; $EXPR3);

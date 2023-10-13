@@ -29,6 +29,8 @@ rules:
               ...
       # sizeof operator
       - pattern: strncat($DST, $SRC, sizeof($DST))
+      # strlen function
+      - pattern: strncat($DST, $SRC, strlen($DST))
       # off-by-one 
       # see also off-by-one.yaml for a slightly different pattern
       - pattern: strncat($DST, $SRC, sizeof($DST) - strlen($DST))

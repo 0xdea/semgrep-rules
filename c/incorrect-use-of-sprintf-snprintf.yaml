@@ -4,7 +4,7 @@ rules:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       references:
         - https://linux.die.net/man/3/sprintf
-      confidence: HIGH
+      confidence: MEDIUM
       # NOTE: vsprintf() and vsnprintf() are not covered.
     message: >-
       C standards specify that the results are undefined if a call to
@@ -12,7 +12,7 @@ rules:
       to take place between objects that overlap (e.g., if the target
       string array and one of the supplied input arguments refer to the
       same buffer).
-    severity: ERROR
+    severity: WARNING
     languages:
       - c
       - cpp

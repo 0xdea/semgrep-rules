@@ -6,6 +6,8 @@ rules:
         - https://cwe.mitre.org/data/definitions/393
         - https://cwe.mitre.org/data/definitions/394
       confidence: MEDIUM
+      # NOTE: C++ class declarations should also be excluded, but
+      # apparently this pattern is not supported by Semgrep.
     message: >-
       A non-void function does not have a return statement. Hence, its
       return value can be considered undefined.

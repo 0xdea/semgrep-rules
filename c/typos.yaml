@@ -23,7 +23,10 @@ rules:
     pattern-either:
       # == instead of = in assignment (the ternary operator is not supported by Semgrep)
       - pattern: for ($EXPR1 == $EXPR2; $EXPR3; $EXPR4) ...
-      - pattern: $EXPR1 == $EXPR2;
+      - patterns:
+        - pattern: $EXPR1 == $EXPR2;
+        - pattern-not-inside: return(...);
+        - pattern-not-inside: assert(...);
       # = instead of == in comparison
       - patterns:
         - pattern: if (<... $EXPR1 = $EXPR2 ...>) ...

@@ -25,7 +25,7 @@ rules:
       - pattern: for ($EXPR1 == $EXPR2; $EXPR3; $EXPR4) ...
       - patterns:
         - pattern: $EXPR1 == $EXPR2;
-        - pattern-not-inside: return ...;
+        - pattern-not-inside: return ...
         - pattern-not-inside: assert(...);
       # = instead of == in comparison
       - patterns:

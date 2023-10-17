@@ -7,7 +7,7 @@ rules:
         - https://cwe.mitre.org/data/definitions/209
         - https://cwe.mitre.org/data/definitions/497
         - https://github.com/struct/mms
-      confidence: MEDIUM
+      confidence: LOW
     message: >-
       The software generates an error message that includes sensitive
       information about its environment, users, or associated data.

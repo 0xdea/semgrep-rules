@@ -16,10 +16,6 @@ rules:
     languages:
       - c
       - cpp
-    patterns:
-      - pattern: $FUN($DST, ..., $DST, ...)
-      - metavariable-pattern:
-          metavariable: $FUN
-          pattern-either:
-            - pattern: sprintf
-            - pattern: snprintf
+    pattern-either:
+      - pattern: sprintf($DST, ..., $DST, ...)
+      - pattern: snprintf($DST, $N, ..., $DST, ...)

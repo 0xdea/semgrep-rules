@@ -16,19 +16,19 @@ rules:
       - c
       - cpp
     patterns:
-      - pattern-inside: |
+      - pattern: |
           $TYPE $FUN(...) { ... }
       # exclude function declarations
-      - pattern-not-inside: |
+      - pattern-not: |
           $TYPE $FUN(...);
       # exclude functions with return statement
-      - pattern-not-inside: |
+      - pattern-not: |
           $TYPE $FUN(...) { ... return $RET; }
       # exclude void functions
-      - pattern-not-inside: |
+      - pattern-not: |
           void $FUN(...) { ... }
       # exclude main function
-      - pattern-not-inside: |
+      - pattern-not: |
           int main(...) { ... }
       # exclude else if (disabled for performance reasons)
         # - pattern-not-inside: |

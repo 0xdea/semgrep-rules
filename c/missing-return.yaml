@@ -26,7 +26,7 @@ rules:
           $TYPE $FUN(...) { ... return $RET; }
       # exclude void functions
       - pattern-not: |
-          void $FUN(...) { ... }
+          ... void $FUN(...) { ... }
       # exclude main function
       - pattern-not: |
           int main(...) { ... }

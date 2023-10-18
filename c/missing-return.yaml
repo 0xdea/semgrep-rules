@@ -11,25 +11,17 @@ rules:
     message: >-
       A non-void function does not have a return statement. Hence, its
       return value can be considered undefined.
-    severity: WARNING
+    severity: INFO
     languages:
       - c
       - cpp
     patterns:
-      - pattern-inside: |
-          $TYPE $FUN(...) { ... }
+      - pattern: $TYPE $FUN($ARG, ...) { ... }
       # exclude function declarations
-      - pattern-not: |
-          $TYPE $FUN(...);
+      - pattern-not: $TYPE $FUN(...);
       # exclude functions with return statement
-      - pattern-not: |
-          $TYPE $FUN(...) { ... return $RET; }
+      - pattern-not: $TYPE $FUN(...) { ... return $RET; }
       # exclude main function
-      - pattern-not: |
-          int main(...) { ... }
+      - pattern-not: int main(...) { ... }
       # exclude void functions
-      - pattern-not: |
-          void $FUN(...) { ... }
-      # exclude else if (disabled for performance reasons)
-        # - pattern-not-inside: |
-        #    ... if ($COND) { ... }
+      - pattern-not: void $FUN(...) { ... }

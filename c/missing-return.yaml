@@ -26,10 +26,10 @@ rules:
           $TYPE $FUN(...) { ... return $RET; }
       # exclude void functions
       - pattern-not-inside: |
-          ... void $FUN(...) { ... }
+          void $FUN(...) { ... }
       # exclude main function
       - pattern-not-inside: |
           int main(...) { ... }
-      # exclude else if
-      - pattern-not-inside: |
-          ... if ($COND) { ... }
+      # exclude else if (disabled for performance reasons)
+        # - pattern-not-inside: |
+        #    ... if ($COND) { ... }

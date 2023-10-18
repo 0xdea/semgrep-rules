@@ -16,7 +16,7 @@ rules:
       - c
       - cpp
     patterns:
-      - pattern: |
+      - pattern-inside: |
           $TYPE $FUN(...) { ... }
       # exclude function declarations
       - pattern-not: |
@@ -28,8 +28,8 @@ rules:
       - pattern-not: |
           int main(...) { ... }
       # exclude void functions
-      - pattern-not-inside: |
-          ... void $FUN(...) { ... }
+      - pattern-not: |
+          void $FUN(...) { ... }
       # exclude else if (disabled for performance reasons)
         # - pattern-not-inside: |
         #    ... if ($COND) { ... }

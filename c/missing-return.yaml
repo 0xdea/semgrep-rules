@@ -24,12 +24,12 @@ rules:
       # exclude functions with return statement
       - pattern-not: |
           $TYPE $FUN(...) { ... return $RET; }
-      # exclude void functions
-      - pattern-not: |
-          ... void $FUN(...) { ... }
       # exclude main function
       - pattern-not: |
           int main(...) { ... }
+      # exclude void functions
+      - pattern-not-inside: |
+          ... void $FUN(...) { ... }
       # exclude else if (disabled for performance reasons)
         # - pattern-not-inside: |
         #    ... if ($COND) { ... }

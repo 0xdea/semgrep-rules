@@ -5,7 +5,7 @@ rules:
       references:
         - https://cwe.mitre.org/data/definitions/393
         - https://cwe.mitre.org/data/definitions/394
-      confidence: MEDIUM
+      confidence: LOW
       # NOTE: function declarations in the form type func() are
       # not supported to avoid false positives due to current 
       # Semgrep limitations.
@@ -28,3 +28,5 @@ rules:
       - pattern-not: int main(...) { ... }
       # exclude void functions
       - pattern-not: void $FUN(...) { ... }
+      # exclude else if (commented-out for performance reasons)
+      # - pattern-not: ... if ($COND) { ... }

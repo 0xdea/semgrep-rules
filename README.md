@@ -93,10 +93,10 @@ For a better streamlined experience, I recommend saving semgrep scan output in [
 * [**interesting-api-calls**](https://github.com/0xdea/semgrep-rules/blob/main/c/interesting-api-calls.yaml). Calls to interesting and potentially insecure API functions.
 * [**unchecked-ret-scanf-etc**](https://github.com/0xdea/semgrep-rules/blob/main/c/unchecked-ret-scanf-etc.yaml). Unchecked return code of functions in the scanf() family.
 * [**insecure-api-atoi-atol-atof**](https://github.com/0xdea/semgrep-rules/blob/main/c/insecure-api-atoi-atol-atof.yaml). Use of potentially insecure API functions atoi(), atol(), atof().
+* [**argv-envp-access**](https://github.com/0xdea/semgrep-rules/blob/main/c/argv-envp-access.yaml). Command-line argument or environment variable access.
 * [**missing-default-in-switch**](https://github.com/0xdea/semgrep-rules/blob/main/c/missing-default-in-switch.yaml). Missing default case in a switch statement.
 * [**missing-break-in-switch**](https://github.com/0xdea/semgrep-rules/blob/main/c/missing-break-in-switch.yaml). Missing break or equivalent in a switch statement.
 * [**missing-return**](https://github.com/0xdea/semgrep-rules/blob/main/c/missing-return.yaml). Missing return statement in non-void function.
-* [**argv-envp-access**](https://github.com/0xdea/semgrep-rules/blob/main/c/argv-envp-access.yaml). Command-line argument or environment variable access.
 * [**typos**](https://github.com/0xdea/semgrep-rules/blob/main/c/typos.yaml). Potential typos with security implications.
 
 ## Generic

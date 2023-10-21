@@ -5,12 +5,8 @@
 [![](https://img.shields.io/badge/twitter-%400xdea-blue.svg)](https://twitter.com/0xdea)
 [![](https://img.shields.io/badge/mastodon-%40raptor-purple.svg)](https://infosec.exchange/@raptor)
 
-> "Humans are more suited to recognize food than to keep large graphs in their head."
-> 
-> -- Halvar Flake
-
 > "The attack surface is the vulnerability. Finding a bug there is just a detail."
->
+> 
 > -- Mark Dowd
 
 > "Some details are more important than others."

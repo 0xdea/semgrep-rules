@@ -75,7 +75,7 @@ For a better streamlined experience, I recommend saving semgrep scan output in [
 * [**incorrect-use-of-free**](https://github.com/0xdea/semgrep-rules/blob/main/c/incorrect-use-of-free.yaml). Calling free() on memory not in the heap.
 * [**unchecked-ret-malloc-calloc-realloc**](https://github.com/0xdea/semgrep-rules/blob/main/c/unchecked-ret-malloc-calloc-realloc.yaml). Unchecked return code of malloc(), calloc(), realloc().
 * [**ret-stack-address**](https://github.com/0xdea/semgrep-rules/blob/main/c/ret-stack-address.yaml). Potential return of the address of a stack-allocated variable.
-* [**putenv-stack-var**](https://github.com/0xdea/semgrep-rules/blob/main/c/putenv-stack-var.yaml). Potential call of putenv() with a stack-allocated variable.
+* [**putenv-stack-var**](https://github.com/0xdea/semgrep-rules/blob/main/c/putenv-stack-var.yaml). Call to putenv() with a stack-allocated variable.
 * [**memory-address-exposure**](https://github.com/0xdea/semgrep-rules/blob/main/c/memory-address-exposure.yaml). Potential exposure of underlying memory addresses.
 * [**mismatched-memory-management**](https://github.com/0xdea/semgrep-rules/blob/main/c/mismatched-memory-management.yaml). Potentially mismatched C memory management routines.
 * [**mismatched-memory-management-cpp**](https://github.com/0xdea/semgrep-rules/blob/main/c/mismatched-memory-management-cpp.yaml). Potentially mismatched C++ memory management routines.

@@ -77,6 +77,25 @@ void arch_irq_offload(irq_offload_routine_t routine, const void *parameter)
 	__ASSERT_NO_MSG((_current->base.thread_state & _THREAD_DEAD) == 0);
 }
 
+int process_sub(FILE *data_file, FILE *struct_file)
+{
+  FIND_T fInfo;
+  FIND_RET_T fret;
+  int filesProcessed = 0;
+
+  if (processSubs) {
+    /* process subs recursively */
+    size_t sublen = strlen(curSubdir);
+    size_t freelen = sizeof(curSubdir) - sublen - 1;
+	// ruleid: raptor-suspicious-assert
+    LWIP_ASSERT("sublen < sizeof(curSubdir)", sublen < sizeof(curSubdir));
+    fret = FINDFIRST_DIR("*", &fInfo);
+	/* ... */
+  }
+
+  return 0;
+}
+
 int main() 
 {
 	printf("Hello, World!");

@@ -9,6 +9,8 @@ rules:
       # NOTE: some functions (e.g., scanf family) and some other ways to
       # write into a stack buffer are not covered.
       # NOTE: static variables matching apparently is not supported by Semgrep.
+      # NOTE: based on semgrep --time output, processing of this rule seems to
+      # be particularly slow; consider disabling it, if you don't need it.
     message: >-
       The software directly writes into a stack buffer. This might lead to
       a stack-based buffer overflow.
@@ -73,7 +75,7 @@ rules:
               - pattern: vsprintf
       # buffer in 1st arg (snprintf functions)
       - patterns:
-        - pattern: $FUN($BUF, $LEN, $FMT, ...)
+        - pattern: $FUN($BUF, $N, $FMT, ...)
         - pattern-inside: |
             $TYPE $BUF[$LEN];
             ...

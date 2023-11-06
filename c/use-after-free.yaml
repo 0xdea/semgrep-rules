@@ -37,7 +37,7 @@ rules:
             - pattern: $FUN(..., <... $PTR[$POS] ...>, ...)
             - pattern: $FUN(..., <... (*$PTR) ...>, ...)
             - pattern: $PTR->$FUN(...)
-          # filter out double free() instances
+          # filter out double free instances
           - metavariable-pattern:
               metavariable: $FUN
               patterns:

@@ -6,7 +6,8 @@ rules:
         - https://lkml.org/lkml/2009/11/11/336
         - https://bugs.mysql.com/bug.php?id=23181
       confidence: HIGH
-      # NOTE: see also cpp.correctness.memset-removal.memset-removal.
+      # NOTE: see also cpp.correctness.memset-removal.memset-removal for
+      # a different potential flaw involving memset().
     message: >-
       The invocation of memset() is easy to get wrong. The second argument
       is the character and the third argument is the size, but sometimes

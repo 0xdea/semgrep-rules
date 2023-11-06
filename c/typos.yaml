@@ -12,6 +12,7 @@ rules:
       confidence: LOW
       # NOTE: common issues with comments are not covered.
       # NOTE: constructs such as assert(var == val) lead to false positives.
+      # NOTE: consider adding a focus-metavariable where applicable.
     message: >-
       The programmer accidentally uses the wrong operator, which changes
       the application logic in security-relevant ways. This rule also covers 

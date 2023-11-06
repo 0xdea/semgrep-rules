@@ -30,3 +30,4 @@ rules:
       - pattern-not: void $FUN(...) { ... }
       # exclude else if (commented-out for performance reasons)
       # - pattern-not: ... if ($COND) { ... }
+      - focus-metavariable: $FUN

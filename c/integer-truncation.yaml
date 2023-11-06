@@ -34,25 +34,28 @@ rules:
       - pattern: (char $NARROW) = <... (long int $LARGE) ...>
       - pattern: (char $NARROW) = <... (unsigned long $LARGE) ...>
       - pattern: (char $NARROW) = <... (unsigned long int $LARGE) ...>
-      # char: some common function returns
-      - pattern: |
-          char $FUN(...)
-          {
-          ...
-          return (short $LARGE);
-          }
-      - pattern: |
-          char $FUN(...)
-          {
-          ...
-          return (int $LARGE);
-          }
-      - pattern: |
-          char $FUN(...)
-          {
-          ...
-          return (long $LARGE);
-          }
+      # char: function return
+      - patterns:
+        - pattern-either:
+          - pattern: |
+              char $FUN(...)
+              {
+              ...
+              return (short $LARGE);
+              }
+          - pattern: |
+              char $FUN(...)
+              {
+              ...
+              return (int $LARGE);
+              }
+          - pattern: |
+              char $FUN(...)
+              {
+              ...
+              return (long $LARGE);
+              }
+        - focus-metavariable: $FUN
       # short: assignments
       - pattern: (short $NARROW) = <... (unsigned short $LARGE) ...>
       - pattern: (short int $NARROW) = <... (unsigned short int $LARGE) ...>
@@ -70,19 +73,22 @@ rules:
       - pattern: (unsigned short int $NARROW) = <... (long int $LARGE) ...>
       - pattern: (unsigned short $NARROW) = <... (unsigned long $LARGE) ...>
       - pattern: (unsigned short int $NARROW) = <... (unsigned long int $LARGE) ...>
-      # short: some common function returns
-      - pattern: |
-          short $FUN(...)
-          {
-          ...
-          return (int $LARGE);
-          }
-      - pattern: |
-          short $FUN(...)
-          {
-          ...
-          return (long $LARGE);
-          }
+      # short: function return
+      - patterns:
+        - pattern-either:
+          - pattern: |
+              short $FUN(...)
+              {
+              ...
+              return (int $LARGE);
+              }
+          - pattern: |
+              short $FUN(...)
+              {
+              ...
+              return (long $LARGE);
+              }
+        - focus-metavariable: $FUN
       # int: assignments
       - pattern: (int $NARROW) = <... (unsigned $LARGE) ...>
       - pattern: (int $NARROW) = <... (unsigned int $LARGE) ...>
@@ -90,13 +96,15 @@ rules:
       - pattern: (int $NARROW) = <... (long int $LARGE) ...>
       - pattern: (int $NARROW) = <... (unsigned long $LARGE) ...>
       - pattern: (int $NARROW) = <... (unsigned long int $LARGE) ...>
-      # short: some common function returns
-      - pattern: |
-          int $FUN(...)
-          {
-          ...
-          return (long $LARGE);
-          }
+      # int: function return
+      - patterns:
+        - pattern: |
+            int $FUN(...)
+            {
+            ...
+            return (long $LARGE);
+            }
+        - focus-metavariable: $FUN
       # long: assignments
       - pattern: (long $NARROW) = <... (unsigned long $LARGE) ...>
       - pattern: (long int $NARROW) = <... (unsigned long int $LARGE) ...>

@@ -26,9 +26,9 @@ rules:
         - pattern: $PTR->$MEM
         - pattern: (*$PTR).$MEM
         - pattern: $PTR[$POS]
-        # other use after free in return
+        - pattern: *$PTR
+        # use after free in return
         - pattern: return $PTR;
-        - pattern: return *$PTR;
         # use after free in function calls
         - patterns:
           - pattern-either:
@@ -36,6 +36,7 @@ rules:
             - pattern: $FUN(..., <... $PTR->$MEM ...>, ...)
             - pattern: $FUN(..., <... (*$PTR).$MEM ...>, ...)
             - pattern: $FUN(..., <... $PTR[$POS] ...>, ...)
+            - pattern: $FUN(..., <... *$PTR ...>, ...)
             - pattern: $PTR->$FUN(...)
           # filter out double free() instances
           - metavariable-pattern:

@@ -8,6 +8,8 @@ rules:
         - https://github.com/struct/mms
         - https://dustri.org/b/playing-with-weggli.html
       confidence: MEDIUM
+      # NOTE: see also cpp.correctness.sizeof-pointer-type.sizeof-pointer-type
+      # and cpp.correctness.sizeof-this.sizeof-this.
     message: >-
       The code calls sizeof() on a malloced pointer type, which always
       returns the wordsize/8. This can produce an unexpected result if the

@@ -7,6 +7,7 @@ rules:
         - https://g.co/kgs/PCHQjJ
         - https://dustri.org/b/playing-with-weggli.html
       confidence: MEDIUM
+      # NOTE: see also cpp.strings.snprintf-return-value-length.snprintf-return-value-length.
     message: >-
       The snprintf() and vsnprintf() functions return the total length of
       the string they tried to create. Therefore, this return value can be

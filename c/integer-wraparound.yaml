@@ -20,6 +20,7 @@ rules:
       # specifies the number of elements.
       # NOTE: there might exist other buggy input validation patterns not covered
       # here, including the same patterns with a different order of operands.
+      # NOTE: see also cpp.memory.*.
     message: >-
       The software performs a calculation that can produce an integer
       overflow or wraparound, when the logic assumes that the resulting

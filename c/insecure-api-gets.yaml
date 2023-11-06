@@ -6,6 +6,7 @@ rules:
         - https://cwe.mitre.org/data/definitions/242
         - https://cwe.mitre.org/data/definitions/120
       confidence: HIGH
+      # NOTE: see also cpp.strings.unbounded-copy-to-stack-buffer.unbounded-copy-to-stack-buffer.
     message: >-
       The gets() function is always unsafe because it does not perform bounds 
       checking on the size of its input. An attacker can easily send 

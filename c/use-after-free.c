@@ -64,6 +64,14 @@ int heap_use_after_free()
 	return x[5];
 }
 
+char test()
+{
+	char *ptr = (char *)malloc(10 * sizeof(char));
+	free(ptr);
+
+	return *ptr;
+}
+
 int main()
 {
 	printf("Hello, World!");

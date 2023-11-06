@@ -21,23 +21,27 @@ rules:
       - cpp
     patterns:
       - pattern: |
-          switch ($VAR) { case $VAL1: ... case $VAL2: ... }
+          $SWITCH ($VAR) { case $VAL1: ... case $VAL2: ... }
       # break
       - pattern-not: |
-          switch ($VAR) { case $VAL1: ... break; case $VAL2: ... }
+          $SWITCH ($VAR) { case $VAL1: ... break; case $VAL2: ... }
       - pattern-not: |
-          switch ($VAR) { case $VAL1: break; case $VAL2: ... }
+          $SWITCH ($VAR) { case $VAL1: break; case $VAL2: ... }
       # exit
       - pattern-not: |
-          switch ($VAR) { case $VAL1: ... exit($RET); case $VAL2: ... }
+          $SWITCH ($VAR) { case $VAL1: ... exit($RET); case $VAL2: ... }
       - pattern-not: |
-          switch ($VAR) { case $VAL1: exit($RET); case $VAL2: ... }
+          $SWITCH ($VAR) { case $VAL1: exit($RET); case $VAL2: ... }
       # return
       - pattern-not: |
-          switch ($VAR) { case $VAL1: ... return; case $VAL2: ... }
+          $SWITCH ($VAR) { case $VAL1: ... return; case $VAL2: ... }
       - pattern-not: |
-          switch ($VAR) { case $VAL1: return; case $VAL2: ... }
+          $SWITCH ($VAR) { case $VAL1: return; case $VAL2: ... }
       - pattern-not: |
-          switch ($VAR) { case $VAL1: ... return $RET; case $VAL2: ... }
+          $SWITCH ($VAR) { case $VAL1: ... return $RET; case $VAL2: ... }
       - pattern-not: |
-          switch ($VAR) { case $VAL1: return $RET; case $VAL2: ... }
+          $SWITCH ($VAR) { case $VAL1: return $RET; case $VAL2: ... }
+      - metavariable-pattern:
+          metavariable: $SWITCH
+          pattern: switch
+      - focus-metavariable: $SWITCH

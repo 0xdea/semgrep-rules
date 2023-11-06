@@ -24,10 +24,14 @@ rules:
       - pattern: |
           free($PTR);
           ...
-          free($PTR);
+          $FREE($PTR);
       - pattern-not: |
           free($PTR);
           ...
           $PTR = $EXPR;
           ...
           free($PTR);
+      - metavariable-pattern:
+          metavariable: $FREE
+          pattern: free
+      - focus-metavariable: $FREE

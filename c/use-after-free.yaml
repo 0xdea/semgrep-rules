@@ -31,11 +31,12 @@ rules:
         #- pattern: return *$PTR # XXX
         # use after free in function calls
         - patterns:
-          - pattern: $FUN(..., $PTR, ...)
-          - pattern: $FUN(..., <... $PTR->$MEM ...>, ...)
-          - pattern: $FUN(..., <... (*$PTR).$MEM ...>, ...)
-          - pattern: $FUN(..., <... $PTR[$POS] ...>, ...)
-          - pattern: $PTR->$FUN(...)
+          - pattern-either:
+            - pattern: $FUN(..., <... $PTR ...>, ...)
+            - pattern: $FUN(..., <... $PTR->$MEM ...>, ...)
+            - pattern: $FUN(..., <... (*$PTR).$MEM ...>, ...)
+            - pattern: $FUN(..., <... $PTR[$POS] ...>, ...)
+            - pattern: $PTR->$FUN(...)
           # filter out double free() instances
           - metavariable-pattern:
               metavariable: $FUN

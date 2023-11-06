@@ -27,8 +27,8 @@ rules:
         - pattern: (*$PTR).$MEM
         - pattern: $PTR[$POS]
         # other use after free in return
-        - pattern: return $PTR
-        - pattern: return *$PTR
+        - pattern: return $PTR;
+        - pattern: return *$PTR;
         # use after free in function calls
         - patterns:
           - pattern-either:

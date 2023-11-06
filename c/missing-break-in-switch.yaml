@@ -10,6 +10,7 @@ rules:
       confidence: MEDIUM
       # NOTE: we should also check for default blocks that miss the
       # break/return/exit or equivalent statement/function call.
+      # NOTE: consider adding a focus-metavariable when supported.
     message: >-
       The software omits a break statement within a switch or similar
       construct, causing code associated with multiple conditions to
@@ -21,27 +22,23 @@ rules:
       - cpp
     patterns:
       - pattern: |
-          $SWITCH ($VAR) { case $VAL1: ... case $VAL2: ... }
+          switch ($VAR) { case $VAL1: ... case $VAL2: ... }
       # break
       - pattern-not: |
-          $SWITCH ($VAR) { case $VAL1: ... break; case $VAL2: ... }
+          switch ($VAR) { case $VAL1: ... break; case $VAL2: ... }
       - pattern-not: |
-          $SWITCH ($VAR) { case $VAL1: break; case $VAL2: ... }
+          switch ($VAR) { case $VAL1: break; case $VAL2: ... }
       # exit
       - pattern-not: |
-          $SWITCH ($VAR) { case $VAL1: ... exit($RET); case $VAL2: ... }
+          switch ($VAR) { case $VAL1: ... exit($RET); case $VAL2: ... }
       - pattern-not: |
-          $SWITCH ($VAR) { case $VAL1: exit($RET); case $VAL2: ... }
+          switch ($VAR) { case $VAL1: exit($RET); case $VAL2: ... }
       # return
       - pattern-not: |
-          $SWITCH ($VAR) { case $VAL1: ... return; case $VAL2: ... }
+          switch ($VAR) { case $VAL1: ... return; case $VAL2: ... }
       - pattern-not: |
-          $SWITCH ($VAR) { case $VAL1: return; case $VAL2: ... }
+          switch ($VAR) { case $VAL1: return; case $VAL2: ... }
       - pattern-not: |
-          $SWITCH ($VAR) { case $VAL1: ... return $RET; case $VAL2: ... }
+          switch ($VAR) { case $VAL1: ... return $RET; case $VAL2: ... }
       - pattern-not: |
-          $SWITCH ($VAR) { case $VAL1: return $RET; case $VAL2: ... }
-      - metavariable-pattern:
-          metavariable: $SWITCH
-          pattern: switch
-      - focus-metavariable: $SWITCH
+          switch ($VAR) { case $VAL1: return $RET; case $VAL2: ... }

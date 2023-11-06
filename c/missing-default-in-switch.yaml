@@ -8,6 +8,7 @@ rules:
         - https://github.com/struct/mms
         - https://github.com/returntocorp/semgrep/issues/4939
       confidence: MEDIUM
+      # NOTE: consider adding a focus-metavariable when supported.
     message: >-
       The code does not have a default case in an expression with multiple
       conditions, such as a switch statement.

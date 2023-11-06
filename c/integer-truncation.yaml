@@ -55,6 +55,7 @@ rules:
               ...
               return (long $LARGE);
               }
+        # improve output readability
         - focus-metavariable: $FUN
       # short: assignments
       - pattern: (short $NARROW) = <... (unsigned short $LARGE) ...>
@@ -88,6 +89,7 @@ rules:
               ...
               return (long $LARGE);
               }
+        # improve output readability
         - focus-metavariable: $FUN
       # int: assignments
       - pattern: (int $NARROW) = <... (unsigned $LARGE) ...>
@@ -104,6 +106,7 @@ rules:
             ...
             return (long $LARGE);
             }
+        # improve output readability
         - focus-metavariable: $FUN
       # long: assignments
       - pattern: (long $NARROW) = <... (unsigned long $LARGE) ...>

@@ -34,4 +34,5 @@ rules:
       - metavariable-pattern:
           metavariable: $FREE
           pattern: free
+      # improve output readability
       - focus-metavariable: $FREE

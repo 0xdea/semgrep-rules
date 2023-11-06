@@ -28,6 +28,7 @@ rules:
       - pattern-not: int main(...) { ... }
       # exclude void functions
       - pattern-not: void $FUN(...) { ... }
+      # improve output readability
+      - focus-metavariable: $FUN
       # exclude else if (commented-out for performance reasons)
       # - pattern-not: ... if ($COND) { ... }
-      - focus-metavariable: $FUN

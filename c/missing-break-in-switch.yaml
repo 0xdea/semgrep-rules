@@ -10,7 +10,6 @@ rules:
       confidence: MEDIUM
       # NOTE: we should also check for default blocks that miss the
       # break/return/exit or equivalent statement/function call.
-      # NOTE: consider adding a focus-metavariable when supported.
     message: >-
       The software omits a break statement within a switch or similar
       construct, causing code associated with multiple conditions to
@@ -42,3 +41,5 @@ rules:
           switch ($VAR) { case $VAL1: ... return $RET; case $VAL2: ... }
       - pattern-not: |
           switch ($VAR) { case $VAL1: return $RET; case $VAL2: ... }
+      # improve output readability
+      - focus-metavariable: $VAR

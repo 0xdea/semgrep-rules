@@ -67,6 +67,7 @@ rules:
               ...
               return (off_t $SIGNED);
               }
+        # improve output readability
         - focus-metavariable: $FUN
       - pattern: strncpy($DST, $SRC, (int $LEN))
       - pattern: stpncpy($DST, $SRC, (int $LEN))
@@ -121,4 +122,5 @@ rules:
               ...
               return (size_t $UNSIGNED);
               }
+        # improve output readability
         - focus-metavariable: $FUN

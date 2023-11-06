@@ -26,7 +26,7 @@ rules:
         - pattern: $PTR->$MEM
         - pattern: (*$PTR).$MEM
         - pattern: $PTR[$POS]
-        - pattern: *$PTR
+        - pattern: (*$PTR)
         # use after free in return
         - pattern: return $PTR;
         # use after free in function calls

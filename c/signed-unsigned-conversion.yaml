@@ -38,33 +38,36 @@ rules:
     pattern-either:
       # signed to unsigned
       - pattern: (unsigned int $UNSIGNED) = <... (int $SIGNED) ...>
-      - pattern: |
-          unsigned int $FUN(...)
-          {
-          ...
-          return (int $SIGNED);
-          }
       - pattern: (unsigned $UNSIGNED) = <... (int $SIGNED) ...>
-      - pattern: |
-          unsigned $FUN(...)
-          {
-          ...
-          return (int $SIGNED);
-          }
       - pattern: (size_t $UNSIGNED) = <... (int $SIGNED) ...>
-      - pattern: |
-          size_t $FUN(...)
-          {
-          ...
-          return (int $SIGNED);
-          }
       - pattern: (size_t $UNSIGNED) = <... (off_t $SIGNED) ...>
-      - pattern: |
-          size_t $FUN(...)
-          {
-          ...
-          return (off_t $SIGNED);
-          }
+      - patterns:
+        - pattern-either:
+          - pattern: |
+              unsigned int $FUN(...)
+              {
+              ...
+              return (int $SIGNED);
+              }
+          - pattern: |
+              unsigned $FUN(...)
+              {
+              ...
+              return (int $SIGNED);
+              }
+          - pattern: |
+              size_t $FUN(...)
+              {
+              ...
+              return (int $SIGNED);
+              }
+          - pattern: |
+              size_t $FUN(...)
+              {
+              ...
+              return (off_t $SIGNED);
+              }
+        - focus-metavariable: $FUN
       - pattern: strncpy($DST, $SRC, (int $LEN))
       - pattern: stpncpy($DST, $SRC, (int $LEN))
       - pattern: strncat($DST, $SRC, (int $LEN))
@@ -89,30 +92,33 @@ rules:
       - pattern: fread($PTR, (int $LEN), $NITEMS, $FS)
       # unsigned to signed
       - pattern: (int $SIGNED) = <... (unsigned int $UNSIGNED) ...>
-      - pattern: |
-          int $FUN(...)
-          {
-          ...
-          return (unsigned int $UNSIGNED);
-          }
       - pattern: (int $SIGNED) = <... (unsigned $UNSIGNED) ...>
-      - pattern: |
-          int $FUN(...)
-          {
-          ...
-          return (unsigned $UNSIGNED);
-          }
       - pattern: (int $SIGNED) = <... (size_t $UNSIGNED) ...>
-      - pattern: |
-          int $FUN(...)
-          {
-          ...
-          return (size_t $UNSIGNED);
-          }
       - pattern: (off_t $SIGNED) = <... (size_t $UNSIGNED) ...>
-      - pattern: |
-          off_t $FUN(...)
-          {
-          ...
-          return (size_t $UNSIGNED);
-          }
+      - patterns:
+        - pattern-either:
+          - pattern: |
+              int $FUN(...)
+              {
+              ...
+              return (unsigned int $UNSIGNED);
+              }
+          - pattern: |
+              int $FUN(...)
+              {
+              ...
+              return (unsigned $UNSIGNED);
+              }
+          - pattern: |
+              int $FUN(...)
+              {
+              ...
+              return (size_t $UNSIGNED);
+              }
+          - pattern: |
+              off_t $FUN(...)
+              {
+              ...
+              return (size_t $UNSIGNED);
+              }
+        - focus-metavariable: $FUN

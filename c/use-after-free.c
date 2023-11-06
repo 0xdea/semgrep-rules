@@ -19,8 +19,8 @@ void alloc_and_free1()
 	if (bailout)
 		fprintf(stderr, "error: %p\n", ptr);
 
-	// ruleid: raptor-use-after-free
 	free(ptr);
+	// ruleid: raptor-use-after-free
 	fprintf(stderr, "error: %p\n", ptr);
 }
 
@@ -28,9 +28,9 @@ void alloc_and_free2()
 {
 	char *ptr = (char *)malloc(MEMSIZE);
 
-	// ok: raptor-use-after-free
 	free(ptr);
 	ptr = (char *)malloc(MEMSIZE);
+	// ok: raptor-use-after-free
 	fprintf(stderr, "error: %p\n", ptr);
 }
 
@@ -42,10 +42,10 @@ void uaf(int argc, char **argv)
 	char *buf3R2;
 	buf1R1 = (char *) malloc(BUFSIZER1);
 	buf2R1 = (char *) malloc(BUFSIZER1);
-	// ruleid: raptor-use-after-free
 	free(buf2R1);
 	buf2R2 = (char *) malloc(BUFSIZER2);
 	buf3R2 = (char *) malloc(BUFSIZER2);
+	// ruleid: raptor-use-after-free
 	strncpy(buf2R1, argv[1], BUFSIZER1-1);
 	free(buf1R1);
 	free(buf2R2);
@@ -56,11 +56,11 @@ void uaf(int argc, char **argv)
 int heap_use_after_free()
 {
 	char *x = (char*)malloc(10 * sizeof(char));
-	// ruleid: raptor-use-after-free
 	free(x);
 
 	// ...
 
+	// ruleid: raptor-use-after-free
 	return x[5];
 }
 

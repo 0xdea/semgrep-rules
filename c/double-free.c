@@ -51,8 +51,8 @@ void double_free(int argc, char **argv)
 	free(buf2R1);
 	buf1R2 = (char *) malloc(BUFSIZE1);
 	strncpy(buf1R2, argv[1], BUFSIZE1-1);
-	free(buf2R1);
 	// ruleid: raptor-double-free
+	free(buf2R1);
 	free(buf1R2);
 }
 

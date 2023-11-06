@@ -69,6 +69,7 @@ char test()
 	char *ptr = (char *)malloc(10 * sizeof(char));
 	free(ptr);
 
+	// ruleid: raptor-use-after-free
 	return *ptr;
 }
 

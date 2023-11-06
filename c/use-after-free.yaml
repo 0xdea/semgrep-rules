@@ -23,69 +23,31 @@ rules:
     languages:
       - c
       - cpp
-    pattern-either:
-      # function call
-      - patterns:
-        - pattern: |
-            free($PTR);
-            ...
-            $FUN(..., $PTR, ...);
-        - pattern-not: |
-            free($PTR);
-            ...
-            $PTR = $EXPR;
-            ...
-            $FUN(..., $PTR, ...);
-        # filter out double free() instances
-        - metavariable-pattern:
-            metavariable: $FUN
-            patterns:
-              - pattern-not: free
-      # function call with struct member pointer
-      - patterns:
-        - pattern: |
-            free($PTR);
-            ...
-            $FUN(..., $PTR->$MEM, ...);
-        - pattern-not: |
-            free($PTR);
-            ...
-            $PTR = $EXPR;
-            ...
-            $FUN(..., $PTR->$MEM, ...);
-      # struct member function pointer
-      - patterns:
-        - pattern: |
-            free($PTR);
-            ...
-            $PTR->$FUN(...);
-        - pattern-not: |
-            free($PTR);
-            ...
-            $PTR = $EXPR;
-            ...
-            $PTR->$FUN(...);
-      # return pointer
-      - patterns:
-        - pattern: |
-            free($PTR);
-            ...
-            return $PTR;
-        - pattern-not: |
-            free($PTR);
-            ...
-            $PTR = $EXPR;
-            ...
-            return $PTR;
-      # return array pointer (return *$PTR is not covered because it's not supported by Semgrep)
-      - patterns:
-        - pattern: |
-            free($PTR);
-            ...
-            return $PTR[$POS];
-        - pattern-not: |
-            free($PTR);
-            ...
-            $PTR = $EXPR;
-            ...
-            return $PTR[$POS];
+    patterns:
+      - pattern-either:
+        # generic use after free
+        - pattern: $PTR->$MEM
+        - pattern: (*$PTR).$MEM
+        - pattern: $PTR[$POS]
+        - pattern: $PTR->$FUN(...)
+        #- pattern: return $PTR
+        #- pattern: return $PTR[$POS]
+        #- pattern: return *$PTR # XXX
+        # use after free in function calls
+        - patterns:
+          - pattern: $FUN(..., <... $PTR ...>, ...)
+          - pattern: $FUN(..., <... $PTR->$MEM ...>, ...)
+          - pattern: $FUN(..., <... (*$PTR).$MEM ...>, ...)
+          - pattern: $FUN(..., <... $PTR[$POS] ...>, ...)
+          - pattern: $FUN(..., <... $PTR->$FUN(...) ...>, ...)
+          # filter out double free() instances
+          - metavariable-pattern:
+              metavariable: $FUN
+              patterns:
+                - pattern-not: free
+      - pattern-inside: free($PTR); ...
+      - pattern-not-inside: |
+          free($PTR);
+          ...
+          $PTR = $EXPR; 
+          ...

@@ -149,11 +149,11 @@ rules:
             metavariable: $FUN
             regex: '^\w*mkdir\s*$|^\w*creat\s*$|^\w*link(at)?\s*$|^\w*rename(at)?\s*$|^\w*access(at|_ok)?\s*$|^\w*stat(at)?\s*$|^\w*ch(own|mod)(at)?\s*$|^\w*realpath(at)?\s*$|^\w*readlink\s*$'
       # more file
-        # - patterns:
-          # - pattern: $FUN(...)
-          # - metavariable-regex:
-              # metavariable: $FUN
-              # regex: '^\w*locale\s*$|^\w*(make|split)path\s*$'
+      - patterns:
+        - pattern: $FUN(...)
+        - metavariable-regex:
+            metavariable: $FUN
+            regex: '^\w*locale\s*$|^\w*(make|split)path\s*$'
       # signals
         # - patterns:
           # - pattern: $FUN(...)

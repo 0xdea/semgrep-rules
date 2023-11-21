@@ -17,7 +17,8 @@ A collection of my Semgrep rules to facilitate vulnerability research.
 
 Blog posts:  
 https://security.humanativaspa.it/semgrep-ruleset-for-c-c-vulnerability-research  
-https://security.humanativaspa.it/automating-binary-vulnerability-discovery-with-ghidra-and-semgrep/
+https://security.humanativaspa.it/automating-binary-vulnerability-discovery-with-ghidra-and-semgrep/  
+https://security.humanativaspa.it/big-update-to-my-semgrep-c-cpp-ruleset
 
 See also:  
 https://semgrep.dev/r
@@ -31,9 +32,9 @@ https://semgrep.dev/r
 3. To use these rules, run:
 
 ```sh
-# high severity scan
+# high priority scan
 $ semgrep --severity ERROR --config PATH/TO/RULES PATH/TO/SOURCE
-# high and medium severity scan
+# high and medium priority scan
 $ semgrep --severity ERROR --severity WARNING --config PATH/TO/RULES PATH/TO/SOURCE
 # full scan
 $ semgrep --config PATH/TO/RULES PATH/TO/SOURCE

@@ -224,9 +224,9 @@ void test5()
 void test6()
 {
 	// ...
-	
+
 	// ok: raptor-typos
-	LWIP_ASSERT("in this state, the rx chain should be empty", state->rx == NULL);
+	assert("in this state, the rx chain should be empty", state->rx == NULL);
 }
 
 int wgetnstr ( WINDOW *win, char *str, int n ) 

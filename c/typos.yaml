@@ -12,6 +12,7 @@ rules:
       confidence: LOW
       # NOTE: common issues with comments are not covered.
       # NOTE: consider adding a focus-metavariable where applicable.
+      # NOTE: custom assertion macros are not covered.
     message: >-
       The programmer accidentally uses the wrong operator, which changes
       the application logic in security-relevant ways. This rule also covers 
@@ -26,11 +27,7 @@ rules:
       - patterns:
         - pattern: $EXPR1 == $EXPR2;
         - pattern-not-inside: return $EXPR;
-        - patterns:
-          - pattern-not-inside: $ASSERT(...);
-          - metavariable-regex:
-              metavariable: $ASSERT
-              regex: '(?i)^\w*assert\w*\s*$'
+        - pattern-not-inside: assert(...);
       # = instead of == in comparison
       - patterns:
         - pattern: if (<... $EXPR1 = $EXPR2 ...>) ...

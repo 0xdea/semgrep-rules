@@ -79,7 +79,7 @@ rules:
         - pattern-inside: |
             $TYPE $BUF[$LEN];
             ...
-            $FUN($BUF, $LEN, $FMT, ...);
+            $FUN($BUF, $N, $FMT, ...);
         - metavariable-regex:
             metavariable: $FMT
             # some format string modifiers are not handled

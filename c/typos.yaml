@@ -11,7 +11,6 @@ rules:
         - https://www.sei.cmu.edu/downloads/sei-cert-c-coding-standard-2016-v01.pdf
       confidence: LOW
       # NOTE: common issues with comments are not covered.
-      # NOTE: constructs such as assert(var == val) lead to false positives.
       # NOTE: consider adding a focus-metavariable where applicable.
     message: >-
       The programmer accidentally uses the wrong operator, which changes
@@ -27,10 +26,11 @@ rules:
       - patterns:
         - pattern: $EXPR1 == $EXPR2;
         - pattern-not-inside: return $EXPR;
-        - pattern-not-inside: $ASSERT(...);
-        - metavariable-regex:
-            metavariable: $ASSERT
-            regex: '(?i)^\w*assert\w*\s*$'
+        - patterns:
+          - pattern-not-inside: $ASSERT(...);
+          - metavariable-regex:
+              metavariable: $ASSERT
+              regex: '(?i)^\w*assert\w*\s*$'
       # = instead of == in comparison
       - patterns:
         - pattern: if (<... $EXPR1 = $EXPR2 ...>) ...

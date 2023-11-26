@@ -21,6 +21,8 @@ rules:
       # NOTE: some types (e.g. char, short, long), functions (e.g.,
       # widechar and some alloc functions, custom functions), and use 
       # cases (e.g., comparisons) are not covered.
+      # NOTE: memcpy_s, memmove_s, memset_explicit and similar variants 
+      # are not covered.
     message: >-
       The software uses a signed primitive and performs a cast to an
       unsigned primitive, or uses an unsigned primitive and performs a cast

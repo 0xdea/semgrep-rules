@@ -9,6 +9,8 @@ rules:
       # NOTE: some functions (e.g., scanf family) and some other ways to
       # write into a stack buffer are not covered.
       # NOTE: static variables matching apparently is not supported by Semgrep.
+      # NOTE: memcpy_s, memmove_s, memset_explicit, and similar variants are
+      # not covered.
       # NOTE: based on semgrep --time output, processing of this rule seems to
       # be particularly slow; consider disabling it, if you don't need it.
     message: >-

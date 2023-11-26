@@ -87,13 +87,13 @@ rules:
         - pattern: $FUN(...)
         - metavariable-regex:
             metavariable: $FUN
-            regex: '^\w*memc?cpy\s*$|^\w*memmove\s*$|^\w*bcopy\s*$'
+            regex: '^\w*memc?cpy(_s)?\s*$|^\w*memmove(_s)?\s*$|^\w*bcopy\s*$'
       # memset
         # - patterns:
           # - pattern: $FUN(...)
           # - metavariable-regex:
               # metavariable: $FUN
-              # regex: '^\w*memset\s*$'
+              # regex: '^\w*memset(_explicit)?\s*$'
       # alloc
       - patterns:
         - pattern: $FUN(...)

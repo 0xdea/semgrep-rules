@@ -15,7 +15,7 @@ rules:
       # NOTE: custom assertion macros are not covered.
     message: >-
       The programmer accidentally uses the wrong operator, which changes
-      the application logic in security-relevant ways. This rule also covers 
+      the application logic in security-relevant ways. This rule also covers
       some other common typo patterns.
     severity: INFO
     languages:

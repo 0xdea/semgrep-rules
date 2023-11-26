@@ -7,7 +7,7 @@ rules:
         - https://g.co/kgs/PCHQjJ
         - https://github.com/struct/mms
         - https://github.com/returntocorp/semgrep/issues/4939
-      confidence: MEDIUM
+      confidence: LOW
       # NOTE: we should also check for default blocks that miss the
       # break/return/exit/goto or equivalent statement/function call.
     message: >-

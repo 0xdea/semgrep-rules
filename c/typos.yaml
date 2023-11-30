@@ -84,6 +84,6 @@ rules:
           - pattern: $TYPE $ARR[$LEN] = $EXPR;
         - metavariable-regex:
             metavariable: $LEN
-            regex: '^0.*'
+            regex: '^0[^xX].*'
       # missing {} in if() statement (too many false positives)
         # - pattern: if ($COND) $BODY;

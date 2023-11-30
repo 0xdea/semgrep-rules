@@ -83,6 +83,9 @@ void bad6(char *userinput)
 	// ruleid: raptor-typos
 	char buf[040];
 
+	// ok: raptor-typos
+	char buf[0x40];
+
 	snprintf(buf, 40, "%s", userinput);
 }
 

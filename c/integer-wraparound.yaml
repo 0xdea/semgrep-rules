@@ -112,7 +112,7 @@ rules:
               - pattern: realloc
               - pattern: reallocf
               - pattern: aligned_alloc
-      # buggy input validation (sum)
+      # buggy input validation (sum); consider integer promotion (i.e., uint16_t are not vulnerable on 32-bit systems)
       - pattern: $X > $MAX || ($X + $Y) > $MAX
       - pattern: $X >= $MAX || ($X + $Y) > $MAX
       - pattern: $X > $MAX || ($X + $Y) >= $MAX
@@ -121,7 +121,7 @@ rules:
       - pattern: $X <= $MAX && ($X + $Y) < $MAX
       - pattern: $X < $MAX && ($X + $Y) <= $MAX
       - pattern: $X <= $MAX && ($X + $Y) <= $MAX
-      # buggy input validation (multiplication)
+      # buggy input validation (multiplication); consider integer promotion (i.e., uint16_t are not vulnerable on 32-bit systems)
       - pattern: $X > $MAX || ($X * $Y) > $MAX
       - pattern: $X >= $MAX || ($X * $Y) > $MAX
       - pattern: $X > $MAX || ($X * $Y) >= $MAX

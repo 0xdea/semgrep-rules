@@ -52,7 +52,7 @@ For a better streamlined experience, I recommend saving semgrep scan output in [
 * [**incorrect-use-of-strncat**](https://github.com/0xdea/semgrep-rules/blob/main/c/incorrect-use-of-strncat.yaml). Wrong size argument passed to strncat().
 * [**incorrect-use-of-strncpy-stpncpy-strlcpy**](https://github.com/0xdea/semgrep-rules/blob/main/c/incorrect-use-of-strncpy-stpncpy-strlcpy.yaml). Wrong size argument passed to strncpy(), stpncpy(), strlcpy().
 * [**incorrect-use-of-sizeof**](https://github.com/0xdea/semgrep-rules/blob/main/c/incorrect-use-of-sizeof.yaml). Accidental use of the sizeof() operator on a pointer instead of its target.
-* [**unterminated-string-strncpy-stpncpy**](https://github.com/0xdea/semgrep-rules/blob/main/c/unterminated-string-strncpy-stpncpy.yaml). Lack of explicit null-termination after strncpy() and stpncpy().
+* [**unterminated-string-strncpy-stpncpy**](https://github.com/0xdea/semgrep-rules/blob/main/c/unterminated-string-strncpy-stpncpy.yaml). Lack of explicit NUL-termination after strncpy() and stpncpy().
 * [**off-by-one**](https://github.com/0xdea/semgrep-rules/blob/main/c/off-by-one.yaml). Potential off-by-one error.
 * [**pointer-subtraction**](https://github.com/0xdea/semgrep-rules/blob/main/c/pointer-subtraction.yaml). Potential use of pointer subtraction to determine size.
 * [**unsafe-ret-snprintf-vsnprintf**](https://github.com/0xdea/semgrep-rules/blob/main/c/unsafe-ret-snprintf-vsnprintf.yaml). Potentially unsafe use of the return value of snprintf() and vsnprintf().

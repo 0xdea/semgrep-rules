@@ -3,6 +3,8 @@ rules:
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       references:
+        - https://cwe.mitre.org/data/definitions/787
+        - https://cwe.mitre.org/data/definitions/193
         - https://g.co/kgs/PCHQjJ
       confidence: HIGH
     message: >-

@@ -8,7 +8,7 @@ rules:
         - https://dustri.org/b/playing-with-weggli.html
       confidence: MEDIUM
       # NOTE: some copy functions such as snprintf() and memcpy() are not covered.
-      # NOTE: strlen() is not covered.
+      # NOTE: strlen() before the copy function is not covered.
       # NOTE: structures are not covered.
       # NOTE: see also cpp.strings.snprintf-source-size.snprintf-source-size.
     message: >-

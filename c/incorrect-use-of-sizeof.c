@@ -70,7 +70,7 @@ char *read_username(int sockfd)
 	sprintf(buffer, "username=%.32s", userstring);
 
 	if (style)
-	// ruleid: raptor-incorrect-use-of-sizeof
+		// ruleid: raptor-incorrect-use-of-sizeof
 		snprintf(buffer, sizeof(buffer) - strlen(buffer) - 1, ", style=%s\n", style);
 
 	return buffer;

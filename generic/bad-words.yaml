@@ -50,6 +50,6 @@ rules:
       # xml
         # - pattern-regex: (?i)(xml|xerces|sax|etree|xpath|documentbuilder)
       # other words of power, words of destruction (Vulns1001)
-        # - pattern-regex: (?i)(decode|convert|interpret|compress|fragment|reassemble)
+        # - pattern-regex: (?i)(encode|decode|convert|interpret|compress|fragment|reassemble)
       # other words of power, words of destruction (Vulns1002)
         # - pattern-regex: (?i)(mutex|lock|toctou|parallelism|semaphore|retain|release|garbage|mutual)

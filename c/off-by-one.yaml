@@ -10,6 +10,7 @@ rules:
       confidence: MEDIUM
       # NOTE: heap-allocated buffers and some functions are not covered.
       # NOTE: memcpy(dst + 1, p, len) and similar scenarios are not covered.
+      # NOTE: patterns {$len=snprintf(_); malloc($len);} is not covered.
       # NOTE: see also cpp.strings.alloc-strlen.alloc-strlen and
       # cpp.strings.missing-nul-cpp-string-memcpy.missing-nul-cpp-string-memcpy.
     message: >-

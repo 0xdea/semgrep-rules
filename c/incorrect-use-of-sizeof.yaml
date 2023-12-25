@@ -8,6 +8,8 @@ rules:
         - https://github.com/struct/mms
         - https://dustri.org/b/playing-with-weggli.html
       confidence: MEDIUM
+      # NOTE: another relevant pattern would be sizeof('...'), but 
+      # unfortunately that's currently not supported by Semgrep.
       # NOTE: see also cpp.correctness.sizeof-*.
     message: >-
       The code calls sizeof() on a malloced pointer type, which always

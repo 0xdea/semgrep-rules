@@ -75,6 +75,7 @@ rules:
       - pattern: stpncpy($DST, $SRC, (int $LEN))
       - pattern: strncat($DST, $SRC, (int $LEN))
       - pattern: strlcpy($DST, $SRC, (int $LEN))
+      - pattern: strscpy($DST, $SRC, (int $LEN))
       - pattern: strlcat($DST, $SRC, (int $LEN))
       - pattern: snprintf($BUF, (int $LEN), ...)
       - pattern: vsnprintf($BUF, (int $LEN), ...)

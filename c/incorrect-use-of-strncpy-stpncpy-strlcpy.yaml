@@ -29,6 +29,7 @@ rules:
               - pattern: strncpy
               - pattern: stpncpy
               - pattern: strlcpy
+              - pattern: strscpy
         - pattern-either:
           - pattern-inside: |
               $TYPE $SRC[$LEN];
@@ -45,3 +46,4 @@ rules:
               - pattern: strncpy
               - pattern: stpncpy
               - pattern: strlcpy
+              - pattern: strscpy

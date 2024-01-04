@@ -38,6 +38,7 @@ rules:
               - pattern: stpcpy
               - pattern: stpncpy
               - pattern: strlcpy
+              - pattern: strscpy
               - pattern: wcscpy
               - pattern: wcsncpy
               - pattern: wcpcpy

@@ -6,6 +6,7 @@ rules:
         - https://cwe.mitre.org/data/definitions/252
         - https://lwn.net/Articles/451985/
         - https://www.usenix.org/legacy/events/sec02/full_papers/chen/chen.pdf
+        - https://www.openwall.com/lists/oss-security/2023/12/30/4
       confidence: MEDIUM
     message: >-
       The software does not check the return value from a method or

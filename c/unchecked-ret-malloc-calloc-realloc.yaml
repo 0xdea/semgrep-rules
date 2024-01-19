@@ -9,8 +9,7 @@ rules:
         - https://github.com/struct/mms
         - https://www.sei.cmu.edu/downloads/sei-cert-c-coding-standard-2016-v01.pdf
       confidence: MEDIUM
-      # NOTE: reallocf(), valloc(), aligned_alloc(), strdup(), strndup(), and custom 
-      # wrappers are not covered.
+      # NOTE: custom wrappers are not covered.
     message: >-
       The software does not check the return value from a method or
       function, which can prevent it from detecting unexpected states and
@@ -19,76 +18,47 @@ rules:
     languages:
       - c
       - cpp
-    pattern-either:
-      # malloc
-      - patterns:
-        - pattern-either:
-          - pattern: $RET = malloc(...)
-          - pattern: $RET = ($CAST)malloc(...)
-        - pattern-not-inside: |
-            malloc(...);
-            ...
-            if (<... $RET == NULL ...>) ...
-        - pattern-not-inside: |
-            malloc(...);
-            ...
-            if (<... $RET != NULL ...>) ...
-        - pattern-not-inside: |
-            malloc(...);
-            ...
-            if (<... !$RET ...>) ...
-        - pattern-not-inside: |
-            malloc(...);
-            ...
-            if (<... $RET ...>) ...
-        - pattern-not-inside: <... $ALLOC == NULL ...>
-        - pattern-not-inside: <... $ALLOC != NULL ...>
-        - pattern-not-inside: <... !$ALLOC ...>
-      # calloc
-      - patterns:
-        - pattern-either:
-          - pattern: $RET = calloc(...)
-          - pattern: $RET = ($CAST)calloc(...)
-        - pattern-not-inside: |
-            calloc(...);
-            ...
-            if (<... $RET == NULL ...>) ...
-        - pattern-not-inside: |
-            calloc(...);
-            ...
-            if (<... $RET != NULL ...>) ...
-        - pattern-not-inside: |
-            calloc(...);
-            ...
-            if (<... !$RET ...>) ...
-        - pattern-not-inside: |
-            calloc(...);
-            ...
-            if (<... $RET ...>) ...
-        - pattern-not-inside: <... $ALLOC == NULL ...>
-        - pattern-not-inside: <... $ALLOC != NULL ...>
-        - pattern-not-inside: <... !$ALLOC ...>
-      # realloc
-      - patterns:
-        - pattern-either:
-          - pattern: $RET = realloc(...)
-          - pattern: $RET = ($CAST)realloc(...)
-        - pattern-not-inside: |
-            realloc(...);
-            ...
-            if (<... $RET == NULL ...>) ...
-        - pattern-not-inside: |
-            realloc(...);
-            ...
-            if (<... $RET != NULL ...>) ...
-        - pattern-not-inside: |
-            realloc(...);
-            ...
-            if (<... !$RET ...>) ...
-        - pattern-not-inside: |
-            realloc(...);
-            ...
-            if (<... $RET ...>) ...
-        - pattern-not-inside: <... $ALLOC == NULL ...>
-        - pattern-not-inside: <... $ALLOC != NULL ...>
-        - pattern-not-inside: <... !$ALLOC ...>
+    patterns:
+      - pattern-either:
+        - pattern: $RET = $FUN(...)
+        - pattern: $RET = ($CAST)$FUN(...)
+      - pattern-not-inside: |
+          $FUN(...);
+          ...
+          if (<... $RET == NULL ...>) ...
+      - pattern-not-inside: |
+          $FUN(...);
+          ...
+          if (<... NULL == $RET ...>) ...
+      - pattern-not-inside: |
+          $FUN(...);
+          ...
+          if (<... $RET != NULL ...>) ...
+      - pattern-not-inside: |
+          $FUN(...);
+          ...
+          if (<... NULL != $RET ...>) ...
+      - pattern-not-inside: |
+          $FUN(...);
+          ...
+          if (<... !$RET ...>) ...
+      - pattern-not-inside: |
+          $FUN(...);
+          ...
+          if (<... $RET ...>) ...
+      - pattern-not-inside: <... $ALLOC == NULL ...>
+      - pattern-not-inside: <... NULL == $ALLOC ...>
+      - pattern-not-inside: <... $ALLOC != NULL ...>
+      - pattern-not-inside: <... NULL != $ALLOC ...>
+      - pattern-not-inside: <... !$ALLOC ...>
+      - metavariable-pattern:
+          metavariable: $FUN
+          pattern-either:
+            - pattern: malloc
+            - pattern: calloc
+            - pattern: realloc
+            - pattern: reallocf
+            - pattern: valloc
+            - pattern: aligned_alloc
+            - pattern: strdup
+            - pattern: strndup

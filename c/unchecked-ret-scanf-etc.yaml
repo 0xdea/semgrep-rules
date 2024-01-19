@@ -33,9 +33,15 @@ rules:
             - pattern: vswscanf
       - pattern-not-inside: $RET = $FUN(...)
       - pattern-not-inside: <... $FUN(...) == $VAL ...>
+      - pattern-not-inside: <... $VAL == $FUN(...) ...>
       - pattern-not-inside: <... $FUN(...) != $VAL ...>
+      - pattern-not-inside: <... $VAL != $FUN(...) ...>
       - pattern-not-inside: <... $FUN(...) < $VAL ...>
+      - pattern-not-inside: <... $VAL > $FUN(...) ...>
       - pattern-not-inside: <... $FUN(...) <= $VAL ...>
+      - pattern-not-inside: <... $VAL >= $FUN(...) ...>
       - pattern-not-inside: <... $FUN(...) > $VAL ...>
+      - pattern-not-inside: <... $VAL < $FUN(...) ...>
       - pattern-not-inside: <... $FUN(...) >= $VAL ...>
+      - pattern-not-inside: <... $VAL <= $FUN(...) ...>
       - pattern-not-inside: return $FUN(...);

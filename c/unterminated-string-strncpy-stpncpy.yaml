@@ -21,64 +21,24 @@ rules:
     languages:
       - c
       - cpp
-    pattern-either:
-      # strncpy 
-      - patterns:
-          - pattern: strncpy(...)
-          - pattern-not-inside: |
-              strncpy($DST, $SRC, $N);
-              ...
-              $DST[$POS] = NULL;
-          - pattern-not-inside: |
-              strncpy($DST, $SRC, $N);
-              ...
-              $DST[$POS] = '\0';
-          - pattern-not-inside: |
-              strncpy($DST, $SRC, $N);
-              ...
-              $DST[$POS] = 0;
-      # stpncpy 
-      - patterns:
-          - pattern: stpncpy(...)
-          - pattern-not-inside: |
-              stpncpy($DST, $SRC, $N);
-              ...
-              $DST[$POS] = NULL;
-          - pattern-not-inside: |
-              stpncpy($DST, $SRC, $N);
-              ...
-              $DST[$POS] = '\0';
-          - pattern-not-inside: |
-              stpncpy($DST, $SRC, $N);
-              ...
-              $DST[$POS] = 0;
-      # wcsncpy 
-      - patterns:
-          - pattern: wcsncpy(...)
-          - pattern-not-inside: |
-              wcsncpy($DST, $SRC, $N);
-              ...
-              $DST[$POS] = NULL;
-          - pattern-not-inside: |
-              wcsncpy($DST, $SRC, $N);
-              ...
-              $DST[$POS] = '\0';
-          - pattern-not-inside: |
-              wcsncpy($DST, $SRC, $N);
-              ...
-              $DST[$POS] = 0;
-      # wcpncpy 
-      - patterns:
-          - pattern: wcpncpy(...)
-          - pattern-not-inside: |
-              wcpncpy($DST, $SRC, $N);
-              ...
-              $DST[$POS] = NULL;
-          - pattern-not-inside: |
-              wcpncpy($DST, $SRC, $N);
-              ...
-              $DST[$POS] = '\0';
-          - pattern-not-inside: |
-              wcpncpy($DST, $SRC, $N);
-              ...
-              $DST[$POS] = 0;
+    patterns:
+      - pattern: $FUN(...)
+      - metavariable-pattern:
+          metavariable: $FUN
+          pattern-either:
+            - pattern: strncpy
+            - pattern: stpncpy
+            - pattern: wcsncpy
+            - pattern: wcpncpy
+      - pattern-not-inside: |
+          $FUN($DST, $SRC, $N);
+          ...
+          $DST[$POS] = NULL;
+      - pattern-not-inside: |
+          $FUN($DST, $SRC, $N);
+          ...
+          $DST[$POS] = '\0';
+      - pattern-not-inside: |
+          $FUN($DST, $SRC, $N);
+          ...
+          $DST[$POS] = 0;

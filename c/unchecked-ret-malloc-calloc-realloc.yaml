@@ -22,6 +22,17 @@ rules:
       - pattern-either:
         - pattern: $RET = $FUN(...)
         - pattern: $RET = ($CAST)$FUN(...)
+      - metavariable-pattern:
+          metavariable: $FUN
+          pattern-either:
+            - pattern: malloc
+            - pattern: calloc
+            - pattern: realloc
+            - pattern: reallocf
+            - pattern: valloc
+            - pattern: aligned_alloc
+            - pattern: strdup
+            - pattern: strndup
       - pattern-not-inside: |
           $FUN(...);
           ...
@@ -51,14 +62,3 @@ rules:
       - pattern-not-inside: <... $ALLOC != NULL ...>
       - pattern-not-inside: <... NULL != $ALLOC ...>
       - pattern-not-inside: <... !$ALLOC ...>
-      - metavariable-pattern:
-          metavariable: $FUN
-          pattern-either:
-            - pattern: malloc
-            - pattern: calloc
-            - pattern: realloc
-            - pattern: reallocf
-            - pattern: valloc
-            - pattern: aligned_alloc
-            - pattern: strdup
-            - pattern: strndup

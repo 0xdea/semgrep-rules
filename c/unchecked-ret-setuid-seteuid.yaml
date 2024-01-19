@@ -19,22 +19,19 @@ rules:
     languages:
       - c
       - cpp
-    pattern-either:
-      # setuid
-      - patterns:
-          - pattern: setuid(...)
-          - pattern-not-inside: $RET = setuid(...)
-          - pattern-not-inside: <... setuid(...) == $VAL ...>
-          - pattern-not-inside: <... setuid(...) != $VAL ...>
-          - pattern-not-inside: <... setuid(...) < $VAL ...>
-          - pattern-not-inside: <... !setuid(...) ...>
-          - pattern-not-inside: return setuid(...);
-      # seteuid
-      - patterns:
-          - pattern: seteuid(...)
-          - pattern-not-inside: $RET = seteuid(...)
-          - pattern-not-inside: <... seteuid(...) == $VAL ...>
-          - pattern-not-inside: <... seteuid(...) != $VAL ...>
-          - pattern-not-inside: <... seteuid(...) < $VAL ...>
-          - pattern-not-inside: <... !seteuid(...) ...>
-          - pattern-not-inside: return seteuid(...);
+    patterns:
+      - pattern: $FUN(...)
+      - metavariable-pattern:
+          metavariable: $FUN
+          pattern-either:
+            - pattern: setuid
+            - pattern: seteuid  
+      - pattern-not-inside: $RET = $FUN(...)
+      - pattern-not-inside: <... $FUN(...) == $VAL ...>
+      - pattern-not-inside: <... $VAL == $FUN(...) ...>
+      - pattern-not-inside: <... $FUN(...) != $VAL ...>
+      - pattern-not-inside: <... $VAL != $FUN(...) ...>
+      - pattern-not-inside: <... $FUN(...) < $VAL ...>
+      - pattern-not-inside: <... $VAL > $FUN(...) ...>
+      - pattern-not-inside: <... !$FUN(...) ...>
+      - pattern-not-inside: return $FUN(...);

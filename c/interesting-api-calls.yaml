@@ -129,7 +129,13 @@ rules:
         - pattern: $FUN(...)
         - metavariable-regex:
             metavariable: $FUN
-            regex: '^\w*fork\s*$|^\w*clone\s*$'
+            regex: '^\w*fork\s*$'
+      # more proc
+        # - patterns:
+          # - pattern: $FUN(...)
+          # - metavariable-regex:
+              # metavariable: $FUN
+              # regex: '^\w*clone\s*$'
       # rand
       - patterns:
         - pattern: $FUN(...)

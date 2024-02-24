@@ -14,6 +14,7 @@ rules:
       # NOTE: only multiplication and sum with two operands are covered; other 
       # arithmetic operations should also be considered (e.g., left shift), as 
       # well as any operation with more than two operands.
+      # NOTE: += and *= operators are not covered.
       # NOTE: some allocation functions such as kmalloc() or custom functions are 
       # not covered; in addition, some implementations of calloc() and similar 
       # functions can cause a wraparound based on their first argument that 

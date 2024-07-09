@@ -47,6 +47,18 @@ int check_auth(char *login, char *passwd)
   	return(stat);
 }
 
+int free_after_return(){
+	// ruleid: raptor-incorrect-use-of-free
+	char *s = (char*)malloc(STRING_SIZE);
+	int i = 0;
+	for(i=0;i<strlen(s); i++){
+		if(s[i]=='x')
+			return 1;
+	}
+	free(s);
+	return 0;
+}
+
 int main() 
 {
 	printf("Hello, World!");

@@ -31,6 +31,66 @@ void invoke2(char *string)
 	popen(string, "r");
 }
 
+void invoke2(char *string)
+{
+	// ok: raptor-command-injection
+	execl("/bin/ls", "ls", "-l", "/home", (char *)0);
+	// ruleid: raptor-command-injection
+	execl("/bin/ls", "ls", "-l", string, (char *)0);
+
+	// ok: raptor-command-injection
+	execlp("ls", "ls", "-l", "/home", (char *)0);
+	// ruleid: raptor-command-injection
+	execlp("ls", "ls", "-l", string, (char *)0);
+
+	char *envp[] = { "MY_VAR=42", NULL };
+	// ok: raptor-command-injection
+	execle("/bin/ls", "ls", "-l", "/home", (char *)0, envp);
+	// ruleid: raptor-command-injection
+	execle("/bin/ls", "ls", "-l", string, (char *)0, envp);
+
+	char *envp[] = { "MY_VAR=42", NULL };
+	// ok: raptor-command-injection
+	execlpe("ls", "ls", "-l", "/home", (char *)0, envp);
+	// ruleid: raptor-command-injection
+	execlpe("ls", "ls", "-l", string, (char *)0, envp);
+
+	char *argv[] = { "ls", "-l", "/home", NULL };
+	// ok: raptor-command-injection
+	execv("/bin/ls", argv);
+	// ruleid: raptor-command-injection
+	char *argv[] = { "ls", "-l", string, NULL };
+	execv("/bin/ls", argv);
+
+	char buf[] = "/home"
+	// ok: raptor-command-injection
+	char *argv[] = { "ls", "-l", buf, NULL };
+	execvp("ls", argv);
+	// ruleid: raptor-command-injection
+	char *argv[] = { "ls", "-l", string, NULL };
+	execvp("ls", argv);
+
+	char *argv[] = { "ls", "-l", "/home", NULL };
+	char *envp[] = { "MY_VAR=42", NULL };
+	// ok: raptor-command-injection
+	execve("/bin/ls", argv, envp);
+
+	char *argv[] = { "ls", "-l", string, NULL };
+	char *envp[] = { "MY_VAR=42", NULL };
+	// ruleid: raptor-command-injection
+	execve("/bin/ls", argv, envp);
+
+	char *argv[] = { "ls", "-l", "/home", NULL };
+	char *envp[] = { "MY_VAR=42", NULL };
+	// ok: raptor-command-injection
+	execvpe("ls", argv, envp);
+
+	char *argv[] = { "ls", "-l", string, NULL };
+	char *envp[] = { "MY_VAR=42", NULL };
+	// ruleid: raptor-command-injection
+	execvpe("ls", argv, envp);
+}
+
 int send_mail(char *user) 
 {
 	char buf[1024];
@@ -42,7 +102,7 @@ int send_mail(char *user)
    	fp = popen(buf, "w");
 
    	if (fp == NULL)
-       		return 1;
+	   	return 1;
 	// ...
 }
 

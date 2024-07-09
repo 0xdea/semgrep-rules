@@ -12,7 +12,7 @@ rules:
       quite easy to misuse. The first common mistake is supplying the size of 
       the entire buffer instead of the size remaining in the buffer. A more 
       subtle mistake can be made: the size parameter needs to be the amount of
-      space left in the buffer less one; otherwise, the NUL byte is written 
+      space left in the buffer less one; otherwise, the NULL byte is written 
       one byte past the end of the buffer.
     severity: ERROR
     languages:
@@ -31,8 +31,10 @@ rules:
               ...
       # sizeof operator
       - pattern: strncat($DST, $SRC, sizeof($DST))
-      # strlen function
+      # strlen and strnlen functions
       - pattern: strncat($DST, $SRC, strlen($DST))
+      - pattern: strncat($DST, $SRC, strnlen($DST, ...))
       # off-by-one 
       # see also off-by-one.yaml for a slightly different pattern
       - pattern: strncat($DST, $SRC, sizeof($DST) - strlen($DST))
+      - pattern: strncat($DST, $SRC, sizeof($DST) - strnlen($DST, ...))

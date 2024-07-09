@@ -21,16 +21,60 @@ rules:
       - c
       - cpp
     patterns:
-      - pattern: |
-          free($PTR);
-          ...
-          $FREE($PTR);
-      - pattern-not: |
-          free($PTR);
-          ...
-          $PTR = $EXPR;
-          ...
-          free($PTR);
+      - pattern-either:
+        - patterns:
+          - pattern: |
+              free($PTR);
+              ...
+              $FREE($PTR);
+          - pattern-not: |
+              free($PTR);
+              ...
+              $PTR = $EXPR;
+              ...
+              free($PTR);
+        - patterns:
+            - pattern: |
+                { ...
+                free($PTR1);
+                ...
+                $FREE($PTR2);
+                ... }
+            - pattern-either:
+                - pattern: |
+                    {...
+                      $PTR1 = $PTR2;
+                    ...}
+                - pattern: |
+                    {...
+                      $PTR2 = $PTR1;
+                    ...}
+            - pattern-not: |
+                { ...
+                free($PTR);
+                ...
+                $PTR = $EXPR;
+                ...
+                free($PTR);
+                ... }
+        - patterns:
+          - pattern-either:
+              - pattern: |
+                  for(...; ...; ...){ ...
+                    $FREE($PTR);
+                  ... }
+              - pattern: |
+                  while(...){ ...
+                    $FREE($PTR);
+                  ... }
+              - pattern: |
+                  do{ ...
+                    $FREE($PTR);
+                  ... }while(...);
+          - metavariable-pattern:
+              metavariable: $PTR
+              patterns:
+                - pattern-not: ...[...] 
       - metavariable-pattern:
           metavariable: $FREE
           pattern: free

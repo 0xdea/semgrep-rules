@@ -18,8 +18,42 @@ rules:
     languages:
       - c
       - cpp
-    patterns:
-      - pattern-either:
-        - pattern: system(...)
-        - pattern: popen(...)
-      - pattern-not: $FUN("...", ...)
+    options:
+      symbolic_propagation: true
+    pattern-either:
+      - patterns:
+          - pattern-either:
+            - pattern: system(...)
+            - pattern: popen(...)
+          - pattern-not: $FUN("...", ...)
+      - patterns:
+          - pattern-either:
+              - pattern: execl(..., $P, ..., $NULL)
+              - pattern: execlp(..., $P, ..., $NULL)
+              - pattern: execle(..., $P, ..., $NULL, $ENV)
+              - pattern: execlpe(..., $P, ..., $NULL, $ENV)
+              - pattern: execv($P, ...)
+              - pattern: execvp($P, ...)
+              - pattern: execve($P, ..., $ENV)
+              - pattern: execvpe($P, ..., $ENV)
+          - metavariable-pattern:
+              metavariable: $P
+              patterns:
+                - pattern-not: (string $X)
+      - patterns:
+          - pattern-either:
+              - pattern: |
+                  $ARGV = {..., $PP ,..., $NULL};
+                  ...
+                  $FUNC(..., $ARGV);
+              - pattern: |
+                  $ARGV = {..., $PP ,..., $NULL};
+                  ...
+                  $FUNC(..., $ARGV, $ENV);
+          - metavariable-regex:
+              metavariable: $FUNC
+              regex: (execv|execvp|execve|execvpe)
+          - metavariable-pattern:
+              metavariable: $PP
+              patterns:
+                - pattern-not: (string $X)

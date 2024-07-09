@@ -29,13 +29,24 @@ void alloc_and_free2()
 	// ok: raptor-double-free
 	free(ptr);
 }
+void loop_and_free()
+{
+	char *ptr = (char *)malloc(MEMSIZE);
+	int i=0;
+	for(i=0;i<10; i++){
+		// ok: raptor-double-free
+		free(ptr[i]);
+		// ruleid: raptor-double-free
+		free(ptr);
+	}
+}
 
 void alloc_and_free3()
 {
 	char *ptr = (char *)malloc(MEMSIZE);
 
 	free(ptr);
-	ptr = (char *)malloc(MEMSIZE);
+	ptr = malloc(MEMSIZE);
 	// ok: raptor-double-free
 	free(ptr);
 }
@@ -56,6 +67,15 @@ void double_free(int argc, char **argv)
 	free(buf1R2);
 }
 
+void double_free2(){
+	char *s1;
+	char *s2;
+	s1 = s2;
+	free(s1);
+	// ruleid: raptor-double-free
+	free(s2);
+}
+
 int Packet *getNextPacket() 
 {
 	Packet *y = (Packet *) malloc(1024);
@@ -63,7 +83,7 @@ int Packet *getNextPacket()
 	if(retval == OK) {
 		return y;
   	} else {
-     		return NULL;
+	 		return NULL;
   	}
 }
 
@@ -72,7 +92,7 @@ int bad()
 	free(logData);
 	pkt = getNextPacket();
 	if(!pkt) {
-     		return NULL;
+	 		return NULL;
 	}
 	logPktData(pkt);
 	// ruleid: raptor-double-free

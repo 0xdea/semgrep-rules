@@ -70,7 +70,7 @@ undefined4 sa_setBlockName(char *block_name,int len)
 	if (len != 0) {
 		// ruleid: raptor-insecure-api-scanf-etc
 		scanf_res = sscanf(block_name,"%d%s",&scanf_int,scanf_str);
-		if ((scanf_res == 2) && (__src = strstr(block_name,s_000662bc), __src != NULL)) {
+		if ((scanf_res == 2) && (__src = strstr(block_name, s), __src != NULL)) {
 			// ...
     		}
   	}

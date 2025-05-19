@@ -16,9 +16,7 @@ rules:
       # well as any operation with more than two operands.
       # NOTE: += and *= operators are not covered.
       # NOTE: some allocation functions such as kmalloc() or custom functions are 
-      # not covered; in addition, some implementations of calloc() and similar 
-      # functions can cause a wraparound based on their first argument that 
-      # specifies the number of elements.
+      # not covered.
       # NOTE: there might exist other buggy input validation patterns not covered
       # here, including the same patterns with a different order of operands.
       # NOTE: see also cpp.memory.*.
@@ -113,6 +111,38 @@ rules:
               - pattern: realloc
               - pattern: reallocf
               - pattern: aligned_alloc
+      # calloc (multiplication in 1st arg)
+      - patterns:
+        - pattern: $FUN($X * $Y, $ARG2)
+        - metavariable-pattern:
+            metavariable: $FUN
+            pattern-either:
+              - pattern: calloc
+      - patterns:
+        - pattern: $FUN($N, $ARG2)
+        - pattern-inside: |
+            $N = $X * $Y;
+            ...
+        - metavariable-pattern:
+            metavariable: $FUN
+            pattern-either:
+              - pattern: calloc
+      # calloc (sum in 1st arg)
+      - patterns:
+        - pattern: $FUN($X + $Y, $ARG2)
+        - metavariable-pattern:
+            metavariable: $FUN
+            pattern-either:
+              - pattern: calloc
+      - patterns:
+        - pattern: $FUN($N, $ARG2)
+        - pattern-inside: |
+            $N = $X + $Y;
+            ...
+        - metavariable-pattern:
+            metavariable: $FUN
+            pattern-either:
+              - pattern: calloc
       # buggy input validation (sum)
       # consider integer promotion (i.e., uint16_t are not vulnerable on 32-bit systems)
       - pattern: $X > $MAX || ($X + $Y) > $MAX

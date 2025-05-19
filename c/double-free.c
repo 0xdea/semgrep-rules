@@ -56,7 +56,7 @@ void double_free(int argc, char **argv)
 	free(buf1R2);
 }
 
-int Packet *getNextPacket() 
+Packet *getNextPacket() 
 {
 	Packet *y = (Packet *) malloc(1024);
 	retval = waitForPacket(y);

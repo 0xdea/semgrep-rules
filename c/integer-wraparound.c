@@ -83,6 +83,42 @@ set_cursor(struct tfb_softc *sc, struct wsdisplay_cursor *p)
 	}
 }
 
+void **ht_get_all(ht_t self, int want_key) {
+  // ruleid: raptor-integer-wraparound
+  void **ret = (void **)calloc(self->num_keys+1, sizeof(void *));
+  if (ret) {
+    void **tail = ret;
+    size_t i;
+    for (i = 0; i < self->num_buckets; i++) {
+      ht_entry_t curr;
+      for (curr = self->buckets[i]; curr; curr = curr->next) {
+        *tail++ = (want_key ? curr->key : curr->value);
+      }
+    }
+  }
+  return ret;
+}
+
+dl_status dl_start(dl_t self) 
+{
+  // ...
+  plist_t dict = plist_new_dict();
+  // ...
+  char *xml = NULL;
+  uint32_t xml_length = 0;
+  plist_to_xml(dict, &xml, &xml_length);
+  plist_free(dict);
+
+  size_t length = 16 + xml_length;
+  // ruleid: raptor-integer-wraparound
+  char *packet = (char *)calloc(length, sizeof(char));
+  if (!packet) {
+    return DL_ERROR;
+  }
+
+  // ...
+}
+
 int main() 
 {
 	printf("Hello, World!");

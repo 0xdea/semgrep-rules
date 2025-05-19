@@ -78,7 +78,7 @@ undefined4 sa_setBlockName(char *block_name,int len)
 }
 
 // https://www.synacktiv.com/en/publications/pwn2own-austin-2021-defeating-the-netgear-r6700v3.html
-int __fastcall updating_database(int a1, const char *update_server)
+int updating_database(int a1, const char *update_server)
 {
 	// ...
 	char line[1020]; // [sp+894h] [bp-4FCh] BYREF

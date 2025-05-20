@@ -40,7 +40,7 @@ $ semgrep --severity ERROR --severity WARNING --config PATH/TO/RULES PATH/TO/SOU
 $ semgrep --config PATH/TO/RULES PATH/TO/SOURCE
 ```
 
-For a better streamlined experience, I recommend saving semgrep scan output in [SARIF](https://sarifweb.azurewebsites.net/) format and using [SARIF Viewer](https://marketplace.visualstudio.com/items?itemName=MS-SarifVSCode.sarif-viewer) in [VS Code](https://code.visualstudio.com/).
+For a better streamlined experience, I recommend saving semgrep scan output in [SARIF](https://sarifweb.azurewebsites.net/) format and using [SARIF Explorer](https://marketplace.visualstudio.com/items?itemName=trailofbits.sarif-explorer) in [VS Code](https://code.visualstudio.com/).
 
 ## C/C++
 

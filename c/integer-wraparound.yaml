@@ -32,7 +32,9 @@ rules:
     pattern-either:
       # malloc, valloc (multiplication)
       - patterns:
-        - pattern: $FUN($X * $Y)
+        - pattern-either:
+          - pattern: $FUN($X * $Y)
+          - pattern: $FUN($X *= $Y)
         - metavariable-pattern:
             metavariable: $FUN
             pattern-either:
@@ -54,7 +56,9 @@ rules:
               - pattern: valloc
       # malloc, valloc (sum)
       - patterns:
-        - pattern: $FUN($X + $Y)
+        - pattern-either:
+          - pattern: $FUN($X + $Y)
+          - pattern: $FUN($X += $Y)
         - metavariable-pattern:
             metavariable: $FUN
             pattern-either:
@@ -75,7 +79,9 @@ rules:
               - pattern: valloc
       # calloc, realloc, reallocf, aligned_alloc (multiplication)
       - patterns:
-        - pattern: $FUN($ARG1, $X * $Y)
+        - pattern-either:
+          - pattern: $FUN($ARG1, $X * $Y)
+          - pattern: $FUN($ARG1, $X *= $Y)
         - metavariable-pattern:
             metavariable: $FUN
             pattern-either:
@@ -101,7 +107,9 @@ rules:
               - pattern: aligned_alloc
       # calloc, realloc, reallocf, aligned_alloc (sum)
       - patterns:
-        - pattern: $FUN($ARG1, $X + $Y)
+        - pattern-either:
+          - pattern: $FUN($ARG1, $X + $Y)
+          - pattern: $FUN($ARG1, $X += $Y)
         - metavariable-pattern:
             metavariable: $FUN
             pattern-either:
@@ -126,7 +134,9 @@ rules:
               - pattern: aligned_alloc
       # calloc (multiplication in 1st arg)
       - patterns:
-        - pattern: $FUN($X * $Y, $ARG2)
+        - pattern-either:
+          - pattern: $FUN($X * $Y, $ARG2)
+          - pattern: $FUN($X *= $Y, $ARG2)
         - metavariable-pattern:
             metavariable: $FUN
             pattern-either:
@@ -146,7 +156,9 @@ rules:
               - pattern: calloc
       # calloc (sum in 1st arg)
       - patterns:
-        - pattern: $FUN($X + $Y, $ARG2)
+        - pattern-either:
+          - pattern: $FUN($X + $Y, $ARG2)
+          - pattern: $FUN($X += $Y, $ARG2)
         - metavariable-pattern:
             metavariable: $FUN
             pattern-either:

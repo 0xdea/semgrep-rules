@@ -34,9 +34,9 @@ void bad2()
 void bad3()
 {
 	// ruleid: raptor-integer-wraparound
-	char *const new_connector = (char *)realloc(parser, parser->m_groupConnector, parser->m_groupSize *= 2);
+	char *const new_connector = (char *)realloc(parser->m_groupConnector, parser->m_groupSize *= 2);
 	// ruleid: raptor-integer-wraparound
-	int *const new_scaff_index = (int *)realloc(parser, dtd->scaffIndex, parser->m_groupSize * sizeof(int));
+	int *const new_scaff_index = (int *)realloc(dtd->scaffIndex, parser->m_groupSize * sizeof(int));
 }
 
 u_char *make_table(unsigned int width, unsigned int height, u_char *init_row)

@@ -14,7 +14,6 @@ rules:
       # NOTE: only multiplication and sum with two operands are covered; other 
       # arithmetic operations should also be considered (e.g., left shift), as 
       # well as any operation with more than two operands.
-      # NOTE: += and *= operators are not covered.
       # NOTE: some allocation functions such as kmalloc() or custom functions are 
       # not covered.
       # NOTE: there might exist other buggy input validation patterns not covered
@@ -41,9 +40,13 @@ rules:
               - pattern: valloc
       - patterns:
         - pattern: $FUN($N)
-        - pattern-inside: |
-            $N = $X * $Y;
-            ...
+        - pattern-either:
+          - pattern-inside: |
+              $N = $X * $Y;
+              ...
+          - pattern-inside: |
+              $N *= $X;
+              ...
         - metavariable-pattern:
             metavariable: $FUN
             pattern-either:
@@ -59,9 +62,12 @@ rules:
               - pattern: valloc
       - patterns:
         - pattern: $FUN($N)
-        - pattern-inside: |
-            $N = $X + $Y;
-            ...
+        - pattern-either:
+          - pattern-inside: |
+              $N = $X + $Y;
+              ...
+          - pattern-inside: |
+              $N += $X;
         - metavariable-pattern:
             metavariable: $FUN
             pattern-either:
@@ -79,9 +85,13 @@ rules:
               - pattern: aligned_alloc
       - patterns:
         - pattern: $FUN($ARG1, $N)
-        - pattern-inside: |
-            $N = $X * $Y;
-            ...
+        - pattern-either:
+          - pattern-inside: |
+              $N = $X * $Y;
+              ...
+          - pattern-inside: |
+              $N *= $X;
+              ...
         - metavariable-pattern:
             metavariable: $FUN
             pattern-either:
@@ -101,9 +111,12 @@ rules:
               - pattern: aligned_alloc
       - patterns:
         - pattern: $FUN($ARG1, $N)
-        - pattern-inside: |
-            $N = $X + $Y;
-            ...
+        - pattern-either:
+          - pattern-inside: |
+              $N = $X + $Y;
+              ...
+          - pattern-inside: |
+              $N += $X;
         - metavariable-pattern:
             metavariable: $FUN
             pattern-either:
@@ -120,9 +133,13 @@ rules:
               - pattern: calloc
       - patterns:
         - pattern: $FUN($N, $ARG2)
-        - pattern-inside: |
-            $N = $X * $Y;
-            ...
+        - pattern-either:
+          - pattern-inside: |
+              $N = $X * $Y;
+              ...
+          - pattern-inside: |
+              $N *= $X;
+              ...
         - metavariable-pattern:
             metavariable: $FUN
             pattern-either:
@@ -136,9 +153,12 @@ rules:
               - pattern: calloc
       - patterns:
         - pattern: $FUN($N, $ARG2)
-        - pattern-inside: |
-            $N = $X + $Y;
-            ...
+        - pattern-either:
+          - pattern-inside: |
+              $N = $X + $Y;
+              ...
+          - pattern-inside: |
+              $N += $X;
         - metavariable-pattern:
             metavariable: $FUN
             pattern-either:

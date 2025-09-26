@@ -16,9 +16,9 @@
 A collection of my Semgrep rules to facilitate vulnerability research.
 
 Blog posts:  
-https://security.humanativaspa.it/semgrep-ruleset-for-c-c-vulnerability-research  
-https://security.humanativaspa.it/automating-binary-vulnerability-discovery-with-ghidra-and-semgrep/  
-https://security.humanativaspa.it/big-update-to-my-semgrep-c-cpp-ruleset
+https://hnsecurity.it/blog/semgrep-ruleset-for-c-c-vulnerability-research  
+https://hnsecurity.it/blog/automating-binary-vulnerability-discovery-with-ghidra-and-semgrep/  
+https://hnsecurity.it/blog/big-update-to-my-semgrep-c-cpp-ruleset
 
 See also:  
 https://semgrep.dev/r

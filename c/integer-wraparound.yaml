@@ -12,12 +12,13 @@ rules:
         - https://dustri.org/b/playing-with-weggli.html
       confidence: LOW
       # NOTE: only multiplication and sum with two operands are covered; other 
-      # arithmetic operations should also be considered (e.g., left shift), as 
-      # well as any operation with more than two operands.
-      # NOTE: some allocation functions such as kmalloc() or custom functions are 
-      # not covered.
+      # arithmetic operations should also be considered (e.g., left shift, even 
+      # subtraction), as well as any operation with more than two operands.
+      # NOTE: some allocation functions such as kmalloc() and custom functions 
+      # are not covered.
       # NOTE: there might exist other buggy input validation patterns not covered
       # here, including the same patterns with a different order of operands.
+      # NOTE: a dedicate rule for C++ operators such as new should be implemented.
       # NOTE: see also cpp.memory.*.
     message: >-
       The software performs a calculation that can produce an integer

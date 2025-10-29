@@ -132,6 +132,50 @@ dl_status dl_start(dl_t self)
   // ...
 }
 
+// https://cc-sw.com/using-codeql-and-semgrep-to-assist-vulnerability-research-part-1-of-6/
+CURLcode Curl_ntlm_core_mk_nt_hash(struct Curl_easy *data,
+                                   const char *password,
+                                   unsigned char *ntbuffer /* 21 bytes */)
+{
+   size_t len = strlen(password);
+   // ruleid: raptor-integer-wraparound
+   unsigned char *pw = len ? malloc(len * 2) : strdup("");
+   CURLcode result;
+
+   if(!pw)
+     return CURLE_OUT_OF_MEMORY;
+}
+
+// https://cc-sw.com/using-codeql-and-semgrep-to-assist-vulnerability-research-part-1-of-6/
+static int
+defineAttribute(ELEMENT_TYPE *type, ATTRIBUTE_ID *attId, XML_Bool isCdata,
+                XML_Bool isId, const XML_Char *value, XML_Parser parser) {
+      DEFAULT_ATTRIBUTE *temp;
+      int count = type->allocDefaultAtts * 2;
+	  // ruleid: raptor-integer-wraparound
+      temp = (DEFAULT_ATTRIBUTE *)realloc(type->defaultAtts,
+                                          (count * sizeof(DEFAULT_ATTRIBUTE)));
+      if (temp == NULL)
+        return 0;
+      type->allocDefaultAtts = count;
+      type->defaultAtts = temp;
+}
+
+// https://cc-sw.com/using-codeql-and-semgrep-to-assist-vulnerability-research-part-1-of-6/
+static enum XML_Error
+doProlog(XML_Parser parser, const ENCODING *enc, const char *s, const char *end,
+         int tok, const char *next, const char **nextPtr, XML_Bool haveMore,
+         XML_Bool allowClosingDoctype, enum XML_Account account) {
+    case XML_ROLE_GROUP_OPEN:
+      if (parser->m_prologState.level >= parser->m_groupSize) {
+        if (parser->m_groupSize) {
+			// ruleid: raptor-integer-wraparound
+            char *const new_connector = (char *)realloc(
+                parser->m_groupConnector, parser->m_groupSize *= 2);
+          }
+      }
+}
+
 int main() 
 {
 	printf("Hello, World!");

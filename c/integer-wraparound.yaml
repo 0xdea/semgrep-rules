@@ -18,6 +18,7 @@ rules:
       # are not covered.
       # NOTE: there might exist other buggy input validation patterns not covered
       # here, including the same patterns with a different order of operands.
+      # NOTE: we should do some tests with the deep expression operator.
       # NOTE: a dedicate rule for C++ operators such as new should be implemented.
       # NOTE: see also cpp.memory.*.
     message: >-

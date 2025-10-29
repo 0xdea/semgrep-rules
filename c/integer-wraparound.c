@@ -176,6 +176,13 @@ doProlog(XML_Parser parser, const ENCODING *enc, const char *s, const char *end,
       }
 }
 
+int test_propagation()
+{
+	lVar2 = sVar1 * 2;
+	// ruleid: raptor-integer-wraparound
+	data = (void *)(*(code *)malloc)(lVar2)
+}
+
 int main() 
 {
 	printf("Hello, World!");

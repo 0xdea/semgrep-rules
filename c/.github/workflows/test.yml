@@ -1,0 +1,29 @@
+name: test
+
+permissions:
+  contents: read
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  semgrep-rules-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      - name: semgrep
+        run: |
+          python -m pip install --upgrade pip
+          python3 -m pip install semgrep
+          python3 -m pip install jsonschema pyyaml
+      - name: semgrep-validate
+        run: semgrep --config . --validate
+      - name: semgrep-test
+        run: semgrep --test --test-ignore-todo

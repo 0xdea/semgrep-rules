@@ -176,11 +176,32 @@ doProlog(XML_Parser parser, const ENCODING *enc, const char *s, const char *end,
       }
 }
 
+// https://cc-sw.com/using-codeql-and-semgrep-to-assist-vulnerability-research-part-1-of-6/
 int test_propagation()
 {
 	lVar2 = sVar1 * 2;
 	// ruleid: raptor-integer-wraparound
 	data = (void *)(*(code *)malloc)(lVar2)
+}
+
+// https://cc-sw.com/using-codeql-and-semgrep-to-assist-vulnerability-research-part-1-of-6/
+int more_operands()
+{
+	// ruleid: raptor-integer-wraparound
+	__s = (char *)(*(code *)malloc)(sVar7 * 3 + 1);
+}
+
+// https://cc-sw.com/using-codeql-and-semgrep-to-assist-vulnerability-research-part-1-of-6/
+int printbuf_memappend(printbuf *p,char *buf,int size)
+{
+  if (p->size <= iVar2) {
+    iVar3 = p->size * 2; //Integer overflow
+    if (iVar3 <= iVar2 + 8) {
+      iVar3 = iVar2 + 9;
+    }
+	// ruleid: raptor-integer-wraparound
+    __ptr = (char *)realloc(__ptr,(long)iVar3); //Alloc call
+  }
 }
 
 int main() 

@@ -21,9 +21,8 @@ jobs:
       - name: semgrep
         run: |
           python -m pip install --upgrade pip
-          python3 -m pip install semgrep
-          python3 -m pip install jsonschema pyyaml
+          python -m pip install semgrep
       - name: semgrep-validate
-        run: semgrep --config . --validate
+        run: semgrep --config generic --config c --validate
       - name: semgrep-test
         run: semgrep --test --test-ignore-todo

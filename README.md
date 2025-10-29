@@ -13,7 +13,7 @@
 > 
 > -- Fedor G. Pikus
 
-A collection of my Semgrep rules to facilitate vulnerability research. 
+A collection of my Semgrep rules to facilitate vulnerability research.
 
 Blog posts:  
 https://hnsecurity.it/blog/semgrep-ruleset-for-c-c-vulnerability-research  

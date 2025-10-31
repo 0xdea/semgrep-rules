@@ -20,11 +20,17 @@ rules:
           metavariable: $FUN
           pattern-either:
             - pattern: scanf
+            - pattern: __isoc99_scanf
             - pattern: vscanf
+            - pattern: __isoc99_vscanf
             - pattern: fscanf
+            - pattern: __isoc99_fscanf
             - pattern: vfscanf
+            - pattern: __isoc99_vfscanf
             - pattern: sscanf
+            - pattern: __isoc99_sscanf
             - pattern: vsscanf
+            - pattern: __isoc99_vsscanf
             - pattern: wscanf
             - pattern: vwscanf
             - pattern: fwscanf

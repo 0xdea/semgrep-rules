@@ -6,7 +6,7 @@ rules:
         - https://cwe.mitre.org/data/definitions/121
         - https://github.com/googleprojectzero/weggli
       confidence: MEDIUM
-      # NOTE: some functions (e.g., scanf family) and some other ways to
+      # NOTE: some functions (e.g., the scanf family) and some other ways to
       # write into a stack buffer are not covered.
       # NOTE: static variables matching apparently is not supported by Semgrep.
       # NOTE: memcpy_s, memmove_s, memset_explicit, and similar variants are

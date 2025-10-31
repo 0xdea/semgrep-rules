@@ -35,7 +35,9 @@ rules:
           - pattern: printk(...)
           # scanf family
           - pattern: scanf(...)
+          - pattern: __isoc99_scanf(...)
           - pattern: vscanf(...)
+          - pattern: __isoc99_vscanf(...)
           - pattern: wscanf(...)
           - pattern: vwscanf(...)
           # err/warn family
@@ -61,11 +63,15 @@ rules:
           - pattern: wsprintf(...)
           # scanf family
           - pattern: fscanf(...)
+          - pattern: __isoc99_fscanf(...)
           - pattern: vfscanf(...)
+          - pattern: __isoc99_vfscanf(...)
           - pattern: fwscanf(...)
           - pattern: vfwscanf(...)
           - pattern: sscanf(...)
+          - pattern: __isoc99_sscanf(...)
           - pattern: vsscanf(...)
+          - pattern: __isoc99_vsscanf(...)
           - pattern: swscanf(...)
           - pattern: vswscanf(...)
           # syslog family

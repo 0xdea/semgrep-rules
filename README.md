@@ -15,13 +15,13 @@
 
 A collection of my Semgrep rules to facilitate vulnerability research.
 
-Blog posts:  
-https://hnsecurity.it/blog/semgrep-ruleset-for-c-c-vulnerability-research  
-https://hnsecurity.it/blog/automating-binary-vulnerability-discovery-with-ghidra-and-semgrep/  
-https://hnsecurity.it/blog/big-update-to-my-semgrep-c-cpp-ruleset
+Blog posts:
+* https://hnsecurity.it/blog/semgrep-ruleset-for-c-c-vulnerability-research
+* https://hnsecurity.it/blog/automating-binary-vulnerability-discovery-with-ghidra-and-semgrep/
+* https://hnsecurity.it/blog/big-update-to-my-semgrep-c-cpp-ruleset
 
-See also:  
-https://semgrep.dev/r
+See also:
+* https://semgrep.dev/r
 
 [![Program in C](https://img.youtube.com/vi/tas0O586t80/sddefault.jpg)](https://www.youtube.com/embed/tas0O586t80)
 
@@ -40,7 +40,7 @@ $ semgrep --severity ERROR --severity WARNING --config PATH/TO/RULES PATH/TO/SOU
 $ semgrep --config PATH/TO/RULES PATH/TO/SOURCE
 ```
 
-For a better streamlined experience, I recommend saving semgrep scan output in [SARIF](https://sarifweb.azurewebsites.net/) format and using [SARIF Explorer](https://marketplace.visualstudio.com/items?itemName=trailofbits.sarif-explorer) in [VS Code](https://code.visualstudio.com/).
+For a better streamlined experience, I recommend saving semgrep scan output in [SARIF](https://sarifweb.azurewebsites.net/) format and using [SARIF Explorer](https://marketplace.visualstudio.com/items?itemName=trailofbits.sarif-explorer) in [VS code](https://code.visualstudio.com/).
 
 ## C/C++
 

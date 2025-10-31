@@ -15,15 +15,17 @@
 
 A collection of my Semgrep rules to facilitate vulnerability research.
 
-Blog posts:
+[![Program in C](https://img.youtube.com/vi/tas0O586t80/sddefault.jpg)](https://www.youtube.com/embed/tas0O586t80)
+
+## Blog posts
+
 * https://hnsecurity.it/blog/semgrep-ruleset-for-c-c-vulnerability-research
 * https://hnsecurity.it/blog/automating-binary-vulnerability-discovery-with-ghidra-and-semgrep/
 * https://hnsecurity.it/blog/big-update-to-my-semgrep-c-cpp-ruleset
 
-See also:
-* https://semgrep.dev/r
+## See also
 
-[![Program in C](https://img.youtube.com/vi/tas0O586t80/sddefault.jpg)](https://www.youtube.com/embed/tas0O586t80)
+* https://semgrep.dev/r
 
 ## Setup and usage instructions
 

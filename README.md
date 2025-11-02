@@ -4,6 +4,7 @@
 [![](https://img.shields.io/github/watchers/0xdea/semgrep-rules.svg?style=flat&color=red)](https://github.com/0xdea/semgrep-rules)
 [![](https://img.shields.io/badge/twitter-%400xdea-blue.svg)](https://twitter.com/0xdea)
 [![](https://img.shields.io/badge/mastodon-%40raptor-purple.svg)](https://infosec.exchange/@raptor)
+[![test](https://github.com/0xdea/semgrep-rules/actions/workflows/test.yml/badge.svg)](https://github.com/0xdea/semgrep-rules/actions/workflows/test.yml)
 
 > "The attack surface is the vulnerability. Finding a bug there is just a detail."
 > 

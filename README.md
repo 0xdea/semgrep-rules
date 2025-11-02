@@ -44,9 +44,18 @@ $ semgrep --config PATH/TO/RULES PATH/TO/SOURCE
 
 For a better streamlined experience, I recommend saving semgrep scan output in [SARIF](https://sarifweb.azurewebsites.net/) format and using [SARIF Explorer](https://marketplace.visualstudio.com/items?itemName=trailofbits.sarif-explorer) in [VS code](https://code.visualstudio.com/).
 
-## C/C++
+## TODO
 
-### buffer overflows
+* Add new checks in the existing rules and add new rules where needed.
+* Port the rules to the [Semgrep pro engine](https://semgrep.dev/docs/semgrep-code/semgrep-pro-engine-intro), which allows for **inter-file** and **inter-function** analysis.
+* Implement [taint mode](https://semgrep.dev/docs/writing-rules/data-flow/taint-mode/overview) where suitable to improve rules with dataflow analysis.
+* Implement dedicated kernel rules (Linux, BSD, macOS, etc.).
+
+## Rules
+
+### C/C++
+
+#### buffer overflows
 * [**insecure-api-gets**](https://github.com/0xdea/semgrep-rules/blob/main/c/insecure-api-gets.yaml). Use of the insecure API function gets().
 * [**insecure-api-strcpy-stpcpy-strcat**](https://github.com/0xdea/semgrep-rules/blob/main/c/insecure-api-strcpy-stpcpy-strcat.yaml). Use of potentially insecure API functions strcpy(), stpcpy(), strcat().
 * [**insecure-api-sprintf-vsprintf**](https://github.com/0xdea/semgrep-rules/blob/main/c/insecure-api-sprintf-vsprintf.yaml). Use of potentially insecure API functions sprintf() and vsprintf().
@@ -61,17 +70,17 @@ For a better streamlined experience, I recommend saving semgrep scan output in [
 * [**unsafe-ret-strlcpy-strlcat**](https://github.com/0xdea/semgrep-rules/blob/main/c/unsafe-ret-strlcpy-strlcat.yaml). Potentially unsafe use of the return value of strlcpy() and strlcat().
 * [**write-into-stack-buffer**](https://github.com/0xdea/semgrep-rules/blob/main/c/write-into-stack-buffer.yaml). Direct write into buffer allocated on the stack.
 
-### integer overflows
+#### integer overflows
 * [**incorrect-unsigned-comparison**](https://github.com/0xdea/semgrep-rules/blob/main/c/incorrect-unsigned-comparison.yaml). Checking if an unsigned variable is negative.
 * [**signed-unsigned-conversion**](https://github.com/0xdea/semgrep-rules/blob/main/c/signed-unsigned-conversion.yaml). Potential signed/unsigned conversion errors.
 * [**integer-truncation**](https://github.com/0xdea/semgrep-rules/blob/main/c/integer-truncation.yaml). Potential integer truncation errors.
 * [**unsafe-strlen**](https://github.com/0xdea/semgrep-rules/blob/main/c/unsafe-strlen.yaml). Casting the return value of strlen() to short might be dangerous.
 * [**integer-wraparound**](https://github.com/0xdea/semgrep-rules/blob/main/c/integer-wraparound.yaml). Potential integer wraparound errors.
 
-### format strings
+#### format strings
 * [**format-string-bugs**](https://github.com/0xdea/semgrep-rules/blob/main/c/format-string-bugs.yaml). Potential format string bugs.
 
-### memory management
+#### memory management
 * [**insecure-api-alloca**](https://github.com/0xdea/semgrep-rules/blob/main/c/insecure-api-alloca.yaml). Use of the potentially insecure API function alloca().
 * [**use-after-free**](https://github.com/0xdea/semgrep-rules/blob/main/c/use-after-free.yaml). Potential use after free().
 * [**double-free**](https://github.com/0xdea/semgrep-rules/blob/main/c/double-free.yaml). Potential double free().
@@ -83,19 +92,19 @@ For a better streamlined experience, I recommend saving semgrep scan output in [
 * [**mismatched-memory-management**](https://github.com/0xdea/semgrep-rules/blob/main/c/mismatched-memory-management.yaml). Potentially mismatched C memory management routines.
 * [**mismatched-memory-management-cpp**](https://github.com/0xdea/semgrep-rules/blob/main/c/mismatched-memory-management-cpp.yaml). Potentially mismatched C++ memory management routines.
 
-### command injection
+#### command injection
 * [**command-injection**](https://github.com/0xdea/semgrep-rules/blob/main/c/command-injection.yaml). Potential OS command injection via system() or popen().
 
-### race conditions
+#### race conditions
 * [**insecure-api-access-stat-lstat**](https://github.com/0xdea/semgrep-rules/blob/main/c/insecure-api-access-stat-lstat.yaml). Use of insecure API functions access(), stat(), lstat().
 * [**insecure-api-mktemp-tmpnam-tempnam**](https://github.com/0xdea/semgrep-rules/blob/main/c/insecure-api-mktemp-tmpnam-tempnam.yaml). Use of insecure API functions mktemp(), tmpnam(), tempnam().
 * [**insecure-api-signal**](https://github.com/0xdea/semgrep-rules/blob/main/c/insecure-api-signal.yaml). Use of insecure API function signal().
 
-### privilege management
+#### privilege management
 * [**incorrect-order-setuid-setgid-etc**](https://github.com/0xdea/semgrep-rules/blob/main/c/incorrect-order-setuid-setgid-etc.yaml). Privilege management functions called in the wrong order.
 * [**unchecked-ret-setuid-seteuid**](https://github.com/0xdea/semgrep-rules/blob/main/c/unchecked-ret-setuid-seteuid.yaml). Unchecked return code of setuid() and seteuid().
 
-### miscellaneous
+#### miscellaneous
 * [**incorrect-use-of-memset**](https://github.com/0xdea/semgrep-rules/blob/main/c/incorrect-use-of-memset.yaml). Wrong order of arguments to memset().
 * [**insecure-api-rand-srand**](https://github.com/0xdea/semgrep-rules/blob/main/c/insecure-api-rand-srand.yaml). Use of potentially insecure API functions rand() and srand().
 * [**incorrect-use-of-sprintf-snprintf**](https://github.com/0xdea/semgrep-rules/blob/main/c/incorrect-use-of-sprintf-snprintf.yaml). Source and destination overlap in sprintf() and snprintf().
@@ -109,7 +118,7 @@ For a better streamlined experience, I recommend saving semgrep scan output in [
 * [**missing-return**](https://github.com/0xdea/semgrep-rules/blob/main/c/missing-return.yaml). Missing return statement in non-void function.
 * [**typos**](https://github.com/0xdea/semgrep-rules/blob/main/c/typos.yaml). Potential typos with security implications.
 
-## Generic
+### Generic
 
-### miscellaneous
+#### miscellaneous
 * [**bad-words**](https://github.com/0xdea/semgrep-rules/blob/main/generic/bad-words.yaml). Keywords and comments that suggest the presence of bugs.

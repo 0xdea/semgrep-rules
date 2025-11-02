@@ -23,6 +23,6 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install semgrep
       - name: semgrep-validate
-        run: semgrep --config generic --config c --validate
+        run: semgrep --config rules --validate
       - name: semgrep-test
         run: semgrep --test --test-ignore-todo

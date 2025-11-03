@@ -11,6 +11,8 @@ rules:
       confidence: MEDIUM
       # NOTE: goto, try/catch, sem/mutex, new/delete, static_cast/reinterpret_cast 
       # are not covered.
+      # NOTE: consider using regexes such as '(?i)^\w*str\w?cpy(_s)?(_l)?\s*$' to
+      # account for case-insensitive matches (e.g., in user-defined macros).
       # NOTE: see also https://semgrep.dev/r?lang=C
     message: >-
       Locate all calls to interesting and potentially insecure API

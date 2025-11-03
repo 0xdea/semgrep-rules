@@ -33,31 +33,31 @@ rules:
         - pattern: $FUN(...)
         - metavariable-regex:
             metavariable: $FUN
-            regex: '^\w*str\w?cpy\s*$|^\w*stpn?cpy\s*$|^\w*wcs\w?cpy\s*$|^\w*wcpn?cpy\s*$'
+            regex: '^\w*str\w?cpy(_s)?(_l)?\s*$|^\w*stpn?cpy(_s)?(_l)?\s*$|^\w*(wc|mb)s\w?cpy(_s)?(_l)?\s*$|^\w*wcpn?cpy(_s)?(_l)?\s*$'
       # strcat
       - patterns:
         - pattern: $FUN(...)
         - metavariable-regex:
             metavariable: $FUN
-            regex: '^\w*str\w?cat\s*$|^\w*wcs\w?cat\s*$'
+            regex: '^\w*str\w?cat(_s)?(_l)?\s*$|^\w*(wc|mb)s\w?cat(_s)?(_l)?\s*$'
       # strtok
       - patterns:
         - pattern: $FUN(...)
         - metavariable-regex:
             metavariable: $FUN
-            regex: '^\w*strtok\s*$|^\w*wcstok\s*$'
+            regex: '^\w*strtok(_s)?(_l)?\s*$|^\w*(wc|mb)stok(_s)?(_l)?\s*$'
       # strlen
         # - patterns:
           # - pattern: $FUN(...)
           # - metavariable-regex:
               # metavariable: $FUN
-              # regex: '^\w*(str|wcs)n?len\s*$'
+              # regex: '^\w*(str|wcs|mbs)n?len\s*$'
       # printf
       - patterns:
         - pattern: $FUN(...)
         - metavariable-regex:
             metavariable: $FUN
-            regex: '^\w*s\w?printf\w*\s*$'
+            regex: '^\w*s\w?printf(_s)?(_l)?\w*\s*$'
       # more printf
         # - patterns:
           # - pattern: $FUN(...)
@@ -69,7 +69,7 @@ rules:
         - pattern: $FUN(...)
         - metavariable-regex:
             metavariable: $FUN
-            regex: '^\w*scanf\s*$'
+            regex: '^\w*scanf(_s)?(_l)?\s*$'
       # get
       - patterns:
         - pattern: $FUN(...)

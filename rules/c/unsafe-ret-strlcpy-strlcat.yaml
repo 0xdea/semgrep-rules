@@ -24,8 +24,12 @@ rules:
       - pattern: $RET = strlcat(...)
       - pattern: $RET = wcslcpy(...)
       - pattern: $RET = wcslcat(...)
+      - pattern: $RET = _mbslcpy(...)
+      - pattern: $RET = _mbslcat(...)
       # +=
       - pattern: $RET += strlcpy(...)
       - pattern: $RET += strlcat(...)
       - pattern: $RET += wcslcpy(...)
       - pattern: $RET += wcslcat(...)
+      - pattern: $RET += _mbslcpy(...)
+      - pattern: $RET += _mbslcat(...)

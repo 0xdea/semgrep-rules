@@ -28,6 +28,14 @@ rules:
       - pattern: (short int $LEN) = wcslen(...);
       - pattern: (unsigned short $LEN) = wcslen(...);
       - pattern: (unsigned short int $LEN) = wcslen(...);
+        # - pattern: (short $LEN) = _mbslen(...);
+        # - pattern: (short int $LEN) = _mbslen(...);
+        # - pattern: (unsigned short $LEN) = _mbslen(...);
+        # - pattern: (unsigned short int $LEN) = _mbslen(...);
+        # - pattern: (short $LEN) = _mbstrlen(...);
+        # - pattern: (short int $LEN) = _mbstrlen(...);
+        # - pattern: (unsigned short $LEN) = _mbstrlen(...);
+        # - pattern: (unsigned short int $LEN) = _mbstrlen(...);
       # signed int
         # - pattern: (int $LEN) = strlen(...);
         # - pattern: (int $LEN) = wcslen(...);

@@ -44,6 +44,11 @@ rules:
               - pattern: wcpcpy
               - pattern: wcpncpy
               - pattern: wcslcpy
+              - pattern: _mbscpy
+              - pattern: _mbsncpy
+              - pattern: _mbpcpy
+              - pattern: _mbpncpy
+              - pattern: _mbslcpy
               # strcat
               - pattern: strcat
               - pattern: strncat
@@ -51,6 +56,9 @@ rules:
               - pattern: wcscat
               - pattern: wcsncat
               - pattern: wcslcat
+              - pattern: _mbscat
+              - pattern: _mbsncat
+              - pattern: _mbslcat
               # memcpy/memset
               - pattern: memcpy
               - pattern: memccpy

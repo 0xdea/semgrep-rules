@@ -26,6 +26,5 @@ rules:
         - pattern: wcpcpy(...)
         - pattern: wcscat(...)
         - pattern: _mbscpy(...)
-        - pattern: _mbpcpy(...)
         - pattern: _mbscat(...)
       - pattern-not: $FUN($BUF, "...", ...)

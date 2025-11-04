@@ -31,7 +31,6 @@ rules:
             - pattern: wcsncpy
             - pattern: wcpncpy
             - pattern: _mbsncpy
-            - pattern: _mbpncpy
       - pattern-not-inside: |
           $FUN($DST, $SRC, $N);
           ...

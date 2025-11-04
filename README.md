@@ -47,6 +47,7 @@ For a better streamlined experience, I recommend saving semgrep scan output in [
 
 ## TODO
 
+* Do some additional benchmarking against real-world code to spot slow rules in need of optimization.
 * Add new checks in the existing rules and add new rules where needed.
 * Port the rules to the [Semgrep pro engine](https://semgrep.dev/docs/semgrep-code/semgrep-pro-engine-intro), which allows for **inter-file** and **inter-function** analysis.
 * Implement [taint mode](https://semgrep.dev/docs/writing-rules/data-flow/taint-mode/overview) where suitable to improve rules with **dataflow analysis**.

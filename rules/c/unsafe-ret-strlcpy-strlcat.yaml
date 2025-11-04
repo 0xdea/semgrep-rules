@@ -18,18 +18,16 @@ rules:
     languages:
       - c
       - cpp
-    pattern-either:
-      # =
-      - pattern: $RET = strlcpy(...)
-      - pattern: $RET = strlcat(...)
-      - pattern: $RET = wcslcpy(...)
-      - pattern: $RET = wcslcat(...)
-      - pattern: $RET = _mbslcpy(...)
-      - pattern: $RET = _mbslcat(...)
-      # +=
-      - pattern: $RET += strlcpy(...)
-      - pattern: $RET += strlcat(...)
-      - pattern: $RET += wcslcpy(...)
-      - pattern: $RET += wcslcat(...)
-      - pattern: $RET += _mbslcpy(...)
-      - pattern: $RET += _mbslcat(...)
+    patterns:
+      - pattern-either:
+        - pattern: $RET = $FUN(...)
+        - pattern: $RET += $FUN(...)
+      - metavariable-pattern:
+          metavariable: $FUN
+          pattern-either:
+            - pattern: strlcpy
+            - pattern: strlcat
+            - pattern: wcslcpy
+            - pattern: wcslcat
+            - pattern: _mbslcpy
+            - pattern: _mbslcat

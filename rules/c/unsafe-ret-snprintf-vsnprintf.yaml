@@ -18,12 +18,14 @@ rules:
     languages:
       - c
       - cpp
-    pattern-either:
-      # =
-      - pattern: $RET = snprintf(...)
-      - pattern: $RET = vsnprintf(...)
-      # +=
-      - pattern: $RET += snprintf(...)
-      - pattern: $RET += vsnprintf(...)
-      # swprintf() and vswprintf() return a negative value if n or more 
-      # widechars were requested to be written, thus behaving more safely
+    patterns:
+      - pattern-either:
+        - pattern: $RET = $FUN(...)
+        - pattern: $RET += $FUN(...)
+      - metavariable-pattern:
+          metavariable: $FUN
+          pattern-either:
+            - pattern: snprintf
+            - pattern: vsnprintf
+            # swprintf() and vswprintf() return a negative value if n or more 
+            # widechars were requested to be written, thus behaving more safely

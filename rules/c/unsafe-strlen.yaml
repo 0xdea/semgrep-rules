@@ -18,24 +18,24 @@ rules:
     languages:
       - c
       - cpp
-    pattern-either:
-      # signed and unsigned short
-      - pattern: (short $LEN) = strlen(...);
-      - pattern: (short int $LEN) = strlen(...);
-      - pattern: (unsigned short $LEN) = strlen(...);
-      - pattern: (unsigned short int $LEN) = strlen(...);
-      - pattern: (short $LEN) = wcslen(...);
-      - pattern: (short int $LEN) = wcslen(...);
-      - pattern: (unsigned short $LEN) = wcslen(...);
-      - pattern: (unsigned short int $LEN) = wcslen(...);
-        # - pattern: (short $LEN) = _mbslen(...);
-        # - pattern: (short int $LEN) = _mbslen(...);
-        # - pattern: (unsigned short $LEN) = _mbslen(...);
-        # - pattern: (unsigned short int $LEN) = _mbslen(...);
-        # - pattern: (short $LEN) = _mbstrlen(...);
-        # - pattern: (short int $LEN) = _mbstrlen(...);
-        # - pattern: (unsigned short $LEN) = _mbstrlen(...);
-        # - pattern: (unsigned short int $LEN) = _mbstrlen(...);
-      # signed int
-        # - pattern: (int $LEN) = strlen(...);
-        # - pattern: (int $LEN) = wcslen(...);
+    patterns:
+      - pattern-either:
+        # signed and unsigned short
+        - pattern: (short $LEN) = $FUN(...);
+        - pattern: (short int $LEN) = $FUN(...);
+        - pattern: (unsigned short $LEN) = $FUN(...);
+        - pattern: (unsigned short int $LEN) = $FUN(...);
+        # signed int
+          # - pattern: (int $LEN) = $FUN(...);
+      - metavariable-pattern:
+          metavariable: $FUN
+          pattern-either:
+            - pattern: strlen
+            - pattern: lstrlen
+            - pattern: strnlen
+            - pattern: wcslen
+            - pattern: wcsnlen
+              # - pattern: _mbslen
+              # - pattern: _mbstrlen
+              # - pattern: _mbsnlen
+              # - pattern: _mbstrnlen

@@ -20,6 +20,7 @@ rules:
       # here, including the same patterns with a different order of operands.
       # NOTE: we should do some tests with the deep expression operator.
       # NOTE: a dedicate rule for C++ operators such as new should be implemented.
+      # NOTE: aim to improve both performance and accuracy.
       # NOTE: see also cpp.memory.*.
     message: >-
       The software performs a calculation that can produce an integer

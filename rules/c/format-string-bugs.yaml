@@ -10,6 +10,7 @@ rules:
         - https://www.sei.cmu.edu/downloads/sei-cert-c-coding-standard-2016-v01.pdf
       confidence: MEDIUM
       # NOTE: generic va_list matching for custom functions is not covered.
+      # NOTE: aim to improve both performance and accuracy.
       # NOTE: see also cpp.format-string.*.
     message: >-
       The software uses a function that accepts a format string as an argument,

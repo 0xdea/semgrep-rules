@@ -86,11 +86,11 @@ rules:
               - pattern: vsprintf
       # buffer in 1st arg (snprintf functions)
       - patterns:
-        - pattern: $FUN($BUF, $_, $FMT, ...)
+        - pattern: $FUN($BUF, $N, $FMT, ...)
         - pattern-inside: |
             $_ $BUF[$_];
             ...
-            $FUN($BUF, $_, $FMT, ...);
+            $FUN($BUF, $N, $FMT, ...);
         - metavariable-regex:
             metavariable: $FMT
             # some format string modifiers are not handled
@@ -120,11 +120,11 @@ rules:
               - pattern: fread
       # buffer in 2nd arg (buffer to buffer copy functions)
       - patterns:
-        - pattern: $FUN($_, $BUF, ...)
+        - pattern: $FUN($SRC, $BUF, ...)
         - pattern-inside: |
             $_ $BUF[$_];
             ...
-            $FUN($_, $BUF, ...);
+            $FUN($SRC, $BUF, ...);
         - pattern-not: $FUN("...", $BUF, ...)
         - metavariable-pattern:
             metavariable: $FUN
@@ -133,11 +133,11 @@ rules:
               - pattern: bcopy
       # buffer in 2nd arg (other functions)
       - patterns:
-        - pattern: $FUN($_, $BUF, ...)
+        - pattern: $FUN($FD, $BUF, ...)
         - pattern-inside: |
             $_ $BUF[$_];
             ...
-            $FUN($_, $BUF, ...);
+            $FUN($FD, $BUF, ...);
         - metavariable-pattern:
             metavariable: $FUN
             pattern-either:

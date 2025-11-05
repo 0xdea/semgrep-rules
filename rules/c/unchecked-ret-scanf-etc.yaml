@@ -38,7 +38,7 @@ rules:
             - pattern: vfwscanf
             - pattern: swscanf
             - pattern: vswscanf
-      - pattern-not-inside: $RET = $FUN(...)
+      - pattern-not-inside: $_ = $FUN(...)
       - pattern-not-inside: <... $FUN(...) == $_ ...>
       - pattern-not-inside: <... $_ == $FUN(...) ...>
       - pattern-not-inside: <... $FUN(...) != $_ ...>

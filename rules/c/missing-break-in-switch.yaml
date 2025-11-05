@@ -21,35 +21,35 @@ rules:
       - cpp
     patterns:
       - pattern: |
-          switch ($VAR) { case $VAL1: ... case $VAL2: ... }
+          switch ($VAR) { case $_: ... case $_: ... }
       # break
       - pattern-not: |
-          switch ($VAR) { case $VAL1: ... break; case $VAL2: ... }
+          switch ($VAR) { case $_: ... break; case $_: ... }
       - pattern-not: |
-          switch ($VAR) { case $VAL1: break; case $VAL2: ... }
+          switch ($VAR) { case $_: break; case $_: ... }
       # exit
       - pattern-not: |
-          switch ($VAR) { case $VAL1: ... exit($RET); case $VAL2: ... }
+          switch ($VAR) { case $_: ... exit($_); case $_: ... }
       - pattern-not: |
-          switch ($VAR) { case $VAL1: exit($RET); case $VAL2: ... }
+          switch ($VAR) { case $_: exit($_); case $_: ... }
       # return
       - pattern-not: |
-          switch ($VAR) { case $VAL1: ... return; case $VAL2: ... }
+          switch ($VAR) { case $_: ... return; case $_: ... }
       - pattern-not: |
-          switch ($VAR) { case $VAL1: return; case $VAL2: ... }
+          switch ($VAR) { case $_: return; case $_: ... }
       - pattern-not: |
-          switch ($VAR) { case $VAL1: ... return $RET; case $VAL2: ... }
+          switch ($VAR) { case $_: ... return $_; case $_: ... }
       - pattern-not: |
-          switch ($VAR) { case $VAL1: return $RET; case $VAL2: ... }
+          switch ($VAR) { case $_: return $_; case $_: ... }
       # goto
       - pattern-not: |
-          switch ($VAR) { case $VAL1: ... goto $LOC; case $VAL2: ... }
+          switch ($VAR) { case $_: ... goto $_; case $_: ... }
       - pattern-not: |
-          switch ($VAR) { case $VAL1: goto $LOC; case $VAL2: ... }
+          switch ($VAR) { case $_: goto $_; case $_: ... }
       # throw (C++)
       # - pattern-not: |
-      #     switch ($VAR) { case $VAL1: ... throw $ERR; case $VAL2: ... }
+      #     switch ($_) { case $_: ... throw $_; case $_: ... }
       # - pattern-not: |
-      #     switch ($VAR) { case $VAL1: throw $ERR; case $VAL2: ... }      
+      #     switch ($_) { case $_: throw $_; case $_: ... }      
       # improve output readability
       - focus-metavariable: $VAR

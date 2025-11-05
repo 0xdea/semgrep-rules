@@ -19,4 +19,4 @@ rules:
       - cpp
     pattern-either:
       - pattern: sprintf($DST, ..., $DST, ...)
-      - pattern: snprintf($DST, $N, ..., $DST, ...)
+      - pattern: snprintf($DST, $_, ..., $DST, ...)

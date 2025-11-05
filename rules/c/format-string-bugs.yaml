@@ -46,7 +46,7 @@ rules:
           - pattern: vwarn(...)
           - pattern: warnx(...)
           - pattern: vwarnx(...)
-        - pattern-not: $FUN("...", ...)
+        - pattern-not: $_("...", ...)
       # format string in 2nd arg
       - patterns:
         - pattern-either:
@@ -85,7 +85,7 @@ rules:
           - pattern: verrx(...)
           - pattern: warnc(...)
           - pattern: vwarnc(...)
-        - pattern-not: $FUN($ARG1, "...", ...)
+        - pattern-not: $_($_, "...", ...)
       # format string in 3rd arg
       - patterns:
         - pattern-either:
@@ -97,4 +97,4 @@ rules:
           # err/warn family
           - pattern: errc(...)
           - pattern: verrc(...)
-        - pattern-not: $FUN($ARG1, $ARG2, "...", ...)
+        - pattern-not: $_($_, $_, "...", ...)

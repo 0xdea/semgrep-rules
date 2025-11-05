@@ -30,7 +30,7 @@ rules:
             ...
             free($PTR);
         - pattern-not-inside: |
-            $PTR = ($CAST)malloc(...);
+            $PTR = ($_)malloc(...);
             ...
             free($PTR);
         - pattern-not-inside: |
@@ -38,7 +38,7 @@ rules:
             ...
             free($PTR);
         - pattern-not-inside: |
-            $PTR = ($CAST)calloc(...);
+            $PTR = ($_)calloc(...);
             ...
             free($PTR);
         - pattern-not-inside: |
@@ -46,7 +46,7 @@ rules:
             ...
             free($PTR);
         - pattern-not-inside: |
-            $PTR = ($CAST)realloc(...);
+            $PTR = ($_)realloc(...);
             ...
             free($PTR); 
         - pattern-not-inside: |

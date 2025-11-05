@@ -22,18 +22,18 @@ rules:
     pattern-either:
       # type-based patterns (some types are missing)
       - patterns:
-        - pattern: sizeof((char * $PTR))
+        - pattern: sizeof((char * $_))
         - pattern-not: sizeof("...")
-      - pattern: sizeof((int * $PTR))
-      - pattern: sizeof((float * $PTR))
-      - pattern: sizeof((double * $PTR))
+      - pattern: sizeof((int * $_))
+      - pattern: sizeof((float * $_))
+      - pattern: sizeof((double * $_))
       # other patterns (function calls are not covered)
       - patterns:
         - pattern: sizeof($PTR)
         - pattern-either:
           - pattern-inside: |
-              $TYPE * $PTR;
+              $_ * $PTR;
               ...
           - pattern-inside: |
-              $TYPE * $PTR = $EXPR;
+              $_ * $PTR = $_;
               ...

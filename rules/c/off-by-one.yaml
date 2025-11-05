@@ -22,18 +22,18 @@ rules:
       - cpp
     pattern-either:
       # array access
-      - pattern: $BUF[sizeof($BUF)] = $EXPR
+      - pattern: $BUF[sizeof($BUF)] = $_
       - patterns:
         - pattern: $BUF[$LEN] = $EXPR
         - pattern-inside: |
-            $TYPE $BUF[$LEN];
+            $_ $BUF[$LEN];
             ...
             $BUF[$LEN] = $EXPR;
       - patterns:
         - pattern: |
             *($BUF + $LEN) = $EXPR
         - pattern-inside: |
-            $TYPE $BUF[$LEN];
+            $_ $BUF[$LEN];
             ...
             *($BUF + $LEN) = $EXPR;
       # two-dimentional array access
@@ -41,19 +41,19 @@ rules:
         - pattern: $BUF[$X][$Y] = $EXPR
         - pattern-either:
           - pattern-inside: |
-              $TYPE $BUF[$A][$Y];
+              $_ $BUF[$_][$Y];
               ...
               $BUF[$X][$Y] = $EXPR;
           - pattern-inside: |
-              $TYPE $BUF[$X][$B];
+              $_ $BUF[$X][$_];
               ...
               $BUF[$X][$Y] = $EXPR;    
       # suspicious loops
         # - pattern: for (<... $I = $NUM ...>; <... $I <= $LEN ...>; <... $I++ ...>) ...
         # - pattern: for (<... $I = $NUM ...>; <... $I <= $LEN ...>; <... ++$I ...>) ...
-      # <... $TYPE $I = 0 ...> is not supported by Semgrep
-        # - pattern: for ($TYPE $I = $NUM; <... $I <= $LEN ...>; <... $I++ ...>) ...
-        # - pattern: for ($TYPE $I = $NUM; <... $I <= $LEN ...>; <... ++$I ...>) ...
+      # <... $_ $I = 0 ...> is not supported by Semgrep
+        # - pattern: for ($_ $I = $NUM; <... $I <= $LEN ...>; <... $I++ ...>) ...
+        # - pattern: for ($_ $I = $NUM; <... $I <= $LEN ...>; <... ++$I ...>) ...
         # - pattern: while (<... $I <= $LEN ...>) ...
         # - pattern: do ... while (<... $I <= $LEN ...>);
       # strlen vs. sizeof
@@ -63,7 +63,7 @@ rules:
       - pattern: sizeof($DST) >= strlen($SRC)
       # potential strncat misuse
       - patterns:
-        - pattern: strncat($DST, $SRC, $LEN)
+        - pattern: strncat($_, $_, $LEN)
         - metavariable-pattern:
             metavariable: $LEN
             patterns:

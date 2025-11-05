@@ -25,19 +25,19 @@ rules:
         - pattern-either:
           # array
           - pattern-inside: |
-              $TYPE $PTR[$LEN];
+              $_ $PTR[$_];
               ...
           - pattern-inside: |
-              $TYPE $PTR[$LEN] = $EXPR;
+              $_ $PTR[$_] = $_;
               ...
           # pointer to array
           - pattern-inside: |
-              $TYPE $ARR[$LEN];
+              $_ $ARR[$_];
               ...
               $PTR = $ARR;
               ...
           - pattern-inside: |
-              $TYPE $ARR[$LEN] = $EXPR;
+              $_ $ARR[$_] = $_;
               ...
               $PTR = $ARR;
               ...
@@ -46,20 +46,20 @@ rules:
         - pattern: return &$VAR;
         - pattern-either:
           - pattern-inside: |
-              $TYPE $VAR;
+              $_ $VAR;
               ...
           - pattern-inside: |
-              $TYPE $VAR = $EXPR;
+              $_ $VAR = $_;
               ...
           - pattern-inside: |
-              $TYPE $VAR[$LEN];
+              $_ $VAR[$_];
               ...
           - pattern-inside: |
-              $TYPE $VAR[$LEN] = $EXPR;
+              $_ $VAR[$_] = $_;
               ...
           - pattern-inside: |
-              $TYPE * $VAR;
+              $_ * $VAR;
               ...
           - pattern-inside: |
-              $TYPE * $VAR = $EXPR;
+              $_ * $VAR = $_;
               ...

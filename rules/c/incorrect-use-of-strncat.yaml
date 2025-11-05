@@ -21,18 +21,18 @@ rules:
     pattern-either:
       # size of array
       - patterns:
-        - pattern: strncat($DST, $SRC, $LEN)
+        - pattern: strncat($DST, $_, $LEN)
         - pattern-either:
           - pattern-inside: |
-              $TYPE $DST[$LEN];
+              $_ $DST[$LEN];
               ...
           - pattern-inside: |
-              $TYPE $DST[$LEN] = $EXPR;
+              $_ $DST[$LEN] = $_;
               ...
       # sizeof operator
-      - pattern: strncat($DST, $SRC, sizeof($DST))
+      - pattern: strncat($DST, $_, sizeof($DST))
       # strlen function
-      - pattern: strncat($DST, $SRC, strlen($DST))
+      - pattern: strncat($DST, $_, strlen($DST))
       # off-by-one 
       # see also off-by-one.yaml for a slightly different pattern
-      - pattern: strncat($DST, $SRC, sizeof($DST) - strlen($DST))
+      - pattern: strncat($DST, $_, sizeof($DST) - strlen($DST))

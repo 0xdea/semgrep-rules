@@ -22,7 +22,7 @@ rules:
     pattern-either:
       # size of array
       - patterns:
-        - pattern: $FUN($DST, $SRC, $LEN)
+        - pattern: $FUN($_, $SRC, $LEN)
         - metavariable-pattern:
             metavariable: $FUN
             pattern-either:
@@ -32,14 +32,14 @@ rules:
               - pattern: strscpy
         - pattern-either:
           - pattern-inside: |
-              $TYPE $SRC[$LEN];
+              $_ $SRC[$LEN];
               ...
           - pattern-inside: |
-              $TYPE $SRC[$LEN] = $EXPR;
+              $_ $SRC[$LEN] = $_;
               ...
       # sizeof operator, strlen, and similar
       - patterns:
-        - pattern: $FUN($DST, $SRC, <... $SRC ...>)
+        - pattern: $FUN($_, $SRC, <... $SRC ...>)
         - metavariable-pattern:
             metavariable: $FUN
             pattern-either:

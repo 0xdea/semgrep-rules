@@ -19,11 +19,11 @@ rules:
       - c
       - cpp
     patterns:
-      - pattern: $TYPE $FUN($ARG, ...) { ... }
+      - pattern: $_ $FUN($_, ...) { ... }
       # exclude function declarations
-      - pattern-not: $TYPE $FUN(...);
+      - pattern-not: $_ $FUN(...);
       # exclude functions with return statement
-      - pattern-not: $TYPE $FUN(...) { ... return $RET; }
+      - pattern-not: $_ $FUN(...) { ... return $_; }
       # exclude main function
       - pattern-not: int main(...) { ... }
       # exclude void functions

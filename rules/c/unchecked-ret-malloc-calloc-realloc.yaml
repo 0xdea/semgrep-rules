@@ -22,7 +22,7 @@ rules:
     patterns:
       - pattern-either:
         - pattern: $RET = $FUN(...)
-        - pattern: $RET = ($CAST)$FUN(...)
+        - pattern: $RET = ($_)$FUN(...)
       - metavariable-pattern:
           metavariable: $FUN
           pattern-either:
@@ -58,8 +58,8 @@ rules:
           $FUN(...);
           ...
           if (<... $RET ...>) ...
-      - pattern-not-inside: <... $ALLOC == NULL ...>
-      - pattern-not-inside: <... NULL == $ALLOC ...>
-      - pattern-not-inside: <... $ALLOC != NULL ...>
-      - pattern-not-inside: <... NULL != $ALLOC ...>
-      - pattern-not-inside: <... !$ALLOC ...>
+      - pattern-not-inside: <... $_ == NULL ...>
+      - pattern-not-inside: <... NULL == $_ ...>
+      - pattern-not-inside: <... $_ != NULL ...>
+      - pattern-not-inside: <... NULL != $_ ...>
+      - pattern-not-inside: <... !$_ ...>

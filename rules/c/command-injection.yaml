@@ -22,4 +22,4 @@ rules:
       - pattern-either:
         - pattern: system(...)
         - pattern: popen(...)
-      - pattern-not: $FUN("...", ...)
+      - pattern-not: $_("...", ...)

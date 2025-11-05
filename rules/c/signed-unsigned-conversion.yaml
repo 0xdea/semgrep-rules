@@ -39,91 +39,91 @@ rules:
       - cpp
     pattern-either:
       # signed to unsigned
-      - pattern: (unsigned int $UNSIGNED) = <... (int $SIGNED) ...>
-      - pattern: (unsigned $UNSIGNED) = <... (int $SIGNED) ...>
-      - pattern: (size_t $UNSIGNED) = <... (int $SIGNED) ...>
-      - pattern: (size_t $UNSIGNED) = <... (off_t $SIGNED) ...>
+      - pattern: (unsigned int $_) = <... (int $_) ...>
+      - pattern: (unsigned $_) = <... (int $_) ...>
+      - pattern: (size_t $_) = <... (int $_) ...>
+      - pattern: (size_t $_) = <... (off_t $_) ...>
       - patterns:
         - pattern-either:
           - pattern: |
               unsigned int $FUN(...)
               {
               ...
-              return (int $SIGNED);
+              return (int $_);
               }
           - pattern: |
               unsigned $FUN(...)
               {
               ...
-              return (int $SIGNED);
+              return (int $_);
               }
           - pattern: |
               size_t $FUN(...)
               {
               ...
-              return (int $SIGNED);
+              return (int $_);
               }
           - pattern: |
               size_t $FUN(...)
               {
               ...
-              return (off_t $SIGNED);
+              return (off_t $_);
               }
         # improve output readability
         - focus-metavariable: $FUN
-      - pattern: strncpy($DST, $SRC, (int $LEN))
-      - pattern: stpncpy($DST, $SRC, (int $LEN))
-      - pattern: strncat($DST, $SRC, (int $LEN))
-      - pattern: strlcpy($DST, $SRC, (int $LEN))
-      - pattern: strscpy($DST, $SRC, (int $LEN))
-      - pattern: strlcat($DST, $SRC, (int $LEN))
-      - pattern: snprintf($BUF, (int $LEN), ...)
-      - pattern: vsnprintf($BUF, (int $LEN), ...)
-      - pattern: getcwd($BUF, (int $LEN))
-      - pattern: memcpy($DST, $SRC, (int $LEN))
-      - pattern: memccpy($DST, $SRC, $CHAR, (int $LEN))
-      - pattern: memmove($DST, $SRC, (int $LEN))
-      - pattern: memset($DST, $CHAR, (int $LEN))
-      - pattern: bcopy($SRC, $DST, (int $LEN))
-      - pattern: alloca((int $LEN))
-      - pattern: malloc((int $LEN))
-      - pattern: calloc($CNT, (int $LEN))
-      - pattern: calloc((int $CNT), $LEN)
-      - pattern: realloc($PTR, (int $LEN))
-      - pattern: read($FD, $BUF, (int $LEN))
-      - pattern: recv($SD, $BUF, (int $LEN), $FL)
-      - pattern: recvfrom($SD, $BUF, (int $LEN), $FL, ...)
-      - pattern: fread($PTR, (int $LEN), $NITEMS, $FS)
+      - pattern: strncpy($_, $_, (int $_))
+      - pattern: stpncpy($_, $_, (int $_))
+      - pattern: strncat($_, $_, (int $_))
+      - pattern: strlcpy($_, $_, (int $_))
+      - pattern: strscpy($_, $_, (int $_))
+      - pattern: strlcat($_, $_, (int $_))
+      - pattern: snprintf($_, (int $_), ...)
+      - pattern: vsnprintf($_, (int $_), ...)
+      - pattern: getcwd($_, (int $_))
+      - pattern: memcpy($_, $_, (int $_))
+      - pattern: memccpy($_, $_, $_, (int $_))
+      - pattern: memmove($_, $_, (int $_))
+      - pattern: memset($_, $_, (int $_))
+      - pattern: bcopy($_, $_, (int $_))
+      - pattern: alloca((int $_))
+      - pattern: malloc((int $_))
+      - pattern: calloc($_, (int $_))
+      - pattern: calloc((int $_), $_)
+      - pattern: realloc($_, (int $_))
+      - pattern: read($_, $_, (int $_))
+      - pattern: recv($_, $_, (int $_), $_)
+      - pattern: recvfrom($_, $_, (int $_), $_, ...)
+      - pattern: fread($_, (int $_), $_, $_)
       # unsigned to signed
-      - pattern: (int $SIGNED) = <... (unsigned int $UNSIGNED) ...>
-      - pattern: (int $SIGNED) = <... (unsigned $UNSIGNED) ...>
-      - pattern: (int $SIGNED) = <... (size_t $UNSIGNED) ...>
-      - pattern: (off_t $SIGNED) = <... (size_t $UNSIGNED) ...>
+      - pattern: (int $_) = <... (unsigned int $_) ...>
+      - pattern: (int $_) = <... (unsigned $_) ...>
+      - pattern: (int $_) = <... (size_t $_) ...>
+      - pattern: (off_t $_) = <... (size_t $_) ...>
       - patterns:
         - pattern-either:
           - pattern: |
               int $FUN(...)
               {
               ...
-              return (unsigned int $UNSIGNED);
+              return (unsigned int $_);
               }
           - pattern: |
               int $FUN(...)
               {
               ...
-              return (unsigned $UNSIGNED);
+              return (unsigned $_);
               }
           - pattern: |
               int $FUN(...)
               {
               ...
-              return (size_t $UNSIGNED);
+              return (size_t $_);
               }
           - pattern: |
               off_t $FUN(...)
               {
               ...
-              return (size_t $UNSIGNED);
+              return (size_t $_);
               }
         # improve output readability
         - focus-metavariable: $FUN

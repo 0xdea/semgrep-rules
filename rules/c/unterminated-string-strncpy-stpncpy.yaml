@@ -32,14 +32,14 @@ rules:
             - pattern: wcpncpy
             - pattern: _mbsncpy
       - pattern-not-inside: |
-          $FUN($DST, $SRC, $N);
+          $FUN($DST, $_, $_);
           ...
-          $DST[$POS] = NULL;
+          $DST[$_] = NULL;
       - pattern-not-inside: |
-          $FUN($DST, $SRC, $N);
+          $FUN($DST, $_, $_);
           ...
-          $DST[$POS] = '\0';
+          $DST[$_] = '\0';
       - pattern-not-inside: |
-          $FUN($DST, $SRC, $N);
+          $FUN($DST, $_, $_);
           ...
-          $DST[$POS] = 0;
+          $DST[$_] = 0;

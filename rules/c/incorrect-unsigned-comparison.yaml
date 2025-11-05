@@ -18,23 +18,23 @@ rules:
       - cpp
     pattern-either:
       # < (always false)
-      - pattern: (unsigned short $UNSIGNED) < 0
-      - pattern: (unsigned short int $UNSIGNED) < 0
-      - pattern: (unsigned int $UNSIGNED) < 0
-      - pattern: (unsigned long $UNSIGNED) < 0
-      - pattern: (unsigned long int $UNSIGNED) < 0
-      - pattern: (size_t $UNSIGNED) < 0
+      - pattern: (unsigned short $_) < 0
+      - pattern: (unsigned short int $_) < 0
+      - pattern: (unsigned int $_) < 0
+      - pattern: (unsigned long $_) < 0
+      - pattern: (unsigned long int $_) < 0
+      - pattern: (size_t $_) < 0
       # <=
-      - pattern: (unsigned short $UNSIGNED) <= 0
-      - pattern: (unsigned short int $UNSIGNED) <= 0
-      - pattern: (unsigned int $UNSIGNED) <= 0
-      - pattern: (unsigned long $UNSIGNED) <= 0
-      - pattern: (unsigned long int $UNSIGNED) <= 0
-      - pattern: (size_t $UNSIGNED) <= 0
+      - pattern: (unsigned short $_) <= 0
+      - pattern: (unsigned short int $_) <= 0
+      - pattern: (unsigned int $_) <= 0
+      - pattern: (unsigned long $_) <= 0
+      - pattern: (unsigned long int $_) <= 0
+      - pattern: (size_t $_) <= 0
       # >= (always true)
-      - pattern: (unsigned short $UNSIGNED) >= 0
-      - pattern: (unsigned short int $UNSIGNED) >= 0
-      - pattern: (unsigned int $UNSIGNED) >= 0
-      - pattern: (unsigned long $UNSIGNED) >= 0
-      - pattern: (unsigned long int $UNSIGNED) >= 0
-      - pattern: (size_t $UNSIGNED) >= 0
+      - pattern: (unsigned short $_) >= 0
+      - pattern: (unsigned short int $_) >= 0
+      - pattern: (unsigned int $_) >= 0
+      - pattern: (unsigned long $_) >= 0
+      - pattern: (unsigned long int $_) >= 0
+      - pattern: (size_t $_) >= 0

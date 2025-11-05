@@ -17,9 +17,9 @@ rules:
       - c
       - cpp
     pattern-either:
-      - pattern: memset($S, $C, 0);
-      - pattern: memset($S, $C, '\0');
-      - pattern: memset($S, sizeof(...), $N);
-      - pattern: memset_explicit($S, $C, 0);
-      - pattern: memset_explicit($S, $C, '\0');
-      - pattern: memset_explicit($S, sizeof(...), $N);    
+      - pattern: memset($_, $_, 0);
+      - pattern: memset($_, $_, '\0');
+      - pattern: memset($_, sizeof(...), $_);
+      - pattern: memset_explicit($_, $_, 0);
+      - pattern: memset_explicit($_, $_, '\0');
+      - pattern: memset_explicit($_, sizeof(...), $_);    

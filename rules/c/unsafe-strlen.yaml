@@ -21,10 +21,10 @@ rules:
     patterns:
       - pattern-either:
         # signed and unsigned short
-        - pattern: (short $LEN) = $FUN(...);
-        - pattern: (short int $LEN) = $FUN(...);
-        - pattern: (unsigned short $LEN) = $FUN(...);
-        - pattern: (unsigned short int $LEN) = $FUN(...);
+        - pattern: (short $_) = $FUN(...);
+        - pattern: (short int $_) = $FUN(...);
+        - pattern: (unsigned short $_) = $FUN(...);
+        - pattern: (unsigned short int $_) = $FUN(...);
         # signed int
           # - pattern: (int $LEN) = $FUN(...);
       - metavariable-pattern:

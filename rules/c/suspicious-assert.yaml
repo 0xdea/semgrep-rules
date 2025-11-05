@@ -19,10 +19,10 @@ rules:
       - cpp
     patterns:
       - pattern-either:
-        - pattern: $ASSERT(..., <... $A < $B ...>, ...)
-        - pattern: $ASSERT(..., <... $A <= $B ...>, ...)
-        - pattern: $ASSERT(..., <... $A > $B ...>, ...)
-        - pattern: $ASSERT(..., <... $A >= $B ...>, ...)
+        - pattern: $ASSERT(..., <... $_ < $_ ...>, ...)
+        - pattern: $ASSERT(..., <... $_ <= $_ ...>, ...)
+        - pattern: $ASSERT(..., <... $_ > $_ ...>, ...)
+        - pattern: $ASSERT(..., <... $_ >= $_ ...>, ...)
       - metavariable-regex:
           metavariable: $ASSERT
           regex: '(?i)^\w*assert\w*\s*$'

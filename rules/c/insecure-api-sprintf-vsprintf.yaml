@@ -19,8 +19,8 @@ rules:
       - cpp
     patterns:
       - pattern-either:
-        - pattern: sprintf($BUF, $FMT, ...)
-        - pattern: vsprintf($BUF, $FMT, ...)
+        - pattern: sprintf($_, $FMT, ...)
+        - pattern: vsprintf($_, $FMT, ...)
         # swprintf() and vswprintf() should have a size parameter
       - metavariable-regex:
           metavariable: $FMT

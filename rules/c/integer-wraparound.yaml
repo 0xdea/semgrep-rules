@@ -36,8 +36,8 @@ rules:
       # malloc, valloc (multiplication)
       - patterns:
         - pattern-either:
-          - pattern: $FUN($X * $Y)
-          - pattern: $FUN($X *= $Y)
+          - pattern: $FUN($_ * $_)
+          - pattern: $FUN($_ *= $_)
         - metavariable-pattern:
             metavariable: $FUN
             pattern-either:
@@ -47,10 +47,10 @@ rules:
         - pattern: $FUN($N)
         - pattern-either:
           - pattern-inside: |
-              $N = $X * $Y;
+              $N = $_ * $_;
               ...
           - pattern-inside: |
-              $N *= $X;
+              $N *= $_;
               ...
         - metavariable-pattern:
             metavariable: $FUN
@@ -60,8 +60,8 @@ rules:
       # malloc, valloc (sum)
       - patterns:
         - pattern-either:
-          - pattern: $FUN($X + $Y)
-          - pattern: $FUN($X += $Y)
+          - pattern: $FUN($_ + $_)
+          - pattern: $FUN($_ += $_)
         - metavariable-pattern:
             metavariable: $FUN
             pattern-either:
@@ -71,10 +71,10 @@ rules:
         - pattern: $FUN($N)
         - pattern-either:
           - pattern-inside: |
-              $N = $X + $Y;
+              $N = $_ + $_;
               ...
           - pattern-inside: |
-              $N += $X;
+              $N += $_;
         - metavariable-pattern:
             metavariable: $FUN
             pattern-either:
@@ -83,8 +83,8 @@ rules:
       # calloc, realloc, reallocf, aligned_alloc (multiplication)
       - patterns:
         - pattern-either:
-          - pattern: $FUN($ARG1, $X * $Y)
-          - pattern: $FUN($ARG1, $X *= $Y)
+          - pattern: $FUN($_, $_ * $_)
+          - pattern: $FUN($_, $_ *= $_)
         - metavariable-pattern:
             metavariable: $FUN
             pattern-either:
@@ -93,13 +93,13 @@ rules:
               - pattern: reallocf
               - pattern: aligned_alloc
       - patterns:
-        - pattern: $FUN($ARG1, $N)
+        - pattern: $FUN($_, $N)
         - pattern-either:
           - pattern-inside: |
-              $N = $X * $Y;
+              $N = $_ * $_;
               ...
           - pattern-inside: |
-              $N *= $X;
+              $N *= $_;
               ...
         - metavariable-pattern:
             metavariable: $FUN
@@ -111,8 +111,8 @@ rules:
       # calloc, realloc, reallocf, aligned_alloc (sum)
       - patterns:
         - pattern-either:
-          - pattern: $FUN($ARG1, $X + $Y)
-          - pattern: $FUN($ARG1, $X += $Y)
+          - pattern: $FUN($_, $_ + $_)
+          - pattern: $FUN($_, $_ += $_)
         - metavariable-pattern:
             metavariable: $FUN
             pattern-either:
@@ -121,13 +121,13 @@ rules:
               - pattern: reallocf
               - pattern: aligned_alloc
       - patterns:
-        - pattern: $FUN($ARG1, $N)
+        - pattern: $FUN($_, $N)
         - pattern-either:
           - pattern-inside: |
-              $N = $X + $Y;
+              $N = $_ + $_;
               ...
           - pattern-inside: |
-              $N += $X;
+              $N += $_;
         - metavariable-pattern:
             metavariable: $FUN
             pattern-either:
@@ -138,20 +138,20 @@ rules:
       # calloc (multiplication in 1st arg)
       - patterns:
         - pattern-either:
-          - pattern: $FUN($X * $Y, $ARG2)
-          - pattern: $FUN($X *= $Y, $ARG2)
+          - pattern: $FUN($_ * $_, $_)
+          - pattern: $FUN($_ *= $_, $_)
         - metavariable-pattern:
             metavariable: $FUN
             pattern-either:
               - pattern: calloc
       - patterns:
-        - pattern: $FUN($N, $ARG2)
+        - pattern: $FUN($N, $_)
         - pattern-either:
           - pattern-inside: |
-              $N = $X * $Y;
+              $N = $_ * $_;
               ...
           - pattern-inside: |
-              $N *= $X;
+              $N *= $_;
               ...
         - metavariable-pattern:
             metavariable: $FUN
@@ -160,41 +160,41 @@ rules:
       # calloc (sum in 1st arg)
       - patterns:
         - pattern-either:
-          - pattern: $FUN($X + $Y, $ARG2)
-          - pattern: $FUN($X += $Y, $ARG2)
+          - pattern: $FUN($_ + $_, $_)
+          - pattern: $FUN($_ += $_, $_)
         - metavariable-pattern:
             metavariable: $FUN
             pattern-either:
               - pattern: calloc
       - patterns:
-        - pattern: $FUN($N, $ARG2)
+        - pattern: $FUN($N, $_)
         - pattern-either:
           - pattern-inside: |
-              $N = $X + $Y;
+              $N = $_ + $_;
               ...
           - pattern-inside: |
-              $N += $X;
+              $N += $_;
         - metavariable-pattern:
             metavariable: $FUN
             pattern-either:
               - pattern: calloc
       # buggy input validation (sum)
       # consider integer promotion (i.e., uint16_t are not vulnerable on 32-bit systems)
-      - pattern: $X > $MAX || ($X + $Y) > $MAX
-      - pattern: $X >= $MAX || ($X + $Y) > $MAX
-      - pattern: $X > $MAX || ($X + $Y) >= $MAX
-      - pattern: $X >= $MAX || ($X + $Y) >= $MAX
-      - pattern: $X < $MAX && ($X + $Y) < $MAX
-      - pattern: $X <= $MAX && ($X + $Y) < $MAX
-      - pattern: $X < $MAX && ($X + $Y) <= $MAX
-      - pattern: $X <= $MAX && ($X + $Y) <= $MAX
+      - pattern: $X > $MAX || ($X + $_) > $MAX
+      - pattern: $X >= $MAX || ($X + $_) > $MAX
+      - pattern: $X > $MAX || ($X + $_) >= $MAX
+      - pattern: $X >= $MAX || ($X + $_) >= $MAX
+      - pattern: $X < $MAX && ($X + $_) < $MAX
+      - pattern: $X <= $MAX && ($X + $_) < $MAX
+      - pattern: $X < $MAX && ($X + $_) <= $MAX
+      - pattern: $X <= $MAX && ($X + $_) <= $MAX
       # buggy input validation (multiplication)
       # consider integer promotion (i.e., uint16_t are not vulnerable on 32-bit systems)
-      - pattern: $X > $MAX || ($X * $Y) > $MAX
-      - pattern: $X >= $MAX || ($X * $Y) > $MAX
-      - pattern: $X > $MAX || ($X * $Y) >= $MAX
-      - pattern: $X >= $MAX || ($X * $Y) >= $MAX
-      - pattern: $X < $MAX && ($X * $Y) < $MAX
-      - pattern: $X <= $MAX && ($X * $Y) < $MAX
-      - pattern: $X < $MAX && ($X * $Y) <= $MAX
-      - pattern: $X <= $MAX && ($X * $Y) <= $MAX
+      - pattern: $X > $MAX || ($X * $_) > $MAX
+      - pattern: $X >= $MAX || ($X * $_) > $MAX
+      - pattern: $X > $MAX || ($X * $_) >= $MAX
+      - pattern: $X >= $MAX || ($X * $_) >= $MAX
+      - pattern: $X < $MAX && ($X * $_) < $MAX
+      - pattern: $X <= $MAX && ($X * $_) < $MAX
+      - pattern: $X < $MAX && ($X * $_) <= $MAX
+      - pattern: $X <= $MAX && ($X * $_) <= $MAX

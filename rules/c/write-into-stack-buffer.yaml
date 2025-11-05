@@ -25,7 +25,7 @@ rules:
       - patterns:
         - pattern: $FUN($BUF, ...)
         - pattern-inside: |
-            $TYPE $BUF[$LEN];
+            $_ $BUF[$_];
             ...
             $FUN($BUF, ...);
         - pattern-not: $FUN($BUF, "...", ...)
@@ -71,7 +71,7 @@ rules:
       - patterns:
         - pattern: $FUN($BUF, $FMT, ...)
         - pattern-inside: |
-            $TYPE $BUF[$LEN];
+            $_ $BUF[$_];
             ...
             $FUN($BUF, $FMT, ...);
         - metavariable-regex:
@@ -86,11 +86,11 @@ rules:
               - pattern: vsprintf
       # buffer in 1st arg (snprintf functions)
       - patterns:
-        - pattern: $FUN($BUF, $N, $FMT, ...)
+        - pattern: $FUN($BUF, $_, $FMT, ...)
         - pattern-inside: |
-            $TYPE $BUF[$LEN];
+            $_ $BUF[$_];
             ...
-            $FUN($BUF, $N, $FMT, ...);
+            $FUN($BUF, $_, $FMT, ...);
         - metavariable-regex:
             metavariable: $FMT
             # some format string modifiers are not handled
@@ -105,7 +105,7 @@ rules:
       - patterns:
         - pattern: $FUN($BUF, ...)
         - pattern-inside: |
-            $TYPE $BUF[$LEN];
+            $_ $BUF[$_];
             ...
             $FUN($BUF, ...);
         - metavariable-pattern:
@@ -120,11 +120,11 @@ rules:
               - pattern: fread
       # buffer in 2nd arg (buffer to buffer copy functions)
       - patterns:
-        - pattern: $FUN($ARG1, $BUF, ...)
+        - pattern: $FUN($_, $BUF, ...)
         - pattern-inside: |
-            $TYPE $BUF[$LEN];
+            $_ $BUF[$_];
             ...
-            $FUN($ARG1, $BUF, ...);
+            $FUN($_, $BUF, ...);
         - pattern-not: $FUN("...", $BUF, ...)
         - metavariable-pattern:
             metavariable: $FUN
@@ -133,11 +133,11 @@ rules:
               - pattern: bcopy
       # buffer in 2nd arg (other functions)
       - patterns:
-        - pattern: $FUN($ARG1, $BUF, ...)
+        - pattern: $FUN($_, $BUF, ...)
         - pattern-inside: |
-            $TYPE $BUF[$LEN];
+            $_ $BUF[$_];
             ...
-            $FUN($ARG1, $BUF, ...);
+            $FUN($_, $BUF, ...);
         - metavariable-pattern:
             metavariable: $FUN
             pattern-either:
@@ -151,6 +151,6 @@ rules:
         # - patterns:
           # - pattern: $BUF[$POS] = $EXPR;
           # - pattern-inside: |
-                # $TYPE $BUF[$LEN];
+                # $_ $BUF[$_];
                 # ...
                 # $BUF[$POS] = $EXPR;

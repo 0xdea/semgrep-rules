@@ -9,7 +9,8 @@ rules:
         - https://docs.microsoft.com/en-us/cpp/sanitizers/asan-error-examples
         - https://dustri.org/b/playing-with-weggli.html
       confidence: MEDIUM
-      # NOTE: C++ delete and delete[] operators are not covered.
+      # NOTE: C++ delete and delete[] operators and custom wrappers to free
+      # are not covered.
       # NOTE: realloc() is not covered.
       # NOTE: Variations on the free() argument are not covered.
     message: >-
@@ -22,17 +23,22 @@ rules:
       - cpp
     patterns:
       - pattern: |
-          free($PTR);
+          $FREE1($PTR);
           ...
-          $FREE($PTR);
+          $FREE2($PTR);
       - pattern-not: |
-          free($PTR);
+          $FREE1($PTR);
           ...
-          $PTR = $EXPR;
+          $PTR = $_;
           ...
-          free($PTR);
+          $FREE2($PTR);
       - metavariable-pattern:
-          metavariable: $FREE
+          metavariable: $FREE1
           pattern: free
+          # more patterns could be added here to cover other ways to free memory
+      - metavariable-pattern:
+          metavariable: $FREE2
+          pattern: free
+          # more patterns could be added here to cover other ways to free memory
       # improve output readability
-      - focus-metavariable: $FREE
+      - focus-metavariable: $FREE2

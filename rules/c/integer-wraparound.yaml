@@ -74,6 +74,7 @@ rules:
               ...
           - pattern-inside: |
               $N += $_;
+              ...
         - metavariable-pattern:
             metavariable: $FUN
             pattern-either:
@@ -127,6 +128,7 @@ rules:
               ...
           - pattern-inside: |
               $N += $_;
+              ...
         - metavariable-pattern:
             metavariable: $FUN
             pattern-either:
@@ -173,6 +175,7 @@ rules:
               ...
           - pattern-inside: |
               $N += $_;
+              ...
         - metavariable-pattern:
             metavariable: $FUN
             pattern-either:

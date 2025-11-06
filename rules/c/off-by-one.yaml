@@ -24,30 +24,26 @@ rules:
       # array access
       - pattern: $BUF[sizeof($BUF)] = $_
       - patterns:
-        - pattern: $BUF[$LEN] = $EXPR
+        - pattern: $BUF[$LEN] = $_
         - pattern-inside: |
             $_ $BUF[$LEN];
             ...
-            $BUF[$LEN] = $EXPR;
       - patterns:
         - pattern: |
-            *($BUF + $LEN) = $EXPR
+            *($BUF + $LEN) = $_
         - pattern-inside: |
             $_ $BUF[$LEN];
             ...
-            *($BUF + $LEN) = $EXPR;
       # two-dimentional array access
       - patterns:
-        - pattern: $BUF[$X][$Y] = $EXPR
+        - pattern: $BUF[$X][$Y] = $_
         - pattern-either:
           - pattern-inside: |
               $_ $BUF[$_][$Y];
               ...
-              $BUF[$X][$Y] = $EXPR;
           - pattern-inside: |
               $_ $BUF[$X][$_];
               ...
-              $BUF[$X][$Y] = $EXPR;    
       # suspicious loops
         # - pattern: for (<... $I = $NUM ...>; <... $I <= $LEN ...>; <... $I++ ...>) ...
         # - pattern: for (<... $I = $NUM ...>; <... $I <= $LEN ...>; <... ++$I ...>) ...

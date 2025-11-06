@@ -19,7 +19,7 @@ rules:
       - c
       - cpp
     patterns:
-      - pattern: $_ $FUN($_, ...) { ... }
+      - pattern: $_ $FUN(...) { ... }
       # exclude function declarations
       - pattern-not: $_ $FUN(...);
       # exclude functions with return statement

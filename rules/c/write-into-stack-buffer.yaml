@@ -27,7 +27,6 @@ rules:
         - pattern-inside: |
             $_ $BUF[$_];
             ...
-            $FUN($BUF, ...);
         - pattern-not: $FUN($BUF, "...", ...)
         - metavariable-pattern:
             metavariable: $FUN
@@ -73,7 +72,6 @@ rules:
         - pattern-inside: |
             $_ $BUF[$_];
             ...
-            $FUN($BUF, $FMT, ...);
         - metavariable-regex:
             metavariable: $FMT
             # some format string modifiers are not handled
@@ -86,11 +84,10 @@ rules:
               - pattern: vsprintf
       # buffer in 1st arg (snprintf functions)
       - patterns:
-        - pattern: $FUN($BUF, $N, $FMT, ...)
+        - pattern: $FUN($BUF, $_, $FMT, ...)
         - pattern-inside: |
             $_ $BUF[$_];
             ...
-            $FUN($BUF, $N, $FMT, ...);
         - metavariable-regex:
             metavariable: $FMT
             # some format string modifiers are not handled
@@ -107,7 +104,6 @@ rules:
         - pattern-inside: |
             $_ $BUF[$_];
             ...
-            $FUN($BUF, ...);
         - metavariable-pattern:
             metavariable: $FUN
             pattern-either:
@@ -120,11 +116,10 @@ rules:
               - pattern: fread
       # buffer in 2nd arg (buffer to buffer copy functions)
       - patterns:
-        - pattern: $FUN($SRC, $BUF, ...)
+        - pattern: $FUN($_, $BUF, ...)
         - pattern-inside: |
             $_ $BUF[$_];
             ...
-            $FUN($SRC, $BUF, ...);
         - pattern-not: $FUN("...", $BUF, ...)
         - metavariable-pattern:
             metavariable: $FUN
@@ -133,11 +128,10 @@ rules:
               - pattern: bcopy
       # buffer in 2nd arg (other functions)
       - patterns:
-        - pattern: $FUN($FD, $BUF, ...)
+        - pattern: $FUN($_, $BUF, ...)
         - pattern-inside: |
             $_ $BUF[$_];
             ...
-            $FUN($FD, $BUF, ...);
         - metavariable-pattern:
             metavariable: $FUN
             pattern-either:
@@ -149,8 +143,7 @@ rules:
               - pattern: recvfrom
       # assignment (too many false positives)
         # - patterns:
-          # - pattern: $BUF[$POS] = $EXPR;
+          # - pattern: $BUF[$_] = $_;
           # - pattern-inside: |
                 # $_ $BUF[$_];
                 # ...
-                # $BUF[$POS] = $EXPR;

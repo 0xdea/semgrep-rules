@@ -28,52 +28,41 @@ rules:
         - pattern-not-inside: |
             $PTR = malloc(...);
             ...
-            free($PTR);
         - pattern-not-inside: |
             $PTR = ($_)malloc(...);
             ...
-            free($PTR);
         - pattern-not-inside: |
             $PTR = calloc(...);
             ...
-            free($PTR);
         - pattern-not-inside: |
             $PTR = ($_)calloc(...);
             ...
-            free($PTR);
         - pattern-not-inside: |
             $PTR = realloc(...);
             ...
-            free($PTR);
         - pattern-not-inside: |
             $PTR = ($_)realloc(...);
             ...
-            free($PTR); 
         - pattern-not-inside: |
             $PTR = strdup(...);
             ...
-            free($PTR); 
         - pattern-not-inside: |
             $PTR = strndup(...);
             ...
-            free($PTR); 
       # delete[]
       - patterns:
         - pattern: delete[]($PTR);
         - pattern-not-inside: |
             $PTR = new $_[$_];
             ...
-            delete[]($PTR);
       # delete
       - patterns:
         - pattern: delete($PTR);
         - pattern-not-inside: |
             $PTR = new $_;
             ...
-            delete($PTR);
       - patterns:
         - pattern: delete($PTR);
         - pattern-inside: |
             $PTR = new $_[$_];
             ...
-            delete($PTR);

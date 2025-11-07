@@ -1,0 +1,22 @@
+rules:
+  - id: raptor-high-entropy-assignment
+    metadata:
+      author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      references:
+        - https://cwe.mitre.org/data/definitions/540
+        - https://semgrep.dev/docs/writing-rules/metavariable-analysis
+        - https://github.com/semgrep/semgrep/pull/4672
+      confidence: MEDIUM
+    message: >-
+      Entropy, or randomness, is a common approach for detecting secret
+      strings. If an assignment has high entropy, it might involve a
+      secret that should not be accessible to users.
+    severity: INFO
+    languages:
+      - c
+      - cpp
+    patterns:
+      - pattern: $_ = "$X"
+      - metavariable-analysis:
+          analyzer: entropy
+          metavariable: $X

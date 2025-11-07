@@ -121,6 +121,7 @@ For a better streamlined experience, I recommend saving semgrep scan output in [
 * [**interesting-api-calls**](https://github.com/0xdea/semgrep-rules/blob/main/rules/c/interesting-api-calls.yaml). Calls to interesting and potentially insecure API functions.
 * [**unchecked-ret-scanf-etc**](https://github.com/0xdea/semgrep-rules/blob/main/rules/c/unchecked-ret-scanf-etc.yaml). Unchecked return code of functions in the scanf() family.
 * [**insecure-api-atoi-atol-atof**](https://github.com/0xdea/semgrep-rules/blob/main/rules/c/insecure-api-atoi-atol-atof.yaml). Use of potentially insecure API functions atoi(), atol(), atof().
+* [**high-entropy-assignment**](https://github.com/0xdea/semgrep-rules/blob/main/rules/c/high-entropy-assignment.yaml). Assignment of a high-entropy value that might be a secret.
 * [**argv-envp-access**](https://github.com/0xdea/semgrep-rules/blob/main/rules/c/argv-envp-access.yaml). Command-line argument or environment variable access.
 * [**missing-default-in-switch**](https://github.com/0xdea/semgrep-rules/blob/main/rules/c/missing-default-in-switch.yaml). Missing default case in a switch statement.
 * [**missing-break-in-switch**](https://github.com/0xdea/semgrep-rules/blob/main/rules/c/missing-break-in-switch.yaml). Missing break or equivalent in a switch statement.

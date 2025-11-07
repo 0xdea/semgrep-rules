@@ -44,7 +44,8 @@ void bad(int limit)
 	char buf[BUFSIZE];
 
 	for (int i = 0; i < limit; i++) {
-		// should be catched, but too many false positives
+		// this should be caught, but there are too many false positives
+		// todoruleid: raptor-write-into-stack-buffer
 		buf[i] = "A";
 	}
 }

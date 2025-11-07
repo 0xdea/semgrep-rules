@@ -45,6 +45,10 @@ $ semgrep --config PATH/TO/RULES PATH/TO/SOURCE
 
 For a better streamlined experience, I recommend saving semgrep scan output in [SARIF](https://sarifweb.azurewebsites.net/) format and using [SARIF Explorer](https://marketplace.visualstudio.com/items?itemName=trailofbits.sarif-explorer) in [VS code](https://code.visualstudio.com/).
 
+## Compatibility
+
+* Tested with Semgrep CLI 1.142.0
+
 ## TODO
 
 * Do some additional benchmarking against real-world code to spot slow rules in need of optimization.

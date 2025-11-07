@@ -10,8 +10,9 @@ void alloc_and_free1()
 	int bailout = 1;
 	char *ptr = (char *)malloc(MEMSIZE);
 
-	// this should be catched but it isn't, due to a documented limitation in semgrep
+	// this should be caught but it isn't, due to a documented limitation in semgrep
 	// https://semgrep.dev/docs/writing-rules/pattern-syntax/#ellipses-and-statement-blocks
+	// todoruleid: raptor-double-free
 	if (bailout) 
 		free(ptr);
 

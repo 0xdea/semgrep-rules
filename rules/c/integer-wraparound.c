@@ -188,6 +188,9 @@ case XML_ROLE_GROUP_OPEN:
           parser->m_groupConnector, parser->m_groupSize *= 2);
     }
   }
+
+  // ...
+  return XML_ERROR_NONE;
 }
 
 // https://cc-sw.com/using-codeql-and-semgrep-to-assist-vulnerability-research-part-1-of-6/
@@ -195,7 +198,10 @@ int test_propagation()
 {
   lVar2 = sVar1 * 2;
   // ruleid: raptor-integer-wraparound
-  data = (void *)(*(code *)malloc)(lVar2)
+  data = (void *)(*(code *)malloc)(lVar2);
+
+  // ...
+  return 0;
 }
 
 // https://cc-sw.com/using-codeql-and-semgrep-to-assist-vulnerability-research-part-1-of-6/
@@ -203,6 +209,9 @@ int more_operands()
 {
   // ruleid: raptor-integer-wraparound
   __s = (char *)(*(code *)malloc)(sVar7 * 3 + 1);
+
+  // ...
+  return 0;
 }
 
 // https://cc-sw.com/using-codeql-and-semgrep-to-assist-vulnerability-research-part-1-of-6/

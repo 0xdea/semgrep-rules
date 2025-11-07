@@ -23,6 +23,7 @@ rules:
       # cases (e.g., comparisons) are not covered.
       # NOTE: memcpy_s, memmove_s, memset_explicit and similar variants
       # are not covered.
+      # NOTE: try to avoid false positives where possible.
     message: >-
       The software uses a signed primitive and performs a cast to an
       unsigned primitive, or uses an unsigned primitive and performs a cast

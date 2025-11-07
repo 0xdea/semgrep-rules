@@ -37,17 +37,17 @@ A collection of my Semgrep rules to facilitate vulnerability research.
 
 ```sh
 # high priority scan
-semgrep --severity ERROR --config semgrep-rules/rules path/to/source
+semgrep --severity ERROR --config semgrep-rules/rules /path/to/source
 # high and medium priority scan
-semgrep --severity ERROR --severity WARNING --config semgrep-rules/rules path/to/source
+semgrep --severity ERROR --severity WARNING --config semgrep-rules/rules /path/to/source
 # full scan
-semgrep --config semgrep-rules/rules path/to/source
+semgrep --config semgrep-rules/rules /path/to/source
 ```
 
 For a better streamlined experience, I recommend saving semgrep scan output in [SARIF](https://sarifweb.azurewebsites.net/) format and using [SARIF Explorer](https://marketplace.visualstudio.com/items?itemName=trailofbits.sarif-explorer) in [VS code](https://code.visualstudio.com/):
 
 ```sh
-semgrep --sarif --sarif-output=SEMGREP.sarif --config semgrep-rules/rules path/to/source
+semgrep --sarif --sarif-output=/path/to/source/SEMGREP.sarif --config semgrep-rules/rules /path/to/source
 ```
 
 ## Compatibility

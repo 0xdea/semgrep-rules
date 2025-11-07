@@ -105,6 +105,7 @@ char *escape_string(char *string)
 	char *output, *dest;
 	int escape = 0;
 
+	// there's also an incorrect use of sizeof() here
 	if (!(output = dest = (char *)calloc(strlen(string + 1, sizeof(string)))))
 		die("calloc: %m");
 

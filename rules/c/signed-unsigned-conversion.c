@@ -175,6 +175,7 @@ int watch_dns_ptr()
 		strncat(nameStr, (char *)indx, count);
 		indx += count;
 		count = (char)*indx;
+		// there's also a strncat() misuse here
 		strncat(nameStr, ".", sizeof(nameStr) - strlen(nameStr));
 	}
 	nameStr[strlen(nameStr) - 1] = '\0';

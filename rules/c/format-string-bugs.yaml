@@ -10,6 +10,8 @@ rules:
         - https://www.sei.cmu.edu/downloads/sei-cert-c-coding-standard-2016-v01.pdf
       confidence: MEDIUM
       # NOTE: generic va_list matching for custom functions is not covered.
+      # NOTE: dprintf() in C++ has a different signature; this rule may cause 
+      # false positives with it.
       # NOTE: see also cpp.format-string.*.
     message: >-
       The software uses a function that accepts a format string as an argument,
@@ -46,6 +48,9 @@ rules:
               - pattern: warnx(...)
               - pattern: vwarnx(...)
           - pattern-not: $_("...", ...)
+          - pattern-not: $_(gettext(...), ...)
+          - pattern-not: $_(dgettext(...), ...)
+          - pattern-not: $_(dcgettext(...), ...)
       # format string in 2nd arg
       - patterns:
           - pattern-either:
@@ -85,6 +90,9 @@ rules:
               - pattern: warnc(...)
               - pattern: vwarnc(...)
           - pattern-not: $_($_, "...", ...)
+          - pattern-not: $_($_, gettext(...), ...)
+          - pattern-not: $_($_, dgettext(...), ...)
+          - pattern-not: $_($_, dcgettext(...), ...)
       # format string in 3rd arg
       - patterns:
           - pattern-either:
@@ -97,3 +105,6 @@ rules:
               - pattern: errc(...)
               - pattern: verrc(...)
           - pattern-not: $_($_, $_, "...", ...)
+          - pattern-not: $_($_, $_, gettext(...), ...)
+          - pattern-not: $_($_, $_, dgettext(...), ...)
+          - pattern-not: $_($_, $_, dcgettext(...), ...)

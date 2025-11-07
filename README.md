@@ -110,6 +110,9 @@ For a better streamlined experience, I recommend saving semgrep scan output in [
 * [**incorrect-order-setuid-setgid-etc**](https://github.com/0xdea/semgrep-rules/blob/main/rules/c/incorrect-order-setuid-setgid-etc.yaml). Privilege management functions called in the wrong order.
 * [**unchecked-ret-setuid-seteuid**](https://github.com/0xdea/semgrep-rules/blob/main/rules/c/unchecked-ret-setuid-seteuid.yaml). Unchecked return code of setuid() and seteuid().
 
+#### denial of service
+* [**regex-dos**](https://github.com/0xdea/semgrep-rules/blob/main/rules/c/regex-dos.yaml). Regular expression that may exhibit exponential runtime and lead to ReDoS.
+
 #### miscellaneous
 * [**incorrect-use-of-memset**](https://github.com/0xdea/semgrep-rules/blob/main/rules/c/incorrect-use-of-memset.yaml). Wrong order of arguments to memset().
 * [**insecure-api-rand-srand**](https://github.com/0xdea/semgrep-rules/blob/main/rules/c/insecure-api-rand-srand.yaml). Use of potentially insecure API functions rand() and srand().

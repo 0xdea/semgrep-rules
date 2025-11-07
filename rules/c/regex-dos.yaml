@@ -1,0 +1,43 @@
+rules:
+  - id: raptor-regex-dos
+    metadata:
+      author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      references:
+        - https://cwe.mitre.org/data/definitions/1333
+        - https://semgrep.dev/docs/writing-rules/metavariable-analysis
+        - https://github.com/semgrep/semgrep/pull/4672
+      confidence: MEDIUM
+      # NOTE: the C++ std::regex library is not covered.
+    message: >-
+      The software uses a regular expression with an inefficient, possibly
+      exponential worst-case computational complexity that consumes excessive
+      CPU cycles. Poorly constructed regular expressions that exhibit
+      exponential runtime when fed specifically crafted inputs can cause RegEx
+      denial of service (ReDoS).
+    severity: MEDIUM
+    languages:
+      - c
+      - cpp
+    patterns:
+      - pattern-either:
+        - pattern: $FUN($_, $REGEX, $_)
+        - pattern: |
+            $STRING = $REGEX;
+            ...
+            $FUN($_, $STRING, $_);
+      - metavariable-pattern:
+          metavariable: $FUN
+          pattern-either:
+            - pattern: regcomp
+            - pattern: regncomp
+            - pattern: regwcomp
+            - pattern: regwncomp
+            - pattern: regcomp_l
+            - pattern: regncomp_l
+            - pattern: regwcomp_l
+            - pattern: regwncomp_l
+      - metavariable-analysis:
+          analyzer: redos
+          metavariable: $REGEX
+      # improve output readability
+      - focus-metavariable: $REGEX

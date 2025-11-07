@@ -27,29 +27,29 @@ rules:
         # - pattern-regex: (?i)(key|JWT|JKS|JWK|JKU)
       # other "bad words" examples
       # privilege management
-        # - pattern-regex: (?i)(privilege|permission|capabilit|role|rbac|polic|authorization|claim)
-        # - pattern-regex: (?i)(validate|verify)
+      # - pattern-regex: (?i)(privilege|permission|capabilit|role|rbac|polic|authorization|claim)
+      # - pattern-regex: (?i)(validate|verify)
       # memory management
-        # - pattern-regex: (?i)(alloc|free)
+      # - pattern-regex: (?i)(alloc|free)
       # lower level abstractions
-        # - pattern-regex: (?i)(raw)
+      # - pattern-regex: (?i)(raw)
       # code injection
-        # - pattern-regex: (eval|run)
+      # - pattern-regex: (eval|run)
       # command injection
-        # - pattern-regex: (process|system|popen|exec|spawn)
+      # - pattern-regex: (process|system|popen|exec|spawn)
       # reflection
-        # - pattern-regex: (?i)(reflect|klass|constantize|forname)
+      # - pattern-regex: (?i)(reflect|klass|constantize|forname)
       # serialization
-        # - pattern-regex: (?i)(pickle|yaml|serialize|marshal|objectinput)
+      # - pattern-regex: (?i)(pickle|yaml|serialize|marshal|objectinput)
       # merge or clone
-        # - pattern-regex: (?i)(merge|clone)
+      # - pattern-regex: (?i)(merge|clone)
       # file access
-        # - pattern-regex: (?i)(parse|open|request)
+      # - pattern-regex: (?i)(parse|open|request)
       # crypto
-        # - pattern-regex: (?i)(AES|RSA|DSA|DES|CBC|ECB|HMAC|GCM|MD5|SHA)
+      # - pattern-regex: (?i)(AES|RSA|DSA|DES|CBC|ECB|HMAC|GCM|MD5|SHA)
       # xml
-        # - pattern-regex: (?i)(xml|xerces|sax|etree|xpath|documentbuilder)
+      # - pattern-regex: (?i)(xml|xerces|sax|etree|xpath|documentbuilder)
       # other words of power, words of destruction (Vulns1001)
-        # - pattern-regex: (?i)(encode|decode|convert|interpret|compress|fragment|reassemble)
+      # - pattern-regex: (?i)(encode|decode|convert|interpret|compress|fragment|reassemble)
       # other words of power, words of destruction (Vulns1002)
-        # - pattern-regex: (?i)(mutex|lock|toctou|parallelism|semaphore|retain|release|garbage|mutual)
+      # - pattern-regex: (?i)(mutex|lock|toctou|parallelism|semaphore|retain|release|garbage|mutual)

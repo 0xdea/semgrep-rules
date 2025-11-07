@@ -11,7 +11,8 @@ int do_something(char *string)
 	/* XXX */
 	printf("Hello, World!");
 
-	if (bug) {
+	if (bug)
+	{
 		// ruleid: raptor-bad-words
 		// TODO: handle condition
 	}
@@ -21,7 +22,7 @@ int do_something(char *string)
 	return 1;
 }
 
-int main() 
+int main()
 {
 	printf("Hello, World!");
 	return 0;

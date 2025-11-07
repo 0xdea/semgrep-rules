@@ -1,4 +1,5 @@
 # semgrep-rules
+
 [![](https://img.shields.io/github/stars/0xdea/semgrep-rules.svg?style=flat&color=yellow)](https://github.com/0xdea/semgrep-rules)
 [![](https://img.shields.io/github/forks/0xdea/semgrep-rules.svg?style=flat&color=green)](https://github.com/0xdea/semgrep-rules)
 [![](https://img.shields.io/github/watchers/0xdea/semgrep-rules.svg?style=flat&color=red)](https://github.com/0xdea/semgrep-rules)
@@ -7,11 +8,11 @@
 [![test](https://github.com/0xdea/semgrep-rules/actions/workflows/test.yml/badge.svg)](https://github.com/0xdea/semgrep-rules/actions/workflows/test.yml)
 
 > "The attack surface is the vulnerability. Finding a bug there is just a detail."
-> 
+>
 > -- Mark Dowd
 
 > "Some details are more important than others."
-> 
+>
 > -- Fedor G. Pikus
 
 A collection of my Semgrep rules to facilitate vulnerability research.
@@ -26,24 +27,28 @@ A collection of my Semgrep rules to facilitate vulnerability research.
 
 ## See also
 
-* https://semgrep.dev/r
+* <https://semgrep.dev/r>
 
 ## Setup and usage instructions
 
-1. Install [Semgrep](https://semgrep.dev/docs/getting-started/). 
-2. Clone this github repo.
+1. Install [Semgrep](https://semgrep.dev/docs/getting-started/).
+2. Clone this GitHub repo.
 3. To use these rules, run:
 
 ```sh
 # high priority scan
-$ semgrep --severity ERROR --config PATH/TO/RULES PATH/TO/SOURCE
+semgrep --severity ERROR --config semgrep-rules/rules path/to/source
 # high and medium priority scan
-$ semgrep --severity ERROR --severity WARNING --config PATH/TO/RULES PATH/TO/SOURCE
+semgrep --severity ERROR --severity WARNING --config semgrep-rules/rules path/to/source
 # full scan
-$ semgrep --config PATH/TO/RULES PATH/TO/SOURCE
+semgrep --config semgrep-rules/rules path/to/source
 ```
 
-For a better streamlined experience, I recommend saving semgrep scan output in [SARIF](https://sarifweb.azurewebsites.net/) format and using [SARIF Explorer](https://marketplace.visualstudio.com/items?itemName=trailofbits.sarif-explorer) in [VS code](https://code.visualstudio.com/).
+For a better streamlined experience, I recommend saving semgrep scan output in [SARIF](https://sarifweb.azurewebsites.net/) format and using [SARIF Explorer](https://marketplace.visualstudio.com/items?itemName=trailofbits.sarif-explorer) in [VS code](https://code.visualstudio.com/):
+
+```sh
+semgrep --sarif --sarif-output=SEMGREP.sarif --config semgrep-rules/rules path/to/source
+```
 
 ## Compatibility
 
@@ -62,6 +67,7 @@ For a better streamlined experience, I recommend saving semgrep scan output in [
 ### C/C++
 
 #### buffer overflows
+
 * [**insecure-api-gets**](https://github.com/0xdea/semgrep-rules/blob/main/rules/c/insecure-api-gets.yaml). Use of the insecure API function gets().
 * [**insecure-api-strcpy-stpcpy-strcat**](https://github.com/0xdea/semgrep-rules/blob/main/rules/c/insecure-api-strcpy-stpcpy-strcat.yaml). Use of potentially insecure API functions strcpy(), stpcpy(), strcat().
 * [**insecure-api-sprintf-vsprintf**](https://github.com/0xdea/semgrep-rules/blob/main/rules/c/insecure-api-sprintf-vsprintf.yaml). Use of potentially insecure API functions sprintf() and vsprintf().
@@ -77,6 +83,7 @@ For a better streamlined experience, I recommend saving semgrep scan output in [
 * [**write-into-stack-buffer**](https://github.com/0xdea/semgrep-rules/blob/main/rules/c/write-into-stack-buffer.yaml). Direct write into buffer allocated on the stack.
 
 #### integer overflows
+
 * [**incorrect-unsigned-comparison**](https://github.com/0xdea/semgrep-rules/blob/main/rules/c/incorrect-unsigned-comparison.yaml). Checking if an unsigned variable is negative.
 * [**signed-unsigned-conversion**](https://github.com/0xdea/semgrep-rules/blob/main/rules/c/signed-unsigned-conversion.yaml). Potential signed/unsigned conversion errors.
 * [**integer-truncation**](https://github.com/0xdea/semgrep-rules/blob/main/rules/c/integer-truncation.yaml). Potential integer truncation errors.
@@ -84,9 +91,11 @@ For a better streamlined experience, I recommend saving semgrep scan output in [
 * [**integer-wraparound**](https://github.com/0xdea/semgrep-rules/blob/main/rules/c/integer-wraparound.yaml). Potential integer wraparound errors.
 
 #### format strings
+
 * [**format-string-bugs**](https://github.com/0xdea/semgrep-rules/blob/main/rules/c/format-string-bugs.yaml). Potential format string bugs.
 
 #### memory management
+
 * [**insecure-api-alloca**](https://github.com/0xdea/semgrep-rules/blob/main/rules/c/insecure-api-alloca.yaml). Use of the potentially insecure API function alloca().
 * [**use-after-free**](https://github.com/0xdea/semgrep-rules/blob/main/rules/c/use-after-free.yaml). Potential use after free().
 * [**double-free**](https://github.com/0xdea/semgrep-rules/blob/main/rules/c/double-free.yaml). Potential double free().
@@ -99,21 +108,26 @@ For a better streamlined experience, I recommend saving semgrep scan output in [
 * [**mismatched-memory-management-cpp**](https://github.com/0xdea/semgrep-rules/blob/main/rules/c/mismatched-memory-management-cpp.yaml). Potentially mismatched C++ memory management routines.
 
 #### command injection
+
 * [**command-injection**](https://github.com/0xdea/semgrep-rules/blob/main/rules/c/command-injection.yaml). Potential OS command injection via system() or popen().
 
 #### race conditions
+
 * [**insecure-api-access-stat-lstat**](https://github.com/0xdea/semgrep-rules/blob/main/rules/c/insecure-api-access-stat-lstat.yaml). Use of insecure API functions access(), stat(), lstat().
 * [**insecure-api-mktemp-tmpnam-tempnam**](https://github.com/0xdea/semgrep-rules/blob/main/rules/c/insecure-api-mktemp-tmpnam-tempnam.yaml). Use of insecure API functions mktemp(), tmpnam(), tempnam().
 * [**insecure-api-signal**](https://github.com/0xdea/semgrep-rules/blob/main/rules/c/insecure-api-signal.yaml). Use of insecure API function signal().
 
 #### privilege management
+
 * [**incorrect-order-setuid-setgid-etc**](https://github.com/0xdea/semgrep-rules/blob/main/rules/c/incorrect-order-setuid-setgid-etc.yaml). Privilege management functions called in the wrong order.
 * [**unchecked-ret-setuid-seteuid**](https://github.com/0xdea/semgrep-rules/blob/main/rules/c/unchecked-ret-setuid-seteuid.yaml). Unchecked return code of setuid() and seteuid().
 
 #### denial of service
+
 * [**regex-dos**](https://github.com/0xdea/semgrep-rules/blob/main/rules/c/regex-dos.yaml). Regular expression that may exhibit exponential runtime and lead to ReDoS.
 
 #### miscellaneous
+
 * [**incorrect-use-of-memset**](https://github.com/0xdea/semgrep-rules/blob/main/rules/c/incorrect-use-of-memset.yaml). Wrong order of arguments to memset().
 * [**insecure-api-rand-srand**](https://github.com/0xdea/semgrep-rules/blob/main/rules/c/insecure-api-rand-srand.yaml). Use of potentially insecure API functions rand() and srand().
 * [**incorrect-use-of-sprintf-snprintf**](https://github.com/0xdea/semgrep-rules/blob/main/rules/c/incorrect-use-of-sprintf-snprintf.yaml). Source and destination overlap in sprintf() and snprintf().
@@ -131,4 +145,5 @@ For a better streamlined experience, I recommend saving semgrep scan output in [
 ### Generic
 
 #### miscellaneous
+
 * [**bad-words**](https://github.com/0xdea/semgrep-rules/blob/main/rules/generic/bad-words.yaml). Keywords and comments that suggest the presence of bugs.

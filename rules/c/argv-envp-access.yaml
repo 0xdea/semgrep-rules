@@ -14,5 +14,5 @@ rules:
       - cpp
     patterns:
       - pattern-either:
-        - pattern: argv
-        - pattern: envp
+          - pattern: argv
+          - pattern: envp

@@ -20,63 +20,63 @@ rules:
     pattern-either:
       # setuid()/setgid()
       - patterns:
-        - pattern: |
-            setuid(...);
-            ...
-            setgid(...);
-        - pattern-not: |
-            setuid(0);
-            ...
-            setgid(...);
+          - pattern: |
+              setuid(...);
+              ...
+              setgid(...);
+          - pattern-not: |
+              setuid(0);
+              ...
+              setgid(...);
       # seteuid()/setegid()
       - patterns:
-        - pattern: |
-            seteuid(...);
-            ...
-            setegid(...);
-        - pattern-not: |
-            seteuid(0);
-            ...
-            setegid(...);
-        - pattern-not-inside: |
-            seteuid(...);
-            ...
-            seteuid(0);
-            ...
-            setegid(...);
+          - pattern: |
+              seteuid(...);
+              ...
+              setegid(...);
+          - pattern-not: |
+              seteuid(0);
+              ...
+              setegid(...);
+          - pattern-not-inside: |
+              seteuid(...);
+              ...
+              seteuid(0);
+              ...
+              setegid(...);
       # seteuid()/setuid()
       - patterns:
-        - pattern: |
-            seteuid(...);
-            ...
-            setuid(...);
-        - pattern-not: |
-            seteuid(0);
-            ...
-            setuid(...);
-        - pattern-not-inside: |
-            seteuid(...);
-            ...
-            seteuid(0);
-            ...
-            setuid(...);
+          - pattern: |
+              seteuid(...);
+              ...
+              setuid(...);
+          - pattern-not: |
+              seteuid(0);
+              ...
+              setuid(...);
+          - pattern-not-inside: |
+              seteuid(...);
+              ...
+              seteuid(0);
+              ...
+              setuid(...);
       # seteuid()/seteuid()
       - patterns:
-        - pattern: |
-            seteuid(...);
-            ...
-            seteuid(...);
-        - pattern-not: |
-            seteuid(0);
-            ...
-            seteuid(...);
-        - pattern-not: |
-            seteuid(...);
-            ...
-            seteuid(0);
-        - pattern-not-inside: |
-            seteuid(...);
-            ...
-            seteuid(0);
-            ...
-            seteuid(...);
+          - pattern: |
+              seteuid(...);
+              ...
+              seteuid(...);
+          - pattern-not: |
+              seteuid(0);
+              ...
+              seteuid(...);
+          - pattern-not: |
+              seteuid(...);
+              ...
+              seteuid(0);
+          - pattern-not-inside: |
+              seteuid(...);
+              ...
+              seteuid(0);
+              ...
+              seteuid(...);

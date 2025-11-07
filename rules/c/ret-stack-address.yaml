@@ -10,7 +10,7 @@ rules:
         - https://rules.sonarsource.com/c/type/Bug/RSPEC-946
       confidence: LOW
       # NOTE: static variables matching apparently is not supported by Semgrep.
-      # NOTE: multiple pointer assignments and other ways to persist after 
+      # NOTE: multiple pointer assignments and other ways to persist after
       # function returns (e.g., output parameter) are not covered.
     message: >-
       A function returns the address of a stack variable, which will cause
@@ -21,45 +21,45 @@ rules:
       - cpp
     pattern-either:
       - patterns:
-        - pattern: return $PTR;
-        - pattern-either:
-          # array
-          - pattern-inside: |
-              $_ $PTR[$_];
-              ...
-          - pattern-inside: |
-              $_ $PTR[$_] = $_;
-              ...
-          # pointer to array
-          - pattern-inside: |
-              $_ $ARR[$_];
-              ...
-              $PTR = $ARR;
-              ...
-          - pattern-inside: |
-              $_ $ARR[$_] = $_;
-              ...
-              $PTR = $ARR;
-              ...
+          - pattern: return $PTR;
+          - pattern-either:
+              # array
+              - pattern-inside: |
+                  $_ $PTR[$_];
+                  ...
+              - pattern-inside: |
+                  $_ $PTR[$_] = $_;
+                  ...
+              # pointer to array
+              - pattern-inside: |
+                  $_ $ARR[$_];
+                  ...
+                  $PTR = $ARR;
+                  ...
+              - pattern-inside: |
+                  $_ $ARR[$_] = $_;
+                  ...
+                  $PTR = $ARR;
+                  ...
       - patterns:
-        # address of local variable
-        - pattern: return &$VAR;
-        - pattern-either:
-          - pattern-inside: |
-              $_ $VAR;
-              ...
-          - pattern-inside: |
-              $_ $VAR = $_;
-              ...
-          - pattern-inside: |
-              $_ $VAR[$_];
-              ...
-          - pattern-inside: |
-              $_ $VAR[$_] = $_;
-              ...
-          - pattern-inside: |
-              $_ * $VAR;
-              ...
-          - pattern-inside: |
-              $_ * $VAR = $_;
-              ...
+          # address of local variable
+          - pattern: return &$VAR;
+          - pattern-either:
+              - pattern-inside: |
+                  $_ $VAR;
+                  ...
+              - pattern-inside: |
+                  $_ $VAR = $_;
+                  ...
+              - pattern-inside: |
+                  $_ $VAR[$_];
+                  ...
+              - pattern-inside: |
+                  $_ $VAR[$_] = $_;
+                  ...
+              - pattern-inside: |
+                  $_ * $VAR;
+                  ...
+              - pattern-inside: |
+                  $_ * $VAR = $_;
+                  ...

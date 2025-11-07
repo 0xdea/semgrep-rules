@@ -53,9 +53,11 @@ void bad3(char *string)
 	char filename[BUFSIZE];
 
 	// commented-out because of too many false positives: raptor-off-by-one
-	for (int i = 0; i <= BUFSIZE; i++) {
+	for (int i = 0; i <= BUFSIZE; i++)
+	{
 		char c = getc();
-		if (c == 'EOF') {
+		if (c == 'EOF')
+		{
 			filename[i] = '\0';
 		}
 		filename[i] = getc(stdin);
@@ -67,9 +69,11 @@ void good3(char *string)
 	char filename[BUFSIZE];
 
 	// ok: raptor-off-by-one
-	for (int i = 0; i < BUFSIZE; i++) {
+	for (int i = 0; i < BUFSIZE; i++)
+	{
 		char c = getc();
-		if (c == 'EOF') {
+		if (c == 'EOF')
+		{
 			filename[i] = '\0';
 		}
 		filename[i] = getc(stdin);
@@ -87,7 +91,7 @@ void test_func()
 	id_sequence[3] = 456;
 }
 
-void processRawStr(uint8_t *s, size_t sz) 
+void processRawStr(uint8_t *s, size_t sz)
 {
 	uint8_t buf[1024];
 	memset(buf, 0x0, sizeof(buf));
@@ -97,7 +101,7 @@ void processRawStr(uint8_t *s, size_t sz)
 	// ...
 }
 
-void process_string(char *src) 
+void process_string(char *src)
 {
 	char dest[32];
 
@@ -110,30 +114,30 @@ void process_string(char *src)
 	return;
 }
 
-void get_user(char *user) 
+void get_user(char *user)
 {
 	char buf[1024];
 
 	// ruleid: raptor-off-by-one
-	if (strlen(user) > sizeof(buf)) 
+	if (strlen(user) > sizeof(buf))
 		die("error: user string too long\n");
 
-   	strcpy(buf, user);
-	// ... 
+	strcpy(buf, user);
+	// ...
 }
 
-int get_mac(int fd, struct session *session) 
+int get_mac(int fd, struct session *session)
 {
 	unsigned int i, n;
 
 	n = read_network_integer(fd);
-   	if (n > MAX_MAC)
+	if (n > MAX_MAC)
 		return 1;
 
 	// commented-out because of too many false positives: raptor-off-by-one
 	for (i = 0; i <= n; i++)
 		session->mac[i] = read_network_integer(fd);
-	return 0; 
+	return 0;
 }
 
 int variant1(int argc, char *argv[])
@@ -150,42 +154,44 @@ int variant2(int argc, char *argv[])
 {
 	char bStr[10];
 	// commented-out because of too many false positives: raptor-off-by-one
-	for (unsigned i=1;i<=10;++i) {
+	for (unsigned i = 1; i <= 10; ++i)
+	{
 		bStr[i] = (char)i + 'a';
 	}
 	return 0;
 }
 
-static LabelText* text_create(char *orig_str, int char_width) 
+static LabelText *text_create(char *orig_str, int char_width)
 {
 	int i, j;
-	char line[256]; /* a line should not exceed this length */ 
+	char line[256]; /* a line should not exceed this length */
 	int pos;
 	int last_space;
 	int new_line;
 	LabelText *text = 0;
 	char *str = 0;
-	text = calloc ( 1, sizeof( LabelText ) );
+	text = calloc(1, sizeof(LabelText));
 
-	str = strdup( orig_str );
+	str = strdup(orig_str);
 
-	if ( char_width > 0 ) {
-        for ( i = 0; i < strlen( str ); i++ )
-            if ( str[i] == 10 )
-                text->count++;
+	if (char_width > 0)
+	{
+		for (i = 0; i < strlen(str); i++)
+			if (str[i] == 10)
+				text->count++;
 
 		// ruleid: raptor-off-by-one
-        if ( str[strlen( str ) - 1] != 10 )
-        	text->count++;
+		if (str[strlen(str) - 1] != 10)
+			text->count++;
 	}
 
 	return NULL;
 }
 
-void addLineAfter(struct line *whichLine, char *data) 
+void addLineAfter(struct line *whichLine, char *data)
 {
 	struct line *temp = whichLine->next;
-	struct line *newLine = (struct line *)malloc(sizeof(struct line)); 
+	struct line *newLine = (struct line *)malloc(sizeof(struct line));
 	temp->prev = newLine;
 	whichLine->next = newLine;
 	newLine->next = temp;
@@ -198,10 +204,10 @@ void addLineAfter(struct line *whichLine, char *data)
 	currentBuffer->numLines++;
 }
 
-void addLineAfter_fixed(struct line *whichLine, char *data) 
+void addLineAfter_fixed(struct line *whichLine, char *data)
 {
 	struct line *temp = whichLine->next;
-	struct line *newLine = (struct line *)malloc(sizeof(struct line)); 
+	struct line *newLine = (struct line *)malloc(sizeof(struct line));
 	temp->prev = newLine;
 	whichLine->next = newLine;
 	newLine->next = temp;
@@ -236,7 +242,7 @@ int two_dimensions(int argc, char *argv[])
 	return 0;
 }
 
-int main() 
+int main()
 {
 	printf("Hello, World!");
 	return 0;

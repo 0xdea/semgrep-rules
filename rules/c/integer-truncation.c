@@ -26,7 +26,7 @@ void test_func()
 {
 	int intPrimitive;
 	short shortPrimitive;
-	intPrimitive = (int)(~((int)0) ^ (1 << (sizeof(int)*8-1)));
+	intPrimitive = (int)(~((int)0) ^ (1 << (sizeof(int) * 8 - 1)));
 	// ruleid: raptor-integer-truncation
 	shortPrimitive = intPrimitive;
 	printf("Int MAXINT: %d\nShort MAXINT: %d\n", intPrimitive, shortPrimitive);
@@ -36,10 +36,10 @@ void test_func()
 char func(void)
 {
 	int a = 42;
-	return a; 
+	return a;
 }
 
-int main() 
+int main()
 {
 	printf("Hello, World!");
 	return 0;

@@ -10,7 +10,8 @@ void bt_mesh_beacon_priv_random_get(uint8_t *random, size_t size)
 static inline int send_sf(struct isotp_send_ctx *ctx)
 {
 	/* ... */
-	if (ctx->tx_addr.use_ext_addr) {
+	if (ctx->tx_addr.use_ext_addr)
+	{
 		frame.data[index++] = ctx->tx_addr.ext_addr;
 	}
 
@@ -29,7 +30,7 @@ static inline void assert_buf_len(int need, int have)
 {
 	// ruleid: raptor-suspicious-assert
 	__ASSERT(need < have, "OOM at build command: need:%d have:%d",
-		 need, have);
+			 need, have);
 }
 
 static int line_out_drop_mode(void)
@@ -39,14 +40,16 @@ static int line_out_drop_mode(void)
 	__ASSERT_NO_MSG(line_pos > line_buf);
 
 	/* Handle the case if line contains only '\n' */
-	if (line_pos - line_buf == 1) {
+	if (line_pos - line_buf == 1)
+	{
 		line_pos++;
 	}
 
 	*(line_pos - 1) = '\r';
 	*line_pos++ = '\n';
 
-	if (drop_cnt > 0 && !drop_warn) {
+	if (drop_cnt > 0 && !drop_warn)
+	{
 		int cnt = MIN(drop_cnt, DROP_MAX);
 
 		// ruleid: raptor-suspicious-assert
@@ -57,7 +60,7 @@ static int line_out_drop_mode(void)
 		line_pos += DROP_MSG_LEN;
 		drop_warn = 1;
 
-	/* ... */
+		/* ... */
 	}
 	return 0;
 }
@@ -79,24 +82,25 @@ void arch_irq_offload(irq_offload_routine_t routine, const void *parameter)
 
 int process_sub(FILE *data_file, FILE *struct_file)
 {
-  FIND_T fInfo;
-  FIND_RET_T fret;
-  int filesProcessed = 0;
+	FIND_T fInfo;
+	FIND_RET_T fret;
+	int filesProcessed = 0;
 
-  if (processSubs) {
-    /* process subs recursively */
-    size_t sublen = strlen(curSubdir);
-    size_t freelen = sizeof(curSubdir) - sublen - 1;
-	// ruleid: raptor-suspicious-assert
-    LWIP_ASSERT("sublen < sizeof(curSubdir)", sublen < sizeof(curSubdir));
-    fret = FINDFIRST_DIR("*", &fInfo);
-	/* ... */
-  }
+	if (processSubs)
+	{
+		/* process subs recursively */
+		size_t sublen = strlen(curSubdir);
+		size_t freelen = sizeof(curSubdir) - sublen - 1;
+		// ruleid: raptor-suspicious-assert
+		LWIP_ASSERT("sublen < sizeof(curSubdir)", sublen < sizeof(curSubdir));
+		fret = FINDFIRST_DIR("*", &fInfo);
+		/* ... */
+	}
 
-  return 0;
+	return 0;
 }
 
-int main() 
+int main()
 {
 	printf("Hello, World!");
 	return 0;

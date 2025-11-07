@@ -13,7 +13,7 @@ int get_length(char *string)
 	return length;
 }
 
-int main() 
+int main()
 {
 	printf("Hello, World!");
 	return 0;

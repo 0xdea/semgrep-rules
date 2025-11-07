@@ -6,7 +6,7 @@
 
 #define STR_MAX 256
 
-int putName_bad() 
+int putName_bad()
 {
 	char name[STR_MAX];
 
@@ -14,11 +14,11 @@ int putName_bad()
 
 	// ruleid: raptor-putenv-stack-var
 	putenv(name);
-	
+
 	return 0;
 }
 
-int putName_good() 
+int putName_good()
 {
 	char *name = (char *)malloc(STR_MAX);
 
@@ -30,7 +30,7 @@ int putName_good()
 	return 0;
 }
 
-int main() 
+int main()
 {
 	printf("Hello, World!");
 	return 0;

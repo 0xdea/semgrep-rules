@@ -11,7 +11,7 @@ rules:
       # NOTE: the deep expression operator is necessary to catch some
       # matches because C/C++ integer promotions do not seem entirely
       # supported by Semgrep; this may generate false positives.
-      # NOTE: some types (e.g., ptrs) and use cases (e.g., comparisons) 
+      # NOTE: some types (e.g., ptrs) and use cases (e.g., comparisons)
       # are not covered.
     message: >-
       Truncation errors occur when a primitive is cast to a primitive of a 
@@ -36,27 +36,27 @@ rules:
       - pattern: (char $_) = <... (unsigned long int $_) ...>
       # char: function return
       - patterns:
-        - pattern-either:
-          - pattern: |
-              char $FUN(...)
-              {
-              ...
-              return (short $_);
-              }
-          - pattern: |
-              char $FUN(...)
-              {
-              ...
-              return (int $_);
-              }
-          - pattern: |
-              char $FUN(...)
-              {
-              ...
-              return (long $_);
-              }
-        # improve output readability
-        - focus-metavariable: $FUN
+          - pattern-either:
+              - pattern: |
+                  char $FUN(...)
+                  {
+                  ...
+                  return (short $_);
+                  }
+              - pattern: |
+                  char $FUN(...)
+                  {
+                  ...
+                  return (int $_);
+                  }
+              - pattern: |
+                  char $FUN(...)
+                  {
+                  ...
+                  return (long $_);
+                  }
+          # improve output readability
+          - focus-metavariable: $FUN
       # short: assignments
       - pattern: (short $_) = <... (unsigned short $_) ...>
       - pattern: (short int $_) = <... (unsigned short int $_) ...>
@@ -76,21 +76,21 @@ rules:
       - pattern: (unsigned short int $_) = <... (unsigned long int $_) ...>
       # short: function return
       - patterns:
-        - pattern-either:
-          - pattern: |
-              short $FUN(...)
-              {
-              ...
-              return (int $_);
-              }
-          - pattern: |
-              short $FUN(...)
-              {
-              ...
-              return (long $_);
-              }
-        # improve output readability
-        - focus-metavariable: $FUN
+          - pattern-either:
+              - pattern: |
+                  short $FUN(...)
+                  {
+                  ...
+                  return (int $_);
+                  }
+              - pattern: |
+                  short $FUN(...)
+                  {
+                  ...
+                  return (long $_);
+                  }
+          # improve output readability
+          - focus-metavariable: $FUN
       # int: assignments
       - pattern: (int $_) = <... (unsigned $_) ...>
       - pattern: (int $_) = <... (unsigned int $_) ...>
@@ -100,14 +100,14 @@ rules:
       - pattern: (int $_) = <... (unsigned long int $_) ...>
       # int: function return
       - patterns:
-        - pattern: |
-            int $FUN(...)
-            {
-            ...
-            return (long $_);
-            }
-        # improve output readability
-        - focus-metavariable: $FUN
+          - pattern: |
+              int $FUN(...)
+              {
+              ...
+              return (long $_);
+              }
+          # improve output readability
+          - focus-metavariable: $FUN
       # long: assignments
       - pattern: (long $_) = <... (unsigned long $_) ...>
       - pattern: (long int $_) = <... (unsigned long int $_) ...>

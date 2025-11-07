@@ -12,7 +12,7 @@ void get_string()
 	gets(buf);
 }
 
-int main() 
+int main()
 {
 	printf("Hello, World!");
 	return 0;

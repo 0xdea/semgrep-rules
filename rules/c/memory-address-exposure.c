@@ -26,24 +26,25 @@ void print_address(char *string)
 	sprintf(buf, string);
 }
 
-char *genUniqueVal(Node *n) 
+char *genUniqueVal(Node *n)
 {
-	char *buf = (char *) malloc(32);
-	if(!buf)
+	char *buf = (char *)malloc(32);
+	if (!buf)
 		return NULL;
 
-    	memset(buf, 0x0, 32);
-    	uint32_t uval = &buf;
+	memset(buf, 0x0, 32);
+	uint32_t uval = &buf;
 
-    	if(uval == 0) {
-         	uval = drand();
-    	}
+	if (uval == 0)
+	{
+		uval = drand();
+	}
 	// ruleid: raptor-memory-address-exposure
-    	snprintf(buf, 32, "%x", uval);
-    	return buf;
+	snprintf(buf, 32, "%x", uval);
+	return buf;
 }
 
-int main() 
+int main()
 {
 	printf("Hello, World!");
 	return 0;

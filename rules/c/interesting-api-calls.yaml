@@ -9,7 +9,7 @@ rules:
         - https://www.sei.cmu.edu/downloads/sei-cert-c-coding-standard-2016-v01.pdf
         - https://learn.microsoft.com/en-us/windows-hardware/drivers/devtest/28719-banned-api-usage-use-updated-function-replacement
       confidence: MEDIUM
-      # NOTE: goto, try/catch, sem/mutex, new/delete, static_cast/reinterpret_cast 
+      # NOTE: goto, try/catch, sem/mutex, new/delete, static_cast/reinterpret_cast
       # are not covered.
       # NOTE: see also https://semgrep.dev/r?lang=C
     message: >-
@@ -24,172 +24,172 @@ rules:
     pattern-either:
       # priv
       - patterns:
-        - pattern: $FUN(...)
-        - metavariable-regex:
-            metavariable: $FUN
-            regex: '(?i)^\w*set\w*(u|g)id\s*$|^\w*(init|set)groups\s*$'
+          - pattern: $FUN(...)
+          - metavariable-regex:
+              metavariable: $FUN
+              regex: '(?i)^\w*set\w*(u|g)id\s*$|^\w*(init|set)groups\s*$'
       # strcpy
       - patterns:
-        - pattern: $FUN(...)
-        - metavariable-regex:
-            metavariable: $FUN
-            regex: '(?i)^\w*str\w?cpy(_s)?(_l)?\s*$|^\w*stpn?cpy(_s)?(_l)?\s*$|^\w*(wc|mb)s\w?cpy(_s)?(_l)?\s*$|^\w*wcpn?cpy(_s)?(_l)?\s*$'
+          - pattern: $FUN(...)
+          - metavariable-regex:
+              metavariable: $FUN
+              regex: '(?i)^\w*str\w?cpy(_s)?(_l)?\s*$|^\w*stpn?cpy(_s)?(_l)?\s*$|^\w*(wc|mb)s\w?cpy(_s)?(_l)?\s*$|^\w*wcpn?cpy(_s)?(_l)?\s*$'
       # strcat
       - patterns:
-        - pattern: $FUN(...)
-        - metavariable-regex:
-            metavariable: $FUN
-            regex: '(?i)^\w*str\w?cat(_s)?(_l)?\s*$|^\w*(wc|mb)s\w?cat(_s)?(_l)?\s*$'
+          - pattern: $FUN(...)
+          - metavariable-regex:
+              metavariable: $FUN
+              regex: '(?i)^\w*str\w?cat(_s)?(_l)?\s*$|^\w*(wc|mb)s\w?cat(_s)?(_l)?\s*$'
       # strtok
       - patterns:
-        - pattern: $FUN(...)
-        - metavariable-regex:
-            metavariable: $FUN
-            regex: '(?i)^\w*strtok(_s)?(_l)?\s*$|^\w*(wc|mb)stok(_s)?(_l)?\s*$'
+          - pattern: $FUN(...)
+          - metavariable-regex:
+              metavariable: $FUN
+              regex: '(?i)^\w*strtok(_s)?(_l)?\s*$|^\w*(wc|mb)stok(_s)?(_l)?\s*$'
       # strlen
-        # - patterns:
-          # - pattern: $FUN(...)
-          # - metavariable-regex:
-              # metavariable: $FUN
-              # regex: '(?i)^\w*(str|wcs|mbs)n?len\s*$'
+      # - patterns:
+      # - pattern: $FUN(...)
+      # - metavariable-regex:
+      # metavariable: $FUN
+      # regex: '(?i)^\w*(str|wcs|mbs)n?len\s*$'
       # printf
       - patterns:
-        - pattern: $FUN(...)
-        - metavariable-regex:
-            metavariable: $FUN
-            regex: '(?i)^\w*s\w?printf(_s)?(_l)?\w*\s*$'
+          - pattern: $FUN(...)
+          - metavariable-regex:
+              metavariable: $FUN
+              regex: '(?i)^\w*s\w?printf(_s)?(_l)?\w*\s*$'
       # more printf
-        # - patterns:
-          # - pattern: $FUN(...)
-          # - metavariable-regex:
-              # metavariable: $FUN
-              # regex: '(?i)^\w*printf\w*\s*$|^\w*err\w*\s*$|^\w*warn\w*\s*$|^\w*syslog\w*\s*$'
+      # - patterns:
+      # - pattern: $FUN(...)
+      # - metavariable-regex:
+      # metavariable: $FUN
+      # regex: '(?i)^\w*printf\w*\s*$|^\w*err\w*\s*$|^\w*warn\w*\s*$|^\w*syslog\w*\s*$'
       # scanf
       - patterns:
-        - pattern: $FUN(...)
-        - metavariable-regex:
-            metavariable: $FUN
-            regex: '(?i)^\w*scanf(_s)?(_l)?\s*$'
+          - pattern: $FUN(...)
+          - metavariable-regex:
+              metavariable: $FUN
+              regex: '(?i)^\w*scanf(_s)?(_l)?\s*$'
       # get
       - patterns:
-        - pattern: $FUN(...)
-        - metavariable-regex:
-            metavariable: $FUN
-            regex: '(?i)^\w*get(s|c|char|pw|pass|wd|cwd|opt|opt_long)\s*$'
+          - pattern: $FUN(...)
+          - metavariable-regex:
+              metavariable: $FUN
+              regex: '(?i)^\w*get(s|c|char|pw|pass|wd|cwd|opt|opt_long)\s*$'
       # environment
       - patterns:
-        - pattern: $FUN(...)
-        - metavariable-regex:
-            metavariable: $FUN
-            regex: '(?i)^\w*(get|set|put|unset)env\s*$'
+          - pattern: $FUN(...)
+          - metavariable-regex:
+              metavariable: $FUN
+              regex: '(?i)^\w*(get|set|put|unset)env\s*$'
       # memcpy
       - patterns:
-        - pattern: $FUN(...)
-        - metavariable-regex:
-            metavariable: $FUN
-            regex: '(?i)^\w*memc?cpy(_s)?\s*$|^\w*memmove(_s)?\s*$|^\w*bcopy\s*$'
+          - pattern: $FUN(...)
+          - metavariable-regex:
+              metavariable: $FUN
+              regex: '(?i)^\w*memc?cpy(_s)?\s*$|^\w*memmove(_s)?\s*$|^\w*bcopy\s*$'
       # memset
-        # - patterns:
-          # - pattern: $FUN(...)
-          # - metavariable-regex:
-              # metavariable: $FUN
-              # regex: '(?i)^\w*memset(_explicit)?\s*$'
+      # - patterns:
+      # - pattern: $FUN(...)
+      # - metavariable-regex:
+      # metavariable: $FUN
+      # regex: '(?i)^\w*memset(_explicit)?\s*$'
       # alloc
       - patterns:
-        - pattern: $FUN(...)
-        - metavariable-regex:
-            metavariable: $FUN
-            regex: '(?i)^\w*alloc(a|f)?\s*$|^\w*alloc_?array\s*$'
+          - pattern: $FUN(...)
+          - metavariable-regex:
+              metavariable: $FUN
+              regex: '(?i)^\w*alloc(a|f)?\s*$|^\w*alloc_?array\s*$'
       # free
-        # - patterns:
-          # - pattern: $FUN(...)
-          # - metavariable-regex:
-              # metavariable: $FUN
-              # regex: '(?i)^\w*free\s*$'
+      # - patterns:
+      # - pattern: $FUN(...)
+      # - metavariable-regex:
+      # metavariable: $FUN
+      # regex: '(?i)^\w*free\s*$'
       # exec
       - patterns:
-        - pattern: $FUN(...)
-        - metavariable-regex:
-            metavariable: $FUN
-            regex: '(?i)^\w*exec(l|v)?(p|e)?e?\s*$|^\w*system\s*$'
+          - pattern: $FUN(...)
+          - metavariable-regex:
+              metavariable: $FUN
+              regex: '(?i)^\w*exec(l|v)?(p|e)?e?\s*$|^\w*system\s*$'
       # i/o
       - patterns:
-        - pattern: $FUN(...)
-        - metavariable-regex:
-            metavariable: $FUN
-            regex: '(?i)^\w*open(at)?(64)?\s*$|^\w*pipe\s*$|^\w*read\s*$|^\w*recv(from)?\s*$'
+          - pattern: $FUN(...)
+          - metavariable-regex:
+              metavariable: $FUN
+              regex: '(?i)^\w*open(at)?(64)?\s*$|^\w*pipe\s*$|^\w*read\s*$|^\w*recv(from)?\s*$'
       # more i/o
-        # - patterns:
-          # - pattern: $FUN(...)
-          # - metavariable-regex:
-              # metavariable: $FUN
-              # regex: '(?i)^\w*connect\s*$|^\w*write\s*$|^\w*hton(l|s)\s*$|^\w*ntoh(l|s)\s*$'
+      # - patterns:
+      # - pattern: $FUN(...)
+      # - metavariable-regex:
+      # metavariable: $FUN
+      # regex: '(?i)^\w*connect\s*$|^\w*write\s*$|^\w*hton(l|s)\s*$|^\w*ntoh(l|s)\s*$'
       # proc
       - patterns:
-        - pattern: $FUN(...)
-        - metavariable-regex:
-            metavariable: $FUN
-            regex: '(?i)^\w*fork\s*$'
+          - pattern: $FUN(...)
+          - metavariable-regex:
+              metavariable: $FUN
+              regex: '(?i)^\w*fork\s*$'
       # more proc
-        # - patterns:
-          # - pattern: $FUN(...)
-          # - metavariable-regex:
-              # metavariable: $FUN
-              # regex: '(?i)^\w*clone\s*$'
+      # - patterns:
+      # - pattern: $FUN(...)
+      # - metavariable-regex:
+      # metavariable: $FUN
+      # regex: '(?i)^\w*clone\s*$'
       # rand
       - patterns:
-        - pattern: $FUN(...)
-        - metavariable-regex:
-            metavariable: $FUN
-            regex: '(?i)^\w*rand\s*$'
+          - pattern: $FUN(...)
+          - metavariable-regex:
+              metavariable: $FUN
+              regex: '(?i)^\w*rand\s*$'
       # tmp
       - patterns:
-        - pattern: $FUN(...)
-        - metavariable-regex:
-            metavariable: $FUN
-            regex: '(?i)^\w*mk\w?temp(64)?\s*$|^\w*te?mpnam\s*$|^\w*tmpfile\s*$'
+          - pattern: $FUN(...)
+          - metavariable-regex:
+              metavariable: $FUN
+              regex: '(?i)^\w*mk\w?temp(64)?\s*$|^\w*te?mpnam\s*$|^\w*tmpfile\s*$'
       # file
       - patterns:
-        - pattern: $FUN(...)
-        - metavariable-regex:
-            metavariable: $FUN
-            regex: '(?i)^\w*mkdir\s*$|^\w*creat\s*$|^\w*link(at)?\s*$|^\w*rename(at)?\s*$|^\w*access(at|_ok)?\s*$|^\w*stat(at)?\s*$|^\w*ch(own|mod)(at)?\s*$|^\w*realpath(at)?\s*$|^\w*readlink\s*$'
+          - pattern: $FUN(...)
+          - metavariable-regex:
+              metavariable: $FUN
+              regex: '(?i)^\w*mkdir\s*$|^\w*creat\s*$|^\w*link(at)?\s*$|^\w*rename(at)?\s*$|^\w*access(at|_ok)?\s*$|^\w*stat(at)?\s*$|^\w*ch(own|mod)(at)?\s*$|^\w*realpath(at)?\s*$|^\w*readlink\s*$'
       # more file
       - patterns:
-        - pattern: $FUN(...)
-        - metavariable-regex:
-            metavariable: $FUN
-            regex: '(?i)^\w*locale\s*$|^\w*(make|split)path\s*$'
+          - pattern: $FUN(...)
+          - metavariable-regex:
+              metavariable: $FUN
+              regex: '(?i)^\w*locale\s*$|^\w*(make|split)path\s*$'
       # signals
-        # - patterns:
-          # - pattern: $FUN(...)
-          # - metavariable-regex:
-              # metavariable: $FUN
-              # regex: '(?i)^\w*kill\s*$|^\w*signal\s*$|^\w*sigaction\s*$|^\w*(set|long)jmp\s*$'
+      # - patterns:
+      # - pattern: $FUN(...)
+      # - metavariable-regex:
+      # metavariable: $FUN
+      # regex: '(?i)^\w*kill\s*$|^\w*signal\s*$|^\w*sigaction\s*$|^\w*(set|long)jmp\s*$'
       # time
-        # - patterns:
-          # - pattern: $FUN(...)
-          # - metavariable-regex:
-              # metavariable: $FUN
-              # regex: '(?i)^\w*time\s*$'
+      # - patterns:
+      # - pattern: $FUN(...)
+      # - metavariable-regex:
+      # metavariable: $FUN
+      # regex: '(?i)^\w*time\s*$'
       # kernel
       - patterns:
-        - pattern: $FUN(...)
-        - metavariable-regex:
-            metavariable: $FUN
-            regex: '(?i)^\w*copy_(from|to)_user\s*$|^\w*(get|put)_user\s*$|^\w*copy(in|out)\s*$'          
+          - pattern: $FUN(...)
+          - metavariable-regex:
+              metavariable: $FUN
+              regex: '(?i)^\w*copy_(from|to)_user\s*$|^\w*(get|put)_user\s*$|^\w*copy(in|out)\s*$'
       # more kernel
-        # - patterns:
-          # - pattern: $FUN(...)
-          # - metavariable-regex:
-              # metavariable: $FUN
-              # regex: '(?i)^\w*cpu_to_(b|l)e(16|32|64)(p|s)?\s*$|^\w*(b|l)e(16|32|64)(p|s)?_to_cpu\s*$|^\w*xb_get_(32|64|bytes|word_array|bitmap)\s*$'
+      # - patterns:
+      # - pattern: $FUN(...)
+      # - metavariable-regex:
+      # metavariable: $FUN
+      # regex: '(?i)^\w*cpu_to_(b|l)e(16|32|64)(p|s)?\s*$|^\w*(b|l)e(16|32|64)(p|s)?_to_cpu\s*$|^\w*xb_get_(32|64|bytes|word_array|bitmap)\s*$'
       # assert
-        # - patterns:
-          # - pattern: $FUN(...)
-          # - metavariable-regex:
-              # metavariable: $FUN
-              # regex: '(?i)^\w*assert\w*\s*$'
+      # - patterns:
+      # - pattern: $FUN(...)
+      # - metavariable-regex:
+      # metavariable: $FUN
+      # regex: '(?i)^\w*assert\w*\s*$'
       # switch
-        # - pattern: | 
-            # switch ($VAR) { }
+      # - pattern: |
+      # switch ($VAR) { }

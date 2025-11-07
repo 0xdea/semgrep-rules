@@ -8,8 +8,8 @@ rules:
       confidence: MEDIUM
       # NOTE: this rule only covers free() called on stack-allocated
       # buffers; it does not cover other instances of free() called on
-      # non-heap-allocated buffers; it also does not cover alloca() 
-      # and custom wrappers to free(). 
+      # non-heap-allocated buffers; it also does not cover alloca()
+      # and custom wrappers to free().
       # See also raptor-mismatched-memory-management.yaml.
     message: >-
       The software calls free() on a pointer to memory that has a short 
@@ -21,45 +21,45 @@ rules:
       - cpp
     pattern-either:
       - patterns:
-        - pattern: free($PTR)
-        - pattern-either:
-          # array
-          - pattern-inside: |
-              $_ $PTR[$_];
-              ...
-          - pattern-inside: |
-              $_ $PTR[$_] = $_;
-              ...
-          # pointer to array
-          - pattern-inside: |
-              $_ $ARR[$_];
-              ...
-              $PTR = $ARR;
-              ...
-          - pattern-inside: |
-              $_ $ARR[$_] = $_;
-              ...
-              $PTR = $ARR;
-              ...
+          - pattern: free($PTR)
+          - pattern-either:
+              # array
+              - pattern-inside: |
+                  $_ $PTR[$_];
+                  ...
+              - pattern-inside: |
+                  $_ $PTR[$_] = $_;
+                  ...
+              # pointer to array
+              - pattern-inside: |
+                  $_ $ARR[$_];
+                  ...
+                  $PTR = $ARR;
+                  ...
+              - pattern-inside: |
+                  $_ $ARR[$_] = $_;
+                  ...
+                  $PTR = $ARR;
+                  ...
       - patterns:
-        # address of local variable
-        - pattern: free(&$VAR)
-        - pattern-either:
-          - pattern-inside: |
-              $_ $VAR;
-              ...
-          - pattern-inside: |
-              $_ $VAR = $_;
-              ...          
-          - pattern-inside: |
-              $_ $VAR[$_];
-              ...
-          - pattern-inside: |
-              $_ $VAR[$_] = $_;
-              ...
-          - pattern-inside: |
-              $_ * $VAR;
-              ...
-          - pattern-inside: |
-              $_ * $VAR = $_;
-              ...
+          # address of local variable
+          - pattern: free(&$VAR)
+          - pattern-either:
+              - pattern-inside: |
+                  $_ $VAR;
+                  ...
+              - pattern-inside: |
+                  $_ $VAR = $_;
+                  ...
+              - pattern-inside: |
+                  $_ $VAR[$_];
+                  ...
+              - pattern-inside: |
+                  $_ $VAR[$_] = $_;
+                  ...
+              - pattern-inside: |
+                  $_ * $VAR;
+                  ...
+              - pattern-inside: |
+                  $_ * $VAR = $_;
+                  ...

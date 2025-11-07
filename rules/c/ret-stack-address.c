@@ -6,7 +6,7 @@
 
 #define STR_MAX 256
 
-char* getName_bad() 
+char *getName_bad()
 {
 	char name[STR_MAX];
 
@@ -15,7 +15,7 @@ char* getName_bad()
 	return name;
 }
 
-char* getName_good() 
+char *getName_good()
 {
 	char *name = (char *)malloc(STR_MAX);
 
@@ -30,7 +30,8 @@ char *findF(char *b)
 	char *p = tmpbuf;
 	memcpy(tmpbuf, b, 1024);
 
-	while (*p != '\0') {
+	while (*p != '\0')
+	{
 		if (*p == 'F')
 			// ruleid: raptor-ret-stack-address
 			return p;
@@ -50,14 +51,17 @@ void recvStr(char *str)
 	char *fPtr = findF(str);
 
 	fillMem();
-	if(fPtr == NULL) {
+	if (fPtr == NULL)
+	{
 		printf("No F!");
-	} else {
+	}
+	else
+	{
 		printf("F = %s", fPtr);
 	}
 }
 
-int* f(void) 
+int *f(void)
 {
 	int local_auto;
 
@@ -65,7 +69,7 @@ int* f(void)
 	return &local_auto;
 }
 
-int main() 
+int main()
 {
 	printf("Hello, World!");
 	return 0;

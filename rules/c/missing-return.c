@@ -15,7 +15,7 @@ void good1(void)
 }
 
 // ok: raptor-missing-return
-int main(int argc, char **argv) 
+int main(int argc, char **argv)
 {
 	printf("Hello, World!");
 	return 0;

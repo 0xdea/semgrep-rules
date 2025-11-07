@@ -12,7 +12,8 @@ void bad1(char *data)
 	int result = security_check(data);
 
 	// ruleid: raptor-missing-break-in-switch
-	switch (result) {
+	switch (result)
+	{
 	case FAIL:
 		printf("Security check failed!\n");
 	case PASS:
@@ -29,7 +30,8 @@ void good1(char *data)
 	int result = security_check(data);
 
 	// ok: raptor-missing-break-in-switch
-	switch (result) {
+	switch (result)
+	{
 	case FAIL:
 		printf("Security check failed!\n");
 		exit(1);
@@ -42,23 +44,24 @@ void good1(char *data)
 	}
 }
 
-struct object *init_object(int type) 
+struct object *init_object(int type)
 {
 	struct object *obj;
 
-	if (!(obj = (struct object *)malloc(sizeof(struct object)))) 
+	if (!(obj = (struct object *)malloc(sizeof(struct object))))
 		return NULL;
 
-   	obj->type = type;
+	obj->type = type;
 	// ruleid: raptor-missing-break-in-switch
-	switch (type) {
+	switch (type)
+	{
 	case OBJ_STR:
-		obj->un.str = alloc_string(); 
+		obj->un.str = alloc_string();
 	case OBJ_INT:
-		obj->un.num = alloc_int(); 
+		obj->un.num = alloc_int();
 		break;
 	case OBJ_BOOL:
-		obj->un.bool = alloc_bool(); 
+		obj->un.bool = alloc_bool();
 		break;
 	}
 	return obj;
@@ -67,24 +70,37 @@ struct object *init_object(int type)
 void printMessage(int month)
 {
 	// ruleid: raptor-missing-break-in-switch
-	switch (month) {
-	case 1: printf("January");
-	case 2: printf("February");
-	case 3: printf("March");
-	case 4: printf("April");
-	case 5: printff("May");
-	case 6: printf("June");
-	case 7: printf("July");
-	case 8: printf("August");
-	case 9: printf("September");
-	case 10: printf("October");
-	case 11: printf("November");
-	case 12: printf("December");
+	switch (month)
+	{
+	case 1:
+		printf("January");
+	case 2:
+		printf("February");
+	case 3:
+		printf("March");
+	case 4:
+		printf("April");
+	case 5:
+		printff("May");
+	case 6:
+		printf("June");
+	case 7:
+		printf("July");
+	case 8:
+		printf("August");
+	case 9:
+		printf("September");
+	case 10:
+		printf("October");
+	case 11:
+		printf("November");
+	case 12:
+		printf("December");
 	}
 	printf(" is a great month");
 }
 
-char *escape_string(char *string) 
+char *escape_string(char *string)
 {
 	char *output, *dest;
 	int escape = 0;
@@ -92,28 +108,32 @@ char *escape_string(char *string)
 	if (!(output = dest = (char *)calloc(strlen(string + 1, sizeof(string)))))
 		die("calloc: %m");
 
-	while (*string) {
+	while (*string)
+	{
 		// ruleid: raptor-missing-break-in-switch
-		switch (*cp) {
+		switch (*cp)
+		{
 		case '\\':
-			if (escape) {
-                 		*dest++ = '\\';
-                 		escape = 0;
-             		} else
-                 		escape = 1;
-             		break;
+			if (escape)
+			{
+				*dest++ = '\\';
+				escape = 0;
+			}
+			else
+				escape = 1;
+			break;
 		case '\n':
 			*dest++ = ' ';
 		default:
 			*string = *dest++;
 		}
-	string++; 
+		string++;
 	}
 
 	return output;
 }
 
-int main() 
+int main()
 {
 	printf("Hello, World!");
 	return 0;

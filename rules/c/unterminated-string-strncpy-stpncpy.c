@@ -48,35 +48,36 @@ void test_func2(int argc, char **argv)
 	Scan_File(Filename, Pattern);
 }
 
-void authenticate(int sockfd) 
+void authenticate(int sockfd)
 {
-	char user[1024], *buffer; 
+	char user[1024], *buffer;
 	size_t size;
 	int n, cmd;
 
-	cmd = read_integer(sockfd); 
+	cmd = read_integer(sockfd);
 	size = read_integer(sockfd);
-	if (size > MAX_PACKET) 
+	if (size > MAX_PACKET)
 		return -1;
 
 	buffer = (char *)calloc(size + 1, sizeof(char));
-	if(!buffer)
+	if (!buffer)
 		return -1;
 
 	read_string(buffer, size);
 
-	switch(cmd) {
+	switch (cmd)
+	{
 	case USERNAME:
 		// ruleid: raptor-unterminated-string-strncpy-stpncpy
 		strncpy(user, buffer, sizeof(user));
-		if (!is_username_valid(user)) 
+		if (!is_username_valid(user))
 			goto fail;
-		break; 
-	// ...
+		break;
+		// ...
 	}
 }
 
-int process_email(char *email) 
+int process_email(char *email)
 {
 	char buf[1024], *domain;
 
@@ -84,16 +85,16 @@ int process_email(char *email)
 	strncpy(buf, email, sizeof(buf));
 
 	domain = strchr(buf, '@');
-	if(!domain)
+	if (!domain)
 		return -1;
 
 	*domain++ = '\0';
 
 	// ...
-	return 0; 
+	return 0;
 }
 
-int main() 
+int main()
 {
 	printf("Hello, World!");
 	return 0;

@@ -66,7 +66,7 @@ void good2()
 	seteuid(0);
 }
 
-int main() 
+int main()
 {
 	printf("Hello, World!");
 	return 0;

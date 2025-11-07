@@ -39,18 +39,19 @@ void copy_string3(char *string)
 	memcpy(buf, string, BUFSIZE);
 }
 
-void bad(int limit) 
+void bad(int limit)
 {
 	char buf[BUFSIZE];
 
-	for (int i = 0; i < limit; i++) {
+	for (int i = 0; i < limit; i++)
+	{
 		// this should be caught, but there are too many false positives
 		// todoruleid: raptor-write-into-stack-buffer
 		buf[i] = "A";
 	}
 }
 
-int main() 
+int main()
 {
 	printf("Hello, World!");
 	return 0;

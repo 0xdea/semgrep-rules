@@ -8,7 +8,8 @@
 int test1()
 {
 	// ...
-	for (oct_cnt = 1; oct_cnt < 7; oct_cnt++) {
+	for (oct_cnt = 1; oct_cnt < 7; oct_cnt++)
+	{
 		oct = (u_int8_t)retrieve_rand_int(0xFF);
 		if (oct_cnt != 1)
 			// ruleid: raptor-incorrect-use-of-sprintf-snprintf
@@ -35,7 +36,7 @@ int test2()
 	return 0;
 }
 
-int main() 
+int main()
 {
 	printf("Hello, World!");
 	return 0;

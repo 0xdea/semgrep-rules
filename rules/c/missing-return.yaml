@@ -7,7 +7,7 @@ rules:
         - https://cwe.mitre.org/data/definitions/394
       confidence: LOW
       # NOTE: function declarations in the form type func() are
-      # not supported to avoid false positives due to current 
+      # not supported to avoid false positives due to current
       # Semgrep limitations.
       # NOTE: C++ class declarations should also be excluded, but
       # apparently this pattern is not supported by Semgrep.

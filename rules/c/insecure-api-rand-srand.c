@@ -4,9 +4,12 @@
 #include <stdlib.h>
 #include <time.h>
 
-enum { len = 12 };
+enum
+{
+	len = 12
+};
 
-void func_bad(void) 
+void func_bad(void)
 {
 	char id[len];
 	int r;
@@ -21,7 +24,7 @@ void func_bad(void)
 	// ...
 }
 
-void func_good(void) 
+void func_good(void)
 {
 	char id[len];
 	int r;
@@ -30,7 +33,8 @@ void func_good(void)
 	// ...
 
 	struct timespec ts;
-   	if (timespec_get(&ts, TIME_UTC) == 0) {
+	if (timespec_get(&ts, TIME_UTC) == 0)
+	{
 		/* handle error */
 	}
 	// ok: raptor-insecure-api-rand-srand
@@ -45,7 +49,7 @@ void func_good(void)
 	// ...
 }
 
-int main() 
+int main()
 {
 	printf("Hello, World!");
 	return 0;

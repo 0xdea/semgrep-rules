@@ -4,6 +4,8 @@
 #include <stdlib.h>
 
 #define MEMSIZE 256
+#define BUFSIZE1 128
+#define BUFSIZE2 256
 
 void alloc_and_free1()
 {
@@ -13,7 +15,7 @@ void alloc_and_free1()
 	// this should be caught but it isn't, due to a documented limitation in semgrep
 	// https://semgrep.dev/docs/writing-rules/pattern-syntax/#ellipses-and-statement-blocks
 	// todoruleid: raptor-double-free
-	if (bailout) 
+	if (bailout)
 		free(ptr);
 
 	free(ptr);
@@ -41,39 +43,45 @@ void alloc_and_free3()
 	free(ptr);
 }
 
-void double_free(int argc, char **argv) 
+void double_free(int argc, char **argv)
 {
 	char *buf1R1;
 	char *buf2R1;
 	char *buf1R2;
-	buf1R1 = (char *) malloc(BUFSIZE2);
-	buf2R1 = (char *) malloc(BUFSIZE2);
+	buf1R1 = (char *)malloc(BUFSIZE2);
+	buf2R1 = (char *)malloc(BUFSIZE2);
 	free(buf1R1);
 	free(buf2R1);
-	buf1R2 = (char *) malloc(BUFSIZE1);
-	strncpy(buf1R2, argv[1], BUFSIZE1-1);
+	buf1R2 = (char *)malloc(BUFSIZE1);
+	strncpy(buf1R2, argv[1], BUFSIZE1 - 1);
 	// ruleid: raptor-double-free
 	free(buf2R1);
 	free(buf1R2);
 }
 
-Packet *getNextPacket() 
+Packet *getNextPacket()
 {
-	Packet *y = (Packet *) malloc(1024);
+	// ...
+	Packet *y = (Packet *)malloc(1024);
 	retval = waitForPacket(y);
-	if(retval == OK) {
+	if (retval == OK)
+	{
 		return y;
-  	} else {
-     		return NULL;
-  	}
+	}
+	else
+	{
+		return NULL;
+	}
 }
 
 int bad()
 {
+	// ...
 	free(logData);
 	pkt = getNextPacket();
-	if(!pkt) {
-     		return NULL;
+	if (!pkt)
+	{
+		return NULL;
 	}
 	logPktData(pkt);
 	// ruleid: raptor-double-free
@@ -81,7 +89,7 @@ int bad()
 	processPacket(pkt);
 }
 
-int main() 
+int main()
 {
 	printf("Hello, World!");
 	return 0;

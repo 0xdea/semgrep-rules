@@ -20,12 +20,12 @@ rules:
       - cpp
     patterns:
       - pattern-either:
-        - pattern: $_ = $FUN(...)
-        - pattern: $_ += $FUN(...)
+          - pattern: $_ = $FUN(...)
+          - pattern: $_ += $FUN(...)
       - metavariable-pattern:
           metavariable: $FUN
           pattern-either:
             - pattern: snprintf
             - pattern: vsnprintf
-            # swprintf() and vswprintf() return a negative value if n or more 
+            # swprintf() and vswprintf() return a negative value if n or more
             # widechars were requested to be written, thus behaving more safely

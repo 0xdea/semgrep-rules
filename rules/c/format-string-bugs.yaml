@@ -22,78 +22,78 @@ rules:
     pattern-either:
       # format string in 1st arg
       - patterns:
-        - pattern-either:
-          # printf family
-          - pattern: printf(...)
-          - pattern: vprintf(...)
-          - pattern: wprintf(...)
-          - pattern: vwprintf(...)
-          - pattern: vcprintf(...)
-          - pattern: vcwprintf(...)
-          - pattern: vscprintf(...)
-          - pattern: vscwprintf(...)
-          - pattern: printk(...)
-          # scanf family
-          - pattern: scanf(...)
-          - pattern: __isoc99_scanf(...)
-          - pattern: vscanf(...)
-          - pattern: __isoc99_vscanf(...)
-          - pattern: wscanf(...)
-          - pattern: vwscanf(...)
-          # err/warn family
-          - pattern: warn(...)
-          - pattern: vwarn(...)
-          - pattern: warnx(...)
-          - pattern: vwarnx(...)
-        - pattern-not: $_("...", ...)
+          - pattern-either:
+              # printf family
+              - pattern: printf(...)
+              - pattern: vprintf(...)
+              - pattern: wprintf(...)
+              - pattern: vwprintf(...)
+              - pattern: vcprintf(...)
+              - pattern: vcwprintf(...)
+              - pattern: vscprintf(...)
+              - pattern: vscwprintf(...)
+              - pattern: printk(...)
+              # scanf family
+              - pattern: scanf(...)
+              - pattern: __isoc99_scanf(...)
+              - pattern: vscanf(...)
+              - pattern: __isoc99_vscanf(...)
+              - pattern: wscanf(...)
+              - pattern: vwscanf(...)
+              # err/warn family
+              - pattern: warn(...)
+              - pattern: vwarn(...)
+              - pattern: warnx(...)
+              - pattern: vwarnx(...)
+          - pattern-not: $_("...", ...)
       # format string in 2nd arg
       - patterns:
-        - pattern-either:
-          # printf family
-          - pattern: fprintf(...)
-          - pattern: vfprintf(...)
-          - pattern: fwprintf(...)
-          - pattern: vfwprintf(...)
-          - pattern: sprintf(...)
-          - pattern: vsprintf(...)
-          - pattern: asprintf(...)
-          - pattern: vasprintf(...)
-          - pattern: dprintf(...)
-          - pattern: vdprintf(...)
-          - pattern: wsprintf(...)
-          # scanf family
-          - pattern: fscanf(...)
-          - pattern: __isoc99_fscanf(...)
-          - pattern: vfscanf(...)
-          - pattern: __isoc99_vfscanf(...)
-          - pattern: fwscanf(...)
-          - pattern: vfwscanf(...)
-          - pattern: sscanf(...)
-          - pattern: __isoc99_sscanf(...)
-          - pattern: vsscanf(...)
-          - pattern: __isoc99_vsscanf(...)
-          - pattern: swscanf(...)
-          - pattern: vswscanf(...)
-          # syslog family
-          - pattern: syslog(...)
-          - pattern: vsyslog(...)
-          # err/warn family
-          - pattern: err(...)
-          - pattern: verr(...)
-          - pattern: errx(...)
-          - pattern: verrx(...)
-          - pattern: warnc(...)
-          - pattern: vwarnc(...)
-        - pattern-not: $_($_, "...", ...)
+          - pattern-either:
+              # printf family
+              - pattern: fprintf(...)
+              - pattern: vfprintf(...)
+              - pattern: fwprintf(...)
+              - pattern: vfwprintf(...)
+              - pattern: sprintf(...)
+              - pattern: vsprintf(...)
+              - pattern: asprintf(...)
+              - pattern: vasprintf(...)
+              - pattern: dprintf(...)
+              - pattern: vdprintf(...)
+              - pattern: wsprintf(...)
+              # scanf family
+              - pattern: fscanf(...)
+              - pattern: __isoc99_fscanf(...)
+              - pattern: vfscanf(...)
+              - pattern: __isoc99_vfscanf(...)
+              - pattern: fwscanf(...)
+              - pattern: vfwscanf(...)
+              - pattern: sscanf(...)
+              - pattern: __isoc99_sscanf(...)
+              - pattern: vsscanf(...)
+              - pattern: __isoc99_vsscanf(...)
+              - pattern: swscanf(...)
+              - pattern: vswscanf(...)
+              # syslog family
+              - pattern: syslog(...)
+              - pattern: vsyslog(...)
+              # err/warn family
+              - pattern: err(...)
+              - pattern: verr(...)
+              - pattern: errx(...)
+              - pattern: verrx(...)
+              - pattern: warnc(...)
+              - pattern: vwarnc(...)
+          - pattern-not: $_($_, "...", ...)
       # format string in 3rd arg
       - patterns:
-        - pattern-either:
-          # printf family
-          - pattern: snprintf(...)
-          - pattern: vsnprintf(...)
-          - pattern: swprintf(...)
-          - pattern: vswprintf(...)
-          # err/warn family
-          - pattern: errc(...)
-          - pattern: verrc(...)
-        - pattern-not: $_($_, $_, "...", ...)
+          - pattern-either:
+              # printf family
+              - pattern: snprintf(...)
+              - pattern: vsnprintf(...)
+              - pattern: swprintf(...)
+              - pattern: vswprintf(...)
+              # err/warn family
+              - pattern: errc(...)
+              - pattern: verrc(...)
+          - pattern-not: $_($_, $_, "...", ...)

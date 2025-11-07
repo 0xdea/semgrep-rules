@@ -22,4 +22,4 @@ rules:
       - pattern: memset($_, sizeof(...), $_);
       - pattern: memset_explicit($_, $_, 0);
       - pattern: memset_explicit($_, $_, '\0');
-      - pattern: memset_explicit($_, sizeof(...), $_);    
+      - pattern: memset_explicit($_, sizeof(...), $_);

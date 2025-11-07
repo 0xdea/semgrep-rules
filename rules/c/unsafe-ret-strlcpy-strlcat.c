@@ -27,7 +27,7 @@ void append_string(char *string)
 	// use length to access buf
 }
 
-void qualify_username(char *username) 
+void qualify_username(char *username)
 {
 	char buf[1024];
 	size_t length;
@@ -35,10 +35,10 @@ void qualify_username(char *username)
 	// ruleid: raptor-unsafe-ret-strlcpy-strlcat
 	length = strlcpy(buf, username, sizeof(buf));
 	strncat(buf, "@127.0.0.1", sizeof(buf) - length);
-   	// ...
+	// ...
 }
 
-int main() 
+int main()
 {
 	printf("Hello, World!");
 	return 0;

@@ -23,127 +23,127 @@ rules:
     pattern-either:
       # buffer in 1st arg (buffer to buffer copy functions)
       - patterns:
-        - pattern: $FUN($BUF, ...)
-        - pattern-inside: |
-            $_ $BUF[$_];
-            ...
-        - pattern-not: $FUN($BUF, "...", ...)
-        - metavariable-pattern:
-            metavariable: $FUN
-            pattern-either:
-              # strcpy
-              - pattern: strcpy
-              - pattern: strncpy
-              - pattern: stpcpy
-              - pattern: stpncpy
-              - pattern: strlcpy
-              - pattern: strscpy
-              - pattern: wcscpy
-              - pattern: wcsncpy
-              - pattern: wcpcpy
-              - pattern: wcpncpy
-              - pattern: wcslcpy
-              - pattern: _mbscpy
-              - pattern: _mbsncpy
-              - pattern: _mbpcpy
-              - pattern: _mbpncpy
-              - pattern: _mbslcpy
-              # strcat
-              - pattern: strcat
-              - pattern: strncat
-              - pattern: strlcat
-              - pattern: wcscat
-              - pattern: wcsncat
-              - pattern: wcslcat
-              - pattern: _mbscat
-              - pattern: _mbsncat
-              - pattern: _mbslcat
-              # memcpy/memset
-              - pattern: memcpy
-              - pattern: memccpy
-              - pattern: memmove
-              - pattern: memset
-              - pattern: wmemcpy
-              - pattern: wmemmove
-              - pattern: wmemset
+          - pattern: $FUN($BUF, ...)
+          - pattern-inside: |
+              $_ $BUF[$_];
+              ...
+          - pattern-not: $FUN($BUF, "...", ...)
+          - metavariable-pattern:
+              metavariable: $FUN
+              pattern-either:
+                # strcpy
+                - pattern: strcpy
+                - pattern: strncpy
+                - pattern: stpcpy
+                - pattern: stpncpy
+                - pattern: strlcpy
+                - pattern: strscpy
+                - pattern: wcscpy
+                - pattern: wcsncpy
+                - pattern: wcpcpy
+                - pattern: wcpncpy
+                - pattern: wcslcpy
+                - pattern: _mbscpy
+                - pattern: _mbsncpy
+                - pattern: _mbpcpy
+                - pattern: _mbpncpy
+                - pattern: _mbslcpy
+                # strcat
+                - pattern: strcat
+                - pattern: strncat
+                - pattern: strlcat
+                - pattern: wcscat
+                - pattern: wcsncat
+                - pattern: wcslcat
+                - pattern: _mbscat
+                - pattern: _mbsncat
+                - pattern: _mbslcat
+                # memcpy/memset
+                - pattern: memcpy
+                - pattern: memccpy
+                - pattern: memmove
+                - pattern: memset
+                - pattern: wmemcpy
+                - pattern: wmemmove
+                - pattern: wmemset
       # buffer in 1st arg (sprintf functions)
       - patterns:
-        - pattern: $FUN($BUF, $FMT, ...)
-        - pattern-inside: |
-            $_ $BUF[$_];
-            ...
-        - metavariable-regex:
-            metavariable: $FMT
-            # some format string modifiers are not handled
-            regex: '(".*%l?s.*"|".*%S.*"|[a-zA-Z_][a-zA-Z0-9_]*)'
-        - metavariable-pattern:
-            metavariable: $FUN
-            pattern-either:
-              # sprintf
-              - pattern: sprintf
-              - pattern: vsprintf
+          - pattern: $FUN($BUF, $FMT, ...)
+          - pattern-inside: |
+              $_ $BUF[$_];
+              ...
+          - metavariable-regex:
+              metavariable: $FMT
+              # some format string modifiers are not handled
+              regex: '(".*%l?s.*"|".*%S.*"|[a-zA-Z_][a-zA-Z0-9_]*)'
+          - metavariable-pattern:
+              metavariable: $FUN
+              pattern-either:
+                # sprintf
+                - pattern: sprintf
+                - pattern: vsprintf
       # buffer in 1st arg (snprintf functions)
       - patterns:
-        - pattern: $FUN($BUF, $_, $FMT, ...)
-        - pattern-inside: |
-            $_ $BUF[$_];
-            ...
-        - metavariable-regex:
-            metavariable: $FMT
-            # some format string modifiers are not handled
-            regex: '(".*%l?s.*"|".*%S.*"|[a-zA-Z_][a-zA-Z0-9_]*)'
-        - metavariable-pattern:
-            metavariable: $FUN
-            pattern-either:
-              # sprintf
-              - pattern: snprintf
-              - pattern: vsnprintf
+          - pattern: $FUN($BUF, $_, $FMT, ...)
+          - pattern-inside: |
+              $_ $BUF[$_];
+              ...
+          - metavariable-regex:
+              metavariable: $FMT
+              # some format string modifiers are not handled
+              regex: '(".*%l?s.*"|".*%S.*"|[a-zA-Z_][a-zA-Z0-9_]*)'
+          - metavariable-pattern:
+              metavariable: $FUN
+              pattern-either:
+                # sprintf
+                - pattern: snprintf
+                - pattern: vsnprintf
       # buffer in 1st arg (other functions)
       - patterns:
-        - pattern: $FUN($BUF, ...)
-        - pattern-inside: |
-            $_ $BUF[$_];
-            ...
-        - metavariable-pattern:
-            metavariable: $FUN
-            pattern-either:
-              # get
-              - pattern: gets
-              - pattern: fgets
-              - pattern: getwd
-              - pattern: getcwd
-              # stdio
-              - pattern: fread
+          - pattern: $FUN($BUF, ...)
+          - pattern-inside: |
+              $_ $BUF[$_];
+              ...
+          - metavariable-pattern:
+              metavariable: $FUN
+              pattern-either:
+                # get
+                - pattern: gets
+                - pattern: fgets
+                - pattern: getwd
+                - pattern: getcwd
+                # stdio
+                - pattern: fread
       # buffer in 2nd arg (buffer to buffer copy functions)
       - patterns:
-        - pattern: $FUN($_, $BUF, ...)
-        - pattern-inside: |
-            $_ $BUF[$_];
-            ...
-        - pattern-not: $FUN("...", $BUF, ...)
-        - metavariable-pattern:
-            metavariable: $FUN
-            pattern-either:
-              # bcopy
-              - pattern: bcopy
+          - pattern: $FUN($_, $BUF, ...)
+          - pattern-inside: |
+              $_ $BUF[$_];
+              ...
+          - pattern-not: $FUN("...", $BUF, ...)
+          - metavariable-pattern:
+              metavariable: $FUN
+              pattern-either:
+                # bcopy
+                - pattern: bcopy
       # buffer in 2nd arg (other functions)
       - patterns:
-        - pattern: $FUN($_, $BUF, ...)
-        - pattern-inside: |
-            $_ $BUF[$_];
-            ...
-        - metavariable-pattern:
-            metavariable: $FUN
-            pattern-either:
-              # read
-              - pattern: read
-              - pattern: pread
-              # recv
-              - pattern: recv
-              - pattern: recvfrom
+          - pattern: $FUN($_, $BUF, ...)
+          - pattern-inside: |
+              $_ $BUF[$_];
+              ...
+          - metavariable-pattern:
+              metavariable: $FUN
+              pattern-either:
+                # read
+                - pattern: read
+                - pattern: pread
+                # recv
+                - pattern: recv
+                - pattern: recvfrom
       # assignment (too many false positives)
-        # - patterns:
-          # - pattern: $BUF[$_] = $_;
-          # - pattern-inside: |
-                # $_ $BUF[$_];
-                # ...
+      # - patterns:
+      # - pattern: $BUF[$_] = $_;
+      # - pattern-inside: |
+      # $_ $BUF[$_];
+      # ...

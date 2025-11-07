@@ -55,7 +55,7 @@ int good(char *username)
 	return 0;
 }
 
-int main() 
+int main()
 {
 	printf("Hello, World!");
 	return 0;

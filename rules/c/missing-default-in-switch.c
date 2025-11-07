@@ -12,7 +12,8 @@ void bad1(char *data)
 	int result = security_check(data);
 
 	// ruleid: raptor-missing-default-in-switch
-	switch (result) {
+	switch (result)
+	{
 	case FAIL:
 		printf("Security check failed!\n");
 		exit(1);
@@ -28,7 +29,8 @@ void good1(char *data)
 	int result = security_check(data);
 
 	// ok: raptor-missing-default-in-switch
-	switch (result) {
+	switch (result)
+	{
 	case FAIL:
 		printf("Security check failed!\n");
 		exit(1);
@@ -45,8 +47,9 @@ void good1(char *data)
 void bad2(Pkt packet)
 {
 	// ruleid: raptor-missing-default-in-switch
-	switch(packet->id) {
- 	case 1:
+	switch (packet->id)
+	{
+	case 1:
 		initAuth(packet);
 		break;
 	case 2:
@@ -60,24 +63,25 @@ void bad2(Pkt packet)
 	processPacket(packet);
 }
 
-struct object *init_object(int type) 
+struct object *init_object(int type)
 {
 	struct object *obj;
 
-	if (!(obj = (struct object *)malloc(sizeof(struct object)))) 
+	if (!(obj = (struct object *)malloc(sizeof(struct object))))
 		return NULL;
 
-   	obj->type = type;
+	obj->type = type;
 	// ruleid: raptor-missing-default-in-switch
-	switch (type) {
+	switch (type)
+	{
 	case OBJ_STR:
-		obj->un.str = alloc_string(); 
+		obj->un.str = alloc_string();
 		break;
 	case OBJ_INT:
-		obj->un.num = alloc_int(); 
+		obj->un.num = alloc_int();
 		break;
 	case OBJ_BOOL:
-		obj->un.bool = alloc_bool(); 
+		obj->un.bool = alloc_bool();
 		break;
 	}
 	return obj;
@@ -86,7 +90,8 @@ struct object *init_object(int type)
 void test()
 {
 	// ruleid: raptor-missing-default-in-switch
-	switch (foo() + x + y) {
+	switch (foo() + x + y)
+	{
 	case 1:
 		break;
 	case 2:
@@ -94,7 +99,8 @@ void test()
 	}
 
 	// ok: raptor-missing-default-in-switch
-	switch (foo() + x + y) {
+	switch (foo() + x + y)
+	{
 	case 1:
 		break;
 	default:
@@ -104,7 +110,8 @@ void test()
 	}
 
 	// ok: raptor-missing-default-in-switch
-	switch (foo() + x + y) {
+	switch (foo() + x + y)
+	{
 	case 1:
 		break;
 	case 2:
@@ -114,7 +121,7 @@ void test()
 	}
 }
 
-int main() 
+int main()
 {
 	printf("Hello, World!");
 	return 0;

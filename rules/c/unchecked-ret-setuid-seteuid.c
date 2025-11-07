@@ -12,7 +12,8 @@ void drop_priv_perm()
 int drop_priv_perm2()
 {
 	// ok: raptor-unchecked-ret-setuid-seteuid
-	if (!setuid(getuid())) {
+	if (!setuid(getuid()))
+	{
 		// ...
 		return 0;
 	}
@@ -34,7 +35,7 @@ int drop_priv_temp2()
 	// ...
 }
 
-int main() 
+int main()
 {
 	printf("Hello, World!");
 	return 0;

@@ -32,13 +32,15 @@ void test_func()
 	// ...
 
 	int count = 0;
-	for (count = 0; count < MAX_CONNECTIONS; count++) {
+	for (count = 0; count < MAX_CONNECTIONS; count++)
+	{
 
 		int clientlen = sizeof(struct sockaddr_in);
 		int clientsocket = accept(serversocket, (struct sockaddr *)&clientaddr, &clientlen);
 
-		if (clientsocket >= 0) {
-			clienthp = gethostbyaddr((char*) &clientaddr.sin_addr.s_addr, sizeof(clientaddr.sin_addr.s_addr), AF_INET);
+		if (clientsocket >= 0)
+		{
+			clienthp = gethostbyaddr((char *)&clientaddr.sin_addr.s_addr, sizeof(clientaddr.sin_addr.s_addr), AF_INET);
 			// ruleid: raptor-insecure-api-strcpy-stpcpy-strcat
 			strcpy(hostname, clienthp->h_name);
 			logOutput("Accepted client connection from host ", hostname);
@@ -53,27 +55,28 @@ void test_func()
 	// ...
 }
 
-char *read_command(int sockfd) 
+char *read_command(int sockfd)
 {
-	char username[32], buffer[1024]; 
+	char username[32], buffer[1024];
 	int n;
 
-	if ((n = read(sockfd, buffer, sizeof(buffer) - 1) <= 0)) 
+	if ((n = read(sockfd, buffer, sizeof(buffer) - 1) <= 0))
 		return NULL;
 	buffer[n] = '\0';
 
-	switch (buffer[0]) { 
+	switch (buffer[0])
+	{
 	case 'U':
 		// ruleid: raptor-insecure-api-strcpy-stpcpy-strcat
 		strcpy(username, &buffer[1]);
 		break;
-	// ... 
+		// ...
 	}
 }
 
-int process_email(char *email) 
+int process_email(char *email)
 {
-	char username[32], domain[128], *delim; 
+	char username[32], domain[128], *delim;
 	int c;
 
 	delim = strchr(email, '@');
@@ -81,20 +84,20 @@ int process_email(char *email)
 	if (!delim)
 		return -1;
 
-   	*delim++ = '\0';
+	*delim++ = '\0';
 
-	if (strlen(email) >= sizeof(username)) 
+	if (strlen(email) >= sizeof(username))
 		return -1;
 
 	// ruleid: raptor-insecure-api-strcpy-stpcpy-strcat
 	strcpy(username, email);
 
-	if (strlen(delim) >= sizeof(domain)) 
+	if (strlen(delim) >= sizeof(domain))
 		return -1;
 
 	// ruleid: raptor-insecure-api-strcpy-stpcpy-strcat
-	strcpy(domain, delim); 
-	
+	strcpy(domain, delim);
+
 	if (!strchr(delim, '.'))
 		// ruleid: raptor-insecure-api-strcpy-stpcpy-strcat
 		strcat(domain, default_domain);
@@ -102,28 +105,28 @@ int process_email(char *email)
 	// ...
 }
 
-void process_address(int sockfd) 
+void process_address(int sockfd)
 {
-	char username[256], domain[256], netbuf[256], *ptr; 
-	
+	char username[256], domain[256], netbuf[256], *ptr;
+
 	read_data(sockfd, netbuf, sizeof(netbuf));
 
 	ptr = strchr(netbuf, ':');
 
 	if (ptr)
-       		*ptr++ = '\0';
+		*ptr++ = '\0';
 
 	// ruleid: raptor-insecure-api-strcpy-stpcpy-strcat
-   	strcpy(username, netbuf);
+	strcpy(username, netbuf);
 
 	if (ptr)
 		// ruleid: raptor-insecure-api-strcpy-stpcpy-strcat
 		strcpy(domain, ptr);
 
-	// ... 
+	// ...
 }
 
-int main() 
+int main()
 {
 	printf("Hello, World!");
 	return 0;

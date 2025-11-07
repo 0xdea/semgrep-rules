@@ -37,7 +37,8 @@ int test2()
 void test3()
 {
 	// ...
-	if (!StartServiceCtrlDispatcher(steDispatchTable)) {
+	if (!StartServiceCtrlDispatcher(steDispatchTable))
+	{
 		char szString[1024];
 
 		// ruleid: raptor-incorrect-use-of-memset
@@ -47,7 +48,7 @@ void test3()
 	}
 }
 
-int main() 
+int main()
 {
 	printf("Hello, World!");
 	return 0;

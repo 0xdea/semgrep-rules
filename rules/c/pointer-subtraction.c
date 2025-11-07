@@ -16,17 +16,19 @@ void bad2(char *ptr1, char *ptr2)
 	char *tmp = (char *)malloc(ptr2 - ptr1);
 }
 
-struct node {
+struct node
+{
 	int data;
-	struct node* next;
+	struct node *next;
 };
 
-int size(struct node* head) 
+int size(struct node *head)
 {
 	struct node *current = head;
 	struct node *tail;
 
-	while (current != NULL) {
+	while (current != NULL)
+	{
 		tail = current;
 		current = current->next;
 	}
@@ -35,7 +37,7 @@ int size(struct node* head)
 	return tail - head;
 }
 
-int main() 
+int main()
 {
 	printf("Hello, World!");
 	return 0;

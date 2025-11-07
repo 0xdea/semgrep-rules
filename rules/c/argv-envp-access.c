@@ -3,7 +3,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char** argv)
+#define CMD_MAX 512
+
+int main(int argc, char **argv)
 {
 	char cmd[CMD_MAX] = "/usr/bin/cat ";
 	// ruleid: raptor-argv-envp-access

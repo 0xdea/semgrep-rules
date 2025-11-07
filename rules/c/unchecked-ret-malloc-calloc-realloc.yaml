@@ -20,8 +20,8 @@ rules:
       - cpp
     patterns:
       - pattern-either:
-        - pattern: $RET = $FUN(...)
-        - pattern: $RET = ($_)$FUN(...)
+          - pattern: $RET = $FUN(...)
+          - pattern: $RET = ($_)$FUN(...)
       - metavariable-pattern:
           metavariable: $FUN
           pattern-either:

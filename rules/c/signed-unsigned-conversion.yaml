@@ -19,9 +19,9 @@ rules:
       # matches because C/C++ integer promotions do not seem entirely
       # supported by Semgrep; this may generate false positives.
       # NOTE: some types (e.g. char, short, long), functions (e.g.,
-      # widechar and some alloc functions, custom functions), and use 
+      # widechar and some alloc functions, custom functions), and use
       # cases (e.g., comparisons) are not covered.
-      # NOTE: memcpy_s, memmove_s, memset_explicit and similar variants 
+      # NOTE: memcpy_s, memmove_s, memset_explicit and similar variants
       # are not covered.
     message: >-
       The software uses a signed primitive and performs a cast to an
@@ -44,33 +44,33 @@ rules:
       - pattern: (size_t $_) = <... (int $_) ...>
       - pattern: (size_t $_) = <... (off_t $_) ...>
       - patterns:
-        - pattern-either:
-          - pattern: |
-              unsigned int $FUN(...)
-              {
-              ...
-              return (int $_);
-              }
-          - pattern: |
-              unsigned $FUN(...)
-              {
-              ...
-              return (int $_);
-              }
-          - pattern: |
-              size_t $FUN(...)
-              {
-              ...
-              return (int $_);
-              }
-          - pattern: |
-              size_t $FUN(...)
-              {
-              ...
-              return (off_t $_);
-              }
-        # improve output readability
-        - focus-metavariable: $FUN
+          - pattern-either:
+              - pattern: |
+                  unsigned int $FUN(...)
+                  {
+                  ...
+                  return (int $_);
+                  }
+              - pattern: |
+                  unsigned $FUN(...)
+                  {
+                  ...
+                  return (int $_);
+                  }
+              - pattern: |
+                  size_t $FUN(...)
+                  {
+                  ...
+                  return (int $_);
+                  }
+              - pattern: |
+                  size_t $FUN(...)
+                  {
+                  ...
+                  return (off_t $_);
+                  }
+          # improve output readability
+          - focus-metavariable: $FUN
       - pattern: strncpy($_, $_, (int $_))
       - pattern: stpncpy($_, $_, (int $_))
       - pattern: strncat($_, $_, (int $_))
@@ -100,30 +100,30 @@ rules:
       - pattern: (int $_) = <... (size_t $_) ...>
       - pattern: (off_t $_) = <... (size_t $_) ...>
       - patterns:
-        - pattern-either:
-          - pattern: |
-              int $FUN(...)
-              {
-              ...
-              return (unsigned int $_);
-              }
-          - pattern: |
-              int $FUN(...)
-              {
-              ...
-              return (unsigned $_);
-              }
-          - pattern: |
-              int $FUN(...)
-              {
-              ...
-              return (size_t $_);
-              }
-          - pattern: |
-              off_t $FUN(...)
-              {
-              ...
-              return (size_t $_);
-              }
-        # improve output readability
-        - focus-metavariable: $FUN
+          - pattern-either:
+              - pattern: |
+                  int $FUN(...)
+                  {
+                  ...
+                  return (unsigned int $_);
+                  }
+              - pattern: |
+                  int $FUN(...)
+                  {
+                  ...
+                  return (unsigned $_);
+                  }
+              - pattern: |
+                  int $FUN(...)
+                  {
+                  ...
+                  return (size_t $_);
+                  }
+              - pattern: |
+                  off_t $FUN(...)
+                  {
+                  ...
+                  return (size_t $_);
+                  }
+          # improve output readability
+          - focus-metavariable: $FUN

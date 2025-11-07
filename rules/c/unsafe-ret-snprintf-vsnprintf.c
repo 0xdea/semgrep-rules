@@ -3,7 +3,7 @@
 #include <stdio.h>
 
 #define BUFSIZE 256
-#define SIZE(x, y) (sizeof(x) ((y) (x)))
+#define SIZE(x, y) (sizeof(x)((y)(x)))
 
 void copy_string(char *string)
 {
@@ -26,9 +26,9 @@ void bad()
 	ptr += snprintf(ptr, SIZE(buf, ptr), "pass: %s\n", password);
 }
 
-int log(int fd, char *fmt, ...) 
+int log(int fd, char *fmt, ...)
 {
-	char buffer[BUFSIZE]; 
+	char buffer[BUFSIZE];
 	int n;
 	va_list ap;
 
@@ -37,7 +37,7 @@ int log(int fd, char *fmt, ...)
 	// ruleid: raptor-unsafe-ret-snprintf-vsnprintf
 	n = vsnprintf(buffer, sizeof(buffer), fmt, ap);
 
-	if (n >= BUFSIZE - 2) 
+	if (n >= BUFSIZE - 2)
 		buffer[sizeof(buffer) - 2] = '\0';
 
 	strcat(buffer, "\n");
@@ -46,10 +46,10 @@ int log(int fd, char *fmt, ...)
 
 	write_log(fd, buffer, strlen(buffer));
 
-	return 0; 
+	return 0;
 }
 
-int main() 
+int main()
 {
 	printf("Hello, World!");
 	return 0;

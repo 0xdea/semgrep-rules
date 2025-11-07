@@ -23,25 +23,25 @@ rules:
       - cpp
     patterns:
       - pattern-either:
-        # generic use after free
-        - pattern: $PTR->$_
-        - pattern: $PTR[$_]
-        - pattern: (*$PTR)
-        # use after free in return
-        - pattern: return $PTR;
-        # use after free in function calls
-        - patterns:
-          - pattern-either:
-            - pattern: $FUN(..., <... $PTR ...>, ...)
-            - pattern: $FUN(..., <... $PTR->$_ ...>, ...)
-            - pattern: $FUN(..., <... $PTR[$_] ...>, ...)
-            - pattern: $FUN(..., <... (*$PTR) ...>, ...)
-            - pattern: $PTR->$FUN(...)
-          # filter out double free instances
-          - metavariable-pattern:
-              metavariable: $FUN
-              patterns:
-                - pattern-not: free
+          # generic use after free
+          - pattern: $PTR->$_
+          - pattern: $PTR[$_]
+          - pattern: (*$PTR)
+          # use after free in return
+          - pattern: return $PTR;
+          # use after free in function calls
+          - patterns:
+              - pattern-either:
+                  - pattern: $FUN(..., <... $PTR ...>, ...)
+                  - pattern: $FUN(..., <... $PTR->$_ ...>, ...)
+                  - pattern: $FUN(..., <... $PTR[$_] ...>, ...)
+                  - pattern: $FUN(..., <... (*$PTR) ...>, ...)
+                  - pattern: $PTR->$FUN(...)
+              # filter out double free instances
+              - metavariable-pattern:
+                  metavariable: $FUN
+                  patterns:
+                    - pattern-not: free
       - pattern-inside: free($PTR); ...
       - pattern-not-inside: |
           free($PTR);

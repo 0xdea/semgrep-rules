@@ -12,7 +12,7 @@ void open_tmpfile(char *filename)
 	// do something
 }
 
-int main() 
+int main()
 {
 	printf("Hello, World!");
 	return 0;

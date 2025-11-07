@@ -24,34 +24,34 @@ rules:
       # array access
       - pattern: $BUF[sizeof($BUF)] = $_
       - patterns:
-        - pattern: $BUF[$LEN] = $_
-        - pattern-inside: |
-            $_ $BUF[$LEN];
-            ...
+          - pattern: $BUF[$LEN] = $_
+          - pattern-inside: |
+              $_ $BUF[$LEN];
+              ...
       - patterns:
-        - pattern: |
-            *($BUF + $LEN) = $_
-        - pattern-inside: |
-            $_ $BUF[$LEN];
-            ...
+          - pattern: |
+              *($BUF + $LEN) = $_
+          - pattern-inside: |
+              $_ $BUF[$LEN];
+              ...
       # two-dimentional array access
       - patterns:
-        - pattern: $BUF[$X][$Y] = $_
-        - pattern-either:
-          - pattern-inside: |
-              $_ $BUF[$_][$Y];
-              ...
-          - pattern-inside: |
-              $_ $BUF[$X][$_];
-              ...
-      # suspicious loops
+          - pattern: $BUF[$X][$Y] = $_
+          - pattern-either:
+              - pattern-inside: |
+                  $_ $BUF[$_][$Y];
+                  ...
+              - pattern-inside: |
+                  $_ $BUF[$X][$_];
+                  ...
         # - pattern: for (<... $I = $NUM ...>; <... $I <= $LEN ...>; <... $I++ ...>) ...
         # - pattern: for (<... $I = $NUM ...>; <... $I <= $LEN ...>; <... ++$I ...>) ...
+      # suspicious loops
       # <... $_ $I = 0 ...> is not supported by Semgrep
-        # - pattern: for ($_ $I = $NUM; <... $I <= $LEN ...>; <... $I++ ...>) ...
-        # - pattern: for ($_ $I = $NUM; <... $I <= $LEN ...>; <... ++$I ...>) ...
-        # - pattern: while (<... $I <= $LEN ...>) ...
-        # - pattern: do ... while (<... $I <= $LEN ...>);
+      # - pattern: for ($_ $I = $NUM; <... $I <= $LEN ...>; <... $I++ ...>) ...
+      # - pattern: for ($_ $I = $NUM; <... $I <= $LEN ...>; <... ++$I ...>) ...
+      # - pattern: while (<... $I <= $LEN ...>) ...
+      # - pattern: do ... while (<... $I <= $LEN ...>);
       # strlen vs. sizeof
       - pattern: strlen($SRC) > sizeof($DST)
       - pattern: strlen($SRC) <= sizeof($DST)
@@ -59,11 +59,11 @@ rules:
       - pattern: sizeof($DST) >= strlen($SRC)
       # potential strncat misuse
       - patterns:
-        - pattern: strncat($_, $_, $LEN)
-        - metavariable-pattern:
-            metavariable: $LEN
-            patterns:
-              - pattern-not: $_ - 1
+          - pattern: strncat($_, $_, $LEN)
+          - metavariable-pattern:
+              metavariable: $LEN
+              patterns:
+                - pattern-not: $_ - 1
       # out-of-bound indexing: strlen($STR) con be 0 leading to a -1 index
       - pattern: $STR[strlen($STR) - 1]
       # no space allocated for NUL terminator

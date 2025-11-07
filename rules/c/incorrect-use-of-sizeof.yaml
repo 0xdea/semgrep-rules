@@ -8,7 +8,7 @@ rules:
         - https://github.com/struct/mms
         - https://dustri.org/b/playing-with-weggli.html
       confidence: MEDIUM
-      # NOTE: another relevant pattern would be sizeof('...'), but 
+      # NOTE: another relevant pattern would be sizeof('...'), but
       # unfortunately that's currently not supported by Semgrep.
       # NOTE: see also cpp.correctness.sizeof-*.
     message: >-
@@ -22,18 +22,18 @@ rules:
     pattern-either:
       # type-based patterns (some types are missing)
       - patterns:
-        - pattern: sizeof((char * $_))
-        - pattern-not: sizeof("...")
+          - pattern: sizeof((char * $_))
+          - pattern-not: sizeof("...")
       - pattern: sizeof((int * $_))
       - pattern: sizeof((float * $_))
       - pattern: sizeof((double * $_))
       # other patterns (function calls are not covered)
       - patterns:
-        - pattern: sizeof($PTR)
-        - pattern-either:
-          - pattern-inside: |
-              $_ * $PTR;
-              ...
-          - pattern-inside: |
-              $_ * $PTR = $_;
-              ...
+          - pattern: sizeof($PTR)
+          - pattern-either:
+              - pattern-inside: |
+                  $_ * $PTR;
+                  ...
+              - pattern-inside: |
+                  $_ * $PTR = $_;
+                  ...

@@ -22,32 +22,32 @@ rules:
       - pattern: (double * $_) - (double * $_)
       # other patterns (function calls are not covered)
       - patterns:
-        - pattern-either:
-          - pattern: $PTR1 - $PTR2
-          - pattern: $PTR2 - $PTR1
-        # NOTE: some possibilities are missing
-        - pattern-either:
-          - pattern-inside: |
-              $_ * $PTR1;
-              $_ * $PTR2;
-              ...
-          - pattern-inside: |
-              $_ * $PTR1 = $_;
-              $_ * $PTR2 = $_;
-              ...
-          - pattern-inside: |
-              $_ * $PTR1 = $_;
-              $_ * $PTR2;
-              ...
-          - pattern-inside: |
-              $_ * $PTR1;
-              $_ * $PTR2 = $_;
-              ...
-          - pattern-inside: |
-              $_ * $PTR3 = $PTR1;
-              $_ * $PTR2;
-              ...
-          - pattern-inside: |
-              $_ * $PTR2;
-              $_ * $PTR3 = $PTR1;
-              ...
+          - pattern-either:
+              - pattern: $PTR1 - $PTR2
+              - pattern: $PTR2 - $PTR1
+          # NOTE: some possibilities are missing
+          - pattern-either:
+              - pattern-inside: |
+                  $_ * $PTR1;
+                  $_ * $PTR2;
+                  ...
+              - pattern-inside: |
+                  $_ * $PTR1 = $_;
+                  $_ * $PTR2 = $_;
+                  ...
+              - pattern-inside: |
+                  $_ * $PTR1 = $_;
+                  $_ * $PTR2;
+                  ...
+              - pattern-inside: |
+                  $_ * $PTR1;
+                  $_ * $PTR2 = $_;
+                  ...
+              - pattern-inside: |
+                  $_ * $PTR3 = $PTR1;
+                  $_ * $PTR2;
+                  ...
+              - pattern-inside: |
+                  $_ * $PTR2;
+                  $_ * $PTR3 = $PTR1;
+                  ...

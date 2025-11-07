@@ -20,11 +20,11 @@ rules:
       - cpp
     patterns:
       - pattern-either:
-        - pattern: $FUN($_, $REGEX, $_)
-        - pattern: |
-            $STRING = $REGEX;
-            ...
-            $FUN($_, $STRING, $_);
+          - pattern: $FUN($_, $REGEX, $_)
+          - pattern: |
+              $STRING = $REGEX;
+              ...
+              $FUN($_, $STRING, $_);
       - metavariable-pattern:
           metavariable: $FUN
           pattern-either:

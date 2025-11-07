@@ -7,19 +7,20 @@ void bad1()
 {
 	BarObj *ptr = new BarObj()
 
-	// ruleid: raptor-mismatched-memory-management-cpp
-	free(ptr);
+		// ruleid: raptor-mismatched-memory-management-cpp
+		free(ptr);
 }
 
 void good1()
 {
 	BarObj *ptr = new BarObj()
 
-	// ok: raptor-mismatched-memory-management-cpp
-	delete ptr;
+		// ok: raptor-mismatched-memory-management-cpp
+		delete ptr;
 }
 
-class A {
+class A
+{
 	void bad2();
 	void good2();
 };
@@ -27,7 +28,7 @@ class A {
 void A::bad2()
 {
 	int *ptr;
-	ptr = (int*)malloc(sizeof(int));
+	ptr = (int *)malloc(sizeof(int));
 
 	// ruleid: raptor-mismatched-memory-management-cpp
 	delete ptr;
@@ -36,22 +37,25 @@ void A::bad2()
 void A::good2()
 {
 	int *ptr;
-	ptr = (int*)malloc(sizeof(int));
+	ptr = (int *)malloc(sizeof(int));
 
 	// ok: raptor-mismatched-memory-management-cpp
 	free(ptr);
 }
 
-class B {
+class B
+{
 	void bad3(bool);
 	void good3();
 };
 
-void B::bad3(bool heap) {
-	int localArray[2] = { 11,22 };
+void B::bad3(bool heap)
+{
+	int localArray[2] = {11, 22};
 	int *p = localArray;
 
-	if (heap) {
+	if (heap)
+	{
 		p = new int[2];
 	}
 
@@ -59,8 +63,9 @@ void B::bad3(bool heap) {
 	delete[] p;
 }
 
-void B::good3() {
-	int localArray[2] = { 11,22 };
+void B::good3()
+{
+	int localArray[2] = {11, 22};
 	int *p = localArray;
 
 	p = new (std::nothrow) int[2];
@@ -69,7 +74,7 @@ void B::good3() {
 	delete[] p;
 }
 
-int main() 
+int main()
 {
 	printf("Hello, World!");
 	return 0;

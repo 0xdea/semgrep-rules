@@ -18,32 +18,32 @@ rules:
       - cpp
     patterns:
       - pattern-either:
-        # format string in 1st arg
-        - pattern: printf($FMT, ...)
-        - pattern: vprintf($FMT, ...)
-        - pattern: wprintf($FMT, ...)
-        - pattern: vwprintf($FMT, ...)
-        - pattern: vcprintf($FMT, ...)
-        - pattern: vcwprintf($FMT, ...)
-        - pattern: vscprintf($FMT, ...)
-        - pattern: vscwprintf($FMT, ...)
-        # format string in 2nd arg
-        - pattern: fprintf($_, $FMT, ...)
-        - pattern: vfprintf($_, $FMT, ...)
-        - pattern: fwprintf($_, $FMT, ...)
-        - pattern: vfwprintf($_, $FMT, ...)
-        - pattern: sprintf($_, $FMT, ...)
-        - pattern: vsprintf($_, $FMT, ...)
-        - pattern: asprintf($_, $FMT, ...)
-        - pattern: vasprintf($_, $FMT, ...)
-        - pattern: dprintf($_, $FMT, ...)
-        - pattern: vdprintf($_, $FMT, ...)
-        - pattern: wsprintf($_, $FMT, ...)
-        # format string in 3rd arg
-        - pattern: snprintf($_, $_, $FMT, ...)
-        - pattern: vsnprintf($_, $_, $FMT, ...)
-        - pattern: swprintf($_, $_, $FMT, ...)
-        - pattern: vswprintf($_, $_, $FMT, ...)
+          # format string in 1st arg
+          - pattern: printf($FMT, ...)
+          - pattern: vprintf($FMT, ...)
+          - pattern: wprintf($FMT, ...)
+          - pattern: vwprintf($FMT, ...)
+          - pattern: vcprintf($FMT, ...)
+          - pattern: vcwprintf($FMT, ...)
+          - pattern: vscprintf($FMT, ...)
+          - pattern: vscwprintf($FMT, ...)
+          # format string in 2nd arg
+          - pattern: fprintf($_, $FMT, ...)
+          - pattern: vfprintf($_, $FMT, ...)
+          - pattern: fwprintf($_, $FMT, ...)
+          - pattern: vfwprintf($_, $FMT, ...)
+          - pattern: sprintf($_, $FMT, ...)
+          - pattern: vsprintf($_, $FMT, ...)
+          - pattern: asprintf($_, $FMT, ...)
+          - pattern: vasprintf($_, $FMT, ...)
+          - pattern: dprintf($_, $FMT, ...)
+          - pattern: vdprintf($_, $FMT, ...)
+          - pattern: wsprintf($_, $FMT, ...)
+          # format string in 3rd arg
+          - pattern: snprintf($_, $_, $FMT, ...)
+          - pattern: vsnprintf($_, $_, $FMT, ...)
+          - pattern: swprintf($_, $_, $FMT, ...)
+          - pattern: vswprintf($_, $_, $FMT, ...)
       - metavariable-regex:
           metavariable: $FMT
           # NOTE: some format string modifiers are not handled

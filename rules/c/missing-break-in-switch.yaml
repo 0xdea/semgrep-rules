@@ -50,6 +50,6 @@ rules:
       # - pattern-not: |
       #     switch ($VAR) { case $VAL1: ... throw $_; case $VAL2: ... }
       # - pattern-not: |
-      #     switch ($VAR) { case $VAL1: throw $_; case $VAL2: ... }      
+      #     switch ($VAR) { case $VAL1: throw $_; case $VAL2: ... }
       # improve output readability
       - focus-metavariable: $VAR

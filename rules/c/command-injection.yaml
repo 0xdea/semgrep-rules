@@ -20,6 +20,6 @@ rules:
       - cpp
     patterns:
       - pattern-either:
-        - pattern: system(...)
-        - pattern: popen(...)
+          - pattern: system(...)
+          - pattern: popen(...)
       - pattern-not: $_("...", ...)

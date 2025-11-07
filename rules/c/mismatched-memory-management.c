@@ -5,7 +5,7 @@
 
 void bad1()
 {
-	int localArray[2] = { 11, 22 };
+	int localArray[2] = {11, 22};
 	int *p = localArray;
 
 	// ruleid: raptor-mismatched-memory-management
@@ -15,13 +15,13 @@ void bad1()
 void good1()
 {
 	int *ptr;
-	ptr = (int*)malloc(sizeof(int));
+	ptr = (int *)malloc(sizeof(int));
 
 	// ok: raptor-mismatched-memory-management
 	free(ptr);
 }
 
-int main() 
+int main()
 {
 	printf("Hello, World!");
 	return 0;

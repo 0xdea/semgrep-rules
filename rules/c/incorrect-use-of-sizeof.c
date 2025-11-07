@@ -33,37 +33,39 @@ void good2()
 {
 	char buf[256];
 	size_t size;
-	
+
 	// ok: raptor-incorrect-use-of-sizeof
 	size = sizeof(buf);
 }
 
 void bad3()
 {
-	AnObj *o = (AnObj *) malloc(sizeof(AnObj));
+	AnObj *o = (AnObj *)malloc(sizeof(AnObj));
 	// ruleid: raptor-incorrect-use-of-sizeof
 	memset(o, 0x0, sizeof(o));
 }
 
-char *read_username(int sockfd) 
+char *read_username(int sockfd)
 {
-	char *buffer, *style, userstring[1024]; 
+	char *buffer, *style, userstring[1024];
 	int i;
 
 	buffer = (char *)malloc(1024);
 
-	if (!buffer) {
-		error("buffer allocation failed: %m"); 
+	if (!buffer)
+	{
+		error("buffer allocation failed: %m");
 		return NULL;
 	}
 
-	if (read(sockfd, userstring, sizeof(userstring) - 1) <= 0) { 
+	if (read(sockfd, userstring, sizeof(userstring) - 1) <= 0)
+	{
 		free(buffer);
 		error("read failure: %m");
 		return NULL;
 	}
 	userstring[sizeof(userstring) - 1] = '\0';
-	style = strchr(userstring, ':'); 
+	style = strchr(userstring, ':');
 
 	if (style)
 		*style++ = '\0';
@@ -79,7 +81,7 @@ char *read_username(int sockfd)
 char *username = "admin";
 char *pass = "password";
 
-int AuthenticateUser(char *inUser, char *inPass) 
+int AuthenticateUser(char *inUser, char *inPass)
 {
 	// ruleid: raptor-incorrect-use-of-sizeof
 	printf("Sizeof username = %d\n", sizeof(username));
@@ -87,32 +89,40 @@ int AuthenticateUser(char *inUser, char *inPass)
 	printf("Sizeof pass = %d\n", sizeof(pass));
 
 	// ruleid: raptor-incorrect-use-of-sizeof
-	if (strncmp(username, inUser, sizeof(username))) {
+	if (strncmp(username, inUser, sizeof(username)))
+	{
 		printf("Auth failure of username using sizeof\n");
-		return(AUTH_FAIL);
+		return (AUTH_FAIL);
 	}
 
 	// ruleid: raptor-incorrect-use-of-sizeof
-	if (!strncmp(pass, inPass, sizeof(pass))) {
+	if (!strncmp(pass, inPass, sizeof(pass)))
+	{
 		printf("Auth success of password using sizeof\n");
-		return(AUTH_SUCCESS);
-	} else {
+		return (AUTH_SUCCESS);
+	}
+	else
+	{
 		printf("Auth fail of password using sizeof\n");
-		return(AUTH_FAIL);
-		}
+		return (AUTH_FAIL);
+	}
 }
 
-int main (int argc, char **argv)
+int main(int argc, char **argv)
 {
 	int authResult;
 
-	if (argc < 3) {
+	if (argc < 3)
+	{
 		ExitError("Usage: Provide a username and password");
 	}
 	authResult = AuthenticateUser(argv[1], argv[2]);
-	if (authResult != AUTH_SUCCESS) {
+	if (authResult != AUTH_SUCCESS)
+	{
 		ExitError("Authentication failed");
-	} else {
+	}
+	else
+	{
 		DoAuthenticatedTask(argv[1]);
 	}
 	return 0;

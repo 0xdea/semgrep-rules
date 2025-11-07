@@ -20,13 +20,13 @@ rules:
       - cpp
     patterns:
       - pattern-either:
-        # signed and unsigned short
-        - pattern: (short $_) = $FUN(...);
-        - pattern: (short int $_) = $FUN(...);
-        - pattern: (unsigned short $_) = $FUN(...);
-        - pattern: (unsigned short int $_) = $FUN(...);
+          # signed and unsigned short
+          - pattern: (short $_) = $FUN(...);
+          - pattern: (short int $_) = $FUN(...);
+          - pattern: (unsigned short $_) = $FUN(...);
+          - pattern: (unsigned short int $_) = $FUN(...);
         # signed int
-          # - pattern: (int $LEN) = $FUN(...);
+        # - pattern: (int $LEN) = $FUN(...);
       - metavariable-pattern:
           metavariable: $FUN
           pattern-either:

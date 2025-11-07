@@ -36,19 +36,22 @@ A collection of my Semgrep rules to facilitate vulnerability research.
 3. To use these rules, run:
 
 ```sh
-# high priority scan
+# high priority scan (quick wins)
 semgrep --severity ERROR --config semgrep-rules/rules /path/to/source
-# high and medium priority scan
+# high and medium priority scan (recommended)
 semgrep --severity ERROR --severity WARNING --config semgrep-rules/rules /path/to/source
-# full scan
+# full scan (might include marginal findings and more false positives)
 semgrep --config semgrep-rules/rules /path/to/source
 ```
 
-For a better streamlined experience, I recommend saving semgrep scan output in [SARIF](https://sarifweb.azurewebsites.net/) format and using [SARIF Explorer](https://marketplace.visualstudio.com/items?itemName=trailofbits.sarif-explorer) in [VS code](https://code.visualstudio.com/):
+For a better streamlined experience, I recommend saving Semgrep scan output in [SARIF](https://sarifweb.azurewebsites.net/) format and using [SARIF Explorer](https://marketplace.visualstudio.com/items?itemName=trailofbits.sarif-explorer) in [VS code](https://code.visualstudio.com/):
 
 ```sh
 semgrep --sarif --sarif-output=/path/to/source/SEMGREP.sarif --config semgrep-rules/rules /path/to/source
+code /path/to/source # then open the SEMGREP.sarif file in VS code with SARIF Explorer 
 ```
+
+See also the included SARIF output [example](https://github.com/0xdea/semgrep-rules/tree/main/sarif-example).
 
 ## Compatibility
 
@@ -56,11 +59,12 @@ semgrep --sarif --sarif-output=/path/to/source/SEMGREP.sarif --config semgrep-ru
 
 ## TODO
 
-* Do some additional benchmarking against real-world code to spot slow rules in need of optimization.
+* Do some additional benchmarking against real-world code to spot slow rules in need of optimization (`--time`).
+* Improve overall accuracy and reduce false positives, without missing potential hot spots in code.
 * Add new checks in the existing rules and add new rules where needed.
+* Implement dedicated **kernel rules** (Linux, BSD, macOS, etc.).
 * Port the rules to the [Semgrep pro engine](https://semgrep.dev/docs/semgrep-code/semgrep-pro-engine-intro), which allows for **inter-file** and **inter-function** analysis.
 * Implement [taint mode](https://semgrep.dev/docs/writing-rules/data-flow/taint-mode/overview) where suitable to improve rules with **dataflow analysis**.
-* Implement dedicated **kernel rules** (Linux, BSD, macOS, etc.).
 
 ## Rules
 

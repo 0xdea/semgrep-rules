@@ -24,6 +24,7 @@ A collection of my Semgrep rules to facilitate vulnerability research.
 * <https://hnsecurity.it/blog/semgrep-ruleset-for-c-c-vulnerability-research>
 * <https://hnsecurity.it/blog/automating-binary-vulnerability-discovery-with-ghidra-and-semgrep>
 * <https://hnsecurity.it/blog/big-update-to-my-semgrep-c-cpp-ruleset>
+* <https://hnsecurity.it/blog/streamlining-vulnerability-research-with-the-idalib-rust-bindings-for-ida-9-2/>
 
 ## See also
 
@@ -59,7 +60,7 @@ See also the included SARIF output [example](https://github.com/0xdea/semgrep-ru
 
 ## TODO
 
-* Do some additional benchmarking against real-world code to spot slow rules in need of optimization (`--time`).
+* Additional `--time` benchmarking against real-world code to spot slow rules in need of optimization.
 * Improve overall accuracy and reduce false positives, without missing potential hot spots in code.
 * Add new checks in the existing rules and add new rules where needed.
 * Implement dedicated **kernel rules** (Linux, BSD, macOS, etc.).

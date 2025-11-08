@@ -11,6 +11,11 @@ rules:
       confidence: MEDIUM
       # NOTE: goto, try/catch, sem/mutex, new/delete, static_cast/reinterpret_cast
       # are not covered.
+      # NOTE: consider excluding some matches for strncpy, snprintf, and similar 
+      # functions where the length parameter is known at compile time (see memcpy 
+      # below for an example). See also another possible approach described at
+      # https://cc-sw.com/semgrep-guide-for-a-security-engineer-part-6-of-6/.
+      # Beware of possible false negatives, though.
       # NOTE: see also https://semgrep.dev/r?lang=C
     message: >-
       Locate all calls to interesting and potentially insecure API
@@ -84,10 +89,17 @@ rules:
               regex: '(?i)^\w*(get|set|put|unset)env\s*$'
       # memcpy
       - patterns:
-          - pattern: $FUN(...)
+          - pattern: $FUN($_, $_, $LEN, ...)
           - metavariable-regex:
               metavariable: $FUN
               regex: '(?i)^\w*memc?cpy(_s)?\s*$|^\w*memmove(_s)?\s*$|^\w*bcopy\s*$'
+          # exclude length known at compile time (sizeof macro)
+          - pattern-not: $FUN($_, $_, sizeof(...), ...)
+          # - pattern-not: $FUN($_, $_, <... sizeof(...) ...>, ...)
+          # exclude length known at compile time (numeric literal)
+          - metavariable-regex:
+              metavariable: $LEN
+              regex: '^(?!\s*(?:0[xX][0-9A-Fa-f]+|0[bB][01]+|0[0-7]*|[1-9][0-9]*)[uUlL]*\s*$).+'
       # memset
       # - patterns:
       # - pattern: $FUN(...)

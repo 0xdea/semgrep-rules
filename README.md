@@ -156,3 +156,4 @@ See also the included SARIF output [example](sarif-example).
 * Implement dedicated **kernel rules** (Linux, BSD, macOS, etc.).
 * Port the rules to the [Semgrep pro engine](https://semgrep.dev/docs/semgrep-code/semgrep-pro-engine-intro), which allows for **inter-file** and **inter-function** analysis.
 * Implement [taint mode](https://semgrep.dev/docs/writing-rules/data-flow/taint-mode/overview) where suitable to improve rules with **dataflow analysis**.
+* Investigate [symbolic propagation](https://semgrep.dev/docs/writing-rules/experiments/symbolic-propagation) that might be useful to reduce some **false positives**.

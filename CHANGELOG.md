@@ -37,8 +37,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * Historical, battle-tested stable release.
 
-[unreleased]: https://github.com/0xdea/augur/compare/v1.0.0...HEAD
+[unreleased]: https://github.com/0xdea/semgrep-rules/compare/v1.0.0...HEAD
 
-[2.0.0]: https://github.com/0xdea/augur/compare/v1.0.0...v2.0.0
+[2.0.0]: https://github.com/0xdea/semgrep-rules/compare/v1.0.0...v2.0.0
 
 [1.0.0]: https://github.com/0xdea/semgrep-rules/releases/tag/v1.0.0

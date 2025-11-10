@@ -38,12 +38,14 @@ A collection of my Semgrep rules to facilitate vulnerability research.
 
 ```sh
 # high priority scan (quick wins)
-semgrep --severity ERROR --config semgrep-rules/rules /path/to/source
+semgrep --severity ERROR [--no-git-ignore] --config semgrep-rules/rules /path/to/source
 # high and medium priority scan (recommended)
-semgrep --severity ERROR --severity WARNING --config semgrep-rules/rules /path/to/source
+semgrep --severity ERROR --severity WARNING [--no-git-ignore] --config semgrep-rules/rules /path/to/source
 # full scan (might include marginal findings and more false positives)
-semgrep --config semgrep-rules/rules /path/to/source
+semgrep [--no-git-ignore] --config semgrep-rules/rules /path/to/source
 ```
+
+Specify the `--no-git-ignore` command-line switch to scan files regardless of git tracking status or `.gitignore` rules.
 
 For a better streamlined experience, I recommend saving Semgrep scan output in [SARIF](https://sarifweb.azurewebsites.net/) format and using [SARIF Explorer](https://marketplace.visualstudio.com/items?itemName=trailofbits.sarif-explorer) in [VS code](https://code.visualstudio.com/):
 

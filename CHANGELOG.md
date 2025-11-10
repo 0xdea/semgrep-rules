@@ -1,0 +1,44 @@
+# Changelog for semgrep-rules
+
+All notable changes to this project are documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+### Added
+
+* Add `high-entropy-assignment` and `regex-dos` rules that use the new [metavariable-analysis](https://semgrep.dev/docs/writing-rules/metavariable-analysis) feature.
+* Add detections for the `__iso99_*scanf` function family (`format-string-bugs`, `insecure-api-scanf`, `unchecked-ret-scanf`).
+* Add detections for the `_mb*` and `*_s/*_l` function families (`insecure-api-strcpy-stpcpy-strcat`, `interesting-api-calls`, `unsafe-ret-strlcpy-strlcat`, `unsafe-strlen`, `unterminated-string-strncpy-stpncpy`, `write-into-stack-buffer`).
+* Add some code samples (`integer-wraparound`).
+* Add SARIF output example as [requested](https://github.com/0xdea/semgrep-rules/issues/10).
+* Add GitHub action to automate rule validation and testing.
+
+### Changed
+
+* Exclude length known at compile time from `memcpy` matches (`interesting-api-calls`).
+* Refactor some rules to include other variants and improve readability and scalability (`unsafe-ret-snprintf-vsnprintf`, `unsafe-ret-strlcpy-strlcat`, `unsafe-strlen`).
+* Implement case-insensitive matching (`interesting-api-calls`).
+* Reduce false positives (`format-string-bugs`).
+* Use the new [anonymous metavariables](https://semgrep.dev/products/product-updates/anonymous-metavariables/) feature where suitable.
+* Optimize some patterns (`integer-wraparound`, `mismatched-memory-management`, `mismatched-memory-management-cpp`, `off-by-one`, `write-into-stack-buffer`, `missing-return`).
+* Move rules into a dedicated folder.
+* Improve documentation and code formatting.
+
+### Removed
+
+* Remove non-existent API functions (`insecure-api-strcpy-stpcpy-strcat`, `unterminated-string-strncpy-stpncpy`).
+
+### Fixed
+
+## [1.0.0] - 2025-09-26
+
+* Historical, battle-tested stable release.
+
+[unreleased]: https://github.com/0xdea/augur/compare/v1.0.0...HEAD
+
+[2.0.0]: https://github.com/0xdea/augur/compare/v1.0.0...v2.0.0
+
+[1.0.0]: https://github.com/0xdea/semgrep-rules/releases/tag/v1.0.0

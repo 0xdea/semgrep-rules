@@ -67,6 +67,10 @@ See also the included SARIF output [example](sarif-example).
 * Port the rules to the [Semgrep pro engine](https://semgrep.dev/docs/semgrep-code/semgrep-pro-engine-intro), which allows for **inter-file** and **inter-function** analysis.
 * Implement [taint mode](https://semgrep.dev/docs/writing-rules/data-flow/taint-mode/overview) where suitable to improve rules with **dataflow analysis**.
 
+## Changelog
+
+* [CHANGELOG.md](CHANGELOG.md)
+
 ## Rules
 
 ### C/C++

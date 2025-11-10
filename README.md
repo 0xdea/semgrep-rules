@@ -144,6 +144,10 @@ See also the included SARIF output [example](sarif-example).
 
 * [**bad-words**](rules/generic/bad-words.yaml). Keywords and comments that suggest the presence of bugs.
 
+## Changelog
+
+* [CHANGELOG.md](CHANGELOG.md)
+
 ## TODO
 
 * Additional `--time` **benchmarking** against real-world code to spot slow rules in need of optimization.
@@ -152,7 +156,3 @@ See also the included SARIF output [example](sarif-example).
 * Implement dedicated **kernel rules** (Linux, BSD, macOS, etc.).
 * Port the rules to the [Semgrep pro engine](https://semgrep.dev/docs/semgrep-code/semgrep-pro-engine-intro), which allows for **inter-file** and **inter-function** analysis.
 * Implement [taint mode](https://semgrep.dev/docs/writing-rules/data-flow/taint-mode/overview) where suitable to improve rules with **dataflow analysis**.
-
-## Changelog
-
-* [CHANGELOG.md](CHANGELOG.md)

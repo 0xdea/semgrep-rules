@@ -12,6 +12,8 @@ rules:
       # NOTE: generic va_list matching for custom functions is not covered.
       # NOTE: dprintf() in C++ has a different signature; this rule may cause 
       # false positives with it.
+      # NOTE: #define format specifiers are not excluded due to Semgrep 
+      # limitations, perhaps we could implement this with symbolic propagation?
       # NOTE: see also cpp.format-string.*.
     message: >-
       The software uses a function that accepts a format string as an argument,

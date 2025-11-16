@@ -51,7 +51,7 @@ rules:
           - metavariable-regex:
               metavariable: $FUN
               regex: '(?i)^\w*strtok(_s)?(_l)?\s*$|^\w*(wc|mb)stok(_s)?(_l)?\s*$'
-      # strlen
+      # strlen (too noisy)
       # - patterns:
       # - pattern: $FUN(...)
       # - metavariable-regex:
@@ -63,7 +63,7 @@ rules:
           - metavariable-regex:
               metavariable: $FUN
               regex: '(?i)^\w*s\w?printf(_s)?(_l)?\w*\s*$'
-      # more printf
+      # more printf (should be covered by format-string-bugs rule)
       # - patterns:
       # - pattern: $FUN(...)
       # - metavariable-regex:
@@ -100,7 +100,7 @@ rules:
           - metavariable-regex:
               metavariable: $LEN
               regex: '^(?!\s*(?:0[xX][0-9A-Fa-f]+|0[bB][01]+|0[0-7]*|[1-9][0-9]*)[uUlL]*\s*$).+'
-      # memset
+      # memset (too noisy, likely irrelevant)
       # - patterns:
       # - pattern: $FUN(...)
       # - metavariable-regex:
@@ -112,7 +112,7 @@ rules:
           - metavariable-regex:
               metavariable: $FUN
               regex: '(?i)^\w*alloc(a|f)?\s*$|^\w*alloc_?array\s*$'
-      # free
+      # free (too noisy)
       # - patterns:
       # - pattern: $FUN(...)
       # - metavariable-regex:
@@ -130,7 +130,7 @@ rules:
           - metavariable-regex:
               metavariable: $FUN
               regex: '(?i)^\w*open(at)?(64)?\s*$|^\w*pipe\s*$|^\w*read\s*$|^\w*recv(from)?\s*$'
-      # more i/o
+      # more i/o (too noisy)
       # - patterns:
       # - pattern: $FUN(...)
       # - metavariable-regex:
@@ -142,7 +142,7 @@ rules:
           - metavariable-regex:
               metavariable: $FUN
               regex: '(?i)^\w*fork\s*$'
-      # more proc
+      # more proc (too noisy)
       # - patterns:
       # - pattern: $FUN(...)
       # - metavariable-regex:
@@ -172,13 +172,13 @@ rules:
           - metavariable-regex:
               metavariable: $FUN
               regex: '(?i)^\w*locale\s*$|^\w*(make|split)path\s*$'
-      # signals
+      # signals (too noisy)
       # - patterns:
       # - pattern: $FUN(...)
       # - metavariable-regex:
       # metavariable: $FUN
       # regex: '(?i)^\w*kill\s*$|^\w*signal\s*$|^\w*sigaction\s*$|^\w*(set|long)jmp\s*$'
-      # time
+      # time (too noisy)
       # - patterns:
       # - pattern: $FUN(...)
       # - metavariable-regex:
@@ -190,18 +190,18 @@ rules:
           - metavariable-regex:
               metavariable: $FUN
               regex: '(?i)^\w*copy_(from|to)_user\s*$|^\w*(get|put)_user\s*$|^\w*copy(in|out)\s*$'
-      # more kernel
+      # more kernel (too noisy)
       # - patterns:
       # - pattern: $FUN(...)
       # - metavariable-regex:
       # metavariable: $FUN
       # regex: '(?i)^\w*cpu_to_(b|l)e(16|32|64)(p|s)?\s*$|^\w*(b|l)e(16|32|64)(p|s)?_to_cpu\s*$|^\w*xb_get_(32|64|bytes|word_array|bitmap)\s*$'
-      # assert
+      # assert (should be covered by suspicious-assert rule)
       # - patterns:
       # - pattern: $FUN(...)
       # - metavariable-regex:
       # metavariable: $FUN
       # regex: '(?i)^\w*assert\w*\s*$'
-      # switch
+      # switch (too noisy)
       # - pattern: |
       # switch ($VAR) { }

@@ -23,17 +23,20 @@ rules:
       - cpp
     pattern-either:
       # char: assignments
-      - pattern: (char $_) = <... (short $_) ...>
-      - pattern: (char $_) = <... (short int $_) ...>
-      - pattern: (char $_) = <... (unsigned short $_) ...>
-      - pattern: (char $_) = <... (unsigned short int $_) ...>
-      - pattern: (char $_) = <... (int $_) ...>
-      - pattern: (char $_) = <... (unsigned $_) ...>
-      - pattern: (char $_) = <... (unsigned int $_) ...>
-      - pattern: (char $_) = <... (long $_) ...>
-      - pattern: (char $_) = <... (long int $_) ...>
-      - pattern: (char $_) = <... (unsigned long $_) ...>
-      - pattern: (char $_) = <... (unsigned long int $_) ...>
+      - patterns:
+          - pattern-either:
+              - pattern: (char $_) = <... (short $_) ...>
+              - pattern: (char $_) = <... (short int $_) ...>
+              - pattern: (char $_) = <... (unsigned short $_) ...>
+              - pattern: (char $_) = <... (unsigned short int $_) ...>
+              - pattern: (char $_) = <... (int $_) ...>
+              - pattern: (char $_) = <... (unsigned $_) ...>
+              - pattern: (char $_) = <... (unsigned int $_) ...>
+              - pattern: (char $_) = <... (long $_) ...>
+              - pattern: (char $_) = <... (long int $_) ...>
+              - pattern: (char $_) = <... (unsigned long $_) ...>
+              - pattern: (char $_) = <... (unsigned long int $_) ...>
+          - pattern-not: $_ = 0
       # char: function return
       - patterns:
           - pattern-either:
@@ -58,22 +61,25 @@ rules:
           # improve output readability
           - focus-metavariable: $FUN
       # short: assignments
-      - pattern: (short $_) = <... (unsigned short $_) ...>
-      - pattern: (short int $_) = <... (unsigned short int $_) ...>
-      - pattern: (short $_) = <... (int $_) ...>
-      - pattern: (short $_) = <... (unsigned $_) ...>
-      - pattern: (short int $_) = <... (unsigned int $_) ...>
-      - pattern: (short $_) = <... (long $_) ...>
-      - pattern: (short int $_) = <... (long int $_) ...>
-      - pattern: (short $_) = <... (unsigned long $_) ...>
-      - pattern: (short int $_) = <... (unsigned long int $_) ...>
-      - pattern: (unsigned short $_) = <... (int $_) ...>
-      - pattern: (unsigned short $_) = <... (unsigned $_) ...>
-      - pattern: (unsigned short int $_) = <... (unsigned int $_) ...>
-      - pattern: (unsigned short $_) = <... (long $_) ...>
-      - pattern: (unsigned short int $_) = <... (long int $_) ...>
-      - pattern: (unsigned short $_) = <... (unsigned long $_) ...>
-      - pattern: (unsigned short int $_) = <... (unsigned long int $_) ...>
+      - patterns:
+          - pattern-either:
+              - pattern: (short $_) = <... (unsigned short $_) ...>
+              - pattern: (short int $_) = <... (unsigned short int $_) ...>
+              - pattern: (short $_) = <... (int $_) ...>
+              - pattern: (short $_) = <... (unsigned $_) ...>
+              - pattern: (short int $_) = <... (unsigned int $_) ...>
+              - pattern: (short $_) = <... (long $_) ...>
+              - pattern: (short int $_) = <... (long int $_) ...>
+              - pattern: (short $_) = <... (unsigned long $_) ...>
+              - pattern: (short int $_) = <... (unsigned long int $_) ...>
+              - pattern: (unsigned short $_) = <... (int $_) ...>
+              - pattern: (unsigned short $_) = <... (unsigned $_) ...>
+              - pattern: (unsigned short int $_) = <... (unsigned int $_) ...>
+              - pattern: (unsigned short $_) = <... (long $_) ...>
+              - pattern: (unsigned short int $_) = <... (long int $_) ...>
+              - pattern: (unsigned short $_) = <... (unsigned long $_) ...>
+              - pattern: (unsigned short int $_) = <... (unsigned long int $_) ...>
+          - pattern-not: $_ = 0
       # short: function return
       - patterns:
           - pattern-either:
@@ -92,12 +98,15 @@ rules:
           # improve output readability
           - focus-metavariable: $FUN
       # int: assignments
-      - pattern: (int $_) = <... (unsigned $_) ...>
-      - pattern: (int $_) = <... (unsigned int $_) ...>
-      - pattern: (int $_) = <... (long $_) ...>
-      - pattern: (int $_) = <... (long int $_) ...>
-      - pattern: (int $_) = <... (unsigned long $_) ...>
-      - pattern: (int $_) = <... (unsigned long int $_) ...>
+      - patterns:
+          - pattern-either:
+              - pattern: (int $_) = <... (unsigned $_) ...>
+              - pattern: (int $_) = <... (unsigned int $_) ...>
+              - pattern: (int $_) = <... (long $_) ...>
+              - pattern: (int $_) = <... (long int $_) ...>
+              - pattern: (int $_) = <... (unsigned long $_) ...>
+              - pattern: (int $_) = <... (unsigned long int $_) ...>
+          - pattern-not: $_ = 0
       # int: function return
       - patterns:
           - pattern: |
@@ -109,5 +118,8 @@ rules:
           # improve output readability
           - focus-metavariable: $FUN
       # long: assignments
-      - pattern: (long $_) = <... (unsigned long $_) ...>
-      - pattern: (long int $_) = <... (unsigned long int $_) ...>
+      - patterns:
+          - pattern-either:
+              - pattern: (long $_) = <... (unsigned long $_) ...>
+              - pattern: (long int $_) = <... (unsigned long int $_) ...>
+          - pattern-not: $_ = 0

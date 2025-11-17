@@ -40,10 +40,13 @@ rules:
       - cpp
     pattern-either:
       # signed to unsigned
-      - pattern: (unsigned int $_) = <... (int $_) ...>
-      - pattern: (unsigned $_) = <... (int $_) ...>
-      - pattern: (size_t $_) = <... (int $_) ...>
-      - pattern: (size_t $_) = <... (off_t $_) ...>
+      - patterns:
+          - pattern-either:
+              - pattern: (unsigned int $_) = <... (int $_) ...>
+              - pattern: (unsigned $_) = <... (int $_) ...>
+              - pattern: (size_t $_) = <... (int $_) ...>
+              - pattern: (size_t $_) = <... (off_t $_) ...>
+          - pattern-not: $_ = 0
       - patterns:
           - pattern-either:
               - pattern: |

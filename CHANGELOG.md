@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 * Exclude length known at compile time from `memcpy` matches (`interesting-api-calls`).
+* Explicitly exclude `$_ = 0` assignments to reduce false positives (`integer-truncation`, `signed-unsigned-conversion`).
 * Refactor some rules to include other variants and improve readability and scalability (`unsafe-ret-snprintf-vsnprintf`, `unsafe-ret-strlcpy-strlcat`, `unsafe-strlen`).
 * Implement case-insensitive matching (`interesting-api-calls`).
 * Reduce false positives (`format-string-bugs`).

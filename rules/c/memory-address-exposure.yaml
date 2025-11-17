@@ -8,6 +8,9 @@ rules:
         - https://cwe.mitre.org/data/definitions/497
         - https://github.com/struct/mms
       confidence: LOW
+      # NOTE: #define format specifiers are not excluded due to Semgrep 
+      # limitations, perhaps we could implement this with symbolic propagation
+      # (Semgrep Pro experimental feature)?
     message: >-
       The software generates an error message that includes sensitive
       information about its environment, users, or associated data.
@@ -46,5 +49,5 @@ rules:
           - pattern: vswprintf($_, $_, $FMT, ...)
       - metavariable-regex:
           metavariable: $FMT
-          # NOTE: some format string modifiers are not handled
+          # NOTE: some format string specifiers are not handled
           regex: '(".*%\w*x.*"|".*%\w*X.*"|".*%\w*p.*")'

@@ -8,6 +8,9 @@ rules:
         - https://cwe.mitre.org/data/definitions/787
         - https://g.co/kgs/PCHQjJ
       confidence: HIGH
+      # NOTE: #define format specifiers are not excluded due to Semgrep 
+      # limitations, perhaps we could implement this with symbolic propagation
+      # (Semgrep Pro experimental feature)?
     message: >-
       A buffer overflow condition exists when a program attempts to put
       more data in a buffer than it can hold, or when a program attempts to
@@ -38,5 +41,5 @@ rules:
           - pattern: vswscanf($_, $FMT, ...)
       - metavariable-regex:
           metavariable: $FMT
-          # NOTE: some format string modifiers are not handled
+          # NOTE: some format string specifiers are not handled
           regex: '(".*%l?s.*"|".*%S.*"|[a-zA-Z_][a-zA-Z0-9_]*)'

@@ -10,7 +10,7 @@ rules:
         - http://www.phrack.org/issues/60/10.html#article
         - https://docs.microsoft.com/en-us/cpp/sanitizers/asan-error-examples
         - https://dustri.org/b/playing-with-weggli.html
-      confidence: LOW
+      confidence: MEDIUM
       # NOTE: only multiplication and sum with two operands are covered; other
       # arithmetic operations should also be considered (e.g., left shift, even
       # subtraction), as well as any operation with more than two operands.
@@ -19,7 +19,7 @@ rules:
       # NOTE: there might exist other buggy input validation patterns not covered
       # here, including the same patterns with a different order of operands.
       # NOTE: we should do some tests with the deep expression operator.
-      # NOTE: a dedicate rule for C++ operators such as new should be implemented.
+      # NOTE: a dedicated rule for C++ operators such as new should be implemented.
       # NOTE: see also cpp.memory.*.
     message: >-
       The software performs a calculation that can produce an integer

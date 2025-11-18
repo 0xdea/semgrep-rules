@@ -25,6 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Reduce false positives (`format-string-bugs`).
 * Use the new [anonymous metavariables](https://semgrep.dev/products/product-updates/anonymous-metavariables/) feature where suitable.
 * Optimize some patterns (`integer-wraparound`, `mismatched-memory-management`, `mismatched-memory-management-cpp`, `off-by-one`, `write-into-stack-buffer`, `missing-return`).
+* Increase confidence level (`integer-wraparound`).
 * Move rules into a dedicated folder.
 * Improve documentation and code formatting.
 
@@ -38,6 +39,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [unreleased]: https://github.com/0xdea/semgrep-rules/compare/v1.0.0...HEAD
 
-[2.0.0]: https://github.com/0xdea/semgrep-rules/compare/v1.0.0...v2.0.0
+[1.1.0]: https://github.com/0xdea/semgrep-rules/compare/v1.0.0...v1.1.0
 
 [1.0.0]: https://github.com/0xdea/semgrep-rules/releases/tag/v1.0.0

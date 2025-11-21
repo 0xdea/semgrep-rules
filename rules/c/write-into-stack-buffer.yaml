@@ -7,10 +7,11 @@ rules:
         - https://github.com/googleprojectzero/weggli
       confidence: MEDIUM
       # NOTE: some functions (e.g., the scanf family) and some other ways to
-      # write into a stack buffer are not covered.
-      # NOTE: static variables matching apparently is not supported by Semgrep.
+      # write into a stack buffer are not covered.  
       # NOTE: memcpy_s, memmove_s, memset_explicit, and similar variants are
       # not covered.
+      # NOTE: global variables declared outside functions and not explicitly
+      # tagged as static are not supported.    
       # NOTE: #define format specifiers are not excluded due to Semgrep
       # limitations, perhaps we could implement this with symbolic propagation
       # (Semgrep Pro experimental feature)?
@@ -29,6 +30,9 @@ rules:
           - pattern: $FUN($BUF, ...)
           - pattern-inside: |
               $_ $BUF[$_];
+              ...
+          - pattern-not-inside: |
+              static $_ $BUF[$_];
               ...
           - pattern-not: $FUN($BUF, "...", ...)
           - metavariable-pattern:
@@ -75,6 +79,9 @@ rules:
           - pattern-inside: |
               $_ $BUF[$_];
               ...
+          - pattern-not-inside: |
+              static $_ $BUF[$_];
+              ...
           - metavariable-regex:
               metavariable: $FMT
               # some format string specifiers are not handled
@@ -90,6 +97,9 @@ rules:
           - pattern: $FUN($BUF, $_, $FMT, ...)
           - pattern-inside: |
               $_ $BUF[$_];
+              ...
+          - pattern-not-inside: |
+              static $_ $BUF[$_];
               ...
           - metavariable-regex:
               metavariable: $FMT
@@ -107,6 +117,9 @@ rules:
           - pattern-inside: |
               $_ $BUF[$_];
               ...
+          - pattern-not-inside: |
+              static $_ $BUF[$_];
+              ...
           - metavariable-pattern:
               metavariable: $FUN
               pattern-either:
@@ -123,6 +136,9 @@ rules:
           - pattern-inside: |
               $_ $BUF[$_];
               ...
+          - pattern-not-inside: |
+              static $_ $BUF[$_];
+              ...
           - pattern-not: $FUN("...", $BUF, ...)
           - metavariable-pattern:
               metavariable: $FUN
@@ -134,6 +150,9 @@ rules:
           - pattern: $FUN($_, $BUF, ...)
           - pattern-inside: |
               $_ $BUF[$_];
+              ...
+          - pattern-not-inside: |
+              static $_ $BUF[$_];
               ...
           - metavariable-pattern:
               metavariable: $FUN
@@ -148,5 +167,8 @@ rules:
       # - patterns:
       # - pattern: $BUF[$_] = $_;
       # - pattern-inside: |
-      # $_ $BUF[$_];
-      # ...
+      #     $_ $BUF[$_];
+      #     ...
+      # - pattern-not-inside: |
+      #     static $_ $BUF[$_];
+      #     ...

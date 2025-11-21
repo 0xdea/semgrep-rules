@@ -9,10 +9,14 @@
 void copy_string1(char *string)
 {
 	char buf[BUFSIZE];
+	static char globuf[BUFSIZE];
 	char *ptr;
 
 	// ruleid: raptor-write-into-stack-buffer
 	snprintf(buf, BUFSIZE, "%s", string);
+
+	// ok: raptor-write-into-stack-buffer
+	snprintf(globuf, BUFSIZE, "%s", string);
 
 	ptr = (char *)malloc(BUFSIZE);
 
@@ -23,20 +27,28 @@ void copy_string1(char *string)
 void copy_string2(char *string)
 {
 	char buf[BUFSIZE];
+	static char globuf[BUFSIZE];
 
 	// ruleid: raptor-write-into-stack-buffer
 	strlcpy(buf, string, BUFSIZE);
 
 	// ok: raptor-write-into-stack-buffer
 	strlcpy(buf, "Hello, world!", BUFSIZE);
+
+	// ok: raptor-write-into-stack-buffer
+	strlcpy(globuf, string, BUFSIZE);
 }
 
 void copy_string3(char *string)
 {
 	char buf[BUFSIZE];
+	static char globuf[BUFSIZE];
 
 	// ruleid: raptor-write-into-stack-buffer
 	memcpy(buf, string, BUFSIZE);
+
+	// ok: raptor-write-into-stack-buffer
+	memcpy(globuf, string, BUFSIZE);
 }
 
 void bad(int limit)

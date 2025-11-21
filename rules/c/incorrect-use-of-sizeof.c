@@ -108,6 +108,59 @@ int AuthenticateUser(char *inUser, char *inPass)
 	}
 }
 
+// https://github.com/openresty/memc-nginx-module/commit/1e5e8655b3783d29dec1a9941bb6571989cf7dbb
+ngx_int_t
+ngx_http_memc_create_incr_decr_cmd_request(ngx_http_request_t *r)
+{
+	size_t len;
+	ngx_buf_t *b;
+	ngx_http_memc_ctx_t *ctx;
+	ngx_chain_t *cl;
+	uintptr_t escape;
+	ngx_http_variable_value_t *key_vv;
+	ngx_http_variable_value_t *value_vv;
+
+	ctx = ngx_http_get_module_ctx(r, ngx_http_memc_module);
+
+	/* prepare the "key" argument */
+
+	key_vv = ctx->memc_key_vv;
+
+	if (key_vv == NULL || key_vv->not_found || key_vv->len == 0)
+	{
+		ngx_log_error(NGX_LOG_ERR, r->connection->log, 0,
+					  "the \"$memc_key\" variable is not set");
+		return NGX_ERROR;
+	}
+
+	escape = 2 * ngx_escape_uri(NULL, key_vv->data, key_vv->len,
+								NGX_ESCAPE_MEMCACHED);
+
+	/* prepare the "value" argument */
+
+	value_vv = ctx->memc_value_vv;
+
+	/* XXX validate if $memc_value_vv is a valid uint64 string */
+	// todoruleid: raptor-incorrect-use-of-sizeof
+	len = ctx->cmd_str.len + sizeof(' ') + key_vv->len + escape + sizeof(' ') + value_vv->len + sizeof(CRLF) - 1;
+
+	b = ngx_create_temp_buf(r->pool, len);
+	if (b == NULL)
+	{
+		return NGX_ERROR;
+	}
+
+	cl = ngx_alloc_chain_link(r->pool);
+	if (cl == NULL)
+	{
+		return NGX_ERROR;
+	}
+
+	// ...
+
+	return NGX_OK;
+}
+
 int main(int argc, char **argv)
 {
 	int authResult;

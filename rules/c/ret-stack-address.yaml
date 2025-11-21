@@ -8,8 +8,9 @@ rules:
         - https://www.sei.cmu.edu/downloads/sei-cert-c-coding-standard-2016-v01.pdf
         - https://docs.microsoft.com/en-us/cpp/sanitizers/asan-error-examples
         - https://rules.sonarsource.com/c/type/Bug/RSPEC-946
-      confidence: LOW
-      # NOTE: static variables matching apparently is not supported by Semgrep.
+      confidence: MEDIUM
+      # NOTE: global variables declared outside functions and not explicitly
+      # tagged as static are not supported.
       # NOTE: multiple pointer assignments and other ways to persist after
       # function returns (e.g., output parameter) are not covered.
     message: >-
@@ -41,6 +42,19 @@ rules:
                   ...
                   $PTR = $ARR;
                   ...
+          # exclude static variables
+          - pattern-not-inside: |
+              static $_ $PTR[$_];
+              ...
+          - pattern-not-inside: |
+              static $_ $PTR[$_] = $_;
+              ...
+          - pattern-not-inside: |
+              static $_ $ARR[$_];
+              ...
+          - pattern-not-inside: |
+              static $_ $ARR[$_] = $_;
+              ...
       - patterns:
           # address of local variable
           - pattern: return &$VAR;
@@ -63,3 +77,22 @@ rules:
               - pattern-inside: |
                   $_ * $VAR = $_;
                   ...
+          # exclude static variables
+          - pattern-not-inside: |
+              static $_ $VAR;
+              ...
+          - pattern-not-inside: |
+              static $_ $VAR = $_;
+              ...
+          - pattern-not-inside: |
+              static $_ $VAR[$_];
+              ...
+          - pattern-not-inside: |
+              static $_ $VAR[$_] = $_;
+              ...
+          - pattern-not-inside: |
+              static $_ * $VAR;
+              ...
+          - pattern-not-inside: |
+              static $_ * $VAR = $_;
+              ...

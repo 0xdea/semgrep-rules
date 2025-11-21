@@ -24,6 +24,15 @@ char *getName_good()
 	return name;
 }
 
+char *getName_good2()
+{
+	static char name[STR_MAX];
+
+	fillInName(name);
+	// ok: raptor-ret-stack-address
+	return name;
+}
+
 char *findF(char *b)
 {
 	char tmpbuf[1024];

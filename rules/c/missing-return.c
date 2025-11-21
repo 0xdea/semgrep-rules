@@ -2,6 +2,12 @@
 
 #include <stdio.h>
 
+// ok: raptor-missing-return
+int bad();
+
+// ok: raptor-missing-return
+int baddie(int foo);
+
 // ruleid: raptor-missing-return
 int bad1(void)
 {

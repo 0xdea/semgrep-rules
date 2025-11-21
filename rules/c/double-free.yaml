@@ -12,7 +12,7 @@ rules:
       # NOTE: C++ delete and delete[] operators and custom wrappers to free
       # are not covered.
       # NOTE: realloc() is not covered.
-      # NOTE: Variations on the free() argument are not covered.
+      # NOTE: variations on the free() argument are not covered.
     message: >-
       The software calls free() twice on the same memory address, potentially 
       leading to memory corruption. This corruption can cause the program to 

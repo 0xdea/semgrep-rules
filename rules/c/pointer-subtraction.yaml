@@ -6,6 +6,8 @@ rules:
         - https://cwe.mitre.org/data/definitions/469
         - https://github.com/struct/mms
       confidence: MEDIUM
+      # NOTE: some types and combinations are missing, also
+      # function calls are not covered.
     message: >-
       The software subtracts one pointer from another in order to determine
       size, but this calculation can be incorrect if the pointers do not
@@ -15,17 +17,16 @@ rules:
       - c
       - cpp
     pattern-either:
-      # type-based patterns (some types are missing)
+      # type-based patterns
       - pattern: (char * $_) - (char * $_)
       - pattern: (int * $_) - (int * $_)
       - pattern: (float * $_) - (float * $_)
       - pattern: (double * $_) - (double * $_)
-      # other patterns (function calls are not covered)
+      # other patterns
       - patterns:
           - pattern-either:
               - pattern: $PTR1 - $PTR2
               - pattern: $PTR2 - $PTR1
-          # NOTE: some possibilities are missing
           - pattern-either:
               - pattern-inside: |
                   $_ * $PTR1;

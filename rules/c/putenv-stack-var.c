@@ -30,6 +30,18 @@ int putName_good()
 	return 0;
 }
 
+int putName_good2()
+{
+	static char name[STR_MAX];
+
+	fillInName(name);
+
+	// ok: raptor-putenv-stack-var
+	putenv(name);
+
+	return 0;
+}
+
 int main()
 {
 	printf("Hello, World!");

@@ -6,8 +6,9 @@ rules:
         - https://cwe.mitre.org/data/definitions/686
         - https://cwe.mitre.org/data/definitions/562
         - https://www.sei.cmu.edu/downloads/sei-cert-c-coding-standard-2016-v01.pdf
-      confidence: LOW
-      # NOTE: static variables matching apparently is not supported by Semgrep.
+      confidence: MEDIUM
+      # NOTE: global variables declared outside functions and not explicitly
+      # tagged as static are not supported.
       # NOTE: multiple pointer assignments and other ways to persist after
       # function returns (e.g., output parameter) are not covered.
     message: >-
@@ -22,20 +23,36 @@ rules:
       - pattern: putenv($PTR);
       - pattern-either:
           # array
-          - pattern-inside: |
-              $_ $PTR[$_];
-              ...
-          - pattern-inside: |
-              $_ $PTR[$_] = $_;
-              ...
+          - patterns:
+              - pattern-inside: |
+                  $_ $PTR[$_];
+                  ...
+              - pattern-not-inside: |
+                  static $_ $PTR[$_];
+                  ...
+          - patterns:
+              - pattern-inside: |
+                  $_ $PTR[$_] = $_;
+                  ...
+              - pattern-not-inside: |
+                  static $_ $PTR[$_] = $_;
+                  ...
           # pointer to array
-          - pattern-inside: |
-              $_ $ARR[$_];
-              ...
-              $PTR = $ARR;
-              ...
-          - pattern-inside: |
-              $_ $ARR[$_] = $_;
-              ...
-              $PTR = $ARR;
-              ...
+          - patterns:
+              - pattern-inside: |
+                  $_ $ARR[$_];
+                  ...
+                  $PTR = $ARR;
+                  ...
+              - pattern-not-inside: |
+                  static $_ $ARR[$_];
+                  ...
+          - patterns:
+              - pattern-inside: |
+                  $_ $ARR[$_] = $_;
+                  ...
+                  $PTR = $ARR;
+                  ...
+              - pattern-not-inside: |
+                  static $_ $ARR[$_] = $_;
+                  ...

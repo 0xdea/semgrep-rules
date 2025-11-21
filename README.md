@@ -83,10 +83,10 @@ See also the included SARIF output [example](sarif-example).
 #### integer overflows
 
 * [**incorrect-unsigned-comparison**](rules/c/incorrect-unsigned-comparison.yaml). Checking if an unsigned variable is negative.
-* [**signed-unsigned-conversion**](rules/c/signed-unsigned-conversion.yaml). Potential signed/unsigned conversion errors.
 * [**unsafe-strlen**](rules/c/unsafe-strlen.yaml). Casting the return value of strlen() to short might be dangerous.
 * [**integer-wraparound**](rules/c/integer-wraparound.yaml). Potential integer wraparound errors.
 * [**integer-truncation**](rules/c/integer-truncation.yaml). Potential integer truncation errors.
+* [**signed-unsigned-conversion**](rules/c/signed-unsigned-conversion.yaml). Potential signed/unsigned conversion errors.
 
 #### format strings
 

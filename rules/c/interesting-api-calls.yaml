@@ -16,6 +16,8 @@ rules:
       # below for an example). See also another possible approach described at
       # https://cc-sw.com/semgrep-guide-for-a-security-engineer-part-6-of-6/.
       # Beware of possible false negatives, though.
+      # NOTE: consider extracting some patterns into separate rules to focus on
+      # the most interesting API calls (copy operations, exec functions, etc.).
       # NOTE: see also https://semgrep.dev/r?lang=C
     message: >-
       Locate all calls to interesting and potentially insecure API

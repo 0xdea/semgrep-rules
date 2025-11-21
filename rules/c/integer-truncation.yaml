@@ -73,7 +73,6 @@ rules:
               - pattern: (short $_) = <... (unsigned long $_) ...>
               - pattern: (short int $_) = <... (unsigned long int $_) ...>
               - pattern: (unsigned short $_) = <... (int $_) ...>
-              - pattern: (unsigned short $_) = <... (unsigned $_) ...>
               - pattern: (unsigned short int $_) = <... (unsigned int $_) ...>
               - pattern: (unsigned short $_) = <... (long $_) ...>
               - pattern: (unsigned short int $_) = <... (long int $_) ...>

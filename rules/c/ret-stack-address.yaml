@@ -25,74 +25,82 @@ rules:
           - pattern: return $PTR;
           - pattern-either:
               # array
-              - pattern-inside: |
-                  $_ $PTR[$_];
-                  ...
-              - pattern-inside: |
-                  $_ $PTR[$_] = $_;
-                  ...
+              - patterns:
+                  - pattern-inside: |
+                      $_ $PTR[$_];
+                      ...
+                  - pattern-not-inside: |
+                      static $_ $PTR[$_];
+                      ...
+              - patterns:
+                  - pattern-inside: |
+                      $_ $PTR[$_] = $_;
+                      ...
+                  - pattern-not-inside: |
+                      static $_ $PTR[$_] = $_;
+                      ...
               # pointer to array
-              - pattern-inside: |
-                  $_ $ARR[$_];
-                  ...
-                  $PTR = $ARR;
-                  ...
-              - pattern-inside: |
-                  $_ $ARR[$_] = $_;
-                  ...
-                  $PTR = $ARR;
-                  ...
-          # exclude static variables
-          - pattern-not-inside: |
-              static $_ $PTR[$_];
-              ...
-          - pattern-not-inside: |
-              static $_ $PTR[$_] = $_;
-              ...
-          - pattern-not-inside: |
-              static $_ $ARR[$_];
-              ...
-          - pattern-not-inside: |
-              static $_ $ARR[$_] = $_;
-              ...
+              - patterns:
+                  - pattern-inside: |
+                      $_ $ARR[$_];
+                      ...
+                      $PTR = $ARR;
+                      ...
+                  - pattern-not-inside: |
+                      static $_ $ARR[$_];
+                      ...
+              - patterns:
+                  - pattern-inside: |
+                      $_ $ARR[$_] = $_;
+                      ...
+                      $PTR = $ARR;
+                      ...
+                  - pattern-not-inside: |
+                      static $_ $ARR[$_] = $_;
+                      ...
       - patterns:
           # address of local variable
           - pattern: return &$VAR;
           - pattern-either:
-              - pattern-inside: |
-                  $_ $VAR;
-                  ...
-              - pattern-inside: |
-                  $_ $VAR = $_;
-                  ...
-              - pattern-inside: |
-                  $_ $VAR[$_];
-                  ...
-              - pattern-inside: |
-                  $_ $VAR[$_] = $_;
-                  ...
-              - pattern-inside: |
-                  $_ * $VAR;
-                  ...
-              - pattern-inside: |
-                  $_ * $VAR = $_;
-                  ...
-          # exclude static variables
-          - pattern-not-inside: |
-              static $_ $VAR;
-              ...
-          - pattern-not-inside: |
-              static $_ $VAR = $_;
-              ...
-          - pattern-not-inside: |
-              static $_ $VAR[$_];
-              ...
-          - pattern-not-inside: |
-              static $_ $VAR[$_] = $_;
-              ...
-          - pattern-not-inside: |
-              static $_ * $VAR;
-              ...
-          - pattern-not-inside: |
-              static $_ * $VAR = $_;
-              ...
+              - patterns:
+                  - pattern-inside: |
+                      $_ $VAR;
+                      ...
+                  - pattern-not-inside: |
+                      static $_ $VAR;
+                      ...
+              - patterns:
+                  - pattern-inside: |
+                      $_ $VAR = $_;
+                      ...
+                  - pattern-not-inside: |
+                      static $_ $VAR = $_;
+                      ...
+              - patterns:
+                  - pattern-inside: |
+                      $_ $VAR[$_];
+                      ...
+                  - pattern-not-inside: |
+                      static $_ $VAR[$_];
+                      ...
+              - patterns:
+                  - pattern-inside: |
+                      $_ $VAR[$_] = $_;
+                      ...
+                  - pattern-not-inside: |
+                      static $_ $VAR[$_] = $_;
+                      ...
+              - patterns:
+                  - pattern-inside: |
+                      $_ * $VAR;
+                      ...
+                  - pattern-not-inside: |
+                      static $_ * $VAR;
+                      ...
+              - patterns:
+                  - pattern-inside: |
+                      $_ * $VAR = $_;
+                      ...
+                  - pattern-not-inside: |
+                      static $_ * $VAR = $_;
+                      ...

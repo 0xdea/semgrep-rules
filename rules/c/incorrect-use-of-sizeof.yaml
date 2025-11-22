@@ -26,7 +26,7 @@ rules:
       - patterns:
           - pattern: sizeof((char * $_))
           - pattern-not: sizeof("...")
-      # NOTE: sizeof of character literals is not supported by Semgrep
+      # NOTE: sizeof of character literals is still not supported by Semgrep as of 2025-11-22
       # - pattern: sizeof('...')
       - pattern: sizeof((int * $_))
       - pattern: sizeof((float * $_))

@@ -12,9 +12,6 @@ rules:
       # not covered.
       # NOTE: global variables declared outside functions and not explicitly
       # tagged as static are not supported.    
-      # NOTE: #define format specifiers are not excluded due to Semgrep
-      # limitations, perhaps we could implement this with symbolic propagation
-      # (Semgrep Pro experimental feature)?
       # NOTE: based on semgrep --time output, processing of this rule seems to
       # be particularly slow; consider disabling it, if you don't need it.
     message: >-

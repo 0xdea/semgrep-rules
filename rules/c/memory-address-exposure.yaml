@@ -8,7 +8,7 @@ rules:
         - https://cwe.mitre.org/data/definitions/497
         - https://github.com/struct/mms
       confidence: LOW
-      # NOTE: #define format specifiers are not excluded due to Semgrep 
+      # NOTE: #define format specifiers are not considered due to Semgrep 
       # limitations, perhaps we could implement this with symbolic propagation
       # (Semgrep Pro experimental feature)?
     message: >-

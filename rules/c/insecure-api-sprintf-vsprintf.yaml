@@ -8,9 +8,6 @@ rules:
         - https://cwe.mitre.org/data/definitions/787
         - https://g.co/kgs/PCHQjJ
       confidence: HIGH
-      # NOTE: #define format specifiers are not excluded due to Semgrep 
-      # limitations, perhaps we could implement this with symbolic propagation
-      # (Semgrep Pro experimental feature)?
       # NOTE: see also cpp.strings.unbounded-copy-to-stack-buffer.unbounded-copy-to-stack-buffer.
     message: >-
       A buffer overflow condition exists when a program attempts to put

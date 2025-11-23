@@ -20,8 +20,8 @@ rules:
       - cpp
     patterns:
       - pattern-either:
-          - pattern: $_ = $FUN(...)
-          - pattern: $_ += $FUN(...)
+          - pattern: $_ = $FUN($_, $_, $FMT, ...)
+          - pattern: $_ += $FUN($_, $_, $FMT, ...)
       - metavariable-pattern:
           metavariable: $FUN
           pattern-either:
@@ -29,3 +29,7 @@ rules:
             - pattern: vsnprintf
             # swprintf() and vswprintf() return a negative value if n or more
             # widechars were requested to be written, thus behaving more safely
+      - metavariable-regex:
+          metavariable: $FMT
+          # NOTE: some format string specifiers are not handled
+          regex: '(".*%l?s.*"|".*%S.*"|[a-zA-Z_][a-zA-Z0-9_]*)'

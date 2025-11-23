@@ -8,9 +8,6 @@ rules:
         - https://cwe.mitre.org/data/definitions/787
         - https://g.co/kgs/PCHQjJ
       confidence: HIGH
-      # NOTE: #define format specifiers are not excluded due to Semgrep 
-      # limitations, perhaps we could implement this with symbolic propagation
-      # (Semgrep Pro experimental feature)?
     message: >-
       A buffer overflow condition exists when a program attempts to put
       more data in a buffer than it can hold, or when a program attempts to

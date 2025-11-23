@@ -22,7 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Explicitly exclude `$_ = 0` assignments to reduce false positives (`integer-truncation`, `signed-unsigned-conversion`).
 * Refactor some rules to include other variants and improve readability and scalability (`unsafe-ret-snprintf-vsnprintf`, `unsafe-ret-strlcpy-strlcat`, `unsafe-strlen`).
 * Implement case-insensitive matching (`interesting-api-calls`).
-* Reduce false positives (`format-string-bugs`, `putenv-stack-var`, `ret-stack-address`, `write-into-stack-buffer`).
+* Reduce false positives (`format-string-bugs`, `putenv-stack-var`, `ret-stack-address`, `unsafe-ret-snprintf-vsnprintf`, `write-into-stack-buffer`).
 * Use the new [anonymous metavariables](https://semgrep.dev/products/product-updates/anonymous-metavariables/) feature where suitable.
 * Optimize some patterns (`integer-truncation`, `integer-wraparound`, `mismatched-memory-management`, `mismatched-memory-management-cpp`, `off-by-one`, `write-into-stack-buffer`, `missing-return`).
 * Change some confidence levels (`integer-truncation`, `integer-wraparound`, `putenv-stack-var`, `ret-stack-address`).

@@ -8,6 +8,7 @@ rules:
         - https://github.com/struct/mms
         - https://dustri.org/b/playing-with-weggli.html
         - https://mastodon.gamedev.place/@amonakov/111577826195014479
+        - https://github.com/semgrep/semgrep/issues/11327
       confidence: MEDIUM
       # NOTE: another relevant pattern would be sizeof('...'), but
       # unfortunately that's currently not supported by Semgrep.

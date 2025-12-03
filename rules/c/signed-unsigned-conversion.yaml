@@ -18,11 +18,11 @@ rules:
       # NOTE: the deep expression operator is necessary to catch some
       # matches because C/C++ integer promotions do not seem entirely
       # supported by Semgrep; this may generate lots of false positives.
-      # NOTE: some types (e.g. char, short, long), functions (e.g.,
-      # widechar and some alloc functions, custom functions), and use
+      # NOTE: some types (e.g. `char`, `short`, `long`), functions (e.g.,
+      # widechar and some alloc functions, custom wrappers), and use
       # cases (e.g., comparisons) are not covered.
-      # NOTE: wmemcpy, wmemmove, and wmemset are not covered.
-      # NOTE: memcpy_s, memmove_s, memset_explicit, and similar variants
+      # NOTE: `wmemcpy`, `wmemmove`, and `wmemset` are not covered.
+      # NOTE: `memcpy_s`, `memmove_s`, `memset_explicit`, and similar variants
       # are not covered.
       # NOTE: try to avoid false positives where possible.
     message: >-

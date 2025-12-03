@@ -6,11 +6,11 @@ rules:
         - https://cwe.mitre.org/data/definitions/590
         - https://github.com/shellphish/how2heap/blob/master/glibc_2.23/house_of_spirit.c
       confidence: MEDIUM
-      # NOTE: this rule only covers free() called on stack-allocated
+      # NOTE: this rule only covers `free` called on stack-allocated
       # buffers (and possibly static variables); it does not cover 
-      # other instances of free() called on non-heap-allocated buffers; 
-      # it also does not cover alloca() and custom wrappers to free().
-      # See also raptor-mismatched-memory-management.yaml.
+      # other instances of `free` called on non-heap-allocated buffers; 
+      # it also does not cover `alloca` and custom wrappers to `free`.
+      # See also `raptor-mismatched-memory-management.yaml`.
     message: >-
       The software calls free() on a pointer to memory that has a short 
       lifetime and was not allocated using associated heap allocation 

@@ -6,8 +6,8 @@ rules:
         - https://cwe.mitre.org/data/definitions/367
         - https://g.co/kgs/PCHQjJ
       confidence: HIGH
-      # NOTE: see also cpp.filesystem.file-access-before-action.file-access-before-action
-      # and cpp.filesystem.file-stat-before-action.file-stat-before-action.
+      # NOTE: see also `cpp.filesystem.file-access-before-action.file-access-before-action`
+      # and `cpp.filesystem.file-stat-before-action.file-stat-before-action`.
     message: >-
       The software checks the state of a resource before using it, but the 
       resource's state can change between the check and the use in a way that 

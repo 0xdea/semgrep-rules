@@ -6,13 +6,13 @@ rules:
         - https://cwe.mitre.org/data/definitions/121
         - https://github.com/googleprojectzero/weggli
       confidence: MEDIUM
-      # NOTE: some functions (e.g., the scanf family) and some other ways to
+      # NOTE: some functions (e.g., the `scanf` family) and some other ways to
       # write into a stack buffer are not covered.  
-      # NOTE: memcpy_s, memmove_s, memset_explicit, and similar variants are
+      # NOTE: `memcpy_s`, `memmove_s`, `memset_explicit`, and similar variants are
       # not covered.
       # NOTE: global variables declared outside functions and not explicitly
-      # tagged as static are not supported.    
-      # NOTE: based on semgrep --time output, processing of this rule seems to
+      # tagged as `static` are not supported.    
+      # NOTE: based on `semgrep --time` output, processing of this rule seems to
       # be particularly slow; consider disabling it, if you don't need it.
     message: >-
       The software directly writes into a stack buffer. This might lead to

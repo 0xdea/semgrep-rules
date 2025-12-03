@@ -7,7 +7,7 @@ rules:
         - https://semgrep.dev/docs/writing-rules/metavariable-analysis
         - https://github.com/semgrep/semgrep/pull/4672
       confidence: MEDIUM
-      # NOTE: the C++ std::regex library is not covered.
+      # NOTE: the C++ `std::regex` library is not covered.
     message: >-
       The software uses a regular expression with an inefficient, possibly
       exponential worst-case computational complexity that consumes excessive

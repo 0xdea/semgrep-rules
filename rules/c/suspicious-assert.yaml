@@ -6,8 +6,8 @@ rules:
         - https://legends2k.github.io/note/assert_vs_if/
         - https://github.com/struct/mms
       confidence: MEDIUM
-      # NOTE: other kinds of assertion macros (e.g., REQUIRE, DCHECK,
-      # ENSURE, etc.) are not covered.
+      # NOTE: other kinds of assertion macros (e.g., `REQUIRE`, `DCHECK`,
+      # `ENSURE`, etc.) and custom wrappers are not covered.
     message: >-
       Most codebases define assertion macros which compile to a no-op on
       non-debug builds. If assertions are the only line of defense against

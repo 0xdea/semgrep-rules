@@ -11,8 +11,9 @@ rules:
         - https://www.sei.cmu.edu/downloads/sei-cert-c-coding-standard-2016-v01.pdf
       confidence: LOW
       # NOTE: common issues with comments are not covered.
-      # NOTE: consider adding a focus-metavariable where applicable.
-      # NOTE: custom assertion macros are not covered.
+      # NOTE: consider adding a `focus-metavariable` where applicable to
+      # improve output readability.
+      # NOTE: custom wrappers to assertion macros are not covered.
     message: >-
       The programmer accidentally uses the wrong operator, which changes
       the application logic in security-relevant ways. This rule also covers
@@ -74,7 +75,7 @@ rules:
       # use of a string copy function instead of a string compare function in a condition
       - pattern: if (<... strcpy(...) ...>) ...
       - pattern: if (<... strncpy(...) ...>) ...
-      # ; at the end of if() or for() statement (empty else block not covered)
+      # ; at the end of if or for statement (empty else block not covered)
       - pattern: if ($_);
       - pattern: for ($_; $_; $_);
       # accidental octal conversion
@@ -85,5 +86,5 @@ rules:
           - metavariable-regex:
               metavariable: $LEN
               regex: "^0[^xX].*"
-      # missing {} in if() statement (too many false positives)
+      # missing {} in if statement (too many false positives)
       # - pattern: if ($COND) $BODY;

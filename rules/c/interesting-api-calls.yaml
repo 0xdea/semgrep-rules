@@ -3,16 +3,17 @@ rules:
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       references:
+        - https://github.com/0xdea/rhabdomancer
         - https://github.com/0xdea/ghidra-scripts/blob/main/Rhabdomancer.java
         - https://github.com/x509cert/banned/blob/master/banned.h
         - https://g.co/kgs/PCHQjJ
         - https://www.sei.cmu.edu/downloads/sei-cert-c-coding-standard-2016-v01.pdf
         - https://learn.microsoft.com/en-us/windows-hardware/drivers/devtest/28719-banned-api-usage-use-updated-function-replacement
       confidence: MEDIUM
-      # NOTE: goto, try/catch, sem/mutex, new/delete, static_cast/reinterpret_cast
-      # are not covered.
-      # NOTE: consider excluding some matches for strncpy, snprintf, and similar
-      # functions where the length parameter is known at compile time (see memcpy
+      # NOTE: `goto`, `try/catch`, `sem/mutex`, `new/delete`, and 
+      # `static_cast/reinterpret_cast` are not covered.
+      # NOTE: consider excluding some matches for `strncpy`, `snprintf`, and similar
+      # functions where the length parameter is known at compile time (see `memcpy`
       # below for an example). See also another possible approach described at
       # https://cc-sw.com/semgrep-guide-for-a-security-engineer-part-6-of-6/.
       # Beware of possible false negatives, though.

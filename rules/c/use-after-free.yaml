@@ -8,9 +8,9 @@ rules:
         - https://www.sei.cmu.edu/downloads/sei-cert-c-coding-standard-2016-v01.pdf
         - https://docs.microsoft.com/en-us/cpp/sanitizers/asan-error-examples
       confidence: MEDIUM
-      # NOTE: C++ delete and delete[] operators are not covered.
-      # NOTE: realloc() is not covered.
-      # NOTE: see also cpp.use-after-free.*.
+      # NOTE: C++ `delete` and `delete[]` operators are not covered.
+      # NOTE: `realloc` is not covered.
+      # NOTE: see also `cpp.use-after-free.*`.
     message: >-
       The use of previously-freed memory can have any number of adverse
       consequences, ranging from the corruption of valid data to the

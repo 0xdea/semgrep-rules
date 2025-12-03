@@ -10,9 +10,9 @@ rules:
         - https://mastodon.gamedev.place/@amonakov/111577826195014479
         - https://github.com/semgrep/semgrep/issues/11327
       confidence: MEDIUM
-      # NOTE: another relevant pattern would be sizeof('...'), but
+      # NOTE: another relevant pattern would be `sizeof('...')`, but
       # unfortunately that's currently not supported by Semgrep.
-      # NOTE: see also cpp.correctness.sizeof-*.
+      # NOTE: see also `cpp.correctness.sizeof-*`.
     message: >-
       The code calls sizeof() on a malloced pointer type, which always
       returns the wordsize (8 on 64-bit architectures). This can produce 

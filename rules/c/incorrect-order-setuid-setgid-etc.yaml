@@ -18,7 +18,7 @@ rules:
       - c
       - cpp
     pattern-either:
-      # setuid()/setgid()
+      # setuid/setgid
       - patterns:
           - pattern: |
               setuid(...);
@@ -28,7 +28,7 @@ rules:
               setuid(0);
               ...
               setgid(...);
-      # seteuid()/setegid()
+      # seteuid/setegid
       - patterns:
           - pattern: |
               seteuid(...);
@@ -44,7 +44,7 @@ rules:
               seteuid(0);
               ...
               setegid(...);
-      # seteuid()/setuid()
+      # seteuid/setuid
       - patterns:
           - pattern: |
               seteuid(...);
@@ -60,7 +60,7 @@ rules:
               seteuid(0);
               ...
               setuid(...);
-      # seteuid()/seteuid()
+      # seteuid/seteuid
       - patterns:
           - pattern: |
               seteuid(...);

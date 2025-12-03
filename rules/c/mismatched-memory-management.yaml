@@ -7,9 +7,9 @@ rules:
         - https://cwe.mitre.org/data/definitions/590
         - https://github.com/struct/mms
       confidence: LOW
-      # NOTE: valloc(), reallocf(), aligned_alloc(), and custom wrappers
+      # NOTE: `valloc`, `reallocf`, `aligned_alloc`, and custom wrappers
       # are not covered.
-      # NOTE: VirtualAlloc()/VirtualFree(), mmap()/munmap() are not
+      # NOTE: `VirtualAlloc/VirtualFree` and `mmap/munmap` are not
       # covered.
     message: >-
       The software attempts to return a memory resource to the system, but

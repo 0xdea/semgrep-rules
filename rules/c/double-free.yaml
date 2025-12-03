@@ -9,10 +9,10 @@ rules:
         - https://docs.microsoft.com/en-us/cpp/sanitizers/asan-error-examples
         - https://dustri.org/b/playing-with-weggli.html
       confidence: MEDIUM
-      # NOTE: C++ delete and delete[] operators and custom wrappers to free
+      # NOTE: C++ `delete` and `delete[]` operators and custom wrappers to `free`
       # are not covered.
-      # NOTE: realloc() is not covered.
-      # NOTE: variations on the free() argument are not covered.
+      # NOTE: `realloc` is not covered.
+      # NOTE: variations on the `free` argument are not covered.
     message: >-
       The software calls free() twice on the same memory address, potentially 
       leading to memory corruption. This corruption can cause the program to 

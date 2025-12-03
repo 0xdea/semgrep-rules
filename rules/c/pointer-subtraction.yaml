@@ -6,7 +6,7 @@ rules:
         - https://cwe.mitre.org/data/definitions/469
         - https://github.com/struct/mms
       confidence: MEDIUM
-      # NOTE: some types and combinations are missing, also
+      # NOTE: some types and combinations are missing; also,
       # function calls are not covered.
     message: >-
       The software subtracts one pointer from another in order to determine

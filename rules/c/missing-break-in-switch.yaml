@@ -9,7 +9,7 @@ rules:
         - https://github.com/returntocorp/semgrep/issues/4939
       confidence: LOW
       # NOTE: we should also check for default blocks that miss the
-      # break/return/exit/goto or equivalent statement/function call.
+      # `break/return/exit/goto` or equivalent statement/function call.
     message: >-
       The software omits a break statement within a switch or similar
       construct, causing code associated with multiple conditions to

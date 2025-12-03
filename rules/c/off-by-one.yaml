@@ -9,10 +9,10 @@ rules:
         - https://github.com/struct/mms
       confidence: MEDIUM
       # NOTE: heap-allocated buffers and some functions are not covered.
-      # NOTE: memcpy(dst + 1, p, len) and similar scenarios are not covered.
-      # NOTE: pattern {$len=snprintf(_); malloc($len);} is not covered.
-      # NOTE: see also cpp.strings.alloc-strlen.alloc-strlen and
-      # cpp.strings.missing-nul-cpp-string-memcpy.missing-nul-cpp-string-memcpy.
+      # NOTE: `memcpy(dst + 1, p, len)` and similar scenarios are not covered.
+      # NOTE: pattern `{$len=snprintf(_); malloc($len);}` is not covered.
+      # NOTE: see also `cpp.strings.alloc-strlen.alloc-strlen` and
+      # `cpp.strings.missing-nul-cpp-string-memcpy.missing-nul-cpp-string-memcpy`.
     message: >-
       The software calculates or uses an incorrect maximum or minimum value
       that is 1 more, or 1 less, than the correct value.

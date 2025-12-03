@@ -7,8 +7,8 @@ rules:
         - https://github.com/0xdea/advisories/blob/master/2020-07-solaris-whodo-w.txt
         - https://dustri.org/b/playing-with-weggli.html
       confidence: MEDIUM
-      # NOTE: some copy functions such as `memccpy`, and `bcopy` are not covered.
-      # NOTE: incorrect use of `snprintf` and similar functions seems hard to match.
+      # NOTE: some copy functions such as `memccpy`, and `bcopy`, as well as 
+      # `snprintf` and similar functions are not covered.
       # NOTE: `strlen` before the copy function is not covered.
       # NOTE: structures are not covered.
       # NOTE: see also `cpp.strings.snprintf-source-size.snprintf-source-size`.

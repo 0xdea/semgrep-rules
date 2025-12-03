@@ -1,0 +1,60 @@
+rules:
+  - id: raptor-overlapping-src-dst
+    metadata:
+      author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      references:
+        - https://linux.die.net/man/3/sprintf
+      confidence: MEDIUM
+      # NOTE: `vsprintf` and `vsnprintf` are not covered.
+    message: >-
+      C standards specify that the results are undefined if a call to
+      copy functions, with the eception of memmove(), would cause copying
+      to take place between objects that overlap (e.g., if the target
+      string array and one of the supplied input arguments refer to the
+      same buffer).
+    severity: WARNING
+    languages:
+      - c
+      - cpp
+    pattern-either:
+      - patterns:
+          - pattern: $FUN($DST, $DST, ...)
+          - metavariable-pattern:
+              metavariable: $FUN
+              pattern-either:
+                # strcpy
+                - pattern: strcpy
+                - pattern: strncpy
+                - pattern: stpcpy
+                - pattern: stpncpy
+                - pattern: strlcpy
+                - pattern: strscpy
+                - pattern: wcscpy
+                - pattern: wcsncpy
+                - pattern: wcpcpy
+                - pattern: wcpncpy
+                - pattern: wcslcpy
+                - pattern: _mbscpy
+                - pattern: _mbsncpy
+                - pattern: _mbpcpy
+                - pattern: _mbpncpy
+                - pattern: _mbslcpy
+                # strcat
+                - pattern: strcat
+                - pattern: strncat
+                - pattern: strlcat
+                - pattern: wcscat
+                - pattern: wcsncat
+                - pattern: wcslcat
+                - pattern: _mbscat
+                - pattern: _mbsncat
+                - pattern: _mbslcat
+                # memcpy
+                - pattern: memcpy
+                - pattern: memccpy
+                - pattern: wmemcpy
+                # bcopy
+                - pattern: bcopy
+      # sprintf
+      - pattern: sprintf($DST, ..., $DST, ...)
+      - pattern: snprintf($DST, $_, ..., $DST, ...)

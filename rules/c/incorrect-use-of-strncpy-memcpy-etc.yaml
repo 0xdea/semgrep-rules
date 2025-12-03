@@ -1,5 +1,5 @@
 rules:
-  - id: raptor-incorrect-use-of-strncpy-stpncpy-strlcpy
+  - id: raptor-incorrect-use-of-strncpy-memcpy-etc
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       references:
@@ -7,7 +7,8 @@ rules:
         - https://github.com/0xdea/advisories/blob/master/2020-07-solaris-whodo-w.txt
         - https://dustri.org/b/playing-with-weggli.html
       confidence: MEDIUM
-      # NOTE: some copy functions such as snprintf() and memcpy() are not covered.
+      # NOTE: some copy functions such as memccpy(), and bcopy() are not covered.
+      # NOTE: incorrect use of snprintf() and similar functions seems hard to match.
       # NOTE: strlen() before the copy function is not covered.
       # NOTE: structures are not covered.
       # NOTE: see also cpp.strings.snprintf-source-size.snprintf-source-size.
@@ -23,6 +24,7 @@ rules:
       # size of array
       - patterns:
           - pattern: $FUN($_, $SRC, $LEN)
+          - pattern-not: $FUN($_, "...", $LEN)
           - metavariable-pattern:
               metavariable: $FUN
               pattern-either:
@@ -30,6 +32,10 @@ rules:
                 - pattern: stpncpy
                 - pattern: strlcpy
                 - pattern: strscpy
+                - pattern: memcpy
+                - pattern: memmove
+                - pattern: wmemcpy
+                - pattern: wmemmove
           - pattern-either:
               - pattern-inside: |
                   $_ $SRC[$LEN];
@@ -40,6 +46,7 @@ rules:
       # sizeof operator, strlen, and similar
       - patterns:
           - pattern: $FUN($_, $SRC, <... $SRC ...>)
+          - pattern-not: $FUN($_, "...", <... $SRC ...>)
           - metavariable-pattern:
               metavariable: $FUN
               pattern-either:
@@ -47,3 +54,7 @@ rules:
                 - pattern: stpncpy
                 - pattern: strlcpy
                 - pattern: strscpy
+                - pattern: memcpy
+                - pattern: memmove
+                - pattern: wmemcpy
+                - pattern: wmemmove

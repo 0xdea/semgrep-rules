@@ -12,12 +12,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Add `high-entropy-assignment` and `regex-dos` rules that use the new [metavariable-analysis](https://semgrep.dev/docs/writing-rules/metavariable-analysis) feature.
 * Add detections for the `__iso99_*scanf` function family (`format-string-bugs`, `insecure-api-scanf`, `unchecked-ret-scanf`).
 * Add detections for the `_mb*` and `*_s/*_l` function families (`insecure-api-strcpy-stpcpy-strcat`, `interesting-api-calls`, `unsafe-ret-strlcpy-strlcat`, `unsafe-strlen`, `unterminated-string-strncpy-stpncpy`, `write-into-stack-buffer`).
-* Add some code samples (`integer-wraparound`).
+* Add some code samples (`incorrect-use-of-strncpy-memcpy-etc`, `integer-wraparound`).
 * Add SARIF output example as [requested](https://github.com/0xdea/semgrep-rules/issues/10).
 * Add GitHub action to automate rule validation and testing.
 
 ### Changed
 
+* Rename `incorrect-use-of-strncpy-stpncpy-strlcpy` into `incorrect-use-of-strncpy-memcpy` and add matching of `memcpy` and its main variants.
 * Exclude length known at compile time from `memcpy` matches (`interesting-api-calls`).
 * Explicitly exclude `$_ = 0` assignments to reduce false positives (`integer-truncation`, `signed-unsigned-conversion`).
 * Refactor some rules to include other variants and improve readability and scalability (`unsafe-ret-snprintf-vsnprintf`, `unsafe-ret-strlcpy-strlcat`, `unsafe-strlen`).

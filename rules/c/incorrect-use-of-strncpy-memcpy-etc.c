@@ -5,8 +5,8 @@ void test_func()
 	char source[21] = "the character string";
 	char dest[12];
 
-	// ruleid: raptor-incorrect-use-of-strncpy-stpncpy-strlcpy
-	strncpy(dest, source, sizeof(source) - 1);
+	// ok: raptor-incorrect-use-of-strncpy-memcpy-etc
+	strncpy(dest, source, sizeof(source) - 1); // there's a bof but we don't control the input
 }
 
 // https://raw.githubusercontent.com/illumos/illumos-gate/61aaa916808c601f9ee36d96c05ee9dac211d09e/usr/src/cmd/whodo/whodo.c
@@ -327,7 +327,7 @@ int main(int argc, char *argv[])
 		up->p_time = 0;
 		up->p_ctime = 0;
 		up->p_igintr = 0;
-		// ruleid: raptor-incorrect-use-of-strncpy-stpncpy-strlcpy
+		// ruleid: raptor-incorrect-use-of-strncpy-memcpy-etc
 		(void)strncpy(up->p_comm, info.pr_fname,
 					  sizeof(info.pr_fname));
 		up->p_args[0] = 0;
@@ -861,4 +861,172 @@ clnarglist(char *arglist)
 			*c = '?';
 		}
 	}
+}
+
+// https://github.com/0xdea/advisories/blob/b9c4d341de09184d9aba7f57647a693aa6e54cfc/HNS-2024-05-rt-thread.txt#L135
+static int dfs_romfs_getdents(struct dfs_file *file, struct dirent *dirp, uint32_t count)
+{
+	rt_size_t index;
+	const char *name;
+	struct dirent *d;
+	struct romfs_dirent *dirent, *sub_dirent;
+
+	dirent = (struct romfs_dirent *)file->vnode->data;
+	if (check_dirent(dirent) != 0)
+	{
+		return -EIO;
+	}
+	RT_ASSERT(dirent->type == ROMFS_DIRENT_DIR);
+
+	/* enter directory */
+	dirent = (struct romfs_dirent *)dirent->data;
+
+	/* make integer count */
+	count = (count / sizeof(struct dirent));
+	if (count == 0)
+	{
+		return -EINVAL;
+	}
+
+	index = 0;
+	for (index = 0; index < count && file->fpos < file->vnode->size; index++)
+	{
+		d = dirp + index;
+
+		sub_dirent = &dirent[file->fpos];
+		name = sub_dirent->name;
+
+		/* fill dirent */
+		if (sub_dirent->type == ROMFS_DIRENT_DIR)
+			d->d_type = DT_DIR;
+		else
+			d->d_type = DT_REG;
+
+		d->d_namlen = rt_strlen(name);
+		d->d_reclen = (rt_uint16_t)sizeof(struct dirent);
+		// ruleid: raptor-incorrect-use-of-strncpy-memcpy-etc
+		strncpy(d->d_name, name, rt_strlen(name) + 1); /* VULN: buffer overflow if rt_strlen(name) is larger than sizeof(d->d_name) due to missing length check */
+
+		/* move to next position */
+		++file->fpos;
+	}
+
+	return index * sizeof(struct dirent);
+}
+
+void rd_list_move(rd_list_t *dst, rd_list_t *src)
+{
+	rd_list_init_copy(dst, src);
+
+	if (src->rl_flags & RD_LIST_F_FIXED_SIZE)
+	{
+		rd_list_copy_preallocated0(dst, src);
+	}
+	else
+	{
+		// ruleid: raptor-incorrect-use-of-strncpy-memcpy-etc
+		memcpy(dst->rl_elems, src->rl_elems,
+			   src->rl_cnt * sizeof(*src->rl_elems));
+		dst->rl_cnt = src->rl_cnt;
+	}
+
+	src->rl_cnt = 0;
+}
+
+static int mk_rconf_read_glob(struct mk_rconf *conf, const char *path)
+{
+	char *star, *p0, *p1;
+	char pattern[MAX_PATH];
+	char buf[MAX_PATH];
+	int ret;
+	struct stat st;
+	HANDLE h;
+	WIN32_FIND_DATA data;
+
+	if (strlen(path) > MAX_PATH - 1)
+	{
+		return -1;
+	}
+
+	star = strchr(path, '*');
+	if (star == NULL)
+	{
+		return -1;
+	}
+
+	/*
+	 * C:\data\tmp\input_*.conf
+	 *            0<-----|
+	 */
+	p0 = star;
+	while (path <= p0 && *p0 != '\\')
+	{
+		p0--;
+	}
+
+	/*
+	 * C:\data\tmp\input_*.conf
+	 *                   |---->1
+	 */
+	p1 = star;
+	while (*p1 && *p1 != '\\')
+	{
+		p1++;
+	}
+
+	// ruleid: raptor-incorrect-use-of-strncpy-memcpy-etc
+	memcpy(pattern, path, (p1 - path));
+	pattern[p1 - path] = '\0';
+
+	h = FindFirstFileA(pattern, &data);
+	if (h == INVALID_HANDLE_VALUE)
+	{
+		return 0;
+	}
+
+	do
+	{
+		/* Ignore the current and parent dirs */
+		if (!strcmp(".", data.cFileName) || !strcmp("..", data.cFileName))
+		{
+			continue;
+		}
+
+		/* Avoid an infinite loop */
+		if (strchr(data.cFileName, '*'))
+		{
+			continue;
+		}
+
+		// ruleid: raptor-incorrect-use-of-strncpy-memcpy-etc
+		memcpy(buf, path, p0 - path + 1);
+		buf[p0 - path + 1] = '\0';
+
+		if (FAILED(StringCchCatA(buf, MAX_PATH, data.cFileName)))
+		{
+			continue;
+		}
+		if (FAILED(StringCchCatA(buf, MAX_PATH, p1)))
+		{
+			continue;
+		}
+
+		if (strchr(p1, '*'))
+		{
+			mk_rconf_read_glob(conf, buf); /* recursive */
+			continue;
+		}
+
+		ret = stat(buf, &st);
+		if (ret == 0 && (st.st_mode & S_IFMT) == S_IFREG)
+		{
+			if (mk_rconf_read(conf, buf) < 0)
+			{
+				return -1;
+			}
+		}
+	} while (FindNextFileA(h, &data) != 0);
+
+	FindClose(h);
+	return 0;
 }

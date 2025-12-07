@@ -10,7 +10,7 @@ rules:
         - https://www.sei.cmu.edu/downloads/sei-cert-c-coding-standard-2016-v01.pdf
       confidence: HIGH
     message: >-
-      The program invokes a potentially dangerous function that could
+      The program invokes $FUN', a potentially dangerous function that could
       introduce a vulnerability if it is used incorrectly, but the function
       can also be used safely.
       The software constructs all or part of an OS command using
@@ -23,7 +23,10 @@ rules:
       - c
       - cpp
     patterns:
-      - pattern-either:
-        - pattern: system(...)
-        - pattern: popen(...)
+      - pattern: $FUN(...)
+      - metavariable-pattern:
+          metavariable: $FUN
+          pattern-either:
+            - pattern: system
+            - pattern: popen
       - pattern-not: $FUN("...", ...)

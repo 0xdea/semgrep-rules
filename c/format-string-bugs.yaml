@@ -11,7 +11,7 @@ rules:
       confidence: MEDIUM
       # NOTE: generic va_list matching for custom functions is not covered.
     message: >-
-      The software uses a function that accepts a format string as an
+      The software uses '$FUN' that accepts a format string as an
       argument, but the format string originates from an external source.
       When an attacker can modify an externally-controlled format string,
       this can lead to buffer overflows, denial of service, or data
@@ -29,72 +29,81 @@ rules:
     pattern-either:
       # format string in 1st arg
       - patterns:
-        - pattern-either:
-          # printf family
-          - pattern: printf(...)
-          - pattern: vprintf(...)
-          - pattern: wprintf(...)
-          - pattern: vwprintf(...)
-          - pattern: vcprintf(...)
-          - pattern: vcwprintf(...)
-          - pattern: vscprintf(...)
-          - pattern: vscwprintf(...)
-          - pattern: printk(...)
-          # scanf family
-          - pattern: scanf(...)
-          - pattern: vscanf(...)
-          - pattern: wscanf(...)
-          - pattern: vwscanf(...)
-          # err/warn family
-          - pattern: warn(...)
-          - pattern: vwarn(...)
-          - pattern: warnx(...)
-          - pattern: vwarnx(...)
+        - pattern: $FUN(...)
+        - metavariable-pattern:
+            metavariable: $FUN
+            pattern-either:
+              # printf family
+              - pattern: printf
+              - pattern: vprintf
+              - pattern: wprintf
+              - pattern: vwprintf
+              - pattern: vcprintf
+              - pattern: vcwprintf
+              - pattern: vscprintf
+              - pattern: vscwprintf
+              - pattern: printk
+              # scanf family
+              - pattern: scanf
+              - pattern: vscanf
+              - pattern: wscanf
+              - pattern: vwscanf
+              # err/warn family
+              - pattern: warn
+              - pattern: vwarn
+              - pattern: warnx
+              - pattern: vwarnx
         - pattern-not: $FUN("...", ...)
       # format string in 2nd arg
       - patterns:
-        - pattern-either:
-          # printf family
-          - pattern: fprintf(...)
-          - pattern: vfprintf(...)
-          - pattern: fwprintf(...)
-          - pattern: vfwprintf(...)
-          - pattern: sprintf(...)
-          - pattern: vsprintf(...)
-          - pattern: asprintf(...)
-          - pattern: vasprintf(...)
-          - pattern: dprintf(...)
-          - pattern: vdprintf(...)
-          - pattern: wsprintf(...)
-          # scanf family
-          - pattern: fscanf(...)
-          - pattern: vfscanf(...)
-          - pattern: fwscanf(...)
-          - pattern: vfwscanf(...)
-          - pattern: sscanf(...)
-          - pattern: vsscanf(...)
-          - pattern: swscanf(...)
-          - pattern: vswscanf(...)
-          # syslog family
-          - pattern: syslog(...)
-          - pattern: vsyslog(...)
-          # err/warn family
-          - pattern: err(...)
-          - pattern: verr(...)
-          - pattern: errx(...)
-          - pattern: verrx(...)
-          - pattern: warnc(...)
-          - pattern: vwarnc(...)
+        - pattern: $FUN(...)
+        - metavariable-pattern:
+            metavariable: $FUN
+            pattern-either:
+              # printf family
+              - pattern: fprintf
+              - pattern: vfprintf
+              - pattern: fwprintf
+              - pattern: vfwprintf
+              - pattern: sprintf
+              - pattern: vsprintf
+              - pattern: asprintf
+              - pattern: vasprintf
+              - pattern: dprintf
+              - pattern: vdprintf
+              - pattern: wsprintf
+              # scanf family
+              - pattern: fscanf
+              - pattern: vfscanf
+              - pattern: fwscanf
+              - pattern: vfwscanf
+              - pattern: sscanf
+              - pattern: vsscanf
+              - pattern: swscanf
+              - pattern: vswscanf
+              # syslog family
+              - pattern: syslog
+              - pattern: vsyslog
+              # err/warn family
+              - pattern: err
+              - pattern: verr
+              - pattern: errx
+              - pattern: verrx
+              - pattern: warnc
+              - pattern: vwarnc
         - pattern-not: $FUN($ARG1, "...", ...)
       # format string in 3rd arg
       - patterns:
-        - pattern-either:
-          # printf family
-          - pattern: snprintf(...)
-          - pattern: vsnprintf(...)
-          - pattern: swprintf(...)
-          - pattern: vswprintf(...)
-          # err/warn family
-          - pattern: errc(...)
-          - pattern: verrc(...)
+        - pattern: $FUN(...)
+        - metavariable-pattern:
+            metavariable: $FUN
+            pattern-either:
+              # printf family
+              - pattern: snprintf
+              - pattern: vsnprintf
+              - pattern: swprintf
+              - pattern: vswprintf
+              # err/warn family
+              - pattern: errc
+              - pattern: verrc
         - pattern-not: $FUN($ARG1, $ARG2, "...", ...)

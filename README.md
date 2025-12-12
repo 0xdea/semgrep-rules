@@ -58,7 +58,7 @@ See also the included SARIF output [example](sarif-example).
 
 ## Compatibility
 
-* Tested with Semgrep CLI 1.142.0
+* Tested with Semgrep CLI 1.145.0
 
 ## Rules
 

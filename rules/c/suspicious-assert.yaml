@@ -6,6 +6,8 @@ rules:
         - https://legends2k.github.io/note/assert_vs_if/
         - https://github.com/struct/mms
       confidence: MEDIUM
+      # NOTE: other conditions (i.e., equality and inequality) might be
+      # security-relevant as well.
       # NOTE: other kinds of assertion macros (e.g., `REQUIRE`, `DCHECK`,
       # `ENSURE`, etc.) and custom wrappers are not covered.
     message: >-

@@ -5,6 +5,7 @@ rules:
       references:
         - https://rules.sonarsource.com/c/type/Bug/RSPEC-989
         - https://wiki.sei.cmu.edu/confluence/display/c/ERR34-C.+Detect+errors+when+converting+a+string+to+a+number
+        - https://github.com/vixie/cron/commit/9cc8ab1087bb9ab861dd5595c41200683c9f6712
       confidence: HIGH
       # NOTE: some function variants are missing.
     message: >-

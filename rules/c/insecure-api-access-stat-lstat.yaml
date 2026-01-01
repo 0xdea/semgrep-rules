@@ -5,6 +5,7 @@ rules:
       references:
         - https://cwe.mitre.org/data/definitions/367
         - https://g.co/kgs/PCHQjJ
+        - https://labs.snyk.io/resources/leaky-vessels-container-vuln-deep-dive/
       confidence: HIGH
       # NOTE: see also `cpp.filesystem.file-access-before-action.file-access-before-action`
       # and `cpp.filesystem.file-stat-before-action.file-stat-before-action`.

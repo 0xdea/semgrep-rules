@@ -3,7 +3,7 @@
 [![](https://img.shields.io/github/stars/0xdea/semgrep-rules.svg?style=flat&color=yellow)](https://github.com/0xdea/semgrep-rules)
 [![](https://img.shields.io/github/forks/0xdea/semgrep-rules.svg?style=flat&color=green)](https://github.com/0xdea/semgrep-rules)
 [![](https://img.shields.io/github/watchers/0xdea/semgrep-rules.svg?style=flat&color=red)](https://github.com/0xdea/semgrep-rules)
-[![](https://img.shields.io/badge/semgrep-1.145.0-violet)](https://semgrep.dev/)
+[![](https://img.shields.io/badge/semgrep-1.146.0-violet)](https://semgrep.dev/)
 [![](https://img.shields.io/badge/twitter-%400xdea-blue.svg)](https://twitter.com/0xdea)
 [![](https://img.shields.io/badge/mastodon-%40raptor-purple.svg)](https://infosec.exchange/@raptor)
 [![test](https://github.com/0xdea/semgrep-rules/actions/workflows/test.yml/badge.svg)](https://github.com/0xdea/semgrep-rules/actions/workflows/test.yml)
@@ -59,7 +59,7 @@ See also the included SARIF output [example](sarif-example).
 
 ## Compatibility
 
-* Tested with Semgrep CLI 1.145.0
+* Tested with Semgrep CLI 1.146.0
 
 ## Rules
 

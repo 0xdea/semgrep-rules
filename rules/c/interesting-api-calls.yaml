@@ -87,7 +87,7 @@ rules:
           - pattern: $FUN(...)
           - metavariable-regex:
               metavariable: $FUN
-              regex: '(?i)^\w*get(s|ws|ws_l|c|char|pw|pass|wd|cwd|opt|opt_long)\s*$'
+              regex: '(?i)^\w*get(s|ws|ws_l|c|char|pw|pass|wd|cwd|login_r|groups|hostname|domainname|opt|opt_long)\s*$'
       # environment
       - patterns:
           - pattern: $FUN(...)

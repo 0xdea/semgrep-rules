@@ -30,6 +30,11 @@ rules:
           - pattern: vcwprintf($FMT, ...)
           - pattern: vscprintf($FMT, ...)
           - pattern: vscwprintf($FMT, ...)
+          - pattern: printk($FMT, ...)
+          - pattern: warn($FMT, ...)
+          - pattern: vwarn($FMT, ...)
+          - pattern: warnx($FMT, ...)
+          - pattern: vwarnx($FMT, ...)
           # format string in 2nd arg
           - pattern: fprintf($_, $FMT, ...)
           - pattern: vfprintf($_, $FMT, ...)
@@ -42,11 +47,21 @@ rules:
           - pattern: dprintf($_, $FMT, ...)
           - pattern: vdprintf($_, $FMT, ...)
           - pattern: wsprintf($_, $FMT, ...)
+          - pattern: syslog($_, $FMT, ...)
+          - pattern: vsyslog($_, $FMT, ...)
+          - pattern: err($_, $FMT, ...)
+          - pattern: verr($_, $FMT, ...)
+          - pattern: errx($_, $FMT, ...)
+          - pattern: verrx($_, $FMT, ...)
+          - pattern: warnc($_, $FMT, ...)
+          - pattern: vwarnc($_, $FMT, ...)
           # format string in 3rd arg
           - pattern: snprintf($_, $_, $FMT, ...)
           - pattern: vsnprintf($_, $_, $FMT, ...)
           - pattern: swprintf($_, $_, $FMT, ...)
           - pattern: vswprintf($_, $_, $FMT, ...)
+          - pattern: errc($_, $_, $FMT, ...)
+          - pattern: verrc($_, $_, $FMT, ...)
       - metavariable-regex:
           metavariable: $FMT
           # NOTE: some format string specifiers are not handled

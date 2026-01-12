@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 * Add detection for the `confstr` function (`interesting-api-calls`).
+* Add detections for `syslog` and `err/warn` function families (`memory-address-exposure`).
 
 ### Changed
 

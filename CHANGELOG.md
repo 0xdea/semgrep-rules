@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+* Add detection for the `confstr` function (`interesting-api-calls`).
+
 ### Changed
 
 * Improve documentation.

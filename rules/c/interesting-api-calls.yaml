@@ -105,7 +105,7 @@ rules:
           - metavariable-regex:
               metavariable: $LEN
               regex: '^(?!\s*(?:0[xX][0-9A-Fa-f]+|0[bB][01]+|0[0-7]*|[1-9][0-9]*)[uUlL]*\s*$).+'
-      # memset (too noisy, likely irrelevant)
+      # memset (too noisy, mostly irrelevant)
       # - patterns:
       # - pattern: $FUN(...)
       # - metavariable-regex:
@@ -177,6 +177,12 @@ rules:
           - metavariable-regex:
               metavariable: $FUN
               regex: '(?i)^\w*locale\s*$|^\w*(make|split)path\s*$'
+      # conf
+      - patterns:
+          - pattern: $FUN(...)
+          - metavariable-regex:
+              metavariable: $FUN
+              regex: '(?i)^\w*confstr\s*$'
       # signals (too noisy)
       # - patterns:
       # - pattern: $FUN(...)

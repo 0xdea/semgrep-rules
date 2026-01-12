@@ -21,6 +21,8 @@ rules:
       # `(".*%l?s.*"|".*%S.*"|[a-zA-Z_][a-zA-Z0-9_]*)` regex.
       # NOTE: consider extracting some patterns into separate rules to focus on
       # the most interesting API calls (copy operations, exec functions, etc.).
+      # NOTE: nonlocking stdio functions (https://linux.die.net/man/3/fgets_unlocked)
+      # are not covered.
       # NOTE: see also https://semgrep.dev/r?lang=C
     message: >-
       Locate all calls to interesting and potentially insecure API

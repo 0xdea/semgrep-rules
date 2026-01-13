@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-* Add detections for `confstr`, `fgetws/fgetws_l`, `inet_*`, and missing `get*` family functions (`interesting-api-calls`).
+* Add detections for `confstr`, `fgetws/fgetws_l`, `inet_*`, `mbs/wcs`, and missing `get*` family functions (`interesting-api-calls`).
 * Add detections for `syslog` and `err/warn` function families (`memory-address-exposure`).
 
 ### Changed

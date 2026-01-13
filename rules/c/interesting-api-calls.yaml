@@ -185,6 +185,12 @@ rules:
           - metavariable-regex:
               metavariable: $FUN
               regex: '(?i)^\w*confstr\s*$'
+      # mbs/wcs
+      - patterns:
+          - pattern: $FUN(...)
+          - metavariable-regex:
+              metavariable: $FUN
+              regex: '(?i)^\w*mbs(nr|r)?towcs(_l)?\s*$|^\w*wcs(nr|r)?tombs(_l)?\s*$'
       # inet
       - patterns:
           - pattern: $FUN(...)

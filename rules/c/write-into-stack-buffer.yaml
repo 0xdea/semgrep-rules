@@ -66,9 +66,11 @@ rules:
                 # memcpy/memset
                 - pattern: memcpy
                 - pattern: memccpy
+                - pattern: mempcpy
                 - pattern: memmove
                 - pattern: memset
                 - pattern: wmemcpy
+                - pattern: wmempcpy
                 - pattern: wmemmove
                 - pattern: wmemset
       # buffer in 1st arg (sprintf functions)

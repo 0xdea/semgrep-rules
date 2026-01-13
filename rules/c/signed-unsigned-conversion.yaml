@@ -87,6 +87,7 @@ rules:
       - pattern: vsnprintf($_, (int $_), ...)
       - pattern: getcwd($_, (int $_))
       - pattern: memcpy($_, $_, (int $_))
+      - pattern: mempcpy($_, $_, (int $_))
       - pattern: memccpy($_, $_, $_, (int $_))
       - pattern: memmove($_, $_, (int $_))
       - pattern: memset($_, $_, (int $_))

@@ -7,8 +7,8 @@ rules:
         - https://github.com/0xdea/advisories/blob/master/2020-07-solaris-whodo-w.txt
         - https://dustri.org/b/playing-with-weggli.html
       confidence: MEDIUM
-      # NOTE: some copy functions such as `memccpy`, `bcopy`, and `strcpy_s` 
-      # (as well as `snprintf` and similar functions that are hard to match() 
+      # NOTE: some copy functions such as `memccpy`, `bcopy`, and `strcpy_s`
+      # (as well as `snprintf` and similar functions that are hard to match()
       # are not covered.
       # NOTE: `strlen` before the copy function is not covered.
       # NOTE: structures are not covered.
@@ -37,6 +37,8 @@ rules:
                 - pattern: memmove
                 - pattern: wmemcpy
                 - pattern: wmemmove
+                - pattern: mempcpy
+                - pattern: wmempcpy
           - pattern-either:
               - pattern-inside: |
                   $_ $SRC[$LEN];
@@ -59,3 +61,5 @@ rules:
                 - pattern: memmove
                 - pattern: wmemcpy
                 - pattern: wmemmove
+                - pattern: mempcpy
+                - pattern: wmempcpy

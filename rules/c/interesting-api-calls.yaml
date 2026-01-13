@@ -99,7 +99,7 @@ rules:
           - pattern: $FUN($_, $_, $LEN, ...)
           - metavariable-regex:
               metavariable: $FUN
-              regex: '(?i)^\w*memc?cpy(_s)?\s*$|^\w*memmove(_s)?\s*$|^\w*bcopy\s*$'
+              regex: '(?i)^\w*mem(c|p)?cpy(_s)?\s*$|^\w*memmove(_s)?\s*$|^\w*bcopy\s*$'
           # exclude length known at compile time (sizeof macro)
           - pattern-not: $FUN($_, $_, sizeof(...), ...)
           # - pattern-not: $FUN($_, $_, <... sizeof(...) ...>, ...)

@@ -54,6 +54,8 @@ rules:
                 - pattern: memcpy
                 - pattern: memccpy
                 - pattern: wmemcpy
+                - pattern: mempcpy
+                - pattern: wmempcpy
                 # bcopy
                 - pattern: bcopy
       # sprintf

@@ -1030,3 +1030,14 @@ static int mk_rconf_read_glob(struct mk_rconf *conf, const char *path)
 	FindClose(h);
 	return 0;
 }
+
+int test()
+{
+	char buffer[128];
+	// ruleid: raptor-incorrect-use-of-strncpy-memcpy-etc
+	strncpy(buffer, contents, strlen(contents));
+	// ok: raptor-incorrect-use-of-strncpy-memcpy-etc
+	strncpy(buffer, contents, 128);
+	// ok: raptor-incorrect-use-of-strncpy-memcpy-etc
+	strncpy(buffer, contents, sizeof(buffer));
+}

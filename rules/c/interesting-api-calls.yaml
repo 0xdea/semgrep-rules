@@ -57,7 +57,13 @@ rules:
           - pattern: $FUN(...)
           - metavariable-regex:
               metavariable: $FUN
-              regex: '(?i)^\w*strtok(_s)?(_l)?\s*$|^\w*(wc|mb)stok(_s)?(_l)?\s*$'
+              regex: '(?i)^\w*strtok(_r)?(_s)?(_l)?\s*$|^\w*(wc|mb)stok(_r)?(_s)?(_l)?\s*$'
+      # more string parsing (too noisy?)
+      # - patterns:
+      #   - pattern: $FUN(...)
+      #   - metavariable-regex:
+      #       metavariable: $FUN
+      #       regex: '(?i)^\w*strr?chr\s*$|^\w*memchr\s*$|^\w*str(str|sep)\s*$|^\w*strc?spn\s*$|^\w*(str|wcs)pbrk\s*$'
       # strlen (too noisy)
       # - patterns:
       #   - pattern: $FUN(...)
@@ -185,13 +191,13 @@ rules:
           - metavariable-regex:
               metavariable: $FUN
               regex: '(?i)^\w*confstr\s*$'
-      # mbs/wcs
+      # mbs/wcs conversions
       - patterns:
           - pattern: $FUN(...)
           - metavariable-regex:
               metavariable: $FUN
               regex: '(?i)^\w*mbs(nr|r)?towcs(_l)?\s*$|^\w*wcs(nr|r)?tombs(_l)?\s*$'
-      # bs/wc (mostly irrelevant)
+      # mb/wc conversions (mostly irrelevant)
       # - patterns:
       #   - pattern: $FUN(...)
       #   - metavariable-regex:

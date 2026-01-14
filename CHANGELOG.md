@@ -12,10 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Add detections for `confstr`, `ttyname_r/ptsname_r`, `readlinkat`, `fgetws/fgetws_l`, `inet_*`, `mbs/wcs`, and missing `get*` family functions (`interesting-api-calls`).
 * Add detections for `mempcpy` and `wmempcpy` (`incorrect-use-of-strncpy-memcpy-etc`, `interesting-api-calls`, `overlapping-src-dst`, `signed-unsigned-conversion`, `write-into-stack-buffer`).
 * Add detections for `syslog` and `err/warn` function families (`memory-address-exposure`).
+* Add some code samples (`incorrect-use-of-strncpy-memcpy`, `unterminated-string-strncpy-stpncpy`).
 
 ### Changed
 
 * Improve documentation.
+* Update SARIF output example.
 
 ## [1.1.0] - 2025-12-03
 

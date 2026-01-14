@@ -9,7 +9,7 @@ rules:
       # NOTE: `strcpy_s`, `strcat_s`, and similar variants are not covered.
     message: >-
       C standards specify that the results are undefined if a call to
-      copy functions, with the eception of memmove(), would cause copying
+      copy functions, with the exception of memmove(), would cause copying
       to take place between objects that overlap (e.g., if the target
       string array and one of the supplied input arguments refer to the
       same buffer).

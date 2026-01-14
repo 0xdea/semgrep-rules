@@ -21,7 +21,7 @@ rules:
       - pattern-either:
           - pattern: sprintf($_, $FMT, ...)
           - pattern: vsprintf($_, $FMT, ...)
-        # swprintf and vswprintf should have a size parameter
+        # swprintf and vswprintf have a size parameter
       - metavariable-regex:
           metavariable: $FMT
           # NOTE: some format string specifiers are not handled

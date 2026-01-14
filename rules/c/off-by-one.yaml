@@ -11,6 +11,8 @@ rules:
       # NOTE: heap-allocated buffers and some functions are not covered.
       # NOTE: `memcpy(dst + 1, p, len)` and similar scenarios are not covered.
       # NOTE: pattern `{$len=snprintf(_); malloc($len);}` is not covered.
+      # NOTE: see also metavariable-comparison to catch larger indexes as in
+      # https://github.com/parsiya/semgrep-hotspots/blob/main/cpp/arrays-out-of-bounds-access.yaml
       # NOTE: see also `cpp.strings.alloc-strlen.alloc-strlen` and
       # `cpp.strings.missing-nul-cpp-string-memcpy.missing-nul-cpp-string-memcpy`.
     message: >-

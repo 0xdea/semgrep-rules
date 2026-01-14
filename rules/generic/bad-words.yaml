@@ -50,6 +50,8 @@ rules:
       # xml
       # - pattern-regex: (?i)(xml|xerces|sax|etree|xpath|documentbuilder)
       # other words of power, words of destruction (Vulns1001)
+      # see also https://github.com/parsiya/semgrep-hotspots/blob/main/cpp/encode-decode-function-name.yaml
+      # and https://github.com/parsiya/semgrep-hotspots/blob/main/cpp/encrypt-decrypt-function-name.yaml
       # - pattern-regex: (?i)(encode|decode|convert|interpret|compress|fragment|reassemble)
       # other words of power, words of destruction (Vulns1002)
       # - pattern-regex: (?i)(mutex|lock|toctou|parallelism|semaphore|retain|release|garbage|mutual)

@@ -10,7 +10,9 @@ rules:
       # buffers (and possibly static variables); it does not cover 
       # other instances of `free` called on non-heap-allocated buffers; 
       # it also does not cover `alloca` and custom wrappers to `free`.
-      # See also `raptor-mismatched-memory-management.yaml`.
+      # NOTE: see also other ways to create an array as in
+      # https://github.com/parsiya/semgrep-hotspots/blob/main/cpp/arrays-passed-to-functions.yaml
+      # NOTE: see also `raptor-mismatched-memory-management.yaml`.
     message: >-
       The software calls free() on a pointer to memory that has a short 
       lifetime and was not allocated using associated heap allocation 

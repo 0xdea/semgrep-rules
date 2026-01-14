@@ -94,6 +94,20 @@ int process_email(char *email)
 	return 0;
 }
 
+int test()
+{
+	char *hello = "HELLO WORLD";
+	char dest[10];
+	memset(dest, '\xAA', 10);
+	// ruleid: raptor-unterminated-string-strncpy-stpncpy
+	strncpy(dest, hello, 5);
+
+	// to print contents of `dest` in hex
+	for (int i = 0; i < 10; ++i)
+		printf("%hhx ", dest[i]);
+	printf("\n");
+}
+
 int main()
 {
 	printf("Hello, World!");

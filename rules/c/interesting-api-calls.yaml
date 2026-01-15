@@ -179,7 +179,7 @@ rules:
           - pattern: $FUN(...)
           - metavariable-regex:
               metavariable: $FUN
-              regex: '(?i)^\w*mkdir\s*$|^\w*creat\s*$|^\w*link(at)?\s*$|^\w*rename(at)?\s*$|^\w*access(at|_ok)?\s*$|^\w*stat(at)?\s*$|^\w*ch(own|mod)(at)?\s*$|^\w*realpath\s*$|^\w*readlink(at)?\s*$|^\w*(tty|pts)name_r\s*$'
+              regex: '(?i)^\w*(mk|ch)dir\s*$|^\w*creat\s*$|^\w*link(at)?\s*$|^\w*rename(at)?\s*$|^\w*access(at|_ok)?\s*$|^\w*stat(at)?\s*$|^\w*ch(own|mod|root)(at)?\s*$|^\w*realpath\s*$|^\w*readlink(at)?\s*$|^\w*(tty|pts)name_r\s*$'
       # more file
       - patterns:
           - pattern: $FUN(...)

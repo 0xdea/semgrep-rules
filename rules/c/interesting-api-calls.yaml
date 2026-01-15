@@ -106,7 +106,7 @@ rules:
           - metavariable-regex:
               metavariable: $FUN
               regex: '(?i)^\w*mem(c|p)?cpy(_s)?\s*$|^\w*memmove(_s)?\s*$|^\w*bcopy\s*$'
-          # exclude length known at compile time (sizeof macro)
+          # exclude length known at compile time (sizeof macro) - imperfect match with `memccpy`, but that's acceptable
           - pattern-not: $FUN($_, $_, sizeof(...), ...)
           # - pattern-not: $FUN($_, $_, <... sizeof(...) ...>, ...)
           # exclude length known at compile time (numeric literal)
@@ -215,12 +215,12 @@ rules:
       #   - metavariable-regex:
       #       metavariable: $FUN
       #       regex: '(?i)^\w*kill\s*$|^\w*signal\s*$|^\w*sigaction\s*$|^\w*(set|long)jmp\s*$'
-      # time (too noisy)
-      # - patterns:
-      #   - pattern: $FUN(...)
-      #   - metavariable-regex:
-      #       metavariable: $FUN
-      #       regex: '(?i)^\w*time\s*$'
+      # time
+      - patterns:
+          - pattern: $FUN(...)
+          - metavariable-regex:
+              metavariable: $FUN
+              regex: '(?i)^\w*cftime\s*$'
       # kernel
       - patterns:
           - pattern: $FUN(...)

@@ -8,7 +8,7 @@ rules:
         - https://dustri.org/b/playing-with-weggli.html
       confidence: MEDIUM
       # NOTE: some copy functions such as `memccpy`, `bcopy`, and `strcpy_s`
-      # (as well as `snprintf` and similar functions that are hard to match()
+      # (as well as `snprintf` and similar functions that are hard to match)
       # are not covered.
       # NOTE: `strlen` before the copy function is not covered.
       # NOTE: structures are not covered.

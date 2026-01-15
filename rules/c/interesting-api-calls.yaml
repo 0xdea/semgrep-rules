@@ -9,6 +9,7 @@ rules:
         - https://g.co/kgs/PCHQjJ
         - https://www.sei.cmu.edu/downloads/sei-cert-c-coding-standard-2016-v01.pdf
         - https://learn.microsoft.com/en-us/windows-hardware/drivers/devtest/28719-banned-api-usage-use-updated-function-replacement
+        - https://docs.oracle.com/cd/E37838_01/html/E61050/gnclc.html
       confidence: MEDIUM
       # NOTE: `goto`, `try/catch`, `sem/mutex`, `new/delete`, and
       # `static_cast/reinterpret_cast` are not covered.

@@ -10,12 +10,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 * Add detections for `confstr`, `ttyname_r/ptsname_r`, `readlinkat`, `fgetws/fgetws_l`, `*cftime`, `chdir`, `chroot`, `copylist`, `dbminit`, `inet_*`, `mbs/wcs`, and missing `get*` family functions (`interesting-api-calls`).
-* Add detections for `mempcpy` and `wmempcpy` (`incorrect-use-of-strncpy-memcpy-etc`, `interesting-api-calls`, `overlapping-src-dst`, `signed-unsigned-conversion`, `write-into-stack-buffer`).
+* Add detections for `mempcpy` and `wmempcpy` (`incorrect-use-of-strncpy-memcpy`, `interesting-api-calls`, `overlapping-src-dst`, `signed-unsigned-conversion`, `write-into-stack-buffer`).
 * Add detections for `syslog` and `err/warn` function families (`memory-address-exposure`).
 * Add some code samples (`incorrect-use-of-strncpy-memcpy`, `unterminated-string-strncpy-stpncpy`).
 
 ### Changed
 
+* Rename `incorrect-order-setuid-setgid-etc` into `incorrect-order-setuid-setgid`.
+* Rename `incorrect-use-of-strncpy-memcpy-etc` into `incorrect-use-of-strncpy-memcpy`.
+* Rename `insecure-api-scanf-etc` into `insecure-api-scanf`.
+* Rename `unchecked-ret-scanf-etc` into `unchecked-ret-scanf`.
 * Improve documentation.
 * Update SARIF output example.
 

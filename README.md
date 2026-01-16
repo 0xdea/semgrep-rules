@@ -70,9 +70,9 @@ See also the included SARIF output [example](sarif-example).
 * [**insecure-api-gets**](rules/c/insecure-api-gets.yaml). Use of the insecure API function `gets`.
 * [**insecure-api-strcpy-stpcpy-strcat**](rules/c/insecure-api-strcpy-stpcpy-strcat.yaml). Use of potentially insecure API functions `strcpy`, `stpcpy`, `strcat`.
 * [**insecure-api-sprintf-vsprintf**](rules/c/insecure-api-sprintf-vsprintf.yaml). Use of potentially insecure API functions `sprintf` and `vsprintf`.
-* [**insecure-api-scanf-etc**](rules/c/insecure-api-scanf-etc.yaml). Use of potentially insecure API functions in the `scanf` family.
+* [**insecure-api-scanf**](rules/c/insecure-api-scanf.yaml). Use of potentially insecure API functions in the `scanf` family.
 * [**incorrect-use-of-strncat**](rules/c/incorrect-use-of-strncat.yaml). Wrong size argument passed to `strncat`.
-* [**incorrect-use-of-strncpy-memcpy-etc**](rules/c/incorrect-use-of-strncpy-memcpy-etc.yaml). Wrong size argument passed to `strncpy`, `memcpy`, and variants.
+* [**incorrect-use-of-strncpy-memcpy**](rules/c/incorrect-use-of-strncpy-memcpy.yaml). Wrong size argument passed to `strncpy`, `memcpy`, and variants.
 * [**incorrect-use-of-sizeof**](rules/c/incorrect-use-of-sizeof.yaml). Accidental use of the `sizeof` operator on a pointer instead of its target.
 * [**unterminated-string-strncpy-stpncpy**](rules/c/unterminated-string-strncpy-stpncpy.yaml). Lack of explicit NUL-termination after `strncpy` and `stpncpy`.
 * [**off-by-one**](rules/c/off-by-one.yaml). Potential off-by-one error.
@@ -118,7 +118,7 @@ See also the included SARIF output [example](sarif-example).
 
 #### privilege management
 
-* [**incorrect-order-setuid-setgid-etc**](rules/c/incorrect-order-setuid-setgid-etc.yaml). Privilege management functions called in the wrong order.
+* [**incorrect-order-setuid-setgid**](rules/c/incorrect-order-setuid-setgid.yaml). Privilege management functions called in the wrong order.
 * [**unchecked-ret-setuid-seteuid**](rules/c/unchecked-ret-setuid-seteuid.yaml). Unchecked return code of `setuid` and `seteuid`.
 
 #### denial of service
@@ -132,7 +132,7 @@ See also the included SARIF output [example](sarif-example).
 * [**overlapping-src-dst**](rules/c/overlapping-src-dst.yaml). Source and destination overlap in copy functions.
 * [**suspicious-assert**](rules/c/suspicious-assert.yaml). Potentially invalid size check due to use of assertion macros.
 * [**interesting-api-calls**](rules/c/interesting-api-calls.yaml). Calls to interesting and potentially insecure API functions.
-* [**unchecked-ret-scanf-etc**](rules/c/unchecked-ret-scanf-etc.yaml). Unchecked return code of functions in the `scanf` family.
+* [**unchecked-ret-scanf**](rules/c/unchecked-ret-scanf.yaml). Unchecked return code of functions in the `scanf` family.
 * [**insecure-api-atoi-atol-atof**](rules/c/insecure-api-atoi-atol-atof.yaml). Use of potentially insecure API functions `atoi`, `atol`, `atof`.
 * [**high-entropy-assignment**](rules/c/high-entropy-assignment.yaml). Assignment of a high-entropy value that might be a secret.
 * [**argv-envp-access**](rules/c/argv-envp-access.yaml). Command-line argument or environment variable access.

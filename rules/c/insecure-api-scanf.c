@@ -11,22 +11,22 @@ void read_string(char *string)
 	int number;
 	char fmt[] = "whatever";
 
-	// ruleid: raptor-insecure-api-scanf-etc
+	// ruleid: raptor-insecure-api-scanf
 	scanf("%s", buf);
 
-	// ok: raptor-insecure-api-scanf-etc
+	// ok: raptor-insecure-api-scanf
 	scanf("%d", &number);
 
-	// ruleid: raptor-insecure-api-scanf-etc
+	// ruleid: raptor-insecure-api-scanf
 	sscanf(string, "string: %s", buf);
 
-	// ruleid: raptor-insecure-api-scanf-etc
+	// ruleid: raptor-insecure-api-scanf
 	scanf(FMT, buf);
 
-	// ruleid: raptor-insecure-api-scanf-etc
+	// ruleid: raptor-insecure-api-scanf
 	scanf(fmt, buf);
 
-	// ruleid: raptor-insecure-api-scanf-etc
+	// ruleid: raptor-insecure-api-scanf
 	scanf(buf);
 }
 
@@ -34,7 +34,7 @@ void test_func()
 {
 	char last_name[20];
 	printf("Enter your last name: ");
-	// ruleid: raptor-insecure-api-scanf-etc
+	// ruleid: raptor-insecure-api-scanf
 	scanf("%s", last_name);
 }
 
@@ -51,7 +51,7 @@ int read_ident(int sockfd)
 	}
 
 	buffer[sizeof(buffer) - 1] = '\0';
-	// ruleid: raptor-insecure-api-scanf-etc
+	// ruleid: raptor-insecure-api-scanf
 	sscanf(buffer, "%d:%d:%s:%s:%s", &sport, &cport, rtype, user, addinfo);
 	// ...
 }
@@ -70,7 +70,7 @@ undefined4 sa_setBlockName(char *block_name, int len)
 	print_debug(3, "%s(%d);\n", "sa_setBlockName", 0x42d);
 	if (len != 0)
 	{
-		// ruleid: raptor-insecure-api-scanf-etc
+		// ruleid: raptor-insecure-api-scanf
 		scanf_res = sscanf(block_name, "%d%s", &scanf_int, scanf_str);
 		/* if ((scanf_res == 2) && (__src = strstr(block_name, s), __src != NULL)) {
 			// ...
@@ -93,7 +93,7 @@ int updating_database(int a1, const char *update_server)
 		line[0] = 0;
 		while (fgets(line, 1024, v7))
 		{
-			// ruleid: raptor-insecure-api-scanf-etc
+			// ruleid: raptor-insecure-api-scanf
 			if (sscanf(line, "%s %s", db_checksum, db_checksum_val) == 2 && !strcmp(db_checksum, "db_checksum"))
 			{
 				// ...

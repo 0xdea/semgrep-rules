@@ -1,5 +1,5 @@
 rules:
-  - id: raptor-incorrect-order-setuid-setgid-etc
+  - id: raptor-incorrect-order-setuid-setgid
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       references:

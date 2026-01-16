@@ -1,5 +1,5 @@
 rules:
-  - id: raptor-unchecked-ret-scanf-etc
+  - id: raptor-unchecked-ret-scanf
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       references:

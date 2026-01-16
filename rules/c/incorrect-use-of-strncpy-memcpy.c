@@ -5,7 +5,7 @@ void test_func()
 	char source[21] = "the character string";
 	char dest[12];
 
-	// ok: raptor-incorrect-use-of-strncpy-memcpy-etc
+	// ok: raptor-incorrect-use-of-strncpy-memcpy
 	strncpy(dest, source, sizeof(source) - 1); // there's a bof but we don't control the input
 }
 
@@ -327,7 +327,7 @@ int main(int argc, char *argv[])
 		up->p_time = 0;
 		up->p_ctime = 0;
 		up->p_igintr = 0;
-		// ruleid: raptor-incorrect-use-of-strncpy-memcpy-etc
+		// ruleid: raptor-incorrect-use-of-strncpy-memcpy
 		(void)strncpy(up->p_comm, info.pr_fname,
 					  sizeof(info.pr_fname));
 		up->p_args[0] = 0;
@@ -904,7 +904,7 @@ static int dfs_romfs_getdents(struct dfs_file *file, struct dirent *dirp, uint32
 
 		d->d_namlen = rt_strlen(name);
 		d->d_reclen = (rt_uint16_t)sizeof(struct dirent);
-		// ruleid: raptor-incorrect-use-of-strncpy-memcpy-etc
+		// ruleid: raptor-incorrect-use-of-strncpy-memcpy
 		strncpy(d->d_name, name, rt_strlen(name) + 1); /* VULN: buffer overflow if rt_strlen(name) is larger than sizeof(d->d_name) due to missing length check */
 
 		/* move to next position */
@@ -924,7 +924,7 @@ void rd_list_move(rd_list_t *dst, rd_list_t *src)
 	}
 	else
 	{
-		// ruleid: raptor-incorrect-use-of-strncpy-memcpy-etc
+		// ruleid: raptor-incorrect-use-of-strncpy-memcpy
 		memcpy(dst->rl_elems, src->rl_elems,
 			   src->rl_cnt * sizeof(*src->rl_elems));
 		dst->rl_cnt = src->rl_cnt;
@@ -974,7 +974,7 @@ static int mk_rconf_read_glob(struct mk_rconf *conf, const char *path)
 		p1++;
 	}
 
-	// ruleid: raptor-incorrect-use-of-strncpy-memcpy-etc
+	// ruleid: raptor-incorrect-use-of-strncpy-memcpy
 	memcpy(pattern, path, (p1 - path));
 	pattern[p1 - path] = '\0';
 
@@ -998,7 +998,7 @@ static int mk_rconf_read_glob(struct mk_rconf *conf, const char *path)
 			continue;
 		}
 
-		// ruleid: raptor-incorrect-use-of-strncpy-memcpy-etc
+		// ruleid: raptor-incorrect-use-of-strncpy-memcpy
 		memcpy(buf, path, p0 - path + 1);
 		buf[p0 - path + 1] = '\0';
 
@@ -1034,10 +1034,10 @@ static int mk_rconf_read_glob(struct mk_rconf *conf, const char *path)
 int test()
 {
 	char buffer[128];
-	// ruleid: raptor-incorrect-use-of-strncpy-memcpy-etc
+	// ruleid: raptor-incorrect-use-of-strncpy-memcpy
 	strncpy(buffer, contents, strlen(contents));
-	// ok: raptor-incorrect-use-of-strncpy-memcpy-etc
+	// ok: raptor-incorrect-use-of-strncpy-memcpy
 	strncpy(buffer, contents, 128);
-	// ok: raptor-incorrect-use-of-strncpy-memcpy-etc
+	// ok: raptor-incorrect-use-of-strncpy-memcpy
 	strncpy(buffer, contents, sizeof(buffer));
 }

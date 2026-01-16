@@ -5,21 +5,21 @@
 
 void drop_priv_bad()
 {
-	// ruleid: raptor-incorrect-order-setuid-setgid-etc
+	// ruleid: raptor-incorrect-order-setuid-setgid
 	setuid(getuid());
 	setgid(getgid());
 }
 
 void drop_priv_ok()
 {
-	// ok: raptor-incorrect-order-setuid-setgid-etc
+	// ok: raptor-incorrect-order-setuid-setgid
 	setgid(getgid());
 	setuid(getuid());
 }
 
 void bad1()
 {
-	// ruleid: raptor-incorrect-order-setuid-setgid-etc
+	// ruleid: raptor-incorrect-order-setuid-setgid
 	seteuid(getuid());
 	// ...
 	setuid(getuid());
@@ -27,7 +27,7 @@ void bad1()
 
 void good1()
 {
-	// ok: raptor-incorrect-order-setuid-setgid-etc
+	// ok: raptor-incorrect-order-setuid-setgid
 	seteuid(getuid());
 	// ...
 	seteuid(0);
@@ -40,7 +40,7 @@ void bad2()
 	int user1 = 500, user2 = 501;
 
 	/* become user1 */
-	// ruleid: raptor-incorrect-order-setuid-setgid-etc
+	// ruleid: raptor-incorrect-order-setuid-setgid
 	seteuid(user1);
 	process_log1();
 	/* become user2 */
@@ -55,7 +55,7 @@ void good2()
 	int user1 = 500, user2 = 501;
 
 	/* become user1 */
-	// ok: raptor-incorrect-order-setuid-setgid-etc
+	// ok: raptor-incorrect-order-setuid-setgid
 	seteuid(user1);
 	process_log1();
 	/* become user2 */

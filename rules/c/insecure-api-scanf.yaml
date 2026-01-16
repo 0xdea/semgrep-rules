@@ -1,5 +1,5 @@
 rules:
-  - id: raptor-insecure-api-scanf-etc
+  - id: raptor-insecure-api-scanf
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       references:

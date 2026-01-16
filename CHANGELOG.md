@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-* Add detections for `confstr`, `ttyname_r/ptsname_r`, `readlinkat`, `fgetws/fgetws_l`, `*cftime`, `chdir`, `chroot`, `copylist`, `dbminit`, `fattach`, `ftw`, `inet_*`, `mbs/wcs`, and missing `get*` family functions (`interesting-api-calls`).
+* Add detections for `confstr`, `ttyname_r/ptsname_r`, `readlinkat`, `fgetws/fgetws_l`, `*cftime`, `chdir`, `chroot`, `copylist`, `dbminit`, `fattach`, `ftw`, `truncate`, `inet_*`, `mbs/wcs`, and missing `get*` family functions (`interesting-api-calls`).
 * Add detections for missing `str*` family functions (`insecure-api-strcpy-strcat`, `interesting-api-calls`, `overlapping-src-dst`, `write-into-stack-buffer`).
 * Add detections for `mempcpy` and `wmempcpy` (`incorrect-use-of-strncpy-memcpy`, `interesting-api-calls`, `overlapping-src-dst`, `signed-unsigned-conversion`, `write-into-stack-buffer`).
 * Add detection for `p2open` (`command-injection`).

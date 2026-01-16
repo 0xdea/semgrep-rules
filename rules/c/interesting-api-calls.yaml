@@ -143,7 +143,7 @@ rules:
           - pattern: $FUN(...)
           - metavariable-regex:
               metavariable: $FUN
-              regex: '(?i)^\w*open(at)?(64)?\s*$|^\w*pipe\s*$|^\w*read\s*$|^\w*recv(from)?\s*$'
+              regex: '(?i)^\w*open(at)?(64)?\s*$|^\w*pipe\s*$|^\w*read\s*$|^\w*recv(from)?\s*$|^\w*copylist\s*$|^\w*dbminit\s*$'
       # more i/o (too noisy)
       # - patterns:
       #   - pattern: $FUN(...)

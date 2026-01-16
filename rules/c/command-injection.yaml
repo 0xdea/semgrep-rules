@@ -25,4 +25,5 @@ rules:
           - pattern: system(...)
           - pattern: popen(...)
           - pattern: p2open(...)
+          - pattern: wordexp(...)
       - pattern-not: $_("...", ...)

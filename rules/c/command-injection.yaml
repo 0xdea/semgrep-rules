@@ -24,4 +24,5 @@ rules:
       - pattern-either:
           - pattern: system(...)
           - pattern: popen(...)
+          - pattern: p2open(...)
       - pattern-not: $_("...", ...)

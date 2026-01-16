@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Add detections for `mempcpy` and `wmempcpy` (`incorrect-use-of-strncpy-memcpy`, `interesting-api-calls`, `overlapping-src-dst`, `signed-unsigned-conversion`, `write-into-stack-buffer`).
 * Add detections for `syslog` and `err/warn` function families (`memory-address-exposure`).
 * Add detections for `rand48` family functions (`insecure-api-rand-srand`, `interesting-api-calls`).
+* Add detection for `p2open` (`command-injection`).
 * Add some code samples (`incorrect-use-of-strncpy-memcpy`, `unterminated-string-strncpy-stpncpy`).
 
 ### Changed

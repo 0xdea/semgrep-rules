@@ -40,6 +40,10 @@ rules:
                 - pattern: _mbpcpy
                 - pattern: _mbpncpy
                 - pattern: _mbslcpy
+                - pattern: strccpy
+                - pattern: strcadd
+                - pattern: streadd
+                - pattern: strecpy
                 # strcat
                 - pattern: strcat
                 - pattern: strncat

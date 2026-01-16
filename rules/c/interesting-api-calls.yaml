@@ -46,7 +46,7 @@ rules:
           - pattern: $FUN(...)
           - metavariable-regex:
               metavariable: $FUN
-              regex: '(?i)^\w*str\w?cpy(_s)?(_l)?\s*$|^\w*stpn?cpy(_s)?(_l)?\s*$|^\w*(wc|mb)s\w?cpy(_s)?(_l)?\s*$|^\w*wcpn?cpy(_s)?(_l)?\s*$'
+              regex: '(?i)^\w*str\w?(cpy|add)(_s)?(_l)?\s*$|^\w*stpn?cpy(_s)?(_l)?\s*$|^\w*(wc|mb)s\w?cpy(_s)?(_l)?\s*$|^\w*wcpn?cpy(_s)?(_l)?\s*$'
       # strcat
       - patterns:
           - pattern: $FUN(...)

@@ -10,10 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 * Add detections for `confstr`, `ttyname_r/ptsname_r`, `readlinkat`, `fgetws/fgetws_l`, `*cftime`, `chdir`, `chroot`, `copylist`, `dbminit`, `fattach`, `ftw`, `inet_*`, `mbs/wcs`, and missing `get*` family functions (`interesting-api-calls`).
+* Add detections for missing `str*` family functions (`insecure-api-strcpy-stpcpy-strcat`, `interesting-api-calls`, `overlapping-src-dst`, `write-into-stack-buffer`).
 * Add detections for `mempcpy` and `wmempcpy` (`incorrect-use-of-strncpy-memcpy`, `interesting-api-calls`, `overlapping-src-dst`, `signed-unsigned-conversion`, `write-into-stack-buffer`).
-* Add detections for `syslog` and `err/warn` function families (`memory-address-exposure`).
-* Add detections for `rand48` family functions (`insecure-api-rand-srand`, `interesting-api-calls`).
 * Add detection for `p2open` (`command-injection`).
+* Add detections for `rand48` family functions (`insecure-api-rand-srand`, `interesting-api-calls`).
+* Add detections for `syslog` and `err/warn` function families (`memory-address-exposure`).
 * Add some code samples (`incorrect-use-of-strncpy-memcpy`, `unterminated-string-strncpy-stpncpy`).
 
 ### Changed

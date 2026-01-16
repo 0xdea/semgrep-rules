@@ -68,13 +68,13 @@ See also the included SARIF output [example](sarif-example).
 #### buffer overflows
 
 * [**insecure-api-gets**](rules/c/insecure-api-gets.yaml). Use of the insecure API function `gets`.
-* [**insecure-api-strcpy-stpcpy-strcat**](rules/c/insecure-api-strcpy-stpcpy-strcat.yaml). Use of potentially insecure API functions `strcpy`, `stpcpy`, `strcat`.
+* [**insecure-api-strcpy-strcat**](rules/c/insecure-api-strcpy-strcat.yaml). Use of potentially insecure API functions `strcpy`, `stpcpy`, `strcat`.
 * [**insecure-api-sprintf-vsprintf**](rules/c/insecure-api-sprintf-vsprintf.yaml). Use of potentially insecure API functions `sprintf` and `vsprintf`.
 * [**insecure-api-scanf**](rules/c/insecure-api-scanf.yaml). Use of potentially insecure API functions in the `scanf` family.
 * [**incorrect-use-of-strncat**](rules/c/incorrect-use-of-strncat.yaml). Wrong size argument passed to `strncat`.
 * [**incorrect-use-of-strncpy-memcpy**](rules/c/incorrect-use-of-strncpy-memcpy.yaml). Wrong size argument passed to `strncpy`, `memcpy`, and variants.
 * [**incorrect-use-of-sizeof**](rules/c/incorrect-use-of-sizeof.yaml). Accidental use of the `sizeof` operator on a pointer instead of its target.
-* [**unterminated-string-strncpy-stpncpy**](rules/c/unterminated-string-strncpy-stpncpy.yaml). Lack of explicit NUL-termination after `strncpy` and `stpncpy`.
+* [**unterminated-string-strncpy**](rules/c/unterminated-string-strncpy.yaml). Lack of explicit NUL-termination after `strncpy` and `stpncpy`.
 * [**off-by-one**](rules/c/off-by-one.yaml). Potential off-by-one error.
 * [**pointer-subtraction**](rules/c/pointer-subtraction.yaml). Potential use of pointer subtraction to determine size.
 * [**unsafe-ret-snprintf-vsnprintf**](rules/c/unsafe-ret-snprintf-vsnprintf.yaml). Potentially unsafe use of the return value of `snprintf` and `vsnprintf`.
@@ -99,7 +99,7 @@ See also the included SARIF output [example](sarif-example).
 * [**use-after-free**](rules/c/use-after-free.yaml). Potential use after `free`.
 * [**double-free**](rules/c/double-free.yaml). Potential double `free`.
 * [**incorrect-use-of-free**](rules/c/incorrect-use-of-free.yaml). Calling `free` on memory not in the heap.
-* [**unchecked-ret-malloc-calloc-realloc**](rules/c/unchecked-ret-malloc-calloc-realloc.yaml). Unchecked return code of `malloc`, `calloc`, `realloc`.
+* [**unchecked-ret-malloc**](rules/c/unchecked-ret-malloc.yaml). Unchecked return code of `malloc`, `calloc`, `realloc`, etc.
 * [**ret-stack-address**](rules/c/ret-stack-address.yaml). Potential return of the address of a stack-allocated variable.
 * [**putenv-stack-var**](rules/c/putenv-stack-var.yaml). Call to `putenv` with a stack-allocated variable.
 * [**memory-address-exposure**](rules/c/memory-address-exposure.yaml). Potential exposure of underlying memory addresses.

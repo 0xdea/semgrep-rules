@@ -9,10 +9,10 @@ void copy_append_string(char *string1, char *string2)
 {
 	char buf[BUFSIZE];
 
-	// ruleid: raptor-insecure-api-strcpy-stpcpy-strcat
+	// ruleid: raptor-insecure-api-strcpy-strcat
 	strcpy(buf, string1);
 
-	// ruleid: raptor-insecure-api-strcpy-stpcpy-strcat
+	// ruleid: raptor-insecure-api-strcpy-strcat
 	strcat(buf, string2);
 }
 
@@ -20,7 +20,7 @@ void copy_string(char *string)
 {
 	char buf[BUFSIZE];
 
-	// ruleid: raptor-insecure-api-strcpy-stpcpy-strcat
+	// ruleid: raptor-insecure-api-strcpy-strcat
 	stpcpy(buf, string);
 }
 
@@ -41,7 +41,7 @@ void test_func()
 		if (clientsocket >= 0)
 		{
 			clienthp = gethostbyaddr((char *)&clientaddr.sin_addr.s_addr, sizeof(clientaddr.sin_addr.s_addr), AF_INET);
-			// ruleid: raptor-insecure-api-strcpy-stpcpy-strcat
+			// ruleid: raptor-insecure-api-strcpy-strcat
 			strcpy(hostname, clienthp->h_name);
 			logOutput("Accepted client connection from host ", hostname);
 
@@ -67,7 +67,7 @@ char *read_command(int sockfd)
 	switch (buffer[0])
 	{
 	case 'U':
-		// ruleid: raptor-insecure-api-strcpy-stpcpy-strcat
+		// ruleid: raptor-insecure-api-strcpy-strcat
 		strcpy(username, &buffer[1]);
 		break;
 		// ...
@@ -89,17 +89,17 @@ int process_email(char *email)
 	if (strlen(email) >= sizeof(username))
 		return -1;
 
-	// ruleid: raptor-insecure-api-strcpy-stpcpy-strcat
+	// ruleid: raptor-insecure-api-strcpy-strcat
 	strcpy(username, email);
 
 	if (strlen(delim) >= sizeof(domain))
 		return -1;
 
-	// ruleid: raptor-insecure-api-strcpy-stpcpy-strcat
+	// ruleid: raptor-insecure-api-strcpy-strcat
 	strcpy(domain, delim);
 
 	if (!strchr(delim, '.'))
-		// ruleid: raptor-insecure-api-strcpy-stpcpy-strcat
+		// ruleid: raptor-insecure-api-strcpy-strcat
 		strcat(domain, default_domain);
 
 	// ...
@@ -116,11 +116,11 @@ void process_address(int sockfd)
 	if (ptr)
 		*ptr++ = '\0';
 
-	// ruleid: raptor-insecure-api-strcpy-stpcpy-strcat
+	// ruleid: raptor-insecure-api-strcpy-strcat
 	strcpy(username, netbuf);
 
 	if (ptr)
-		// ruleid: raptor-insecure-api-strcpy-stpcpy-strcat
+		// ruleid: raptor-insecure-api-strcpy-strcat
 		strcpy(domain, ptr);
 
 	// ...

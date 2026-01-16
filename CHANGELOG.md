@@ -10,12 +10,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 * Add detections for `confstr`, `ttyname_r/ptsname_r`, `readlinkat`, `fgetws/fgetws_l`, `*cftime`, `chdir`, `chroot`, `copylist`, `dbminit`, `fattach`, `ftw`, `inet_*`, `mbs/wcs`, and missing `get*` family functions (`interesting-api-calls`).
-* Add detections for missing `str*` family functions (`insecure-api-strcpy-stpcpy-strcat`, `interesting-api-calls`, `overlapping-src-dst`, `write-into-stack-buffer`).
+* Add detections for missing `str*` family functions (`insecure-api-strcpy-strcat`, `interesting-api-calls`, `overlapping-src-dst`, `write-into-stack-buffer`).
 * Add detections for `mempcpy` and `wmempcpy` (`incorrect-use-of-strncpy-memcpy`, `interesting-api-calls`, `overlapping-src-dst`, `signed-unsigned-conversion`, `write-into-stack-buffer`).
 * Add detection for `p2open` (`command-injection`).
 * Add detections for `rand48` family functions (`insecure-api-rand-srand`, `interesting-api-calls`).
 * Add detections for `syslog` and `err/warn` function families (`memory-address-exposure`).
-* Add some code samples (`incorrect-use-of-strncpy-memcpy`, `unterminated-string-strncpy-stpncpy`).
+* Add some code samples (`incorrect-use-of-strncpy-memcpy`, `unterminated-string-strncpy`).
 
 ### Changed
 
@@ -23,6 +23,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Rename `incorrect-use-of-strncpy-memcpy-etc` into `incorrect-use-of-strncpy-memcpy`.
 * Rename `insecure-api-scanf-etc` into `insecure-api-scanf`.
 * Rename `unchecked-ret-scanf-etc` into `unchecked-ret-scanf`.
+* Rename `insecure-api-strcpy-stpcpy-strcat` into `insecure-api-strcpy-strcat`.
+* Rename `unterminated-string-strncpy-stpncpy` into `unterminated-string-strncpy`.
+* Rename `unchecked-ret-malloc-calloc-realloc` into `unchecked-ret-malloc`.
 * Improve documentation.
 * Update SARIF output example.
 

@@ -9,7 +9,7 @@ void copy_string1(char *string)
 {
 	char buf[BUFSIZE];
 
-	// ruleid: raptor-unterminated-string-strncpy-stpncpy
+	// ruleid: raptor-unterminated-string-strncpy
 	strncpy(buf, string, BUFSIZE);
 }
 
@@ -17,7 +17,7 @@ void copy_string2(char *string)
 {
 	char buf[BUFSIZE];
 
-	// ruleid: raptor-unterminated-string-strncpy-stpncpy
+	// ruleid: raptor-unterminated-string-strncpy
 	stpncpy(buf, string, BUFSIZE);
 }
 
@@ -26,7 +26,7 @@ int test_func()
 	char longString[] = "String signifying nothing";
 	char shortString[16];
 
-	// ruleid: raptor-unterminated-string-strncpy-stpncpy
+	// ruleid: raptor-unterminated-string-strncpy
 	strncpy(shortString, longString, 16);
 	printf("The last character in shortString is: %c (%1$x)\n", shortString[15]);
 	return 0;
@@ -39,9 +39,9 @@ void test_func2(int argc, char **argv)
 
 	// ...
 
-	// ruleid: raptor-unterminated-string-strncpy-stpncpy
+	// ruleid: raptor-unterminated-string-strncpy
 	strncpy(Filename, argv[1], sizeof(Filename));
-	// ruleid: raptor-unterminated-string-strncpy-stpncpy
+	// ruleid: raptor-unterminated-string-strncpy
 	strncpy(Pattern, argv[2], sizeof(Pattern));
 
 	printf("Searching file: %s for the pattern: %s\n", Filename, Pattern);
@@ -68,7 +68,7 @@ void authenticate(int sockfd)
 	switch (cmd)
 	{
 	case USERNAME:
-		// ruleid: raptor-unterminated-string-strncpy-stpncpy
+		// ruleid: raptor-unterminated-string-strncpy
 		strncpy(user, buffer, sizeof(user));
 		if (!is_username_valid(user))
 			goto fail;
@@ -81,7 +81,7 @@ int process_email(char *email)
 {
 	char buf[1024], *domain;
 
-	// ruleid: raptor-unterminated-string-strncpy-stpncpy
+	// ruleid: raptor-unterminated-string-strncpy
 	strncpy(buf, email, sizeof(buf));
 
 	domain = strchr(buf, '@');
@@ -99,7 +99,7 @@ int test()
 	char *hello = "HELLO WORLD";
 	char dest[10];
 	memset(dest, '\xAA', 10);
-	// ruleid: raptor-unterminated-string-strncpy-stpncpy
+	// ruleid: raptor-unterminated-string-strncpy
 	strncpy(dest, hello, 5);
 
 	// to print contents of `dest` in hex

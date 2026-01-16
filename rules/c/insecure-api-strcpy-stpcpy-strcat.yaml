@@ -1,5 +1,5 @@
 rules:
-  - id: raptor-insecure-api-strcpy-stpcpy-strcat
+  - id: raptor-insecure-api-strcpy-strcat
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       references:

@@ -1,5 +1,5 @@
 rules:
-  - id: raptor-unterminated-string-strncpy-stpncpy
+  - id: raptor-unterminated-string-strncpy
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       references:

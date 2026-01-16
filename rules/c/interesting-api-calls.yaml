@@ -191,7 +191,7 @@ rules:
           - pattern: $FUN(...)
           - metavariable-regex:
               metavariable: $FUN
-              regex: '(?i)^\w*confstr\s*$'
+              regex: '(?i)^\w*confstr\s*$|^\w*utmpx?name\s*$'
       # mbs/wcs conversions
       - patterns:
           - pattern: $FUN(...)

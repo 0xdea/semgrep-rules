@@ -167,7 +167,7 @@ rules:
           - pattern: $FUN(...)
           - metavariable-regex:
               metavariable: $FUN
-              regex: '(?i)^\w*rand\s*$'
+              regex: '(?i)^\w*rand(_r|48)?\s*$'
       # tmp
       - patterns:
           - pattern: $FUN(...)

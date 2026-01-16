@@ -21,3 +21,12 @@ rules:
     pattern-either:
       - pattern: rand(...)
       - pattern: srand(...)
+      - pattern: drand48(...)
+      - pattern: erand48(...)
+      - pattern: lrand48(...)
+      - pattern: nrand48(...)
+      - pattern: mrand48(...)
+      - pattern: jrand48(...)
+      - pattern: lcong48(...)
+      - pattern: srand48(...)
+      - pattern: seed48(...)

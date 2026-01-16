@@ -149,7 +149,7 @@ rules:
       #   - pattern: $FUN(...)
       #   - metavariable-regex:
       #       metavariable: $FUN
-      #       regex: '(?i)^\w*connect\s*$|^\w*write\s*$|^\w*hton(l|s)\s*$|^\w*ntoh(l|s)\s*$'
+      #       regex: '(?i)^\w*connect\s*$|^\w*write\s*$|^\w*hton(l|s)\s*$|^\w*ntoh(l|s)\s*$|^\w*dup2?\s*$'
       # proc
       - patterns:
           - pattern: $FUN(...)

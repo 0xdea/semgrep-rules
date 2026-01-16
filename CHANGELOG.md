@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Add detection for `p2open` (`command-injection`).
 * Add detections for `rand48` family functions (`insecure-api-rand-srand`, `interesting-api-calls`).
 * Add detections for `syslog` and `err/warn` function families (`memory-address-exposure`).
+* Add detection for `tmpnam_r` (`insecure-api-mktemp-tmpnam-tempnam`, `interesting-api-calls`).
 * Add some code samples (`incorrect-use-of-strncpy-memcpy`, `unterminated-string-strncpy`).
 
 ### Changed

@@ -17,6 +17,7 @@ rules:
       - pattern: mktemp(...)
       - pattern: tmpnam(...)
       - pattern: tempnam(...)
+      - pattern: tmpnam_r(...)
       # - pattern: _mktemp(...)
       # - pattern: _tmpnam(...)
       # - pattern: _tempnam(...)

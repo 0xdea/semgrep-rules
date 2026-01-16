@@ -173,7 +173,7 @@ rules:
           - pattern: $FUN(...)
           - metavariable-regex:
               metavariable: $FUN
-              regex: '(?i)^\w*mk\w?temp(64)?\s*$|^\w*te?mpnam\s*$|^\w*tmpfile\s*$'
+              regex: '(?i)^\w*mk\w?temp(64)?\s*$|^\w*te?mpnam(_r)?\s*$|^\w*tmpfile\s*$'
       # file
       - patterns:
           - pattern: $FUN(...)

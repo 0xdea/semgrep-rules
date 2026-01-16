@@ -185,7 +185,7 @@ rules:
           - pattern: $FUN(...)
           - metavariable-regex:
               metavariable: $FUN
-              regex: '(?i)^\w*locale\s*$|^\w*(make|split)path\s*$|^\w*fattach\s*$'
+              regex: '(?i)^\w*locale\s*$|^\w*(make|split)path\s*$|^\w*fattach\s*$|^\w*ftw\s*$'
       # conf
       - patterns:
           - pattern: $FUN(...)

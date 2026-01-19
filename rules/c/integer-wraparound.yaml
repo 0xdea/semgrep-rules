@@ -20,7 +20,8 @@ rules:
       # here, including the same patterns with a different order of operands.
       # NOTE: we should do some tests with the deep expression operator.
       # NOTE: a dedicated rule for C++ operators such as `new` should be implemented.
-      # NOTE: see also `cpp.memory.*`.
+      # NOTE: see also `cpp.lang.security.memory.integer-overflow-allocation.integer-overflow-allocation` 
+      # and `cpp.memory.*`.
     message: >-
       The software performs a calculation that can produce an integer
       overflow or wraparound, when the logic assumes that the resulting

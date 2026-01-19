@@ -24,3 +24,4 @@ rules:
       - pattern: faccessat2(...)
       - pattern: stat(...)
       - pattern: lstat(...)
+      - pattern: fstatat(...)

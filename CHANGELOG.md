@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Add detections for missing `str*` family functions (`insecure-api-strcpy-strcat`, `interesting-api-calls`, `overlapping-src-dst`, `write-into-stack-buffer`).
 * Add detections for `mempcpy` and `wmempcpy` (`incorrect-use-of-strncpy-memcpy`, `interesting-api-calls`, `overlapping-src-dst`, `signed-unsigned-conversion`, `write-into-stack-buffer`).
 * Add detection for `p2open` and `wordexp` (`command-injection`, `interesting-api-calls`).
-* Add detections for `faccessat` and `faccessat2` (`insecure-api-access-stat`, `interesting-api-calls`).
+* Add detections for `faccessat`, `faccessat2`, and `fstatat` (`insecure-api-access-stat`, `interesting-api-calls`).
 * Add detections for `rand48` family functions (`insecure-api-rand-srand`, `interesting-api-calls`).
 * Add detections for `syslog` and `err/warn` function families (`memory-address-exposure`).
 * Add detection for `tmpnam_r` (`insecure-api-mktemp-tmpnam-tempnam`, `interesting-api-calls`).

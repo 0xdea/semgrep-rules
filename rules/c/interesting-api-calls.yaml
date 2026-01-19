@@ -58,7 +58,7 @@ rules:
           - pattern: $FUN(...)
           - metavariable-regex:
               metavariable: $FUN
-              regex: '(?i)^\w*strtok(_r)?(_s)?(_l)?\s*$|^\w*(wc|mb)stok(_r)?(_s)?(_l)?\s*$'
+              regex: '(?i)^\w*strtok(_r)?(_s)?(_l)?\s*$|^\w*(wc|mb)stok(_r)?(_s)?(_l)?\s*$|^\w*str(find|rspn|trns)\s*$'
       # more string parsing (too noisy?)
       # - patterns:
       #   - pattern: $FUN(...)

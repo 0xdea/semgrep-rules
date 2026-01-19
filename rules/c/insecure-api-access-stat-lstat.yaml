@@ -20,5 +20,7 @@ rules:
       - cpp
     pattern-either:
       - pattern: access(...)
+      - pattern: faccessat(...)
+      - pattern: faccessat2(...)
       - pattern: stat(...)
       - pattern: lstat(...)

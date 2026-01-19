@@ -164,4 +164,4 @@ See also the included SARIF output [example](sarif-example).
 * Investigate [symbolic propagation](https://semgrep.dev/docs/writing-rules/experiments/symbolic-propagation) that might be useful to reduce some **false positives**.
 * Implement a Semgrep **wrapper and post-processor** as described in [this research](https://parsiya.net/blog/semgrep-fun/).
 * Implement dedicated **kernel rules** (Linux, BSD, macOS, etc.).
-* Implement dedicated C++ rules and move them in another folder separated from the one for C rules.
+* Implement dedicated [C++ rules](https://semgrep.dev/r?lang=C%2B%2B) and move them in another folder separated from the one for C rules.

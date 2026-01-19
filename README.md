@@ -112,7 +112,7 @@ See also the included SARIF output [example](sarif-example).
 
 #### race conditions
 
-* [**insecure-api-access-stat-lstat**](rules/c/insecure-api-access-stat-lstat.yaml). Use of insecure API functions `access`, `stat`, `lstat`.
+* [**insecure-api-access-stat**](rules/c/insecure-api-access-stat.yaml). Use of insecure API functions `access`, `stat`, `lstat`, etc.
 * [**insecure-api-mktemp-tmpnam-tempnam**](rules/c/insecure-api-mktemp-tmpnam-tempnam.yaml). Use of insecure API functions `mktemp`, `tmpnam`, `tempnam`.
 * [**insecure-api-signal**](rules/c/insecure-api-signal.yaml). Use of insecure API function `signal`.
 

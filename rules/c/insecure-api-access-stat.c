@@ -10,7 +10,7 @@
 
 void bad1()
 {
-	// ruleid: raptor-insecure-api-access-stat-lstat
+	// ruleid: raptor-insecure-api-access-stat
 	int res = access("/tmp/userfile", R_OK);
 	if (res != 0)
 		die("access");
@@ -26,7 +26,7 @@ void bad2(char *file)
 
 	errno = 0;
 
-	// ruleid: raptor-insecure-api-access-stat-lstat
+	// ruleid: raptor-insecure-api-access-stat
 	if (lstat(file, &statb) < 0)
 		goto out;
 
@@ -43,7 +43,7 @@ void bad3(char *fname)
 
 	if (fd == -1)
 		perror("open");
-	// ruleid: raptor-insecure-api-access-stat-lstat
+	// ruleid: raptor-insecure-api-access-stat
 	if (lstat(fname, &stbl) != 0)
 		die("file not there");
 	if (!S_ISREG(stbl.st_mode))

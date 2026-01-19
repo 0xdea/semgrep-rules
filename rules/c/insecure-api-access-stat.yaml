@@ -1,5 +1,5 @@
 rules:
-  - id: raptor-insecure-api-access-stat-lstat
+  - id: raptor-insecure-api-access-stat
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       references:

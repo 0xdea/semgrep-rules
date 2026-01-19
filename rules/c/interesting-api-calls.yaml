@@ -227,7 +227,13 @@ rules:
           - pattern: $FUN(...)
           - metavariable-regex:
               metavariable: $FUN
-              regex: '(?i)^\w*copy_(from|to)_user\s*$|^\w*(get|put)_user\s*$|^\w*copy(in|out)\s*$'
+              regex: '(?i)^\w*copy_(from|to)_user\s*$|^\w*(get|put)_user\s*$|^\w*copy(in|out)\s*$|^\w*cdev_init\s*$'
+      # more kernel (too noisy)
+      # - patterns:
+      #   - pattern: $FUN(...)
+      #   - metavariable-regex:
+      #       metavariable: $FUN
+      #       regex: '(?i)^\w*ioctl\w*\s*$|^\w*m(re|un)?map\s*$'
       # more kernel (too noisy)
       # - patterns:
       #   - pattern: $FUN(...)

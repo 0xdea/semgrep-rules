@@ -13,6 +13,7 @@ rules:
       # tagged as static are not supported.
       # NOTE: multiple pointer assignments and other ways to persist after
       # function returns (e.g., output parameter) are not covered.
+      # NOTE: see also `cpp.lang.security.strings.return-c-str.return-c-str`.
     message: >-
       A function returns the address of a stack variable, which will cause
       unintended program behavior, typically in the form of a crash.

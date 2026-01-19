@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 * Add detections for `confstr`, `ttyname_r/ptsname_r`, `strfind/strrspn/strtrns`, `readlinkat`, `fgetws/fgetws_l`, `*cftime`, `chdir`, `chroot`, `copylist`, `dbminit`, `fattach`, `ftw`, `truncate`, `umask`, `cdev_init`, `inet_*`, `utmp*`, `mbs/wcs`, and missing `get*` family functions (`interesting-api-calls`).
+* Add detections for some obsolete Microsoft functions (`interesting-api-calls`).
 * Add detections for missing `str*` family functions (`insecure-api-strcpy-strcat`, `interesting-api-calls`, `overlapping-src-dst`, `write-into-stack-buffer`).
 * Add detections for `mempcpy` and `wmempcpy` (`incorrect-use-of-strncpy-memcpy`, `interesting-api-calls`, `overlapping-src-dst`, `signed-unsigned-conversion`, `write-into-stack-buffer`).
 * Add detection for `p2open` and `wordexp` (`command-injection`, `interesting-api-calls`).
@@ -21,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+* Extend `*s*printf` pattern matching (`interesting-api-calls`).
 * Rename `incorrect-order-setuid-setgid-etc` into `incorrect-order-setuid-setgid`.
 * Rename `incorrect-use-of-strncpy-memcpy-etc` into `incorrect-use-of-strncpy-memcpy`.
 * Rename `insecure-api-scanf-etc` into `insecure-api-scanf`.

@@ -13,6 +13,7 @@ rules:
       confidence: MEDIUM
       # NOTE: `goto`, `try/catch`, `sem/mutex`, `new/delete`, and
       # `static_cast/reinterpret_cast` are not covered.
+      # NOTE: not all Microsoft-specific obsolete functions are covered.
       # NOTE: consider excluding some matches for `strncpy`, `snprintf`, and similar
       # functions where the length parameter is known at compile time (see `memcpy`
       # below for an example). See also another possible approach described at
@@ -46,13 +47,13 @@ rules:
           - pattern: $FUN(...)
           - metavariable-regex:
               metavariable: $FUN
-              regex: '(?i)^\w*str\w?(cpy|add)(_s)?(_l)?\s*$|^\w*stpn?cpy(_s)?(_l)?\s*$|^\w*(wc|mb)s\w?cpy(_s)?(_l)?\s*$|^\w*wcpn?cpy(_s)?(_l)?\s*$'
+              regex: '(?i)^\w*str\w?(cpy|add)(_s)?(_l)?\s*$|^\w*stpn?cpy(_s)?(_l)?\s*$|^\w*(wc|mb|ftc|tc)s\w?cpy(_s)?(_l)?\s*$|^\w*wcpn?cpy(_s)?(_l)?\s*$'
       # strcat
       - patterns:
           - pattern: $FUN(...)
           - metavariable-regex:
               metavariable: $FUN
-              regex: '(?i)^\w*str\w?cat(_s)?(_l)?\s*$|^\w*(wc|mb)s\w?cat(_s)?(_l)?\s*$'
+              regex: '(?i)^\w*str\w?cat(_s)?(_l)?\s*$|^\w*(wc|mb|ftc|tc)s\w?cat(_s)?(_l)?\s*$'
       # strtok
       - patterns:
           - pattern: $FUN(...)
@@ -76,8 +77,8 @@ rules:
           - pattern: $FUN(...)
           - metavariable-regex:
               metavariable: $FUN
-              regex: '(?i)^\w*s\w?printf(_s)?(_l)?\w*\s*$'
-      # more printf (should be covered by format-string-bugs rule)
+              regex: '(?i)^\w*s\w*printf(_s)?(_l)?\w*\s*$'
+      # more printf (should be covered by the format-string-bugs rule)
       # - patterns:
       #   - pattern: $FUN(...)
       #   - metavariable-regex:
@@ -94,7 +95,7 @@ rules:
           - pattern: $FUN(...)
           - metavariable-regex:
               metavariable: $FUN
-              regex: '(?i)^\w*get(s|ws(_l)?|c|char|pw|pass|wd|cwd|login(_r)?|groups|hostname|domainname|opt|opt_long)\s*$'
+              regex: '(?i)^\w*get(s|ws(_l)?|ts|tws|c|char|pw|pass|wd|cwd|login(_r)?|groups|hostname|domainname|opt|opt_long)\s*$'
       # environment
       - patterns:
           - pattern: $FUN(...)

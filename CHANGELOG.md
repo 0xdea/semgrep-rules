@@ -9,14 +9,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-* Add detections for `confstr`, `ttyname_r/ptsname_r`, `strfind/strrspn/strtrns`, `readlinkat`, `fgetws/fgetws_l`, `*cftime`, `chdir`, `chroot`, `copylist`, `dbminit`, `fattach`, `ftw`, `truncate`, `umask`, `cdev_init`, `inet_*`, `utmp*`, `OemToCharW`, `mbs/wcs`, `*spawn*`, `CreateProcess*`, and missing `get*` family functions (`interesting-api-calls`).
-* Add detections for some obsolete Microsoft functions (`interesting-api-calls`).
+* Add detections for `confstr`, `ttyname_r/ptsname_r`, `strfind/strrspn/strtrns`, `readlinkat`, `fgetws/fgetws_l`, `*cftime`, `chdir`, `chroot`, `copylist`, `dbminit`, `fattach`, `ftw`, `truncate`, `umask/ulimit`, `cdev_init`, `inet_*`, `utmp*`, `OemToCharW`, `mbs/wcs`, `*spawn*`, `CreateProcess*`, and missing `get*` family functions (`interesting-api-calls`).
+* Add detections for some Microsoft-specific functions (`interesting-api-calls`).
 * Add detections for missing `str*` family functions (`insecure-api-strcpy-strcat`, `interesting-api-calls`, `overlapping-src-dst`, `write-into-stack-buffer`).
 * Add detections for `mempcpy` and `wmempcpy` (`incorrect-use-of-strncpy-memcpy`, `interesting-api-calls`, `overlapping-src-dst`, `signed-unsigned-conversion`, `write-into-stack-buffer`).
 * Add detection for `p2open` and `wordexp` (`command-injection`, `interesting-api-calls`).
 * Add detections for `faccessat`, `faccessat2`, and `fstatat` (`insecure-api-access-stat`, `interesting-api-calls`).
 * Add detections for `rand48` family functions (`insecure-api-rand-srand`, `interesting-api-calls`).
 * Add detections for `syslog` and `err/warn` function families (`memory-address-exposure`).
+* Add detections for missing `signal` family functions (`insecure-api-signal`, `interesting-api-calls`).
 * Add detection for `tmpnam_r` (`insecure-api-mktemp-tmpnam-tempnam`, `interesting-api-calls`).
 * Add some code samples (`incorrect-use-of-strncpy-memcpy`, `unterminated-string-strncpy`).
 

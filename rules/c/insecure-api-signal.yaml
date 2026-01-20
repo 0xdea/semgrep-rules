@@ -16,4 +16,7 @@ rules:
     languages:
       - c
       - cpp
-    pattern: signal(...)
+    pattern-either:
+      - pattern: signal(...)
+      - pattern: gsignal(...)
+      - pattern: ssignal(...)

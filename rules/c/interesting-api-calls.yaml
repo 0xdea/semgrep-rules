@@ -41,7 +41,7 @@ rules:
           - pattern: $FUN(...)
           - metavariable-regex:
               metavariable: $FUN
-              regex: '(?i)^\w*set\w*(u|g)id\s*$|^\w*(init|set)groups\s*$'
+              regex: '(?i)^\w*set\w*(u|g)id\s*$|^\w*(init|set)groups\s*$|^\w*Impersonate\w*\s*$'
       # strcpy
       - patterns:
           - pattern: $FUN(...)
@@ -95,19 +95,19 @@ rules:
           - pattern: $FUN(...)
           - metavariable-regex:
               metavariable: $FUN
-              regex: '(?i)^\w*get(s|ws(_l)?|ts|tws|c|char|pw|pass|wd|cwd|login(_r)?|groups|hostname|domainname|opt|opt_long)\s*$'
+              regex: '(?i)^\w*get(s|ws(_l)?|ts|tws|c|char|pw|pass|wd|cwd|login(_r)?|groups|hostname|domainname|opt|opt_long)\s*$|^\w*cuserid\s*$'
       # environment
       - patterns:
           - pattern: $FUN(...)
           - metavariable-regex:
               metavariable: $FUN
-              regex: '(?i)^\w*(get|set|put|unset)env\s*$'
+              regex: '(?i)^\w*(get|set|put|unset)env\s*$|^\w*g_get_(home|tmp)_dir\s*$'
       # memcpy
       - patterns:
           - pattern: $FUN($_, $_, $LEN, ...)
           - metavariable-regex:
               metavariable: $FUN
-              regex: '(?i)^\w*mem(c|p)?cpy(_s)?\s*$|^\w*memmove(_s)?\s*$|^\w*bcopy\s*$'
+              regex: '(?i)^\w*mem(c|p)?cpy(_s)?\s*$|^\w*memmove(_s)?\s*$|^\w*bcopy\s*$|^\w*CopyMemory\s*$'
           # exclude length known at compile time (sizeof macro) - imperfect match with `memccpy`, but that's acceptable
           - pattern-not: $FUN($_, $_, sizeof(...), ...)
           # - pattern-not: $FUN($_, $_, <... sizeof(...) ...>, ...)
@@ -138,13 +138,13 @@ rules:
           - pattern: $FUN(...)
           - metavariable-regex:
               metavariable: $FUN
-              regex: '(?i)^\w*exec(l|v)?(p|e)?e?\s*$|^\w*system\s*$|^\w*spawn\w?\s*$|^\w*wordexp\s*$|^\w*CreateProcess(A|AsUserA|W|AsUserW)?\s*$'
+              regex: '(?i)^\w*exec(l|v)?(p|e)?e?\s*$|^\w*system\s*$|^\w*spawn\w?\s*$|^\w*wordexp\s*$|^\w*WinExec\s*$|^\w*ShellExecute(A|ExA|W|ExW)?\s*$|^\w*CreateProcess(A|AsUserA|W|AsUserW|WithLogonW|WithTokenW)?\s*$'
       # i/o
       - patterns:
           - pattern: $FUN(...)
           - metavariable-regex:
               metavariable: $FUN
-              regex: '(?i)^\w*open(at)?(64)?\s*$|^\w*pipe\s*$|^\w*read\s*$|^\w*recv(from)?\s*$|^\w*copylist\s*$|^\w*dbminit\s*$'
+              regex: '(?i)^\w*open(at)?(64)?\s*$|^\w*pipe\s*$|^\w*read\s*$|^\w*recv(from)?\s*$|^\w*copylist\s*$|^\w*dbminit\s*$|^\w*LoadLibrary(A|ExA|W|ExW)?\s*$'
       # more i/o (too noisy)
       # - patterns:
       #   - pattern: $FUN(...)
@@ -174,7 +174,7 @@ rules:
           - pattern: $FUN(...)
           - metavariable-regex:
               metavariable: $FUN
-              regex: '(?i)^\w*mk\w?temp(64)?\s*$|^\w*te?mpnam(_r)?\s*$|^\w*tmpfile\s*$'
+              regex: '(?i)^\w*mk\w?temp(64)?\s*$|^\w*te?mpnam(_r)?\s*$|^\w*tmpfile\s*$|^\w*GetTempFileName(A|W)?\s*$'
       # file
       - patterns:
           - pattern: $FUN(...)
@@ -186,7 +186,7 @@ rules:
           - pattern: $FUN(...)
           - metavariable-regex:
               metavariable: $FUN
-              regex: '(?i)^\w*locale\s*$|^\w*(make|split)path\s*$|^\w*fattach\s*$|^\w*ftw\s*$|^\w*truncate\s*$|^\w*umask\s*$'
+              regex: '(?i)^\w*locale\s*$|^\w*(make|split)path\s*$|^\w*fattach\s*$|^\w*ftw\s*$|^\w*truncate\s*$|^\w*u(mask|limit)\s*$|^\w*AddAccessAllowedAce\s*$'
       # conf
       - patterns:
           - pattern: $FUN(...)
@@ -198,7 +198,7 @@ rules:
           - pattern: $FUN(...)
           - metavariable-regex:
               metavariable: $FUN
-              regex: '(?i)^\w*mbs(nr|r)?towcs(_l)?\s*$|^\w*wcs(nr|r)?tombs(_l)?\s*$|^\w*OemToCharW\s*$'
+              regex: '(?i)^\w*mbs(nr|r)?towcs(_l)?\s*$|^\w*wcs(nr|r)?tombs(_l)?\s*$|^\w*OemToCharW\s*$|^\w*MultiByteToWideChar\s*$'
       # character conversions (mostly irrelevant)
       # - patterns:
       #   - pattern: $FUN(...)

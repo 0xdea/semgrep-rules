@@ -24,21 +24,21 @@ rules:
       - cpp
     pattern-either:
       # array access
-      - pattern: $BUF[sizeof($BUF)] = $_
+      - pattern: $BUF[sizeof($BUF)] = ...
       - patterns:
-          - pattern: $BUF[$LEN] = $_
+          - pattern: $BUF[$LEN] = ...
           - pattern-inside: |
               $_ $BUF[$LEN];
               ...
       - patterns:
           - pattern: |
-              *($BUF + $LEN) = $_
+              *($BUF + $LEN) = ...
           - pattern-inside: |
               $_ $BUF[$LEN];
               ...
       # two-dimentional array access
       - patterns:
-          - pattern: $BUF[$X][$Y] = $_
+          - pattern: $BUF[$X][$Y] = ...
           - pattern-either:
               - pattern-inside: |
                   $_ $BUF[$_][$Y];

@@ -7,12 +7,12 @@ rules:
         - https://github.com/shellphish/how2heap/blob/master/glibc_2.23/house_of_spirit.c
       confidence: MEDIUM
       # NOTE: this rule only covers `free` called on stack-allocated
-      # buffers (and possibly static variables); it does not cover 
-      # other instances of `free` called on non-heap-allocated buffers; 
+      # buffers (and possibly static variables); it does not cover
+      # other instances of `free` called on non-heap-allocated buffers;
       # it also does not cover `alloca` and custom wrappers to `free`.
-      # NOTE: see also other ways to create an array as in
-      # https://github.com/parsiya/semgrep-hotspots/blob/main/cpp/arrays-passed-to-functions.yaml
-      # NOTE: see also `raptor-mismatched-memory-management.yaml`.
+      # NOTE: multi-dimensional arrays and other ways to create an array
+      # are not covered.
+      # NOTE: refer also to `raptor-mismatched-memory-management.yaml`.
     message: >-
       The software calls free() on a pointer to memory that has a short 
       lifetime and was not allocated using associated heap allocation 
@@ -32,6 +32,9 @@ rules:
               - pattern-inside: |
                   $_ $PTR[$_] = $_;
                   ...
+              - pattern-inside: |
+                  $_ $PTR[] = $_;
+                  ...
               # pointer to array
               - pattern-inside: |
                   $_ $ARR[$_];
@@ -40,6 +43,11 @@ rules:
                   ...
               - pattern-inside: |
                   $_ $ARR[$_] = $_;
+                  ...
+                  $PTR = $ARR;
+                  ...
+              - pattern-inside: |
+                  $_ $ARR[] = $_;
                   ...
                   $PTR = $ARR;
                   ...
@@ -58,6 +66,9 @@ rules:
                   ...
               - pattern-inside: |
                   $_ $VAR[$_] = $_;
+                  ...
+              - pattern-inside: |
+                  $_ $VAR[] = $_;
                   ...
               - pattern-inside: |
                   $_ * $VAR;

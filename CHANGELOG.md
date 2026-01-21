@@ -24,6 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 * Extend `*s*printf` pattern matching (`interesting-api-calls`).
+* Improve matching of array creation patterns (`incorrect-use-of-free`, `putenv-stack-var`, `ret-stack-address`, `write-into-stack-buffer`).
 * Rename `incorrect-order-setuid-setgid-etc` into `incorrect-order-setuid-setgid`.
 * Rename `incorrect-use-of-strncpy-memcpy-etc` into `incorrect-use-of-strncpy-memcpy`.
 * Rename `insecure-api-scanf-etc` into `insecure-api-scanf`.

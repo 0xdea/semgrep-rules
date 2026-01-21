@@ -170,6 +170,7 @@ rules:
       # assignment (too many false positives)
       # - patterns:
       # - pattern: $BUF[$_] = $_;
+      # - pattern: $BUF[] = $_;
       # - pattern-inside: |
       #     $_ $BUF[$_];
       #     ...

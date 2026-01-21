@@ -9,6 +9,8 @@ rules:
       confidence: MEDIUM
       # NOTE: global variables declared outside functions and not explicitly
       # tagged as static are not supported.
+      # NOTE: multi-dimensional arrays and other ways to create an array
+      # are not covered.
       # NOTE: multiple pointer assignments and other ways to persist after
       # function returns (e.g., output parameter) are not covered.
     message: >-
@@ -37,6 +39,13 @@ rules:
               - pattern-not-inside: |
                   static $_ $PTR[$_] = $_;
                   ...
+          - patterns:
+              - pattern-inside: |
+                  $_ $PTR[] = $_;
+                  ...
+              - pattern-not-inside: |
+                  static $_ $PTR[] = $_;
+                  ...
           # pointer to array
           - patterns:
               - pattern-inside: |
@@ -55,4 +64,13 @@ rules:
                   ...
               - pattern-not-inside: |
                   static $_ $ARR[$_] = $_;
+                  ...
+          - patterns:
+              - pattern-inside: |
+                  $_ $ARR[] = $_;
+                  ...
+                  $PTR = $ARR;
+                  ...
+              - pattern-not-inside: |
+                  static $_ $ARR[] = $_;
                   ...

@@ -15,9 +15,8 @@ rules:
       # NOTE: `#define` format specifiers are not excluded due to Semgrep 
       # limitations, perhaps we could implement this with symbolic propagation
       # (Semgrep Pro experimental feature)?
-      # NOTE: some obsolete Microsoft-specific functions, such as `_sntprintf`,
-      # `_snwprintf`, `_sntscanf`, etc., are not covered.
-      # NOTE: see also `cpp.format-string.*`.
+      # NOTE: some obsolete Microsoft-specific functions, such as `_ftprintf`, 
+      # `_sntprintf`, `_snwprintf`, `_sntscanf`, etc., are not covered.
     message: >-
       The software uses a function that accepts a format string as an argument,
       but the format string originates from an external source. This can lead 

@@ -57,6 +57,48 @@ void printWrapper(char *string)
 	printf(string);
 }
 
+namespace basic_tests
+{
+
+	void test_001()
+	{
+		const char *env_001 = getenv("PATH");
+
+		// ruleid: raptor-format-string-bugs
+		printf(env_001, 1);
+
+		// ok: raptor-format-string-bugs
+		printf("%s", env_001);
+
+		// ruleid: raptor-format-string-bugs
+		scanf(env_001, &d);
+	}
+}
+
+int test_002(int argc, char **argv)
+{
+	int d = 0;
+	// ruleid: raptor-format-string-bugs
+	scanf(argv[1], &d);
+}
+
+int test_003(int argc, char **argv)
+{
+	static const size_t n_quads = 300;
+
+	sord_free(NULL); // Shouldn't crash
+
+	SordWorld *world = sord_world_new();
+
+	// ok: raptor-format-string-bugs
+	fprintf(stderr, "expected ");
+
+	// ruleid: raptor-format-string-bugs
+	fprintf(stderr, argv[1]);
+
+	return finished(world, sord, EXIT_SUCCESS);
+}
+
 int main(int argc, char **argv)
 {
 	char buf[5012];

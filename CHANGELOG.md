@@ -19,7 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Add detections for `syslog` and `err/warn` function families (`memory-address-exposure`).
 * Add detections for missing `signal` family functions (`insecure-api-signal`, `interesting-api-calls`).
 * Add detection for `tmpnam_r` (`insecure-api-mktemp-tmpnam-tempnam`, `interesting-api-calls`).
-* Add some code samples (`command-injection`, `incorrect-use-of-strncpy-memcpy`, `unterminated-string-strncpy`).
+* Add some code samples (`command-injection`, `format-string-bugs`, `incorrect-use-of-strncpy-memcpy`, `unterminated-string-strncpy`).
 
 ### Changed
 

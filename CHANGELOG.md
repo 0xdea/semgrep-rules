@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+* Add C++ `this` pattern to `incorrect-use-of-sizeof`.
 * Add detections for `confstr`, `ttyname_r/ptsname_r`, `strfind/strrspn/strtrns`, `readlinkat`, `fgetws/fgetws_l`, `*cftime`, `chdir`, `chroot`, `copylist`, `dbminit`, `fattach`, `ftw`, `truncate`, `umask/ulimit`, `cdev_init`, `inet_*`, `utmp*`, `OemToCharW`, `mbs/wcs`, `*spawn*`, `CreateProcess*`, and missing `get*` family functions (`interesting-api-calls`).
 * Add detections for some Microsoft-specific functions (`interesting-api-calls`).
 * Add detections for missing `str*` family functions (`insecure-api-strcpy-strcat`, `interesting-api-calls`, `overlapping-src-dst`, `write-into-stack-buffer`).
@@ -19,7 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Add detections for `syslog` and `err/warn` function families (`memory-address-exposure`).
 * Add detections for missing `signal` family functions (`insecure-api-signal`, `interesting-api-calls`).
 * Add detection for `tmpnam_r` (`insecure-api-mktemp-tmpnam-tempnam`, `interesting-api-calls`).
-* Add some code samples (`command-injection`, `format-string-bugs`, `incorrect-use-of-strncpy-memcpy`, `unterminated-string-strncpy`).
+* Add some code samples (`command-injection`, `format-string-bugs`, `incorrect-use-of-sizeof`, `incorrect-use-of-strncpy-memcpy`, `unterminated-string-strncpy`).
 
 ### Changed
 

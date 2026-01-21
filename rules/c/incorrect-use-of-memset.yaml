@@ -8,7 +8,7 @@ rules:
       confidence: HIGH
       # NOTE: refer also to `c.lang.security.insecure-use-memset.insecure-use-memset`
       # and `cpp.lang.correctness.memset-removal.memset-removal` for a different 
-      # potential flaw involving `memset`.
+      # potential flaw involving `memset` optimization.
     message: >-
       The invocation of memset() is easy to get wrong. The second argument
       is the character and the third argument is the size, but sometimes

@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-* Add C++ `this` pattern to `incorrect-use-of-sizeof`.
+* Add C++ `this` and function call patterns to `incorrect-use-of-sizeof`.
 * Add detections for `confstr`, `ttyname_r/ptsname_r`, `strfind/strrspn/strtrns`, `readlinkat`, `fgetws/fgetws_l`, `*cftime`, `chdir`, `chroot`, `copylist`, `dbminit`, `fattach`, `ftw`, `truncate`, `umask/ulimit`, `cdev_init`, `inet_*`, `utmp*`, `OemToCharW`, `mbs/wcs`, `*spawn*`, `CreateProcess*`, and missing `get*` family functions (`interesting-api-calls`).
 * Add detections for some Microsoft-specific functions (`interesting-api-calls`).
 * Add detections for missing `str*` family functions (`insecure-api-strcpy-strcat`, `interesting-api-calls`, `overlapping-src-dst`, `write-into-stack-buffer`).

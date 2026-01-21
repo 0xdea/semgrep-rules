@@ -34,17 +34,17 @@ rules:
                   ...
           - patterns:
               - pattern-inside: |
-                  $_ $PTR[$_] = $_;
+                  $_ $PTR[$_] = ...;
                   ...
               - pattern-not-inside: |
-                  static $_ $PTR[$_] = $_;
+                  static $_ $PTR[$_] = ...;
                   ...
           - patterns:
               - pattern-inside: |
-                  $_ $PTR[] = $_;
+                  $_ $PTR[] = ...;
                   ...
               - pattern-not-inside: |
-                  static $_ $PTR[] = $_;
+                  static $_ $PTR[] = ...;
                   ...
           # pointer to array
           - patterns:
@@ -58,19 +58,19 @@ rules:
                   ...
           - patterns:
               - pattern-inside: |
-                  $_ $ARR[$_] = $_;
+                  $_ $ARR[$_] = ...;
                   ...
                   $PTR = $ARR;
                   ...
               - pattern-not-inside: |
-                  static $_ $ARR[$_] = $_;
+                  static $_ $ARR[$_] = ...;
                   ...
           - patterns:
               - pattern-inside: |
-                  $_ $ARR[] = $_;
+                  $_ $ARR[] = ...;
                   ...
                   $PTR = $ARR;
                   ...
               - pattern-not-inside: |
-                  static $_ $ARR[] = $_;
+                  static $_ $ARR[] = ...;
                   ...

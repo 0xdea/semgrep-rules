@@ -27,7 +27,7 @@ rules:
                   $_ $DST[$LEN];
                   ...
               - pattern-inside: |
-                  $_ $DST[$LEN] = $_;
+                  $_ $DST[$LEN] = ...;
                   ...
       # sizeof operator
       - pattern: strncat($DST, $_, sizeof($DST))

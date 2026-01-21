@@ -44,7 +44,7 @@ rules:
                   $_ $SRC[$LEN];
                   ...
               - pattern-inside: |
-                  $_ $SRC[$LEN] = $_;
+                  $_ $SRC[$LEN] = ...;
                   ...
       # sizeof operator, strlen, and similar
       - patterns:

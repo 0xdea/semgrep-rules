@@ -30,10 +30,10 @@ rules:
                   $_ $PTR[$_];
                   ...
               - pattern-inside: |
-                  $_ $PTR[$_] = $_;
+                  $_ $PTR[$_] = ...;
                   ...
               - pattern-inside: |
-                  $_ $PTR[] = $_;
+                  $_ $PTR[] = ...;
                   ...
               # pointer to array
               - pattern-inside: |
@@ -42,12 +42,12 @@ rules:
                   $PTR = $ARR;
                   ...
               - pattern-inside: |
-                  $_ $ARR[$_] = $_;
+                  $_ $ARR[$_] = ...;
                   ...
                   $PTR = $ARR;
                   ...
               - pattern-inside: |
-                  $_ $ARR[] = $_;
+                  $_ $ARR[] = ...;
                   ...
                   $PTR = $ARR;
                   ...
@@ -59,20 +59,20 @@ rules:
                   $_ $VAR;
                   ...
               - pattern-inside: |
-                  $_ $VAR = $_;
+                  $_ $VAR = ...;
                   ...
               - pattern-inside: |
                   $_ $VAR[$_];
                   ...
               - pattern-inside: |
-                  $_ $VAR[$_] = $_;
+                  $_ $VAR[$_] = ...;
                   ...
               - pattern-inside: |
-                  $_ $VAR[] = $_;
+                  $_ $VAR[] = ...;
                   ...
               - pattern-inside: |
                   $_ * $VAR;
                   ...
               - pattern-inside: |
-                  $_ * $VAR = $_;
+                  $_ * $VAR = ...;
                   ...

@@ -37,17 +37,17 @@ rules:
                       ...
               - patterns:
                   - pattern-inside: |
-                      $_ $PTR[$_] = $_;
+                      $_ $PTR[$_] = ...;
                       ...
                   - pattern-not-inside: |
-                      static $_ $PTR[$_] = $_;
+                      static $_ $PTR[$_] = ...;
                       ...
               - patterns:
                   - pattern-inside: |
-                      $_ $PTR[] = $_;
+                      $_ $PTR[] = ...;
                       ...
                   - pattern-not-inside: |
-                      static $_ $PTR[] = $_;
+                      static $_ $PTR[] = ...;
                       ...
               # pointer to array
               - patterns:
@@ -61,21 +61,21 @@ rules:
                       ...
               - patterns:
                   - pattern-inside: |
-                      $_ $ARR[$_] = $_;
+                      $_ $ARR[$_] = ...;
                       ...
                       $PTR = $ARR;
                       ...
                   - pattern-not-inside: |
-                      static $_ $ARR[$_] = $_;
+                      static $_ $ARR[$_] = ...;
                       ...
               - patterns:
                   - pattern-inside: |
-                      $_ $ARR[] = $_;
+                      $_ $ARR[] = ...;
                       ...
                       $PTR = $ARR;
                       ...
                   - pattern-not-inside: |
-                      static $_ $ARR[] = $_;
+                      static $_ $ARR[] = ...;
                       ...
       - patterns:
           # address of local variable
@@ -90,10 +90,10 @@ rules:
                       ...
               - patterns:
                   - pattern-inside: |
-                      $_ $VAR = $_;
+                      $_ $VAR = ...;
                       ...
                   - pattern-not-inside: |
-                      static $_ $VAR = $_;
+                      static $_ $VAR = ...;
                       ...
               - patterns:
                   - pattern-inside: |
@@ -104,17 +104,17 @@ rules:
                       ...
               - patterns:
                   - pattern-inside: |
-                      $_ $VAR[$_] = $_;
+                      $_ $VAR[$_] = ...;
                       ...
                   - pattern-not-inside: |
-                      static $_ $VAR[$_] = $_;
+                      static $_ $VAR[$_] = ...;
                       ...
               - patterns:
                   - pattern-inside: |
-                      $_ $VAR[] = $_;
+                      $_ $VAR[] = ...;
                       ...
                   - pattern-not-inside: |
-                      static $_ $VAR[] = $_;
+                      static $_ $VAR[] = ...;
                       ...
               - patterns:
                   - pattern-inside: |
@@ -125,8 +125,8 @@ rules:
                       ...
               - patterns:
                   - pattern-inside: |
-                      $_ * $VAR = $_;
+                      $_ * $VAR = ...;
                       ...
                   - pattern-not-inside: |
-                      static $_ * $VAR = $_;
+                      static $_ * $VAR = ...;
                       ...

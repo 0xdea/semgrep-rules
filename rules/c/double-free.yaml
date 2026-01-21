@@ -29,7 +29,7 @@ rules:
       - pattern-not: |
           $FREE1($PTR);
           ...
-          $PTR = $_;
+          $PTR = ...;
           ...
           $FREE2($PTR);
       - metavariable-pattern:

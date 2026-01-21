@@ -82,7 +82,7 @@ rules:
       - patterns:
           - pattern-either:
               - pattern: $_ $_[$LEN];
-              - pattern: $_ $_[$LEN] = $_;
+              - pattern: $_ $_[$LEN] = ...;
           - metavariable-regex:
               metavariable: $LEN
               regex: "^0[^xX].*"

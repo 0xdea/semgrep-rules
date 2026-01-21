@@ -33,16 +33,16 @@ rules:
                   $_ * $PTR2;
                   ...
               - pattern-inside: |
-                  $_ * $PTR1 = $_;
-                  $_ * $PTR2 = $_;
+                  $_ * $PTR1 = ...;
+                  $_ * $PTR2 = ...;
                   ...
               - pattern-inside: |
-                  $_ * $PTR1 = $_;
+                  $_ * $PTR1 = ...;
                   $_ * $PTR2;
                   ...
               - pattern-inside: |
                   $_ * $PTR1;
-                  $_ * $PTR2 = $_;
+                  $_ * $PTR2 = ...;
                   ...
               - pattern-inside: |
                   $_ * $PTR3 = $PTR1;

@@ -35,8 +35,8 @@ rules:
       - patterns:
           - pattern-either:
               - pattern: sizeof($PTR)
-              - pattern: sizeof($PTR + (...))
-              - pattern: sizeof((...) + $PTR)
+              - pattern: sizeof($PTR + $_)
+              - pattern: sizeof($_ + $PTR)
           - pattern-either:
               - pattern-inside: |
                   $_ * $PTR;
@@ -48,8 +48,8 @@ rules:
       - patterns:
           - pattern-either:
               - pattern: sizeof($PTR)
-              - pattern: sizeof($PTR + (...))
-              - pattern: sizeof((...) + $PTR)
+              - pattern: sizeof($PTR + $_)
+              - pattern: sizeof($_ + $PTR)
           - pattern-either:
               - pattern-inside: |
                   $_ $_(..., $_ * $PTR, ...) {

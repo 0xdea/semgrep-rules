@@ -85,6 +85,8 @@ rules:
       - pattern: strlcat($_, $_, (int $_))
       - pattern: snprintf($_, (int $_), ...)
       - pattern: vsnprintf($_, (int $_), ...)
+      - pattern: swprintf($_, (int $_), ...)
+      - pattern: vswprintf($_, (int $_), ...)
       - pattern: getcwd($_, (int $_))
       - pattern: memcpy($_, $_, (int $_))
       - pattern: mempcpy($_, $_, (int $_))

@@ -5,7 +5,7 @@ rules:
       references:
         - https://linux.die.net/man/3/sprintf
       confidence: MEDIUM
-      # NOTE: `vsprintf` and `vsnprintf` are not covered.
+      # NOTE: `vsprintf`, `vsnprintf`, `swprintf`, and `vswprintf` are not covered.
       # NOTE: `strcpy_s`, `strcat_s`, and similar variants are not covered.
     message: >-
       C standards specify that the results are undefined if a call to

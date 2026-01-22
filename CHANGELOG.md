@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Add detections for some Microsoft-specific functions (`interesting-api-calls`).
 * Add detections for missing `str*` family functions (`insecure-api-strcpy-strcat`, `interesting-api-calls`, `overlapping-src-dst`, `write-into-stack-buffer`).
 * Add detections for `mempcpy` and `wmempcpy` (`use-of-source-size-in-copy`, `interesting-api-calls`, `overlapping-src-dst`, `signed-unsigned-conversion`, `write-into-stack-buffer`).
+* Add detections for `swprintf` and `vswprintf` (`signed-insigned-conversion`, `write-into-stack-buffer`).
 * Add detection for `p2open` and `wordexp` (`command-injection`, `interesting-api-calls`).
 * Add detections for `faccessat`, `faccessat2`, and `fstatat` (`insecure-api-access-stat`, `interesting-api-calls`).
 * Add detections for `rand48` family functions (`insecure-api-rand-srand`, `interesting-api-calls`).

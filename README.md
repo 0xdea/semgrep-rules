@@ -72,7 +72,7 @@ See also the included SARIF output [example](sarif-example).
 * [**insecure-api-sprintf-vsprintf**](rules/c/insecure-api-sprintf-vsprintf.yaml). Use of potentially insecure API functions `sprintf` and `vsprintf`.
 * [**insecure-api-scanf**](rules/c/insecure-api-scanf.yaml). Use of potentially insecure API functions in the `scanf` family.
 * [**incorrect-use-of-strncat**](rules/c/incorrect-use-of-strncat.yaml). Wrong size argument passed to `strncat`.
-* [**incorrect-use-of-strncpy-memcpy**](rules/c/incorrect-use-of-strncpy-memcpy.yaml). Wrong size argument passed to `strncpy`, `memcpy`, and variants.
+* [**use-of-source-size-in-copy**](rules/c/use-of-source-size-in-copy.yaml). Wrong size argument passed to `strncpy`, `memcpy`, `snprintf`, and variants.
 * [**incorrect-use-of-sizeof**](rules/c/incorrect-use-of-sizeof.yaml). Accidental use of the `sizeof` operator on a pointer instead of its target.
 * [**unterminated-string-strncpy**](rules/c/unterminated-string-strncpy.yaml). Lack of explicit NUL-termination after `strncpy` and `stpncpy`.
 * [**off-by-one**](rules/c/off-by-one.yaml). Potential off-by-one error.

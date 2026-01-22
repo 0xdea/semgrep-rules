@@ -13,14 +13,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Add detections for `confstr`, `ttyname_r/ptsname_r`, `strfind/strrspn/strtrns`, `readlinkat`, `fgetws/fgetws_l`, `*cftime`, `chdir`, `chroot`, `copylist`, `dbminit`, `fattach`, `ftw`, `truncate`, `umask/ulimit`, `cdev_init`, `inet_*`, `utmp*`, `OemToCharW`, `mbs/wcs`, `*spawn*`, `CreateProcess*`, and missing `get*` family functions (`interesting-api-calls`).
 * Add detections for some Microsoft-specific functions (`interesting-api-calls`).
 * Add detections for missing `str*` family functions (`insecure-api-strcpy-strcat`, `interesting-api-calls`, `overlapping-src-dst`, `write-into-stack-buffer`).
-* Add detections for `mempcpy` and `wmempcpy` (`incorrect-use-of-strncpy-memcpy`, `interesting-api-calls`, `overlapping-src-dst`, `signed-unsigned-conversion`, `write-into-stack-buffer`).
+* Add detections for `mempcpy` and `wmempcpy` (`use-of-source-size-in-copy`, `interesting-api-calls`, `overlapping-src-dst`, `signed-unsigned-conversion`, `write-into-stack-buffer`).
 * Add detection for `p2open` and `wordexp` (`command-injection`, `interesting-api-calls`).
 * Add detections for `faccessat`, `faccessat2`, and `fstatat` (`insecure-api-access-stat`, `interesting-api-calls`).
 * Add detections for `rand48` family functions (`insecure-api-rand-srand`, `interesting-api-calls`).
 * Add detections for `syslog` and `err/warn` function families (`memory-address-exposure`).
 * Add detections for missing `signal` family functions (`insecure-api-signal`, `interesting-api-calls`).
 * Add detection for `tmpnam_r` (`insecure-api-mktemp-tmpnam-tempnam`, `interesting-api-calls`).
-* Add some code samples (`command-injection`, `format-string-bugs`, `incorrect-use-of-sizeof`, `incorrect-use-of-strncpy-memcpy`, `unterminated-string-strncpy`).
+* Add some code samples (`command-injection`, `format-string-bugs`, `incorrect-use-of-sizeof`, `use-of-source-size-in-copy`, `unterminated-string-strncpy`).
 
 ### Changed
 
@@ -28,7 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Improve matching of array creation patterns (`incorrect-use-of-free`, `putenv-stack-var`, `ret-stack-address`, `write-into-stack-buffer`).
 * Replace the pattern `= $_;` with `= ...;` everywhere.
 * Rename `incorrect-order-setuid-setgid-etc` into `incorrect-order-setuid-setgid`.
-* Rename `incorrect-use-of-strncpy-memcpy-etc` into `incorrect-use-of-strncpy-memcpy`.
+* Rename `incorrect-use-of-strncpy-memcpy-etc` into `use-of-source-size-in-copy`.
 * Rename `insecure-api-scanf-etc` into `insecure-api-scanf`.
 * Rename `unchecked-ret-scanf-etc` into `unchecked-ret-scanf`.
 * Rename `insecure-api-strcpy-stpcpy-strcat` into `insecure-api-strcpy-strcat`.

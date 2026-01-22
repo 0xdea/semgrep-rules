@@ -1,5 +1,5 @@
 rules:
-  - id: raptor-incorrect-use-of-strncpy-memcpy
+  - id: raptor-use-of-source-size-in-copy
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       references:

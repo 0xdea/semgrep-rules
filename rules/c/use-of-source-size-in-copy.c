@@ -1041,3 +1041,103 @@ int test()
 	// ok: raptor-use-of-source-size-in-copy
 	strncpy(buffer, contents, sizeof(buffer));
 }
+
+void f()
+{
+	char src[512];
+	char dest[256];
+
+	// `sizeof(dest)` is wrong but will be caught by another rule
+	// ok: raptor-use-of-source-size-in-copy
+	snprintf(dest, sizeof(dest), "value=%s\n", src);
+	// ok: raptor-use-of-source-size-in-copy
+	snprintf(dest, sizeof(dest), "value=%s\n", src);
+}
+
+void f()
+{
+	char src[512];
+	char dest[256];
+
+	// ruleid: raptor-use-of-source-size-in-copy
+	snprintf(dest, sizeof(src), src);
+
+	// ruleid: raptor-use-of-source-size-in-copy
+	snprintf(dest, sizeof(src), "value=%s\n", src);
+
+	// ruleid: raptor-use-of-source-size-in-copy
+	snprintf(dest, sizeof(src), "value%s%s\n", "=", src);
+
+	// ruleid: raptor-use-of-source-size-in-copy
+	snprintf(dest, sizeof(src), "value%s%s%s", "=", src, "\n");
+}
+
+void f()
+{
+	char src[512];
+	char dest[256];
+
+	// ok: raptor-use-of-source-size-in-copy
+	snprintf(dest, sizeof(dest), src);
+
+	// ok: raptor-use-of-source-size-in-copy
+	snprintf(dest, sizeof(dest), "value=%s\n", src);
+
+	// ok: raptor-use-of-source-size-in-copy
+	snprintf(dest, sizeof(dest), "value%s%s\n", "=", src);
+
+	// ok: raptor-use-of-source-size-in-copy
+	snprintf(dest, sizeof(dest), "value%s%s%s", "=", src, "\n");
+}
+
+void f()
+{
+	char src[512];
+	char dest[256];
+
+	// ruleid: raptor-use-of-source-size-in-copy
+	snprintf(dest, sizeof(src) - 1, "value=%s\n", src);
+}
+
+void f()
+{
+	char src[512];
+	char dest[256];
+
+	// ruleid: raptor-use-of-source-size-in-copy
+	snprintf(dest, sizeof(src) - 1, src);
+
+	// ruleid: raptor-use-of-source-size-in-copy
+	snprintf(dest, sizeof(src) - 1, "value=%s\n", src);
+
+	// ruleid: raptor-use-of-source-size-in-copy
+	snprintf(dest, sizeof(src) - 1, "value%s%s\n", "=", src);
+
+	// ruleid: raptor-use-of-source-size-in-copy
+	snprintf(dest, sizeof(src) - 1, "value%s%s%s", "=", src, "\n");
+}
+
+void f()
+{
+	char src[16];
+	char dest[256];
+
+	// `sizeof(src)` is less than `sizeof(dest)` so this is safe
+	// todook: raptor-use-of-source-size-in-copy
+	snprintf(dest, sizeof(src), "value = %s\n", src);
+}
+
+void f()
+{
+	char src[256];
+	char dest[256];
+
+	// ...
+
+	// `sizeof(src)` is equal to `sizeof(dest)` so this is safe
+	// todook: raptor-use-of-source-size-in-copy
+	memcpy(dest, src, sizeof(src));
+
+	// ok: raptor-use-of-source-size-in-copy
+	memcpy(dest, src, 256);
+}

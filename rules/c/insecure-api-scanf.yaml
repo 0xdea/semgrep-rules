@@ -36,6 +36,13 @@ rules:
           - pattern: vfwscanf($_, $FMT, ...)
           - pattern: swscanf($_, $FMT, ...)
           - pattern: vswscanf($_, $FMT, ...)
+      # exclude string literals as source
+      - pattern-not: sscanf("...", $FMT, ...)
+      - pattern-not: __isoc99_sscanf("...", $FMT, ...)
+      - pattern-not: vsscanf("...", $FMT, ...)
+      - pattern-not: __isoc99_vsscanf("...", $FMT, ...)
+      - pattern-not: swscanf("...", $FMT, ...)
+      - pattern-not: vswscanf("...", $FMT, ...)
       - metavariable-regex:
           metavariable: $FMT
           # NOTE: some format string specifiers are not handled

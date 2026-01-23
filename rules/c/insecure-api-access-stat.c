@@ -51,12 +51,6 @@ void bad3(char *fname)
 	// ...
 }
 
-int main()
-{
-	printf("Hello, World!");
-	return 0;
-}
-
 void test_001()
 {
 	const char *original_key = "path/to/file/filename";
@@ -125,4 +119,10 @@ void test_001_stack_overflow()
 		// Close the file
 		fclose(fp);
 	}
+}
+
+int main()
+{
+	printf("Hello, World!");
+	return 0;
 }

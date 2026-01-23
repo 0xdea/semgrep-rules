@@ -116,24 +116,28 @@ void memory_copy()
 }
 
 // https://cc-sw.com/semgrep-guide-for-a-security-engineer-part-6-of-6/
-static int service_attr_req(sdp_req_t *req, sdp_buf_t *buf) {
-  sdp_cont_state_t *cstate = NULL;
-  // ...
-  if (cstate) {
-  sdp_buf_t *pCache = sdp_get_cached_rsp(cstate);
- 
-  SDPDBG("Obtained cached rsp : %p", pCache);
- 
-  if (pCache) {
-    short sent = MIN(max_rsp_size, pCache->data_size - cstate->cStateValue.maxBytesSent);
-    pResponse = pCache->data;
-	// ruleid: raptor-interesting-api-calls
-    memcpy(buf->data, pResponse + cstate->cStateValue.maxBytesSent, sent);  //Out-of-bound read here
-    buf->data_size += sent;
-    cstate->cStateValue.maxBytesSent += sent;
-    // ...
-  }
-  // ...
+static int service_attr_req(sdp_req_t *req, sdp_buf_t *buf)
+{
+	sdp_cont_state_t *cstate = NULL;
+	// ...
+	if (cstate)
+	{
+		sdp_buf_t *pCache = sdp_get_cached_rsp(cstate);
+
+		SDPDBG("Obtained cached rsp : %p", pCache);
+
+		if (pCache)
+		{
+			short sent = MIN(max_rsp_size, pCache->data_size - cstate->cStateValue.maxBytesSent);
+			pResponse = pCache->data;
+			// ruleid: raptor-interesting-api-calls
+			memcpy(buf->data, pResponse + cstate->cStateValue.maxBytesSent, sent); // Out-of-bound read here
+			buf->data_size += sent;
+			cstate->cStateValue.maxBytesSent += sent;
+			// ...
+		}
+		// ...
+	}
 }
 
 int main()

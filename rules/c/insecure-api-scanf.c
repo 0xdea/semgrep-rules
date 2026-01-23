@@ -104,6 +104,131 @@ int updating_database(int a1, const char *update_server)
 	return 0;
 }
 
+void test_003(void)
+{
+	char buf[BUFFER_SIZE];
+	// ruleid: raptor-insecure-api-scanf
+	if (1 != fscanf(stdin, "%s", buf))
+	{
+		// ...
+	}
+}
+
+void test_003_valist(void)
+{
+	char buf[BUFFER_SIZE];
+	// ruleid: raptor-insecure-api-scanf
+	if (1 != fscanf(stdin, "%d%d%s", 1, 2, buf))
+	{
+		// ...
+	}
+}
+
+void test_003_stmt(void)
+{
+	char buf[BUFFER_SIZE];
+	// ruleid: raptor-insecure-api-scanf
+	fscanf(stdin, "%d%d%s", 1, 2, buf);
+}
+
+void test_004(void)
+{
+	char buf[BUFFER_SIZE];
+	// ok: raptor-insecure-api-scanf
+	if (1 != fscanf(stdin, "%d", buf))
+	{
+		// ...
+	}
+}
+
+void test_007(wchar_t *name)
+{
+	char filename[128];
+	// ruleid: raptor-insecure-api-scanf
+	fwscanf(stdin, L"foo%sbar", filename);
+}
+
+void foo()
+{
+	char buf[128];
+	int n;
+	// ruleid: raptor-insecure-api-scanf
+	fscanf(stdin, "%dfoo%sbar", n, buf);
+	// ruleid: raptor-insecure-api-scanf
+	fscanf(stdin, "%sbar", n, buf);
+	// ruleid: raptor-insecure-api-scanf
+	fscanf(stdin, "foo%s", n, buf);
+}
+
+void foo()
+{
+	char buf[128];
+	int n;
+	// ok: raptor-insecure-api-scanf
+	fscanf(stdin, "%dfoo%10sbar", n, buf);
+}
+
+void foo()
+{
+	char buf[128];
+	int n;
+	// sized format specifiers aren't parsed yet
+	// todoruleid: raptor-insecure-api-scanf
+	fscanf(stdin, "%dfoo%1024sbar", n, buf);
+}
+
+void foo()
+{
+	char buf[128];
+	// ruleid: raptor-insecure-api-scanf
+	fscanf(stdin, "%sfoo%%s", buf);
+
+	// ruleid: raptor-insecure-api-scanf
+	fscanf(stdin, "%sfoo%%%s", buf);
+}
+
+void foo()
+{
+	char buf[64];
+	va_list ap;
+	va_start(ap, buf);
+	// ruleid: raptor-insecure-api-scanf
+	vscanf("%s", ap);
+	va_end(ap);
+}
+
+void foo()
+{
+	char buf[64];
+	va_list ap;
+	va_start(ap, buf);
+	// ruleid: raptor-insecure-api-scanf
+	vfscanf(stdin, "%s", ap);
+	va_end(ap);
+}
+
+void foo(char *str)
+{
+	char buf[0];
+	// ruleid: raptor-insecure-api-scanf
+	sscanf(str, "%s", buf);
+
+	// ok: raptor-insecure-api-scanf
+	sscanf("constant string", "%s", buf);
+
+	va_list ap;
+	va_start(ap, fmt);
+	// ruleid: raptor-insecure-api-scanf
+	vsscanf(str, "%s", buf);
+	va_end(ap);
+
+	va_list ap;
+	va_start(ap, fmt);
+	// ok: raptor-insecure-api-scanf
+	vsscanf("constant string", "%s", buf);
+	va_end(ap);
+}
+
 int main()
 {
 	printf("Hello, World!");

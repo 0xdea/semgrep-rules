@@ -1,6 +1,6 @@
 // Marco Ivaldi <raptor@0xdeadbeef.info>
 
-// Semgrep is currently unable to catch this
+// semgrep is currently unable to catch this
 // todoruleid: raptor-regex-dos
 #define REGEX "^([a-zA-Z0-9])(([\-.]|[_]+)?([a-zA-Z0-9]+))*(@){1}[a-z0-9]+[.]{1}(([a-z]{2,3})|([a-z]{2,3}[.]{1}[a-z]{2,3}))$"
 

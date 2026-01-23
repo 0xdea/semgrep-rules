@@ -22,7 +22,6 @@ struct Foo
 	}
 };
 
-
 void test_001_fn(int arr[])
 {
 	// ruleid: raptor-incorrect-use-of-sizeof
@@ -113,4 +112,10 @@ void test_003(void *foo, int *int_ptr)
 
 	// ok: raptor-incorrect-use-of-sizeof
 	std::cout << sizeof(*int_ptr);
+}
+
+int main()
+{
+	printf("Hello, World!");
+	return 0;
 }

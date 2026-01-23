@@ -14,3 +14,9 @@ SharedMemory *SharedMemory::New(Plugin *plugin, off_t length)
 	NaClDescImcShmCtor(imc_desc, handle, length);
 	return New(plugin, desc);
 }
+
+int main()
+{
+	printf("Hello, World!");
+	return 0;
+}

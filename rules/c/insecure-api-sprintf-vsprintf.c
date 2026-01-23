@@ -51,6 +51,20 @@ WriteToLog(jrun_request *r, const char *szFormat, ...)
 #endif
 }
 
+void test_005(const char *name)
+{
+	char filename[128];
+	// ruleid: raptor-insecure-api-sprintf-vsprintf
+	sprintf(filename, "%s", name);
+}
+
+void test_006(const char *name)
+{
+	char filename[128];
+	// ok: raptor-insecure-api-sprintf-vsprintf
+	sprintf(filename, "%d", name);
+}
+
 int main()
 {
 	printf("Hello, World!");

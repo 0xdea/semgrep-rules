@@ -141,6 +141,8 @@ ngx_http_memc_create_incr_decr_cmd_request(ngx_http_request_t *r)
 	value_vv = ctx->memc_value_vv;
 
 	/* XXX validate if $memc_value_vv is a valid uint64 string */
+	// this should be caught but it isn't, due to a known issue in semgrep
+	// https://github.com/semgrep/semgrep/issues/11327
 	// todoruleid: raptor-incorrect-use-of-sizeof
 	len = ctx->cmd_str.len + sizeof(' ') + key_vv->len + escape + sizeof(' ') + value_vv->len + sizeof(CRLF) - 1;
 

@@ -7,13 +7,15 @@ rules:
         - https://g.co/kgs/PCHQjJ
         - https://labs.snyk.io/resources/leaky-vessels-container-vuln-deep-dive/
       confidence: HIGH
-      # NOTE: see also `cpp.filesystem.file-access-before-action.file-access-before-action`
-      # and `cpp.filesystem.file-stat-before-action.file-stat-before-action`.
+      # NOTE: `_stat` and `_lstat` are not covered.
+      # NOTE: refer also to `cpp.filesystem.file-access-before-action.file-access-before-action`
+      # and `cpp.filesystem.file-stat-before-action.file-stat-before-action` for stricter
+      # check/action patterns.
     message: >-
       The software checks the state of a resource before using it, but the 
       resource's state can change between the check and the use in a way that 
-      invalidates the results of the check. This canmcause the software to 
-      perform invalid actions when the resource is inman unexpected state.
+      invalidates the results of the check. This can cause the software to 
+      perform invalid actions when the resource is in an unexpected state.
     severity: WARNING
     languages:
       - c

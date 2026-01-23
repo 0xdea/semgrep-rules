@@ -8,7 +8,6 @@ rules:
         - https://cwe.mitre.org/data/definitions/787
         - https://g.co/kgs/PCHQjJ
       confidence: HIGH
-      # NOTE: see also `cpp.strings.unbounded-copy-to-stack-buffer.unbounded-copy-to-stack-buffer`.
     message: >-
       A buffer overflow condition exists when a program attempts to put
       more data in a buffer than it can hold, or when a program attempts to

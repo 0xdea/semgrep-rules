@@ -9,7 +9,7 @@ rules:
       confidence: HIGH
       # NOTE: `rand_r` and other non-standard PRNGs are not covered.
       # NOTE: improperly seeded strong PRNGs are not covered.
-      # NOTE: see also `cpp.rng.*`, `cpp.crypto.*`, and `gitlab.flawfinder.*`.
+      # NOTE: refer also to `cpp.rng.*`, `cpp.crypto.*`, and `gitlab.flawfinder.*`.
     message: >-
       The rand() PRNG should not be used in applications intended to be 
       portable when good randomness is needed. Instead, the use of random() 

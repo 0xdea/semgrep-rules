@@ -10,7 +10,7 @@ rules:
       confidence: MEDIUM
       # NOTE: C++ `delete` and `delete[]` operators are not covered.
       # NOTE: `realloc` is not covered.
-      # NOTE: see also `cpp.use-after-free.*`.
+      # NOTE: see also `cpp.lang.security.use-after-free.*`.
     message: >-
       The use of previously-freed memory can have any number of adverse
       consequences, ranging from the corruption of valid data to the

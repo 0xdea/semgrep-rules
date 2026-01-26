@@ -229,6 +229,35 @@ int printbuf_memappend(printbuf *p, char *buf, int size)
   }
 }
 
+#include <windows.h>
+#include <iostream>
+
+int windows_example()
+{
+  int nresp = 1073741824;               // 2^30, close to INT_MAX
+  size_t size = nresp * sizeof(char *); // Overflow occurs here!
+
+  // If sizeof(char*) == 4, then nresp * 4 = 4,294,967,296
+  // But this exceeds UINT32_MAX (4,294,967,295), so it wraps to 0
+  if (size == 0)
+  {
+    std::cerr << "Integer overflow detected! Size is 0." << std::endl;
+    return 1;
+  }
+
+  // ruleid: raptor-integer-wraparound
+  LPVOID ptr = VirtualAlloc(NULL, size, MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
+  if (ptr == NULL)
+  {
+    std::cerr << "VirtualAlloc failed. Size may be invalid due to overflow." << std::endl;
+    return 1;
+  }
+
+  std::cout << "Memory allocated successfully at: " << ptr << std::endl;
+  VirtualFree(ptr, 0, MEM_RELEASE);
+  return 0;
+}
+
 int main()
 {
   printf("Hello, World!");

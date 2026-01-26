@@ -14,14 +14,13 @@ rules:
       # NOTE: only multiplication and sum with two operands are covered; other
       # arithmetic operations should also be considered (e.g., left shift, even
       # subtraction), as well as any operation with more than two operands.
-      # NOTE: some specialized allocation functions such as `kmalloc` and custom 
+      # NOTE: some allocation functions such as `kmalloc`, `HeapAlloc`, and custom
       # wrappers are not covered.
       # NOTE: there might exist other buggy input validation patterns not covered
       # here, including the same patterns with a different order of operands.
       # NOTE: we should do some tests with the deep expression operator.
       # NOTE: a dedicated rule for C++ operators such as `new` should be implemented.
-      # NOTE: see also `cpp.lang.security.memory.integer-overflow-allocation.integer-overflow-allocation` 
-      # and `cpp.memory.*`.
+      # NOTE: refer also to `cpp.lang.security.memory.integer-overflow-allocation.integer-overflow-allocation`.
     message: >-
       The software performs a calculation that can produce an integer
       overflow or wraparound, when the logic assumes that the resulting
@@ -81,11 +80,11 @@ rules:
               pattern-either:
                 - pattern: malloc
                 - pattern: valloc
-      # calloc, realloc, reallocf, aligned_alloc (multiplication)
+      # calloc, realloc, reallocf, aligned_alloc, VirtualAlloc (multiplication)
       - patterns:
           - pattern-either:
-              - pattern: $FUN($_, $_ * $_)
-              - pattern: $FUN($_, $_ *= $_)
+              - pattern: $FUN($_, $_ * $_, ...)
+              - pattern: $FUN($_, $_ *= $_, ...)
           - metavariable-pattern:
               metavariable: $FUN
               pattern-either:
@@ -93,8 +92,9 @@ rules:
                 - pattern: realloc
                 - pattern: reallocf
                 - pattern: aligned_alloc
+                - pattern: VirtualAlloc
       - patterns:
-          - pattern: $FUN($_, $N)
+          - pattern: $FUN($_, $N, ...)
           - pattern-either:
               - pattern-inside: |
                   $N = $_ * $_;
@@ -109,11 +109,12 @@ rules:
                 - pattern: realloc
                 - pattern: reallocf
                 - pattern: aligned_alloc
-      # calloc, realloc, reallocf, aligned_alloc (sum)
+                - pattern: VirtualAlloc
+      # calloc, realloc, reallocf, aligned_alloc, VirtualAlloc (sum)
       - patterns:
           - pattern-either:
-              - pattern: $FUN($_, $_ + $_)
-              - pattern: $FUN($_, $_ += $_)
+              - pattern: $FUN($_, $_ + $_, ...)
+              - pattern: $FUN($_, $_ += $_, ...)
           - metavariable-pattern:
               metavariable: $FUN
               pattern-either:
@@ -121,8 +122,9 @@ rules:
                 - pattern: realloc
                 - pattern: reallocf
                 - pattern: aligned_alloc
+                - pattern: VirtualAlloc
       - patterns:
-          - pattern: $FUN($_, $N)
+          - pattern: $FUN($_, $N, ...)
           - pattern-either:
               - pattern-inside: |
                   $N = $_ + $_;
@@ -137,6 +139,7 @@ rules:
                 - pattern: realloc
                 - pattern: reallocf
                 - pattern: aligned_alloc
+                - pattern: VirtualAlloc
       # calloc (multiplication in 1st arg)
       - patterns:
           - pattern-either:

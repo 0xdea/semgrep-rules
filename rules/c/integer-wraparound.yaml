@@ -18,9 +18,9 @@ rules:
       # wrappers are not covered.
       # NOTE: there might exist other buggy input validation patterns not covered
       # here, including the same patterns with a different order of operands.
-      # NOTE: we should do some tests with the deep expression operator.
+      # NOTE: we should do some tests with the deep expression operator, refer also to
+      # `cpp.lang.security.memory.integer-overflow-allocation.integer-overflow-allocation`.
       # NOTE: a dedicated rule for C++ operators such as `new` should be implemented.
-      # NOTE: refer also to `cpp.lang.security.memory.integer-overflow-allocation.integer-overflow-allocation`.
     message: >-
       The software performs a calculation that can produce an integer
       overflow or wraparound, when the logic assumes that the resulting

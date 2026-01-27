@@ -8,12 +8,14 @@ rules:
         - https://g.co/kgs/PCHQjJ
         - https://github.com/struct/mms
       confidence: MEDIUM
-      # NOTE: heap-allocated buffers and some functions are not covered.
+      # NOTE: C++ `new` operator and some heap allocation functions are not covered.
+      # NOTE: some string and memory copy functions are not covered.
       # NOTE: `memcpy(dst + 1, p, len)` and similar scenarios are not covered.
       # NOTE: pattern `{$len=snprintf(_); malloc($len);}` is not covered.
-      # NOTE: see also metavariable-comparison to catch larger indexes as in
+      # NOTE: some other ways to create an array are not covered.
+      # NOTE: refer also to `metavariable-comparison` to catch larger indexes as in
       # https://github.com/parsiya/semgrep-hotspots/blob/main/cpp/arrays-out-of-bounds-access.yaml
-      # NOTE: see also `cpp.lang.security.strings.alloc-strlen.alloc-strlen` and
+      # NOTE: refer also to `cpp.lang.security.strings.alloc-strlen.alloc-strlen` and
       # `cpp.lang.security.strings.missing-nul-cpp-string-memcpy.missing-nul-cpp-string-memcpy`.
     message: >-
       The software calculates or uses an incorrect maximum or minimum value
@@ -27,15 +29,23 @@ rules:
       - pattern: $BUF[sizeof($BUF)] = ...
       - patterns:
           - pattern: $BUF[$LEN] = ...
-          - pattern-inside: |
-              $_ $BUF[$LEN];
-              ...
+          - pattern-either:
+            - pattern-inside: |
+                $_ $BUF[$LEN];
+                ...
+            - pattern-inside: |
+                $_ $BUF[$LEN] = ...;
+                ...
       - patterns:
           - pattern: |
               *($BUF + $LEN) = ...
-          - pattern-inside: |
-              $_ $BUF[$LEN];
-              ...
+          - pattern-either:
+            - pattern-inside: |
+                $_ $BUF[$LEN];
+                ...
+            - pattern-inside: |
+                $_ $BUF[$LEN] = ...;
+                ...
       # two-dimentional array access
       - patterns:
           - pattern: $BUF[$X][$Y] = ...
@@ -68,5 +78,20 @@ rules:
                 - pattern-not: $_ - 1
       # out-of-bound indexing: strlen($STR) con be 0 leading to a -1 index
       - pattern: $STR[strlen($STR) - 1]
+      - patterns:
+          - pattern-inside: |
+              $LEN = strlen($STR) - 1;
+              ...
+          - pattern: $STR[$LEN]
+      - patterns:
+          - pattern-inside: |
+              $LEN = strlen($STR);
+              ...
+          - pattern: $STR[$LEN - 1]
       # no space allocated for NUL terminator
       - pattern: malloc(strlen($STR))
+      - patterns:
+          - pattern-inside: |
+              $LEN = strlen($STR);
+              ...
+          - pattern: malloc($LEN)

@@ -25,7 +25,7 @@ rules:
       # the most interesting API calls (copy operations, exec functions, etc.).
       # NOTE: nonlocking stdio functions (https://linux.die.net/man/3/fgets_unlocked)
       # are not covered.
-      # NOTE: see also https://semgrep.dev/r?lang=C
+      # NOTE: refer also to https://semgrep.dev/r?lang=C
     message: >-
       Locate all calls to interesting and potentially insecure API
       functions (candidate points). The auditor can backtrace from these

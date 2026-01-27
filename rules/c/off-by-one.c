@@ -188,6 +188,35 @@ static LabelText *text_create(char *orig_str, int char_width)
 	return NULL;
 }
 
+static LabelText *text_create2(char *orig_str, int char_width)
+{
+	int i, j;
+	char line[256]; /* a line should not exceed this length */
+	int pos;
+	int last_space;
+	int new_line;
+	LabelText *text = 0;
+	char *str = 0;
+	int length;
+	text = calloc(1, sizeof(LabelText));
+
+	str = strdup(orig_str);
+	length = strlen(str);
+
+	if (char_width > 0)
+	{
+		for (i = 0; i < strlen(str); i++)
+			if (str[i] == 10)
+				text->count++;
+
+		// ruleid: raptor-off-by-one
+		if (str[strlen(str) - 1] != 10)
+			text->count++;
+	}
+
+	return NULL;
+}
+
 void addLineAfter(struct line *whichLine, char *data)
 {
 	struct line *temp = whichLine->next;
@@ -230,6 +259,40 @@ void flawed_strdup(const char *input)
 	return copy;
 }
 
+void ok_strdup(const char *input)
+{
+	char *copy;
+
+	// ok: raptor-off-by-one
+	copy = (char *)malloc(strlen(input) + 1);
+	strcpy(copy, input);
+	return copy;
+}
+
+void flawed_strdup2(const char *input)
+{
+	char *copy;
+
+	int len = strlen(input);
+
+	// ruleid: raptor-off-by-one
+	copy = (char *)malloc(len);
+	strcpy(copy, input);
+	return copy;
+}
+
+void ok_strdup2(const char *input)
+{
+	char *copy;
+
+	int len = strlen(input);
+
+	// ok: raptor-off-by-one
+	copy = (char *)malloc(len + 1);
+	strcpy(copy, input);
+	return copy;
+}
+
 int two_dimensions(int argc, char *argv[])
 {
 	char buffer[1][256];
@@ -240,6 +303,84 @@ int two_dimensions(int argc, char *argv[])
 	// ok: raptor-off-by-one
 	buffer[0][255] = '!';
 	return 0;
+}
+
+void f(const char *str)
+{
+	// ruleid: raptor-off-by-one
+	char *buffer = malloc(strlen(str));
+	free(buffer);
+}
+
+void f(const char *str)
+{
+	// ok: raptor-off-by-one
+	char *buffer = malloc(strlen(str) + 1);
+	free(buffer);
+}
+
+void f(const char *str)
+{
+	// ok: raptor-off-by-one
+	char *buffer = malloc(strlen(str) + 1);
+	free(buffer);
+}
+
+void f(const char *str)
+{
+	size_t len = strlen(str);
+	// ruleid: raptor-off-by-one
+	char *buffer = malloc(len);
+	free(buffer);
+}
+
+void f(const char *str)
+{
+	size_t len = strlen(str);
+	// ok: raptor-off-by-one
+	char *buffer = malloc(len + 1);
+	free(buffer);
+}
+
+void f(const char *str)
+{
+	size_t len;
+	len = strlen(str);
+	// ruleid: raptor-off-by-one
+	char *buffer = malloc(len);
+	free(buffer);
+}
+
+void f(const char *str)
+{
+	size_t len = strlen(str);
+	len += 1;
+	// todook: raptor-off-by-one
+	char *buffer = malloc(len);
+	free(buffer);
+}
+
+void f(const char *str)
+{
+	size_t len = strlen(str);
+	if (nondet)
+	{
+		len += 1;
+	}
+	// ruleid: raptor-off-by-one
+	char *buffer = malloc(len);
+	free(buffer);
+}
+
+void f(const char *str)
+{
+	size_t len = strlen(str);
+	if (len)
+	{
+		// ruleid: raptor-off-by-one
+		char *buffer = malloc(len);
+		free(buffer);
+	}
 }
 
 int main()

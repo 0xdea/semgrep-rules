@@ -10,7 +10,8 @@ rules:
         - https://www.sei.cmu.edu/downloads/sei-cert-c-coding-standard-2016-v01.pdf
       confidence: MEDIUM
       # NOTE: custom wrappers are not covered.
-      # NOTE: see also `cpp.lang.security.memory.null-deref.null-library-function.null-library-function`.
+      # NOTE: for another approach to NULL pointer dereferencing detection, refer to
+      # `cpp.lang.security.memory.null-deref.null-library-function.null-library-function`.
     message: >-
       The software does not check the return value from a method or
       function, which can prevent it from detecting unexpected states and

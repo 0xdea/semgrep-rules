@@ -15,7 +15,9 @@ rules:
       # are not covered.
       # NOTE: multiple pointer assignments and other ways to persist after
       # function returns (e.g., output parameter) are not covered.
-      # NOTE: see also `cpp.lang.security.strings.return-c-str.return-c-str`.
+      # NOTE: a dedicated rule for C++ types/constructs should be implemented
+      # (see `cpp.lang.security.strings.return-c-str.return-c-str` and
+      # `cpp.lang.security.containers.std-return-data.std-return-data`).
     message: >-
       A function returns the address of a stack variable, which will cause
       unintended program behavior, typically in the form of a crash.

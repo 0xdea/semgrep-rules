@@ -22,13 +22,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Add detections for missing `signal` family functions (`insecure-api-signal`, `interesting-api-calls`).
 * Add detection for `tmpnam_r` (`insecure-api-mktemp-tmpnam-tempnam`, `interesting-api-calls`).
 * Add detection for `VirtualAlloc` (`integer-wraparound`).
-* Add some code samples (`command-injection`, `format-string-bugs`, `incorrect-use-of-sizeof`, `insecure-api-access-stat`, `insecure-api-gets`, `insecure-api-scanf`, `insecure-api-sprintf-vsprintf`, `off-by-one`, `unsafe-ret-snprintf-vsnprintf`, `use-of-source-size-in-copy`, `unterminated-string-strncpy`).
+* Add some code samples (`command-injection`, `format-string-bugs`, `incorrect-use-of-sizeof`, `insecure-api-access-stat`, `insecure-api-gets`, `insecure-api-scanf`, `insecure-api-sprintf-vsprintf`, `off-by-one`, `unsafe-ret-snprintf-vsnprintf`, `use-after-free`, `use-of-source-size-in-copy`, `unterminated-string-strncpy`).
 
 ### Changed
 
 * Extend `*s*printf` pattern matching (`interesting-api-calls`).
 * Improve matching of array creation patterns (`incorrect-use-of-free`, `putenv-stack-var`, `ret-stack-address`, `write-into-stack-buffer`).
 * Improve matching of array creation and length calculation (`off-by-one`).
+* Optimize uses of the deep expression operator (`unchecked-ret-malloc`, `use-after-free`).
 * Exclude string literals as source (`insecure-api-scanf`).
 * Add detections for `snprintf` family functions and improve pattern matching (`use-of-source-size-in-copy`).
 * Replace the pattern `= $_;` with `= ...;` everywhere.

@@ -33,9 +33,11 @@ rules:
           - patterns:
               - pattern-either:
                   - pattern: $FUN(..., <... $PTR ...>, ...)
-                  - pattern: $FUN(..., <... $PTR->$_ ...>, ...)
-                  - pattern: $FUN(..., <... $PTR[$_] ...>, ...)
-                  - pattern: $FUN(..., <... (*$PTR) ...>, ...)
+                  # no need to explicitly check the following patterns, as the deep expression operator above will already match them
+                  # - pattern: $FUN(..., <... $PTR->$_ ...>, ...)
+                  # - pattern: $FUN(..., <... $PTR[$_] ...>, ...)
+                  # - pattern: $FUN(..., <... (*$PTR) ...>, ...)
+                  # - pattern: $FUN(..., <... (*$PTR).$_ ...>, ...)
                   - pattern: $PTR->$FUN(...)
               # filter out double free instances
               - metavariable-pattern:

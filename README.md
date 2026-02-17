@@ -16,7 +16,7 @@
 >
 > -- Fedor G. Pikus
 
-A collection of my Semgrep rules to facilitate vulnerability research.
+A collection of my Semgrep rules to facilitate vulnerability research. 
 
 [![Program in C](https://img.youtube.com/vi/tas0O586t80/maxresdefault.jpg)](https://www.youtube.com/embed/tas0O586t80)
 

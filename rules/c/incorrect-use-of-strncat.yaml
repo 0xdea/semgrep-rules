@@ -2,11 +2,20 @@ rules:
   - id: raptor-incorrect-use-of-strncat
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
-      references:
-        - https://cwe.mitre.org/data/definitions/787
-        - https://cwe.mitre.org/data/definitions/193
-        - https://g.co/kgs/PCHQjJ
+      category: security
+      subcategory: vuln
+      vulnerability_class: Memory Issues
+      likelihood: MEDIUM
+      impact: HIGH
       confidence: HIGH
+      technology:
+        - c
+        - cpp
+      cwe:
+        - "CWE-787: Out-of-bounds Write"
+        - "CWE-193: Off-by-one Error"
+      references:
+        - https://g.co/kgs/PCHQjJ
     message: >-
       The strncat() function is nearly as dangerous as strcat(), in that it's
       quite easy to misuse. The first common mistake is supplying the size of 

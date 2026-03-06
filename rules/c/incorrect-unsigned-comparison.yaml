@@ -2,12 +2,19 @@ rules:
   - id: raptor-incorrect-unsigned-comparison
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
-      references:
-        - https://cwe.mitre.org/data/definitions/697
-        - https://g.co/kgs/PCHQjJ
+      category: security
+      subcategory: audit
+      vulnerability_class: Improper Validation
+      likelihood: LOW
+      impact: MEDIUM
       confidence: HIGH
-      # NOTE: some types are not covered.
-      # NOTE: incorrect unsigned assigments are not covered.
+      technology:
+        - c
+        - cpp
+      cwe:
+        - "CWE-697: Incorrect Comparison"
+      references:
+        - https://g.co/kgs/PCHQjJ
     message: >-
       Checking if an unsigned variable is negative makes no sense and is
       usually a good indication that something is probably wrong with the
@@ -16,6 +23,8 @@ rules:
     languages:
       - c
       - cpp
+    # NOTE: some types are not covered.
+    # NOTE: incorrect unsigned assigments are not covered.
     pattern-either:
       # < (always false)
       - pattern: (unsigned short $_) < 0

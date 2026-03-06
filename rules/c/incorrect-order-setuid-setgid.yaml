@@ -2,12 +2,21 @@ rules:
   - id: raptor-incorrect-order-setuid-setgid
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      category: security
+      subcategory: vuln
+      vulnerability_class: Other Security
+      likelihood: MEDIUM
+      impact: HIGH
+      confidence: MEDIUM
+      technology:
+        - c
+        - cpp
+      cwe:
+        - "CWE-696: Incorrect Behavior Order"
       references:
-        - https://cwe.mitre.org/data/definitions/696
         - https://www.usenix.org/legacy/events/sec02/full_papers/chen/chen.pdf
         - https://g.co/kgs/PCHQjJ
         - https://github.com/struct/mms
-      confidence: MEDIUM
     message: >-
       A compromised process might be able to regain elevated group privileges
       if set(e)gid() is called after set(e)uid(). A similar case is when 

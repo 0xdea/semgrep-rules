@@ -18,14 +18,6 @@ rules:
         - http://phrack.org/issues/70/13.html#article
         - https://g.co/kgs/PCHQjJ
         - https://www.sei.cmu.edu/downloads/sei-cert-c-coding-standard-2016-v01.pdf
-      # NOTE: generic `va_list` matching for custom wrappers is not covered.
-      # NOTE: `dprintf` in C++ has a different signature; this rule may cause 
-      # false positives with it.
-      # NOTE: `#define` format specifiers are not excluded due to Semgrep 
-      # limitations, perhaps we could implement this with symbolic propagation
-      # (Semgrep Pro experimental feature)?
-      # NOTE: some obsolete Microsoft-specific functions, such as `_ftprintf`, 
-      # `_sntprintf`, `_snwprintf`, `_sntscanf`, etc., are not covered.
     message: >-
       The software uses a function that accepts a format string as an argument,
       but the format string originates from an external source. This can lead 
@@ -34,6 +26,10 @@ rules:
     languages:
       - c
       - cpp
+    # NOTE: generic `va_list` matching for custom wrappers is not covered.
+    # NOTE: `dprintf` in C++ has a different signature; this rule may cause false positives with it.
+    # NOTE: `#define` format specifiers are not excluded due to Semgrep limitations; perhaps we could implement this with symbolic propagation (Semgrep Pro experimental feature)?
+    # NOTE: some obsolete Microsoft-specific functions, such as `_ftprintf`, `_sntprintf`, `_snwprintf`, `_sntscanf`, etc., are not covered.
     pattern-either:
       # format string in 1st arg
       - patterns:

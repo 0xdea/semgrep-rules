@@ -162,7 +162,7 @@ rules:
       #   - pattern: $FUN(...)
       #   - metavariable-regex:
       #       metavariable: $FUN
-      #       regex: '(?i)^\w*clone\s*$'
+      #       regex: '(?i)^\w*clone3?\s*$'
       # rand
       - patterns:
           - pattern: $FUN(...)
@@ -223,6 +223,12 @@ rules:
           - metavariable-regex:
               metavariable: $FUN
               regex: '(?i)^\w*cftime\s*$'
+      # syscall
+      - patterns:
+          - pattern: $FUN(...)
+          - metavariable-regex:
+              metavariable: $FUN
+              regex: '(?i)^\w*syscall\s*$'
       # kernel
       - patterns:
           - pattern: $FUN(...)

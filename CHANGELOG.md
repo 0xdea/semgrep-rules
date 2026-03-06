@@ -22,7 +22,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Add detections for missing `signal` family functions (`insecure-api-signal`, `interesting-api-calls`).
 * Add detection for `tmpnam_r` (`insecure-api-mktemp-tmpnam-tempnam`, `interesting-api-calls`).
 * Add detection for `VirtualAlloc` (`integer-wraparound`).
-* Add some code samples (`command-injection`, `format-string-bugs`, `incorrect-use-of-sizeof`, `insecure-api-access-stat`, `insecure-api-gets`, `insecure-api-scanf`, `insecure-api-sprintf-vsprintf`, `off-by-one`, `unsafe-ret-snprintf-vsnprintf`, `use-after-free`, `use-of-source-size-in-copy`, `unterminated-string-strncpy`).
+* Add detection for `syscall` (`interesting-api-calls`).
+* Add some code samples (`command-injection`, `format-string-bugs`, `incorrect-use-of-sizeof`, `insecure-api-access-stat`, `insecure-api-gets`, `insecure-api-scanf`, `insecure-api-sprintf-vsprintf`, `interesting-api-calls`, `off-by-one`, `unsafe-ret-snprintf-vsnprintf`, `use-after-free`, `use-of-source-size-in-copy`, `unterminated-string-strncpy`).
 
 ### Changed
 

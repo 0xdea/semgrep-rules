@@ -5,13 +5,13 @@
 
 int converter_bad(const char *numstr)
 {
-	// ruleid: raptor-insecure-api-atoi-atol-atof
+	// ruleid: raptor-insecure-api-ato
 	return atoi(numstr);
 }
 
 int converter_good(const char *numstr)
 {
-	// ok: raptor-insecure-api-atoi-atol-atof
+	// ok: raptor-insecure-api-ato
 	return strtol(numstr, NULL, 10);
 }
 

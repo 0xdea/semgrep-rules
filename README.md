@@ -30,6 +30,7 @@ A collection of my Semgrep rules to facilitate vulnerability research.
 ## See also
 
 * <https://semgrep.dev/r>
+* <https://appsec.guide/docs/static-analysis/semgrep/>
 
 ## Setup and usage instructions
 

@@ -2,13 +2,22 @@ rules:
   - id: raptor-format-string-bugs
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      category: security
+      subcategory: vuln
+      vulnerability_class: Memory Issues
+      likelihood: MEDIUM
+      impact: HIGH
+      confidence: MEDIUM
+      technology:
+        - c
+        - cpp
+      cwe:
+        - "CWE-134: Use of Externally-Controlled Format String"
       references:
-        - https://cwe.mitre.org/data/definitions/134
         - https://julianor.tripod.com/bc/formatstring-1.2.pdf
         - http://phrack.org/issues/70/13.html#article
         - https://g.co/kgs/PCHQjJ
         - https://www.sei.cmu.edu/downloads/sei-cert-c-coding-standard-2016-v01.pdf
-      confidence: MEDIUM
       # NOTE: generic `va_list` matching for custom wrappers is not covered.
       # NOTE: `dprintf` in C++ has a different signature; this rule may cause 
       # false positives with it.

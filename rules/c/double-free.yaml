@@ -2,17 +2,22 @@ rules:
   - id: raptor-double-free
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      category: security
+      subcategory: vuln
+      vulnerability_class: Memory Issues
+      likelihood: MEDIUM
+      impact: HIGH
+      confidence: MEDIUM
+      technology:
+        - c
+        - cpp
+      cwe:
+        - "CWE-415: Double Free"
       references:
-        - https://cwe.mitre.org/data/definitions/415
         - https://github.com/struct/mms
         - https://www.sei.cmu.edu/downloads/sei-cert-c-coding-standard-2016-v01.pdf
         - https://docs.microsoft.com/en-us/cpp/sanitizers/asan-error-examples
         - https://dustri.org/b/playing-with-weggli.html
-      confidence: MEDIUM
-      # NOTE: C++ `delete` and `delete[]` operators and custom wrappers to `free`
-      # are not covered.
-      # NOTE: `realloc` is not covered.
-      # NOTE: variations on the `free` argument are not covered.
     message: >-
       The software calls free() twice on the same memory address, potentially 
       leading to memory corruption. This corruption can cause the program to 
@@ -21,6 +26,9 @@ rules:
     languages:
       - c
       - cpp
+    # NOTE: C++ `delete` and `delete[]` operators and custom wrappers to `free` are not covered.
+    # NOTE: `realloc` is not covered.
+    # NOTE: variations on the `free` argument are not covered.
     patterns:
       - pattern: |
           $FREE1($PTR);

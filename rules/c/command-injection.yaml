@@ -2,15 +2,22 @@ rules:
   - id: raptor-command-injection
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      category: security
+      subcategory: vuln
+      vulnerability_class: Command Injection
+      likelihood: MEDIUM
+      impact: HIGH
+      confidence: HIGH
+      technology:
+        - c
+        - cpp
+      cwe:
+        - "CWE-78: Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')"
+        - "CWE-88: Improper Neutralization of Argument Delimiters in a Command ('Argument Injection')"
+        - "CWE-676: Use of Potentially Dangerous Function"
       references:
-        - https://cwe.mitre.org/data/definitions/676
-        - https://cwe.mitre.org/data/definitions/78
-        - https://cwe.mitre.org/data/definitions/88
         - https://g.co/kgs/PCHQjJ
         - https://www.sei.cmu.edu/downloads/sei-cert-c-coding-standard-2016-v01.pdf
-      confidence: HIGH
-      # NOTE: add path injection rule for `execlp`, `execvp`, and `execvP`.
-      # NOTE: add argument injection (e.g., in the `exec` functions family).
     message: >-
       The software constructs an OS command using externally-influenced input, 
       but it does not neutralize or incorrectly neutralizes special elements 
@@ -19,6 +26,8 @@ rules:
     languages:
       - c
       - cpp
+    # NOTE: add path injection rule for `execlp`, `execvp`, and `execvP`.
+    # NOTE: add argument injection (e.g., in the `exec` functions family).
     patterns:
       - pattern-either:
           - pattern: system(...)

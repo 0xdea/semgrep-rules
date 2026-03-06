@@ -2,10 +2,20 @@ rules:
   - id: raptor-insecure-api-gets
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
-      references:
-        - https://cwe.mitre.org/data/definitions/242
-        - https://cwe.mitre.org/data/definitions/120
+      category: security
+      subcategory: vuln
+      vulnerability_class: Dangerous Method or Function
+      likelihood: HIGH
+      impact: HIGH
       confidence: HIGH
+      technology:
+        - c
+        - cpp
+      cwe:
+        - "CWE-242: Use of Inherently Dangerous Function"
+        - "CWE-120: Buffer Copy without Checking Size of Input ('Classic Buffer Overflow')"
+      references:
+        - https://g.co/kgs/PCHQjJ
     message: >-
       The gets() function is always unsafe because it does not perform bounds 
       checking on the size of its input. An attacker can easily send 

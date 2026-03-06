@@ -2,12 +2,21 @@ rules:
   - id: raptor-insecure-api-ato
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      category: security
+      subcategory: audit
+      vulnerability_class: Dangerous Method or Function
+      likelihood: LOW
+      impact: MEDIUM
+      confidence: HIGH
+      technology:
+        - c
+        - cpp
+      cwe:
+        - "CWE-839: Numeric Range Comparison Without Minimum Check"
       references:
         - https://rules.sonarsource.com/c/type/Bug/RSPEC-989
         - https://wiki.sei.cmu.edu/confluence/display/c/ERR34-C.+Detect+errors+when+converting+a+string+to+a+number
         - https://github.com/vixie/cron/commit/9cc8ab1087bb9ab861dd5595c41200683c9f6712
-      confidence: HIGH
-      # NOTE: some function variants are missing.
     message: >-
       The atoi(), atol(), atof(), and similar functions don't handle errors.
       They don't check for integer overflow and can return a negative value. 
@@ -19,6 +28,7 @@ rules:
     languages:
       - c
       - cpp
+    # NOTE: some function variants are missing.
     pattern-either:
       - pattern: atoi(...)
       - pattern: atol(...)

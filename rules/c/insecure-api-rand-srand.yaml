@@ -2,15 +2,20 @@ rules:
   - id: raptor-insecure-api-rand-srand
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
-      references:
-        - https://cwe.mitre.org/data/definitions/338
-        - https://cwe.mitre.org/data/definitions/330
-        - https://www.sei.cmu.edu/downloads/sei-cert-c-coding-standard-2016-v01.pdf
+      category: security
+      subcategory: vuln
+      vulnerability_class: Cryptographic Issues
+      likelihood: MEDIUM
+      impact: MEDIUM
       confidence: HIGH
-      # NOTE: `rand_r` and other non-standard PRNGs are not covered.
-      # NOTE: improperly seeded strong PRNGs are not covered.
-      # NOTE: refer also to `cpp.lang.security.rng.*`, `cpp.lang.security.crypto.*`, 
-      # and `gitlab.flawfinder.*`.
+      technology:
+        - c
+        - cpp
+      cwe:
+        - "CWE-338: Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)"
+        - "CWE-330: Use of Insufficiently Random Values"
+      references:
+        - https://www.sei.cmu.edu/downloads/sei-cert-c-coding-standard-2016-v01.pdf
     message: >-
       The rand() PRNG should not be used in applications intended to be 
       portable when good randomness is needed. Instead, the use of random() 
@@ -19,6 +24,9 @@ rules:
     languages:
       - c
       - cpp
+    # NOTE: `rand_r` and other non-standard PRNGs are not covered.
+    # NOTE: improperly seeded strong PRNGs are not covered.
+    # NOTE: refer also to `cpp.lang.security.rng.*`, `cpp.lang.security.crypto.*`, and `gitlab.flawfinder.*`.
     pattern-either:
       - pattern: rand(...)
       - pattern: srand(...)

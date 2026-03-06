@@ -2,11 +2,21 @@ rules:
   - id: raptor-insecure-api-signal
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
-      references:
-        - https://cwe.mitre.org/data/definitions/364
-        - https://cwe.mitre.org/data/definitions/479
-        - https://cwe.mitre.org/data/definitions/828
+      category: security
+      subcategory: vuln
+      vulnerability_class: Dangerous Method or Function
+      likelihood: MEDIUM
+      impact: MEDIUM
       confidence: HIGH
+      technology:
+        - c
+        - cpp
+      cwe:
+        - "CWE-364: Signal Handler Race Condition"
+        - "CWE-479: Signal Handler Use of a Non-reentrant Function"
+        - "CWE-828: Signal Handler with Functionality that is not Asynchronous-Safe"
+      references:
+        - https://lcamtuf.coredump.cx/signals.txt
     message: >-
       The signal() API should be regarded as deprecated. When possible,
       sigaction() should be used instead, because it allows to precisely

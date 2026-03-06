@@ -2,13 +2,21 @@ rules:
   - id: raptor-insecure-api-strcpy-strcat
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
-      references:
-        - https://cwe.mitre.org/data/definitions/676
-        - https://cwe.mitre.org/data/definitions/120
-        - https://cwe.mitre.org/data/definitions/787
-        - https://g.co/kgs/PCHQjJ
+      category: security
+      subcategory: vuln
+      vulnerability_class: Dangerous Method or Function
+      likelihood: HIGH
+      impact: HIGH
       confidence: HIGH
-      # NOTE: some functions, such as `_fstrcpy` and `_fstrcat`, are not covered.
+      technology:
+        - c
+        - cpp
+      cwe:
+        - "CWE-676: Use of Potentially Dangerous Function"
+        - "CWE-120: Buffer Copy without Checking Size of Input ('Classic Buffer Overflow')"
+        - "CWE-787: Out-of-bounds Write"
+      references:
+        - https://g.co/kgs/PCHQjJ
     message: >-
       A buffer overflow condition exists when a program attempts to put
       more data in a buffer than it can hold, or when a program attempts to
@@ -17,6 +25,7 @@ rules:
     languages:
       - c
       - cpp
+    # NOTE: some functions, such as `_fstrcpy` and `_fstrcat`, are not covered.
     patterns:
       - pattern-either:
           - pattern: strcpy(...)

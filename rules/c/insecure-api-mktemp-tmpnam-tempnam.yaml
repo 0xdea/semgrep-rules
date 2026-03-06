@@ -2,10 +2,20 @@ rules:
   - id: raptor-insecure-api-mktemp-tmpnam-tempnam
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
-      references:
-        - https://cwe.mitre.org/data/definitions/377
-        - https://cwe.mitre.org/data/definitions/367
+      category: security
+      subcategory: vuln
+      vulnerability_class: Dangerous Method or Function
+      likelihood: MEDIUM
+      impact: MEDIUM
       confidence: HIGH
+      technology:
+        - c
+        - cpp
+      cwe:
+        - "CWE-377: Insecure Temporary File"
+        - "CWE-367: Time-of-check Time-of-use (TOCTOU) Race Condition"
+      references:
+        - https://g.co/kgs/PCHQjJ
     message: >-
       Creating and using insecure temporary files can leave application and
       system data vulnerable to attack.

@@ -115,7 +115,7 @@ rules:
           - metavariable-regex:
               metavariable: $LEN
               regex: '^(?!\s*(?:0[xX][0-9A-Fa-f]+|0[bB][01]+|0[0-7]*|[1-9][0-9]*)[uUlL]*\s*$).+'
-      # memset (too noisy, mostly irrelevant)
+      # memset (too noisy, mostly irrelevant unless you use it to erase sensitive data)
       # - patterns:
       #   - pattern: $FUN(...)
       #   - metavariable-regex:

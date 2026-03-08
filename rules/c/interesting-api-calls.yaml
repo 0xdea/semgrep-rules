@@ -2,6 +2,17 @@ rules:
   - id: raptor-interesting-api-calls
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      category: security
+      subcategory: audit
+      vulnerability_class: Dangerous Method or Function
+      likelihood: MEDIUM
+      impact: MEDIUM
+      confidence: MEDIUM
+      technology:
+        - c
+        - cpp
+      cwe:
+        - "CWE-676: Use of Potentially Dangerous Function"
       references:
         - https://github.com/0xdea/rhabdomancer
         - https://github.com/0xdea/ghidra-scripts/blob/main/Rhabdomancer.java
@@ -10,22 +21,6 @@ rules:
         - https://www.sei.cmu.edu/downloads/sei-cert-c-coding-standard-2016-v01.pdf
         - https://learn.microsoft.com/en-us/windows-hardware/drivers/devtest/28719-banned-api-usage-use-updated-function-replacement
         - https://docs.oracle.com/cd/E37838_01/html/E61050/gnclc.html
-      confidence: MEDIUM
-      # NOTE: `goto`, `try/catch`, `sem/mutex`, `new/delete`, and
-      # `static_cast/reinterpret_cast` are not covered.
-      # NOTE: not all Microsoft-specific obsolete functions are covered.
-      # NOTE: consider excluding some matches for `strncpy`, `snprintf`, and similar
-      # functions where the length parameter is known at compile time (see `memcpy`
-      # below for an example). See also another possible approach described at
-      # https://cc-sw.com/semgrep-guide-for-a-security-engineer-part-6-of-6/.
-      # Beware of possible false negatives, though.
-      # NOTE: consider checking for format string specifiers that match the
-      # `(".*%l?s.*"|".*%S.*"|[a-zA-Z_][a-zA-Z0-9_]*)` regex.
-      # NOTE: consider extracting some patterns into separate rules to focus on
-      # the most interesting API calls (copy operations, exec functions, etc.).
-      # NOTE: nonlocking stdio functions (https://linux.die.net/man/3/fgets_unlocked)
-      # are not covered.
-      # NOTE: refer also to https://semgrep.dev/r?lang=C
     message: >-
       Locate all calls to interesting and potentially insecure API
       functions (candidate points). The auditor can backtrace from these
@@ -35,6 +30,13 @@ rules:
     languages:
       - c
       - cpp
+    # NOTE: `goto`, `try/catch`, `sem/mutex`, `new/delete`, and `static_cast/reinterpret_cast` are not covered.
+    # NOTE: not all Microsoft-specific obsolete functions are covered.
+    # NOTE: consider excluding some matches for `strncpy`, `snprintf`, and similar functions where the length parameter is known at compile time (see `memcpy` below for an example). See also another possible approach described at https://cc-sw.com/semgrep-guide-for-a-security-engineer-part-6-of-6/. Beware of possible false negatives, though.
+    # NOTE: consider checking for format string specifiers that match the `(".*%l?s.*"|".*%S.*"|[a-zA-Z_][a-zA-Z0-9_]*)` regex.
+    # NOTE: consider extracting some patterns into separate rules to focus on the most interesting API calls (copy operations, exec functions, etc.).
+    # NOTE: nonlocking stdio functions (https://linux.die.net/man/3/fgets_unlocked) are not covered.
+    # NOTE: refer also to https://semgrep.dev/r?lang=C
     pattern-either:
       # priv
       - patterns:

@@ -2,27 +2,24 @@ rules:
   - id: raptor-integer-wraparound
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      category: security
+      subcategory: vuln
+      vulnerability_class: Memory Issues
+      likelihood: MEDIUM
+      impact: HIGH
+      confidence: MEDIUM
+      technology:
+        - c
+        - cpp
+      cwe:
+        - "CWE-190: Integer Overflow or Wraparound"
+        - "CWE-128: Wrap-around Error"
+        - "CWE-131: Incorrect Calculation of Buffer Size"
       references:
-        - https://cwe.mitre.org/data/definitions/190
-        - https://cwe.mitre.org/data/definitions/128
-        - https://cwe.mitre.org/data/definitions/131
         - https://www.sei.cmu.edu/downloads/sei-cert-c-coding-standard-2016-v01.pdf
         - http://www.phrack.org/issues/60/10.html#article
         - https://docs.microsoft.com/en-us/cpp/sanitizers/asan-error-examples
         - https://dustri.org/b/playing-with-weggli.html
-      confidence: MEDIUM
-      # NOTE: only multiplication and sum with two operands are covered; other
-      # arithmetic operations should also be considered (e.g., left shift, even
-      # subtraction), as well as any operation with more than two operands.
-      # NOTE: some allocation functions such as `kmalloc`, `HeapAlloc`, and custom
-      # wrappers are not covered.
-      # NOTE: there might exist other buggy input validation patterns not covered
-      # here, including the same patterns with a different order of operands.
-      # NOTE: consider excluding `strlen` patterns to avoid false positives (at the
-      # cost of some false negatives).
-      # NOTE: we should do some tests with the deep expression operator, refer also to
-      # `cpp.lang.security.memory.integer-overflow-allocation.integer-overflow-allocation`.
-      # NOTE: a dedicated rule for C++ operators such as `new` should be implemented.
     message: >-
       The software performs a calculation that can produce an integer
       overflow or wraparound, when the logic assumes that the resulting
@@ -33,6 +30,12 @@ rules:
     languages:
       - c
       - cpp
+    # NOTE: only multiplication and sum with two operands are covered; other arithmetic operations should also be considered (e.g., left shift, even subtraction), as well as any operation with more than two operands.
+    # NOTE: some allocation functions such as `kmalloc`, `HeapAlloc`, and custom wrappers are not covered.
+    # NOTE: there might exist other buggy input validation patterns not covered here, including the same patterns with a different order of operands.
+    # NOTE: consider excluding `strlen` patterns to avoid false positives (at the cost of some false negatives).
+    # NOTE: we should do some tests with the deep expression operator, refer also to `cpp.lang.security.memory.integer-overflow-allocation.integer-overflow-allocation`.
+    # NOTE: a dedicated rule for C++ operators such as `new` should be implemented.
     pattern-either:
       # malloc, valloc (multiplication)
       - patterns:

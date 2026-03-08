@@ -2,17 +2,21 @@ rules:
   - id: raptor-integer-truncation
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      category: security
+      subcategory: vuln
+      vulnerability_class: Other Security
+      likelihood: LOW
+      impact: MEDIUM
+      confidence: LOW
+      technology:
+        - c
+        - cpp
+      cwe:
+        - "CWE-197: Numeric Truncation Error"
+        - "CWE-681: Incorrect Conversion between Numeric Types"
       references:
-        - https://cwe.mitre.org/data/definitions/197
-        - https://cwe.mitre.org/data/definitions/681
         - https://g.co/kgs/PCHQjJ
         - https://github.com/struct/mms
-      confidence: LOW
-      # NOTE: the deep expression operator is necessary to catch some
-      # matches because C/C++ integer promotions do not seem entirely
-      # supported by Semgrep; this may generate lots of false positives.
-      # NOTE: some types (e.g., pointers) and use cases (e.g., comparisons)
-      # are not covered.
     message: >-
       Truncation errors occur when a primitive is cast to a primitive of a 
       smaller size and data is lost in the conversion. The value cannot be 
@@ -21,6 +25,8 @@ rules:
     languages:
       - c
       - cpp
+    # NOTE: the deep expression operator is necessary to catch some matches because C/C++ integer promotions do not seem entirely supported by Semgrep; this may generate lots of false positives.
+    # NOTE: some types (e.g., pointers) and use cases (e.g., comparisons) are not covered.
     pattern-either:
       # char: assignments
       - patterns:

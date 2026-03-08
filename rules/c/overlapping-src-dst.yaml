@@ -2,11 +2,19 @@ rules:
   - id: raptor-overlapping-src-dst
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      category: security
+      subcategory: vuln
+      vulnerability_class: Memory Issues
+      likelihood: LOW
+      impact: MEDIUM
+      confidence: MEDIUM
+      technology:
+        - c
+        - cpp
+      cwe:
+        - "CWE-1260: Improper Handling of Overlap Between Protected Memory Ranges"
       references:
         - https://linux.die.net/man/3/sprintf
-      confidence: MEDIUM
-      # NOTE: `vsprintf`, `vsnprintf`, `swprintf`, and `vswprintf` are not covered.
-      # NOTE: `strcpy_s`, `strcat_s`, and similar variants are not covered.
     message: >-
       C standards specify that the results are undefined if a call to
       copy functions, with the exception of memmove(), would cause copying
@@ -17,6 +25,8 @@ rules:
     languages:
       - c
       - cpp
+    # NOTE: `vsprintf`, `vsnprintf`, `swprintf`, and `vswprintf` are not covered.
+    # NOTE: `strcpy_s`, `strcat_s`, and similar variants are not covered.
     pattern-either:
       - patterns:
           - pattern: $FUN($DST, $DST, ...)

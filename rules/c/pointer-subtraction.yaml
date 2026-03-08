@@ -2,12 +2,19 @@ rules:
   - id: raptor-pointer-subtraction
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
-      references:
-        - https://cwe.mitre.org/data/definitions/469
-        - https://github.com/struct/mms
+      category: security
+      subcategory: audit
+      vulnerability_class: Memory Issues
+      likelihood: MEDIUM
+      impact: MEDIUM
       confidence: MEDIUM
-      # NOTE: some types and combinations are missing; also,
-      # function calls are not covered.
+      technology:
+        - c
+        - cpp
+      cwe:
+        - "CWE-469: Use of Pointer Subtraction to Determine Size"
+      references:
+        - https://github.com/struct/mms
     message: >-
       The software subtracts one pointer from another in order to determine
       size, but this calculation can be incorrect if the pointers do not
@@ -16,6 +23,7 @@ rules:
     languages:
       - c
       - cpp
+    # NOTE: some types and combinations are missing; also, function calls are not covered.
     pattern-either:
       # type-based patterns
       - pattern: (char * $_) - (char * $_)

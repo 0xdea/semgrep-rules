@@ -2,22 +2,22 @@ rules:
   - id: raptor-ret-stack-address
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      category: security
+      subcategory: vuln
+      vulnerability_class: Memory Issues
+      likelihood: MEDIUM
+      impact: MEDIUM
+      confidence: MEDIUM
+      technology:
+        - c
+        - cpp
+      cwe:
+        - "CWE-562: Return of Stack Variable Address"
       references:
-        - https://cwe.mitre.org/data/definitions/562
         - https://github.com/struct/mms
         - https://www.sei.cmu.edu/downloads/sei-cert-c-coding-standard-2016-v01.pdf
         - https://docs.microsoft.com/en-us/cpp/sanitizers/asan-error-examples
         - https://rules.sonarsource.com/c/type/Bug/RSPEC-946
-      confidence: MEDIUM
-      # NOTE: global variables declared outside functions and not explicitly
-      # tagged as static are not supported.
-      # NOTE: multi-dimensional arrays and other ways to create an array
-      # are not covered.
-      # NOTE: multiple pointer assignments and other ways to persist after
-      # function returns (e.g., output parameter) are not covered.
-      # NOTE: a dedicated rule for C++ types/constructs should be implemented
-      # (see `cpp.lang.security.strings.return-c-str.return-c-str` and
-      # `cpp.lang.security.containers.std-return-data.std-return-data`).
     message: >-
       A function returns the address of a stack variable, which will cause
       unintended program behavior, typically in the form of a crash.
@@ -25,6 +25,10 @@ rules:
     languages:
       - c
       - cpp
+    # NOTE: global variables declared outside functions and not explicitly tagged as static are not supported.
+    # NOTE: multi-dimensional arrays and other ways to create an array are not covered.
+    # NOTE: multiple pointer assignments and other ways to persist after function returns (e.g., output parameter) are not covered.
+    # NOTE: a dedicated rule for C++ types/constructs should be implemented (see `cpp.lang.security.strings.return-c-str.return-c-str` and `cpp.lang.security.containers.std-return-data.std-return-data`).
     pattern-either:
       - patterns:
           - pattern: return $PTR;

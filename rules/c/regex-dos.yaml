@@ -2,22 +2,31 @@ rules:
   - id: raptor-regex-dos
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      category: security
+      subcategory: vuln
+      vulnerability_class: Denial-of-Service (DoS)
+      likelihood: MEDIUM
+      impact: MEDIUM
+      confidence: MEDIUM
+      technology:
+        - c
+        - cpp
+      cwe:
+        - "CWE-1333: Inefficient Regular Expression Complexity"
       references:
-        - https://cwe.mitre.org/data/definitions/1333
         - https://semgrep.dev/docs/writing-rules/metavariable-analysis
         - https://github.com/semgrep/semgrep/pull/4672
-      confidence: MEDIUM
-      # NOTE: the C++ `std::regex` library is not covered.
     message: >-
       The software uses a regular expression with an inefficient, possibly
       exponential worst-case computational complexity that consumes excessive
       CPU cycles. Poorly constructed regular expressions that exhibit
       exponential runtime when fed specifically crafted inputs can cause RegEx
       denial of service (ReDoS).
-    severity: MEDIUM
+    severity: WARNING
     languages:
       - c
       - cpp
+    # NOTE: the C++ `std::regex` library is not covered.
     patterns:
       - pattern-either:
           - pattern: $FUN($_, $REGEX, $_)

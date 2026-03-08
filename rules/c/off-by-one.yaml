@@ -2,21 +2,21 @@ rules:
   - id: raptor-off-by-one
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      category: security
+      subcategory: vuln
+      vulnerability_class: Memory Issues
+      likelihood: MEDIUM
+      impact: MEDIUM
+      confidence: MEDIUM
+      technology:
+        - c
+        - cpp
+      cwe:
+        - "CWE-193: Off-by-one Error"
+        - "CWE-787: Out-of-bounds Write"
       references:
-        - https://cwe.mitre.org/data/definitions/193
-        - https://cwe.mitre.org/data/definitions/787
         - https://g.co/kgs/PCHQjJ
         - https://github.com/struct/mms
-      confidence: MEDIUM
-      # NOTE: C++ `new` operator and some heap allocation functions are not covered.
-      # NOTE: some string and memory copy functions are not covered.
-      # NOTE: `memcpy(dst + 1, p, len)` and similar scenarios are not covered.
-      # NOTE: pattern `{$len=snprintf(_); malloc($len);}` is not covered.
-      # NOTE: some other ways to create an array are not covered.
-      # NOTE: refer also to `metavariable-comparison` to catch larger indexes as in
-      # https://github.com/parsiya/semgrep-hotspots/blob/main/cpp/arrays-out-of-bounds-access.yaml
-      # NOTE: refer also to `cpp.lang.security.strings.alloc-strlen.alloc-strlen` and
-      # `cpp.lang.security.strings.missing-nul-cpp-string-memcpy.missing-nul-cpp-string-memcpy`.
     message: >-
       The software calculates or uses an incorrect maximum or minimum value
       that is 1 more, or 1 less, than the correct value.
@@ -24,6 +24,13 @@ rules:
     languages:
       - c
       - cpp
+    # NOTE: C++ `new` operator and some heap allocation functions are not covered.
+    # NOTE: some string and memory copy functions are not covered.
+    # NOTE: `memcpy(dst + 1, p, len)` and similar scenarios are not covered.
+    # NOTE: pattern `{$len=snprintf(_); malloc($len);}` is not covered.
+    # NOTE: some other ways to create an array are not covered.
+    # NOTE: refer also to `metavariable-comparison` to catch larger indexes as in https://github.com/parsiya/semgrep-hotspots/blob/main/cpp/arrays-out-of-bounds-access.yaml
+    # NOTE: refer also to `cpp.lang.security.strings.alloc-strlen.alloc-strlen` and `cpp.lang.security.strings.missing-nul-cpp-string-memcpy.missing-nul-cpp-string-memcpy`.
     pattern-either:
       # array access
       - pattern: $BUF[sizeof($BUF)] = ...

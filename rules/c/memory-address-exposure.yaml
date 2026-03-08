@@ -4,7 +4,7 @@ rules:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       category: security
       subcategory: audit
-      vulnerability_class: Mishandled Sensitive information
+      vulnerability_class: Mishandled Sensitive Information
       likelihood: LOW
       impact: MEDIUM
       confidence: LOW

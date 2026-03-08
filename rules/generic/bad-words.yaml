@@ -2,11 +2,20 @@ rules:
   - id: raptor-bad-words
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
-      references:
-        - https://cwe.mitre.org/data/definitions/546
-        - https://cwe.mitre.org/data/definitions/615
-        - https://btlr.dev/blog/how-to-find-vulnerabilities-in-code-bad-words
+      category: security
+      subcategory: audit
+      vulnerability_class: Mishandled Sensitive Information
+      likelihood: LOW
+      impact: LOW
       confidence: LOW
+      technology:
+        - c
+        - cpp
+      cwe:
+        - "CWE-546: Suspicious Comment"
+        - "CWE-615: Inclusion of Sensitive Information in Source Code Comments"
+      references:
+        - https://btlr.dev/blog/how-to-find-vulnerabilities-in-code-bad-words
     message: >-
       The code contains comments that suggest the presence of bugs,
       incomplete functionality, or weaknesses.

@@ -2,14 +2,20 @@ rules:
   - id: raptor-suspicious-assert
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      category: security
+      subcategory: audit
+      vulnerability_class: Other Security
+      likelihood: LOW
+      impact: HIGH
+      confidence: MEDIUM
+      technology:
+        - c
+        - cpp
+      cwe:
+        - "CWE-754: Improper Check for Unusual or Exceptional Conditions"
       references:
         - https://legends2k.github.io/note/assert_vs_if/
         - https://github.com/struct/mms
-      confidence: MEDIUM
-      # NOTE: other conditions (i.e., equality and inequality) might be
-      # security-relevant as well.
-      # NOTE: other kinds of assertion macros (e.g., `REQUIRE`, `DCHECK`,
-      # `ENSURE`, etc.) and custom wrappers are not covered.
     message: >-
       Most codebases define assertion macros which compile to a no-op on
       non-debug builds. If assertions are the only line of defense against
@@ -19,6 +25,8 @@ rules:
     languages:
       - c
       - cpp
+    # NOTE: other conditions (i.e., equality and inequality) might be security-relevant as well.
+    # NOTE: other kinds of assertion macros (e.g., `REQUIRE`, `DCHECK`, `ENSURE`, etc.) and custom wrappers are not covered.
     patterns:
       - pattern-either:
           - pattern: $ASSERT(..., <... $_ < $_ ...>, ...)

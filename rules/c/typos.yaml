@@ -2,18 +2,26 @@ rules:
   - id: raptor-typos
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      category: security
+      subcategory: audit
+      vulnerability_class: Other Security
+      likelihood: LOW
+      impact: LOW
+      confidence: LOW
+      technology:
+        - c
+        - cpp
+      cwe:
+        - "CWE-480: Use of Incorrect Operator"
+        - "CWE-481: Assigning instead of Comparing"
+        - "CWE-482: Comparing instead of Assigning"
+        - "CWE-483: Incorrect Block Delimitation"
+        - "CWE-705: Incorrect Control Flow Scoping"
+        - "CWE-561: Dead Code"
+        - "CWE-1164: Irrelevant Code"
       references:
-        - https://cwe.mitre.org/data/definitions/480
-        - https://cwe.mitre.org/data/definitions/481
-        - https://cwe.mitre.org/data/definitions/482
-        - https://cwe.mitre.org/data/definitions/483
         - https://g.co/kgs/PCHQjJ
         - https://www.sei.cmu.edu/downloads/sei-cert-c-coding-standard-2016-v01.pdf
-      confidence: LOW
-      # NOTE: common issues with comments are not covered.
-      # NOTE: consider adding a `focus-metavariable` where applicable to
-      # improve output readability.
-      # NOTE: custom wrappers to assertion macros are not covered.
     message: >-
       The programmer accidentally uses the wrong operator, which changes
       the application logic in security-relevant ways. This rule also covers
@@ -22,6 +30,9 @@ rules:
     languages:
       - c
       - cpp
+    # NOTE: common issues with comments are not covered.
+    # NOTE: consider adding a `focus-metavariable` where applicable to improve output readability.
+    # NOTE: custom wrappers to assertion macros are not covered.
     pattern-either:
       # == instead of = in assignment (the ternary operator is not supported by Semgrep)
       - pattern: for ($_ == $_; $_; $_) ...

@@ -2,30 +2,28 @@ rules:
   - id: raptor-signed-unsigned-conversion
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      category: security
+      subcategory: vuln
+      vulnerability_class: Other Security
+      likelihood: LOW
+      impact: MEDIUM
+      confidence: LOW
+      technology:
+        - c
+        - cpp
+      cwe:
+        - "CWE-195: Signed to Unsigned Conversion Error"
+        - "CWE-196: Unsigned to Signed Conversion Error"
+        - "CWE-194: Unexpected Sign Extension"
+        - "CWE-191: Integer Underflow (Wrap or Wraparound)"
+        - "CWE-681: Incorrect Conversion between Numeric Types"
+        - "CWE-789: Memory Allocation with Excessive Size Value"
       references:
-        - https://cwe.mitre.org/data/definitions/195
-        - https://cwe.mitre.org/data/definitions/196
-        - https://cwe.mitre.org/data/definitions/194
-        - https://cwe.mitre.org/data/definitions/191
-        - https://cwe.mitre.org/data/definitions/681
-        - https://cwe.mitre.org/data/definitions/789
         - https://g.co/kgs/PCHQjJ
         - https://github.com/struct/mms
         - https://www.sei.cmu.edu/downloads/sei-cert-c-coding-standard-2016-v01.pdf
         - http://www.phrack.org/issues/60/10.html#article
         - https://docs.microsoft.com/en-us/cpp/sanitizers/asan-error-examples
-      confidence: LOW
-      # NOTE: the deep expression operator is necessary to catch some
-      # matches because C/C++ integer promotions do not seem entirely
-      # supported by Semgrep; this may generate lots of false positives.
-      # NOTE: some types (e.g. `char`, `short`, `long`), functions (e.g.,
-      # widechar and some alloc functions, custom wrappers), and use
-      # cases (e.g., comparisons) are not covered.
-      # NOTE: `wmemcpy`, `wmemmove`, and `wmemset` are not covered.
-      # NOTE: `memcpy_s`, `memmove_s`, `memset_explicit`, and similar variants
-      # are not covered.
-      # NOTE: `strcpy_s`, `strcat_s`, and similar variants are not covered.
-      # NOTE: try to avoid false positives where possible.
     message: >-
       The software uses a signed primitive and performs a cast to an
       unsigned primitive, or uses an unsigned primitive and performs a cast
@@ -40,6 +38,12 @@ rules:
     languages:
       - c
       - cpp
+    # NOTE: the deep expression operator is necessary to catch some matches because C/C++ integer promotions do not seem entirely supported by Semgrep; this may generate lots of false positives.
+    # NOTE: some types (e.g. `char`, `short`, `long`), functions (e.g., widechar and some alloc functions, custom wrappers), and use cases (e.g., comparisons) are not covered.
+    # NOTE: `wmemcpy`, `wmemmove`, and `wmemset` are not covered.
+    # NOTE: `memcpy_s`, `memmove_s`, `memset_explicit`, and similar variants are not covered.
+    # NOTE: `strcpy_s`, `strcat_s`, and similar variants are not covered.
+    # NOTE: try to avoid false positives where possible.
     pattern-either:
       # signed to unsigned
       - patterns:

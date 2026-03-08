@@ -2,12 +2,20 @@ rules:
   - id: raptor-missing-return
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
-      references:
-        - https://cwe.mitre.org/data/definitions/393
-        - https://cwe.mitre.org/data/definitions/394
+      category: security
+      subcategory: audit
+      vulnerability_class: Other Security
+      likelihood: LOW
+      impact: LOW
       confidence: LOW
-      # NOTE: C++ class declarations should also be excluded, but
-      # apparently this pattern is not supported by Semgrep.
+      technology:
+        - c
+        - cpp
+      cwe:
+        - "CWE-393: Return of Wrong Status Code"
+        - "CWE-394: Unexpected Status Code or Return Value"
+      references:
+        - https://stackoverflow.com/questions/10858391/why-do-programs-in-c-compile-even-when-the-return-statement-is-missing
     message: >-
       A non-void function does not have a return statement. Hence, its
       return value can be considered undefined.
@@ -15,6 +23,7 @@ rules:
     languages:
       - c
       - cpp
+    # NOTE: C++ class declarations should also be excluded, but apparently this pattern is not supported by Semgrep.
     patterns:
       - pattern: $_ $FUN(...) { ... }
       # exclude function declarations

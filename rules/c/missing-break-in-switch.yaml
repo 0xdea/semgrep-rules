@@ -2,14 +2,21 @@ rules:
   - id: raptor-missing-break-in-switch
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      category: security
+      subcategory: audit
+      vulnerability_class: Other Security
+      likelihood: LOW
+      impact: LOW
+      confidence: LOW
+      technology:
+        - c
+        - cpp
+      cwe:
+        - "CWE-484: Omitted Break Statement in Switch"
       references:
-        - https://cwe.mitre.org/data/definitions/484
         - https://g.co/kgs/PCHQjJ
         - https://github.com/struct/mms
         - https://github.com/returntocorp/semgrep/issues/4939
-      confidence: LOW
-      # NOTE: we should also check for default blocks that miss the
-      # `break/return/exit/goto` or equivalent statement/function call.
     message: >-
       The software omits a break statement within a switch or similar
       construct, causing code associated with multiple conditions to
@@ -19,6 +26,7 @@ rules:
     languages:
       - c
       - cpp
+    # NOTE: we should also check for default blocks that miss the `break/return/exit/goto` or equivalent statement/function call.
     patterns:
       - pattern: |
           switch ($VAR) { case $VAL1: ... case $VAL2: ... }

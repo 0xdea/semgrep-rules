@@ -2,16 +2,19 @@ rules:
   - id: raptor-mismatched-memory-management-cpp
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      category: security
+      subcategory: vuln
+      vulnerability_class: Memory Issues
+      likelihood: LOW
+      impact: MEDIUM
+      confidence: LOW
+      technology:
+        - cpp
+      cwe:
+        - "CWE-762: Mismatched Memory Management Routines"
       references:
-        - https://cwe.mitre.org/data/definitions/762
-        - https://cwe.mitre.org/data/definitions/590
         - https://github.com/struct/mms
         - https://docs.microsoft.com/en-us/cpp/sanitizers/asan-error-examples
-      confidence: LOW
-      # NOTE: `valloc`, `reallocf`, `aligned_alloc`, and custom wrappers
-      # are not covered.
-      # NOTE: overloaded operators, `VirtualAlloc/VirtualFree`, and
-      # `mmap/munmap` are not covered.
     message: >-
       The software attempts to return a memory resource to the system, but
       it calls a release function that is not compatible with the function
@@ -21,6 +24,8 @@ rules:
     severity: INFO
     languages:
       - cpp
+    # NOTE: `valloc`, `reallocf`, `aligned_alloc`, and custom wrappers are not covered.
+    # NOTE: overloaded operators, `VirtualAlloc/VirtualFree`, and `mmap/munmap` are not covered.
     pattern-either:
       # free
       - patterns:

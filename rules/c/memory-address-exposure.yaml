@@ -2,15 +2,20 @@ rules:
   - id: raptor-memory-address-exposure
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
-      references:
-        - https://cwe.mitre.org/data/definitions/200
-        - https://cwe.mitre.org/data/definitions/209
-        - https://cwe.mitre.org/data/definitions/497
-        - https://github.com/struct/mms
+      category: security
+      subcategory: audit
+      vulnerability_class: Mishandled Sensitive information
+      likelihood: LOW
+      impact: MEDIUM
       confidence: LOW
-      # NOTE: `#define` format specifiers are not considered due to Semgrep
-      # limitations, perhaps we could implement this with symbolic propagation
-      # (Semgrep Pro experimental feature)?
+      technology:
+        - c
+        - cpp
+      cwe:
+        - "CWE-209: Generation of Error Message Containing Sensitive Information"
+        - "CWE-497: Exposure of Sensitive System Information to an Unauthorized Control Sphere"
+      references:
+        - https://github.com/struct/mms
     message: >-
       The software generates an error message that includes sensitive
       information about its environment, users, or associated data.
@@ -19,6 +24,7 @@ rules:
     languages:
       - c
       - cpp
+    # NOTE: `#define` format specifiers are not considered due to Semgrep limitations, perhaps we could implement this with symbolic propagation (Semgrep Pro experimental feature)?
     patterns:
       - pattern-either:
           # format string in 1st arg

@@ -29,8 +29,8 @@ A collection of my Semgrep rules to facilitate vulnerability research.
 
 ## See also
 
-* <https://semgrep.dev/r>
 * <https://appsec.guide/docs/static-analysis/semgrep/>
+* <https://semgrep.dev/r>
 
 ## Setup and usage instructions
 

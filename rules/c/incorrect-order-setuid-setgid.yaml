@@ -4,7 +4,7 @@ rules:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       category: security
       subcategory: vuln
-      vulnerability_class: Other Security
+      vulnerability_class: Improper Authorization
       likelihood: MEDIUM
       impact: HIGH
       confidence: MEDIUM

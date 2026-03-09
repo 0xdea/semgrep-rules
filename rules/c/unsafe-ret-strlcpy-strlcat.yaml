@@ -2,10 +2,20 @@ rules:
   - id: raptor-unsafe-ret-strlcpy-strlcat
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      category: security
+      subcategory: audit
+      vulnerability_class: Memory Issues
+      likelihood: MEDIUM
+      impact: HIGH
+      confidence: MEDIUM
+      technology:
+        - c
+        - cpp
+      cwe:
+        - "CWE-131: Incorrect Calculation of Buffer Size"
       references:
         - https://lwn.net/Articles/507319/
         - https://g.co/kgs/PCHQjJ
-      confidence: MEDIUM
     message: >-
       The strlcpy() and strlcat() functions return the total length of the
       string they tried to create. For strlcpy() that means the length of

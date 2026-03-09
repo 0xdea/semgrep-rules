@@ -2,11 +2,19 @@ rules:
   - id: raptor-unsafe-strlen
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
-      references:
-        - https://cwe.mitre.org/data/definitions/190
-        - https://cwe.mitre.org/data/definitions/680
-        - https://github.com/struct/mms
+      category: security
+      subcategory: vuln
+      vulnerability_class: Other Security
+      likelihood: MEDIUM
+      impact: MEDIUM
       confidence: MEDIUM
+      technology:
+        - c
+        - cpp
+      cwe:
+        - "CWE-190: Integer Overflow or Wraparound"
+      references:
+        - https://github.com/struct/mms
     message: >-
       The software performs a calculation that can produce an integer
       overflow or wraparound, when the logic assumes that the resulting

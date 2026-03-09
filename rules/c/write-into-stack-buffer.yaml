@@ -2,19 +2,19 @@ rules:
   - id: raptor-write-into-stack-buffer
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
-      references:
-        - https://cwe.mitre.org/data/definitions/121
-        - https://github.com/googleprojectzero/weggli
+      category: security
+      subcategory: audit
+      vulnerability_class: Memory Issues
+      likelihood: LOW
+      impact: MEDIUM
       confidence: MEDIUM
-      # NOTE: some functions (e.g., the `scanf` family) and some other ways to
-      # write into a stack buffer are not covered.
-      # NOTE: `memcpy_s`, `memmove_s`, `memset_explicit`, and similar variants are
-      # not covered.
-      # NOTE: `strcpy_s`, `strcat_s`, and similar variants are not covered.
-      # NOTE: global variables declared outside functions and not explicitly
-      # tagged as `static` are not supported.
-      # NOTE: based on `semgrep --time` output, processing of this rule seems to
-      # be particularly slow; consider disabling it, if you don't need it.
+      technology:
+        - c
+        - cpp
+      cwe:
+        - "CWE-121: Stack-based Buffer Overflow"
+      references:
+        - https://github.com/googleprojectzero/weggli
     message: >-
       The software directly writes into a stack buffer. This might lead to
       a stack-based buffer overflow.
@@ -22,6 +22,11 @@ rules:
     languages:
       - c
       - cpp
+    # NOTE: some functions (e.g., the `scanf` family) and some other ways to write into a stack buffer are not covered.
+    # NOTE: `memcpy_s`, `memmove_s`, `memset_explicit`, and similar variants are not covered.
+    # NOTE: `strcpy_s`, `strcat_s`, and similar variants are not covered.
+    # NOTE: global variables declared outside functions and not explicitly tagged as `static` are not supported.
+    # NOTE: based on `semgrep --time` output, processing of this rule seems to be particularly slow; consider disabling it, if you don't need it.
     pattern-either:
       # buffer in 1st arg (buffer to buffer copy functions)
       - patterns:

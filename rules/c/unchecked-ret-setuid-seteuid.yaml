@@ -2,12 +2,21 @@ rules:
   - id: raptor-unchecked-ret-setuid-seteuid
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      category: security
+      subcategory: audit
+      vulnerability_class: Other Security
+      likelihood: MEDIUM
+      impact: MEDIUM
+      confidence: MEDIUM
+      technology:
+        - c
+        - cpp
+      cwe:
+        - "CWE-252: Unchecked Return Value"
       references:
-        - https://cwe.mitre.org/data/definitions/252
         - https://lwn.net/Articles/451985/
         - https://www.usenix.org/legacy/events/sec02/full_papers/chen/chen.pdf
         - https://www.openwall.com/lists/oss-security/2023/12/30/4
-      confidence: MEDIUM
     message: >-
       The software does not check the return value from a method or
       function, which can prevent it from detecting unexpected states and

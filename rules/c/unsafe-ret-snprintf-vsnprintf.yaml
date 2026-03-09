@@ -2,13 +2,21 @@ rules:
   - id: raptor-unsafe-ret-snprintf-vsnprintf
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      category: security
+      subcategory: audit
+      vulnerability_class: Memory Issues
+      likelihood: MEDIUM
+      impact: HIGH
+      confidence: MEDIUM
+      technology:
+        - c
+        - cpp
+      cwe:
+        - "CWE-131: Incorrect Calculation of Buffer Size"
       references:
         - https://lwn.net/Articles/507319/
         - https://g.co/kgs/PCHQjJ
         - https://dustri.org/b/playing-with-weggli.html
-      confidence: MEDIUM
-      # NOTE: for another approach that uses taint mode, refer to
-      # `cpp.lang.security.strings.snprintf-return-value-length.snprintf-return-value-length`.
     message: >-
       The snprintf() and vsnprintf() functions return the total length of
       the string they tried to create. Therefore, this return value can be
@@ -19,6 +27,7 @@ rules:
     languages:
       - c
       - cpp
+    # NOTE: for another approach that uses taint mode, refer to `cpp.lang.security.strings.snprintf-return-value-length.snprintf-return-value-length`.
     patterns:
       - pattern-either:
           - pattern: $_ = $FUN($_, $_, $FMT, ...)

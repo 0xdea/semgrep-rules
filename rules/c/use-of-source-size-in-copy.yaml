@@ -2,14 +2,20 @@ rules:
   - id: raptor-use-of-source-size-in-copy
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
+      category: security
+      subcategory: vuln
+      vulnerability_class: Memory Issues
+      likelihood: MEDIUM
+      impact: HIGH
+      confidence: MEDIUM
+      technology:
+        - c
+        - cpp
+      cwe:
+        - "CWE-806: Buffer Access Using Size of Source Buffer"
       references:
-        - https://cwe.mitre.org/data/definitions/806
         - https://github.com/0xdea/advisories/blob/master/2020-07-solaris-whodo-w.txt
         - https://dustri.org/b/playing-with-weggli.html
-      confidence: MEDIUM
-      # NOTE: some copy functions such as `memccpy`, `bcopy`, and `strcpy_s` are not covered.
-      # NOTE: `strlen` before the copy function is not covered.
-      # NOTE: structs are not covered.
     message: >-
       The software uses the size of a source buffer when reading from or
       writing to a destination buffer, which may cause it to access memory
@@ -18,6 +24,9 @@ rules:
     languages:
       - c
       - cpp
+    # NOTE: some copy functions such as `memccpy`, `bcopy`, and `strcpy_s` are not covered.
+    # NOTE: `strlen` before the copy function is not covered.
+    # NOTE: structs are not covered.
     pattern-either:
       # size of array
       - patterns:

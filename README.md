@@ -48,7 +48,8 @@ semgrep --severity ERROR --severity WARNING --config semgrep-rules/rules /path/t
 semgrep --config semgrep-rules/rules /path/to/source
 ```
 
-*Note: Specify the `--no-git-ignore` switch to scan files regardless of git tracking status or `.gitignore` rules.*
+> [!TIP]
+> Specify the `--no-git-ignore` switch to scan files regardless of git tracking status or `.gitignore` rules.
 
 For a better streamlined experience, I recommend saving Semgrep scan output in [SARIF](https://sarifweb.azurewebsites.net/) format and using [SARIF Explorer](https://marketplace.visualstudio.com/items?itemName=trailofbits.sarif-explorer) in [VS code](https://code.visualstudio.com/):
 

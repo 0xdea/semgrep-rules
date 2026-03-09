@@ -27,8 +27,8 @@ rules:
     languages:
       - c
       - cpp
-  # NOTE: other functions that do not `NUL`-terminate the destination buffer are not covered (e.g., `read`, `readlink`, `fread`, `memcpy`, etc.).
-  # NOTE: try to avoid false positives when `sizeof(dest) - 1` is used and in other similar cases.
+    # NOTE: other functions that do not `NUL`-terminate the destination buffer are not covered (e.g., `read`, `readlink`, `fread`, `memcpy`, etc.).
+    # NOTE: try to avoid false positives when `sizeof(dest) - 1` is used and in other similar cases.
     patterns:
       - pattern: $FUN(...)
       - metavariable-pattern:

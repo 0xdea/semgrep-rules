@@ -78,18 +78,18 @@ See also the included SARIF output [example](sarif-example).
 * [**incorrect-use-of-sizeof**](rules/c/incorrect-use-of-sizeof.yaml). Accidental use of the `sizeof` operator on a pointer instead of its target.
 * [**unterminated-string-strncpy**](rules/c/unterminated-string-strncpy.yaml). Lack of explicit NUL-termination after `strncpy` and `stpncpy`.
 * [**off-by-one**](rules/c/off-by-one.yaml). Potential off-by-one error.
-* [**pointer-subtraction**](rules/c/pointer-subtraction.yaml). Potential use of pointer subtraction to determine size.
 * [**unsafe-ret-snprintf-vsnprintf**](rules/c/unsafe-ret-snprintf-vsnprintf.yaml). Potentially unsafe use of the return value of `snprintf` and `vsnprintf`.
 * [**unsafe-ret-strlcpy-strlcat**](rules/c/unsafe-ret-strlcpy-strlcat.yaml). Potentially unsafe use of the return value of `strlcpy` and `strlcat`.
+* [**pointer-subtraction**](rules/c/pointer-subtraction.yaml). Potential use of pointer subtraction to determine size.
 * [**write-into-stack-buffer**](rules/c/write-into-stack-buffer.yaml). Direct write into buffer allocated on the stack.
 
 #### integer overflows
 
-* [**incorrect-unsigned-comparison**](rules/c/incorrect-unsigned-comparison.yaml). Checking if an unsigned variable is negative.
-* [**unsafe-strlen**](rules/c/unsafe-strlen.yaml). Casting the return value of `strlen` to short might be dangerous.
 * [**integer-wraparound**](rules/c/integer-wraparound.yaml). Potential integer wraparound errors.
+* [**unsafe-strlen**](rules/c/unsafe-strlen.yaml). Casting the return value of `strlen` to short might be dangerous.
 * [**integer-truncation**](rules/c/integer-truncation.yaml). Potential integer truncation errors.
 * [**signed-unsigned-conversion**](rules/c/signed-unsigned-conversion.yaml). Potential signed/unsigned conversion errors.
+* [**incorrect-unsigned-comparison**](rules/c/incorrect-unsigned-comparison.yaml). Checking if an unsigned variable is negative.
 
 #### format strings
 
@@ -102,11 +102,11 @@ See also the included SARIF output [example](sarif-example).
 * [**double-free**](rules/c/double-free.yaml). Potential double `free`.
 * [**incorrect-use-of-free**](rules/c/incorrect-use-of-free.yaml). Calling `free` on memory not in the heap.
 * [**unchecked-ret-malloc**](rules/c/unchecked-ret-malloc.yaml). Unchecked return code of `malloc`, `calloc`, `realloc`, etc.
-* [**ret-stack-address**](rules/c/ret-stack-address.yaml). Potential return of the address of a stack-allocated variable.
 * [**putenv-stack-var**](rules/c/putenv-stack-var.yaml). Call to `putenv` with a stack-allocated variable.
-* [**memory-address-exposure**](rules/c/memory-address-exposure.yaml). Potential exposure of underlying memory addresses.
+* [**ret-stack-address**](rules/c/ret-stack-address.yaml). Potential return of the address of a stack-allocated variable.
 * [**mismatched-memory-management**](rules/c/mismatched-memory-management.yaml). Potentially mismatched C memory management routines.
 * [**mismatched-memory-management-cpp**](rules/c/mismatched-memory-management-cpp.yaml). Potentially mismatched C++ memory management routines.
+* [**memory-address-exposure**](rules/c/memory-address-exposure.yaml). Potential exposure of underlying memory addresses.
 
 #### command injection
 
@@ -135,7 +135,7 @@ See also the included SARIF output [example](sarif-example).
 * [**suspicious-assert**](rules/c/suspicious-assert.yaml). Potentially invalid size check due to use of assertion macros.
 * [**interesting-api-calls**](rules/c/interesting-api-calls.yaml). Calls to interesting and potentially insecure API functions.
 * [**unchecked-ret-scanf**](rules/c/unchecked-ret-scanf.yaml). Unchecked return code of functions in the `scanf` family.
-* [**insecure-api-atoi-atol-atof**](rules/c/insecure-api-atoi-atol-atof.yaml). Use of potentially insecure API functions `atoi`, `atol`, `atof`.
+* [**insecure-api-ato**](rules/c/insecure-api-ato.yaml). Use of potentially insecure API functions `atoi`, `atol`, `atof`.
 * [**high-entropy-assignment**](rules/c/high-entropy-assignment.yaml). Assignment of a high-entropy value that might be a secret.
 * [**argv-envp-access**](rules/c/argv-envp-access.yaml). Command-line argument or environment variable access.
 * [**missing-default-in-switch**](rules/c/missing-default-in-switch.yaml). Missing default case in a switch statement.

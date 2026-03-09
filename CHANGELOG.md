@@ -45,6 +45,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Rename `unchecked-ret-malloc-calloc-realloc` into `unchecked-ret-malloc`.
 * Rename `insecure-api-access-stat-lstat` into `insecure-api-access-stat`.
 * Rename `insecure-api-atoi-atol-atof` into `insecure-api-ato`.
+* Rearrange rule order based on new subcategory/likelihood/impact metrics.
 * Improve documentation.
 * Update SARIF output example.
 

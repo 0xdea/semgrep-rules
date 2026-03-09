@@ -5,8 +5,8 @@ rules:
       category: security
       subcategory: audit
       vulnerability_class: Hard-coded Secrets
-      likelihood: MEDIUM
-      impact: LOW
+      likelihood: LOW
+      impact: MEDIUM
       confidence: MEDIUM
       technology:
         - c

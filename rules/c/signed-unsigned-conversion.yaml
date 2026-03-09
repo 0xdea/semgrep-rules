@@ -5,7 +5,7 @@ rules:
       category: security
       subcategory: vuln
       vulnerability_class: Other Security
-      likelihood: LOW
+      likelihood: MEDIUM
       impact: MEDIUM
       confidence: LOW
       technology:

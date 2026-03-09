@@ -5,7 +5,7 @@ rules:
       category: security
       subcategory: audit
       vulnerability_class: Other Security
-      likelihood: LOW
+      likelihood: MEDIUM
       impact: HIGH
       confidence: MEDIUM
       technology:

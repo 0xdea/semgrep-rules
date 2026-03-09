@@ -6,7 +6,7 @@ rules:
       subcategory: audit
       vulnerability_class: Memory Issues
       likelihood: LOW
-      impact: MEDIUM
+      impact: LOW
       confidence: MEDIUM
       technology:
         - c

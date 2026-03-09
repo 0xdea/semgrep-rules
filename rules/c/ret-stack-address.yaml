@@ -5,7 +5,7 @@ rules:
       category: security
       subcategory: vuln
       vulnerability_class: Memory Issues
-      likelihood: MEDIUM
+      likelihood: LOW
       impact: MEDIUM
       confidence: MEDIUM
       technology:

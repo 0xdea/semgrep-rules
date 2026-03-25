@@ -10,17 +10,21 @@ on:
 
 jobs:
   semgrep-rules-test:
+    name: semgrep-rules-test
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
+        with:
+          submodules: true
+          persist-credentials: false
       - name: prettier-check
-        uses: creyD/prettier_action@v4.6
+        uses: creyD/prettier_action@8c18391fdc98ed0d884c6345f03975edac71b8f0 # v4.6
         with:
           dry: True
           prettier_options: --check **/*.{yaml,yml}
       - name: python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v6
         with:
           python-version: 3.9
       - name: semgrep

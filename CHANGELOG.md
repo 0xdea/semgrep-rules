@@ -26,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Add some code samples (`command-injection`, `format-string-bugs`, `incorrect-use-of-sizeof`, `insecure-api-access-stat`, `insecure-api-gets`, `insecure-api-scanf`, `insecure-api-sprintf-vsprintf`, `interesting-api-calls`, `off-by-one`, `unsafe-ret-snprintf-vsnprintf`, `use-after-free`, `use-of-source-size-in-copy`, `unterminated-string-strncpy`).
 * Add [required metadata](https://semgrep.dev/docs/contributing/contributing-to-semgrep-rules-repository) to contribute rules to the Semgrep Registry.
 * [Validate](https://raw.githubusercontent.com/semgrep/semgrep-rules/main/.github/scripts/validate-metadata.py) the ruleset against the official metadata [schema](https://raw.githubusercontent.com/returntocorp/semgrep-rules/develop/metadata-schema.yaml.schm) as described in 'Trail of Bits' [documentation](https://github.com/trailofbits/semgrep-rules/blob/main/CONTRIBUTING.md).
+* Add Semgrep metadata validation in GitHub workflow.
 * Add `prettier-check` GitHub action to check YAML formatting.
 
 ### Changed
@@ -63,7 +64,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Add detections for the `_mb*` and `*_s/*_l` function families (`insecure-api-strcpy-stpcpy-strcat`, `interesting-api-calls`, `unsafe-ret-strlcpy-strlcat`, `unsafe-strlen`, `unterminated-string-strncpy-stpncpy`, `write-into-stack-buffer`).
 * Add some code samples (`incorrect-use-of-strncpy-memcpy-etc`, `integer-wraparound`, `overlapping-src-dst`).
 * Add SARIF output example as [requested](https://github.com/0xdea/semgrep-rules/issues/10).
-* Add GitHub action to automate rule validation and testing.
+* Add GitHub workflow to automate rule validation and testing.
 
 ### Changed
 

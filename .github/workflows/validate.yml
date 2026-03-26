@@ -1,4 +1,4 @@
-name: test
+name: validate
 
 permissions:
   contents: read
@@ -9,8 +9,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  semgrep-rules-test:
-    name: semgrep-rules-test
+  semgrep-rules-validate:
+    name: semgrep-rules-validate
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -35,3 +35,14 @@ jobs:
         run: semgrep --config rules --validate
       - name: semgrep-test
         run: semgrep --test --test-ignore-todo
+      - name: clone-semgrep-rules
+        uses: actions/checkout@v6
+        with:
+          repository: semgrep/semgrep-rules
+          path: /tmp/semgrep-rules
+          fetch-depth: 1
+          persist-credentials: false
+      - name: install-python-dependencies
+        run: python -m pip install --upgrade pip && python -m pip install pyyaml jsonschema
+      - name: validate-metadata
+        run: python /tmp/semgrep-rules/.github/scripts/validate-metadata.py -s /tmp/semgrep-rules/metadata-schema.yaml.schm -f .

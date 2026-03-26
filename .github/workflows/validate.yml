@@ -39,10 +39,10 @@ jobs:
         uses: actions/checkout@v6
         with:
           repository: semgrep/semgrep-rules
-          path: /tmp/semgrep-rules
+          path: tmp
           fetch-depth: 1
           persist-credentials: false
       - name: install-python-dependencies
         run: python -m pip install --upgrade pip && python -m pip install pyyaml jsonschema
       - name: validate-metadata
-        run: python /tmp/semgrep-rules/.github/scripts/validate-metadata.py -s /tmp/semgrep-rules/metadata-schema.yaml.schm -f .
+        run: python /tmp/.github/scripts/validate-metadata.py -s /tmp/metadata-schema.yaml.schm -f .

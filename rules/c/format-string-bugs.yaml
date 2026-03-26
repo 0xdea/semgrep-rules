@@ -3,7 +3,8 @@ rules:
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       category: security
-      subcategory: vuln
+      subcategory: 
+        - vuln
       vulnerability_class: Memory Issues
       likelihood: MEDIUM
       impact: HIGH
@@ -13,6 +14,8 @@ rules:
         - cpp
       cwe:
         - "CWE-134: Use of Externally-Controlled Format String"
+      owasp:
+        - A05:2025 - Injection
       references:
         - https://julianor.tripod.com/bc/formatstring-1.2.pdf
         - http://phrack.org/issues/70/13.html#article

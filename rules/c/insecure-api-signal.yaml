@@ -3,7 +3,8 @@ rules:
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       category: security
-      subcategory: audit
+      subcategory: 
+        - audit
       vulnerability_class: Dangerous Method or Function
       likelihood: MEDIUM
       impact: MEDIUM
@@ -15,6 +16,8 @@ rules:
         - "CWE-364: Signal Handler Race Condition"
         - "CWE-479: Signal Handler Use of a Non-reentrant Function"
         - "CWE-828: Signal Handler with Functionality that is not Asynchronous-Safe"
+      owasp:
+        - A10:2025 - Mishandling of Exceptional Conditions
       references:
         - https://lcamtuf.coredump.cx/signals.txt
     message: >-

@@ -3,7 +3,8 @@ rules:
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       category: security
-      subcategory: vuln
+      subcategory: 
+        - vuln
       vulnerability_class: Denial-of-Service (DoS)
       likelihood: MEDIUM
       impact: MEDIUM
@@ -13,6 +14,8 @@ rules:
         - cpp
       cwe:
         - "CWE-1333: Inefficient Regular Expression Complexity"
+      owasp:
+        - A10:2025 - Mishandling of Exceptional Conditions
       references:
         - https://semgrep.dev/docs/writing-rules/metavariable-analysis
         - https://github.com/semgrep/semgrep/pull/4672

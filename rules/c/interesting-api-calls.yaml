@@ -3,7 +3,8 @@ rules:
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       category: security
-      subcategory: audit
+      subcategory: 
+        - audit
       vulnerability_class: Dangerous Method or Function
       likelihood: MEDIUM
       impact: MEDIUM
@@ -13,6 +14,8 @@ rules:
         - cpp
       cwe:
         - "CWE-676: Use of Potentially Dangerous Function"
+      owasp:
+        - A08:2025 - Software or Data Integrity Failures
       references:
         - https://github.com/0xdea/rhabdomancer
         - https://github.com/0xdea/ghidra-scripts/blob/main/Rhabdomancer.java

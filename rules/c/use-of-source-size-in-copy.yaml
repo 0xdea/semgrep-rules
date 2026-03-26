@@ -3,7 +3,8 @@ rules:
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       category: security
-      subcategory: vuln
+      subcategory: 
+        - vuln
       vulnerability_class: Memory Issues
       likelihood: MEDIUM
       impact: HIGH
@@ -13,6 +14,8 @@ rules:
         - cpp
       cwe:
         - "CWE-806: Buffer Access Using Size of Source Buffer"
+      owasp:
+        - A06:2025 - Insecure Design
       references:
         - https://github.com/0xdea/advisories/blob/master/2020-07-solaris-whodo-w.txt
         - https://dustri.org/b/playing-with-weggli.html

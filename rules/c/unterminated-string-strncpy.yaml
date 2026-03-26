@@ -3,7 +3,8 @@ rules:
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       category: security
-      subcategory: vuln
+      subcategory: 
+        - vuln
       vulnerability_class: Memory Issues
       likelihood: MEDIUM
       impact: MEDIUM
@@ -14,6 +15,8 @@ rules:
       cwe:
         - "CWE-170: Improper Null Termination"
         - "CWE-126: Buffer Over-read"
+      owasp:
+        - A10:2025 - Mishandling of Exceptional Conditions
       references:
         - https://g.co/kgs/PCHQjJ
         - https://www.sei.cmu.edu/downloads/sei-cert-c-coding-standard-2016-v01.pdf

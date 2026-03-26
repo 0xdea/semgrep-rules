@@ -3,7 +3,8 @@ rules:
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       category: security
-      subcategory: vuln
+      subcategory: 
+        - vuln
       vulnerability_class: Command Injection
       likelihood: MEDIUM
       impact: HIGH
@@ -15,6 +16,8 @@ rules:
         - "CWE-78: Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')"
         - "CWE-88: Improper Neutralization of Argument Delimiters in a Command ('Argument Injection')"
         - "CWE-676: Use of Potentially Dangerous Function"
+      owasp:
+        - A05:2025 - Injection
       references:
         - https://g.co/kgs/PCHQjJ
         - https://www.sei.cmu.edu/downloads/sei-cert-c-coding-standard-2016-v01.pdf

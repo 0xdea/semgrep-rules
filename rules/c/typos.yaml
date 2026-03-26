@@ -3,7 +3,8 @@ rules:
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       category: security
-      subcategory: audit
+      subcategory: 
+        - audit
       vulnerability_class: Other Security
       likelihood: LOW
       impact: LOW
@@ -19,6 +20,8 @@ rules:
         - "CWE-705: Incorrect Control Flow Scoping"
         - "CWE-561: Dead Code"
         - "CWE-1164: Irrelevant Code"
+      owasp:
+        - A08:2025 - Software or Data Integrity Failures
       references:
         - https://g.co/kgs/PCHQjJ
         - https://www.sei.cmu.edu/downloads/sei-cert-c-coding-standard-2016-v01.pdf

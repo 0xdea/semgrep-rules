@@ -3,7 +3,8 @@ rules:
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       category: security
-      subcategory: audit
+      subcategory: 
+        - audit
       vulnerability_class: Improper Authorization
       likelihood: MEDIUM
       impact: MEDIUM
@@ -13,6 +14,8 @@ rules:
         - cpp
       cwe:
         - "CWE-252: Unchecked Return Value"
+      owasp:
+        - A10:2025 - Mishandling of Exceptional Conditions
       references:
         - https://lwn.net/Articles/451985/
         - https://www.usenix.org/legacy/events/sec02/full_papers/chen/chen.pdf

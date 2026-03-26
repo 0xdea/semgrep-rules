@@ -3,7 +3,8 @@ rules:
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       category: security
-      subcategory: audit
+      subcategory: 
+        - audit
       vulnerability_class: Other Security
       likelihood: LOW
       impact: LOW
@@ -13,6 +14,8 @@ rules:
         - cpp
       cwe:
         - "CWE-15: External Control of System or Configuration Setting"
+      owasp:
+        - A05:2025 - Injection
       references:
         - https://www.gnu.org/software/libc/manual/html_node/Program-Arguments.html
     message: >-

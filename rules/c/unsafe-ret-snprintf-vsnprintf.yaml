@@ -3,7 +3,8 @@ rules:
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       category: security
-      subcategory: audit
+      subcategory: 
+        - audit
       vulnerability_class: Memory Issues
       likelihood: MEDIUM
       impact: HIGH
@@ -13,6 +14,8 @@ rules:
         - cpp
       cwe:
         - "CWE-131: Incorrect Calculation of Buffer Size"
+      owasp:
+        - A10:2025 - Mishandling of Exceptional Conditions
       references:
         - https://lwn.net/Articles/507319/
         - https://g.co/kgs/PCHQjJ

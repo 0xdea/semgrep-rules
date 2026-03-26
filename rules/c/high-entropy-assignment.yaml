@@ -3,7 +3,8 @@ rules:
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       category: security
-      subcategory: audit
+      subcategory: 
+        - audit
       vulnerability_class: Hard-coded Secrets
       likelihood: LOW
       impact: MEDIUM
@@ -13,6 +14,8 @@ rules:
         - cpp
       cwe:
         - "CWE-540: Inclusion of Sensitive Information in Source Code"
+      owasp:
+        - A06:2025 - Insecure Design
       references:
         - https://semgrep.dev/docs/writing-rules/metavariable-analysis
         - https://github.com/semgrep/semgrep/pull/4672

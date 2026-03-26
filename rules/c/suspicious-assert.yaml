@@ -3,7 +3,8 @@ rules:
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       category: security
-      subcategory: audit
+      subcategory: 
+        - audit
       vulnerability_class: Other Security
       likelihood: MEDIUM
       impact: HIGH
@@ -13,6 +14,8 @@ rules:
         - cpp
       cwe:
         - "CWE-754: Improper Check for Unusual or Exceptional Conditions"
+      owasp:
+        - A10:2025 - Mishandling of Exceptional Conditions
       references:
         - https://legends2k.github.io/note/assert_vs_if/
         - https://github.com/struct/mms

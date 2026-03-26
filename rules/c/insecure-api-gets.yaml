@@ -3,7 +3,8 @@ rules:
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       category: security
-      subcategory: vuln
+      subcategory: 
+        - vuln
       vulnerability_class: Dangerous Method or Function
       likelihood: HIGH
       impact: HIGH
@@ -14,6 +15,8 @@ rules:
       cwe:
         - "CWE-242: Use of Inherently Dangerous Function"
         - "CWE-120: Buffer Copy without Checking Size of Input ('Classic Buffer Overflow')"
+      owasp:
+        - A10:2025 - Mishandling of Exceptional Conditions
       references:
         - https://g.co/kgs/PCHQjJ
     message: >-

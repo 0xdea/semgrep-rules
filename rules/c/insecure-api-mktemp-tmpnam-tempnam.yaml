@@ -3,7 +3,8 @@ rules:
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       category: security
-      subcategory: audit
+      subcategory: 
+        - audit
       vulnerability_class: Dangerous Method or Function
       likelihood: MEDIUM
       impact: MEDIUM
@@ -14,6 +15,8 @@ rules:
       cwe:
         - "CWE-377: Insecure Temporary File"
         - "CWE-367: Time-of-check Time-of-use (TOCTOU) Race Condition"
+      owasp:
+        - A10:2025 - Mishandling of Exceptional Conditions
       references:
         - https://g.co/kgs/PCHQjJ
     message: >-

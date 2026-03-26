@@ -3,7 +3,8 @@ rules:
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       category: security
-      subcategory: audit
+      subcategory: 
+        - audit
       vulnerability_class: Mishandled Sensitive Information
       likelihood: LOW
       impact: LOW
@@ -14,6 +15,8 @@ rules:
       cwe:
         - "CWE-546: Suspicious Comment"
         - "CWE-615: Inclusion of Sensitive Information in Source Code Comments"
+      owasp:
+        - A08:2025 - Software or Data Integrity Failures
       references:
         - https://btlr.dev/blog/how-to-find-vulnerabilities-in-code-bad-words
     message: >-

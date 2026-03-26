@@ -3,7 +3,8 @@ rules:
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       category: security
-      subcategory: audit
+      subcategory: 
+        - audit
       vulnerability_class: Other Security
       likelihood: LOW
       impact: LOW
@@ -14,6 +15,8 @@ rules:
       cwe:
         - "CWE-393: Return of Wrong Status Code"
         - "CWE-394: Unexpected Status Code or Return Value"
+      owasp:
+        - A08:2025 - Software or Data Integrity Failures
       references:
         - https://stackoverflow.com/questions/10858391/why-do-programs-in-c-compile-even-when-the-return-statement-is-missing
     message: >-

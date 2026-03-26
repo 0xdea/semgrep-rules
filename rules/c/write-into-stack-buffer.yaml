@@ -3,7 +3,8 @@ rules:
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       category: security
-      subcategory: audit
+      subcategory: 
+        - audit
       vulnerability_class: Memory Issues
       likelihood: LOW
       impact: LOW
@@ -13,6 +14,8 @@ rules:
         - cpp
       cwe:
         - "CWE-121: Stack-based Buffer Overflow"
+      owasp:
+        - A08:2025 - Software or Data Integrity Failures
       references:
         - https://github.com/googleprojectzero/weggli
     message: >-

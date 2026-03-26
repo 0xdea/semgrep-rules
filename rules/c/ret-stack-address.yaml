@@ -3,7 +3,8 @@ rules:
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       category: security
-      subcategory: vuln
+      subcategory: 
+        - vuln
       vulnerability_class: Memory Issues
       likelihood: LOW
       impact: MEDIUM
@@ -13,6 +14,8 @@ rules:
         - cpp
       cwe:
         - "CWE-562: Return of Stack Variable Address"
+      owasp:
+        - A06:2025 - Insecure Design
       references:
         - https://github.com/struct/mms
         - https://www.sei.cmu.edu/downloads/sei-cert-c-coding-standard-2016-v01.pdf

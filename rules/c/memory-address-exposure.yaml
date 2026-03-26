@@ -3,7 +3,8 @@ rules:
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       category: security
-      subcategory: audit
+      subcategory: 
+        - audit
       vulnerability_class: Mishandled Sensitive Information
       likelihood: LOW
       impact: MEDIUM
@@ -14,6 +15,8 @@ rules:
       cwe:
         - "CWE-209: Generation of Error Message Containing Sensitive Information"
         - "CWE-497: Exposure of Sensitive System Information to an Unauthorized Control Sphere"
+      owasp:
+        - A04:2025 - Cryptographic Failures
       references:
         - https://github.com/struct/mms
     message: >-

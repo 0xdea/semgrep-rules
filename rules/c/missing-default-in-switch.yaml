@@ -3,7 +3,8 @@ rules:
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       category: security
-      subcategory: audit
+      subcategory: 
+        - audit
       vulnerability_class: Other Security
       likelihood: LOW
       impact: LOW
@@ -13,6 +14,8 @@ rules:
         - cpp
       cwe:
         - "CWE-478: Missing Default Case in Multiple Condition Expression"
+      owasp:
+        - A08:2025 - Software or Data Integrity Failures
       references:
         - https://g.co/kgs/PCHQjJ
         - https://github.com/struct/mms

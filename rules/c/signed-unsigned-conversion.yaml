@@ -3,7 +3,8 @@ rules:
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       category: security
-      subcategory: vuln
+      subcategory: 
+        - vuln
       vulnerability_class: Other Security
       likelihood: MEDIUM
       impact: MEDIUM
@@ -18,6 +19,8 @@ rules:
         - "CWE-191: Integer Underflow (Wrap or Wraparound)"
         - "CWE-681: Incorrect Conversion between Numeric Types"
         - "CWE-789: Memory Allocation with Excessive Size Value"
+      owasp:
+        - A10:2025 - Mishandling of Exceptional Conditions
       references:
         - https://g.co/kgs/PCHQjJ
         - https://github.com/struct/mms

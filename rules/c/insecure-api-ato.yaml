@@ -3,7 +3,8 @@ rules:
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       category: security
-      subcategory: audit
+      subcategory: 
+        - audit
       vulnerability_class: Dangerous Method or Function
       likelihood: LOW
       impact: MEDIUM
@@ -13,6 +14,8 @@ rules:
         - cpp
       cwe:
         - "CWE-839: Numeric Range Comparison Without Minimum Check"
+      owasp:
+        - A10:2025 - Mishandling of Exceptional Conditions
       references:
         - https://rules.sonarsource.com/c/type/Bug/RSPEC-989
         - https://wiki.sei.cmu.edu/confluence/display/c/ERR34-C.+Detect+errors+when+converting+a+string+to+a+number

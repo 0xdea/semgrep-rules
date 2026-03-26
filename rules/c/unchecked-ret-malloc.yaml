@@ -3,7 +3,8 @@ rules:
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       category: security
-      subcategory: audit
+      subcategory: 
+        - audit
       vulnerability_class: Memory Issues
       likelihood: MEDIUM
       impact: MEDIUM
@@ -14,6 +15,8 @@ rules:
       cwe:
         - "CWE-252: Unchecked Return Value"
         - "CWE-690: Unchecked Return Value to NULL Pointer Dereference"
+      owasp:
+        - A10:2025 - Mishandling of Exceptional Conditions
       references:
         - https://g.co/kgs/PCHQjJ
         - https://github.com/struct/mms

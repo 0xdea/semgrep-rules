@@ -156,8 +156,9 @@ See also the included SARIF output [example](sarif-example).
 
 ## TODO
 
-* Improve overall **accuracy** and reduce false positives, without missing potential hot spots in code.
 * Add **new checks** to the existing rules and add new rules where needed.
+* Improve overall **accuracy** and reduce false positives, without missing potential hot spots in code.
+* Check performance (see [test_public_repos.py](https://github.com/semgrep/semgrep-rules/blob/main/tests/performance/test_public_repos.py)).
 * Additional `--time` **benchmarking** against real-world code to spot slow rules in need of optimization.
 * Move **noisy rules** (e.g., `high-entropy-assignment`) to a specific folder to simplify publishing to the Semgrep registry.
 * Extensive **testing** before release v1.2.0 (or even v2.0.0) and publishing to the official **Semgrep registry**.

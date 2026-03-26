@@ -3,7 +3,7 @@ rules:
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       category: security
-      subcategory: 
+      subcategory:
         - audit
       vulnerability_class: Other Security
       likelihood: LOW

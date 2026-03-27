@@ -12,7 +12,7 @@ int test1()
 	{
 		oct = (u_int8_t)retrieve_rand_int(0xFF);
 		if (oct_cnt != 1)
-			// ruleid: overlapping-source-destination
+			// ruleid: raptor-overlapping-source-destination
 			sprintf(eaddr, "%s:%0x", eaddr, oct);
 		else
 			sprintf(eaddr, "%0x", oct);
@@ -24,13 +24,13 @@ int test2()
 {
 	char buf[SIZE];
 
-	// ruleid: overlapping-source-destination
+	// ruleid: raptor-overlapping-source-destination
 	sprintf(buf, "%s:%s:%s", prepend, buf, append);
 
-	// ruleid: overlapping-source-destination
+	// ruleid: raptor-overlapping-source-destination
 	snprintf(buf, SIZE, "%s:%s", prepend, buf);
 
-	// ruleid: overlapping-source-destination
+	// ruleid: raptor-overlapping-source-destination
 	sprintf(buf, "%s some further text", buf);
 
 	return 0;
@@ -38,10 +38,10 @@ int test2()
 
 int test3(char *buf)
 {
-	// ruleid: overlapping-source-destination
+	// ruleid: raptor-overlapping-source-destination
 	memcpy(buf, buf, 16);
 
-	// ruleid: overlapping-source-destination
+	// ruleid: raptor-overlapping-source-destination
 	strcpy(buf, buf);
 }
 

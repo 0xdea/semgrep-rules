@@ -132,7 +132,7 @@ See also the included SARIF output [example](sarif-example).
 
 * [**incorrect-use-of-memset**](rules/c/incorrect-use-of-memset.yaml). Wrong order of arguments to `memset`.
 * [**insecure-api-rand-srand**](rules/c/insecure-api-rand-srand.yaml). Use of potentially insecure API functions `rand` and `srand`.
-* [**overlapping-src-dst**](rules/c/overlapping-src-dst.yaml). Source and destination overlap in copy functions.
+* [**overlapping-source-destination**](rules/c/overlapping-source-destination.yaml). Source and destination overlap in copy functions.
 * [**suspicious-assert**](rules/c/suspicious-assert.yaml). Potentially invalid size check due to use of assertion macros.
 * [**interesting-api-calls**](rules/c/interesting-api-calls.yaml). Calls to interesting and potentially insecure API functions.
 * [**unchecked-ret-scanf**](rules/c/unchecked-ret-scanf.yaml). Unchecked return code of functions in the `scanf` family.

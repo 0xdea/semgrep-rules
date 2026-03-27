@@ -1,5 +1,5 @@
 rules:
-  - id: raptor-overlapping-src-dst
+  - id: raptor-overlapping-source-destination
     metadata:
       author: Marco Ivaldi <raptor@0xdeadbeef.info>
       category: security

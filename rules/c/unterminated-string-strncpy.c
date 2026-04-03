@@ -21,6 +21,15 @@ void copy_string2(char *string)
 	stpncpy(buf, string, BUFSIZE);
 }
 
+void copy_string3(char *string)
+{
+	char buf[BUFSIZE];
+
+	// ok: raptor-unterminated-string-strncpy
+	strncpy(buf, string, BUFSIZE);
+	buf[BUFSIZE - 1] = '\0';
+}
+
 int test_func()
 {
 	char longString[] = "String signifying nothing";

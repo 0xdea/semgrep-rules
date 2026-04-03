@@ -5,7 +5,7 @@
 
 #define BUFSIZE 256
 
-void copy_string(char *string)
+void copy_string1(char *string)
 {
 	char buf[BUFSIZE];
 	size_t length;
@@ -14,6 +14,22 @@ void copy_string(char *string)
 	length = strlcpy(buf, string, BUFSIZE);
 
 	// use length to access buf, e.g. with strncat()
+}
+
+int copy_string2(const char *string)
+{
+	char buf[BUFSIZE];
+
+	if (!string)
+		return -1;
+
+	// ok: raptor-unsafe-ret-strlcpy-strlcat
+	if (strlcpy(buf, string, BUFSIZE) >= BUFSIZE)
+		return -1; // truncation
+
+	// safely use buf here, knowing it is complete and null-terminated
+
+	return 0;
 }
 
 void append_string(char *string)

@@ -74,7 +74,7 @@ parse_dnssl(char *data, int datalen)
 }
 
 // http://www.phrack.org/issues/60/10.html#article
-int copy_something(char *buf, int len)
+int copy_something1(char *buf, int len)
 {
 	char kbuf[800];
 
@@ -85,6 +85,18 @@ int copy_something(char *buf, int len)
 
 	// ruleid: raptor-signed-unsigned-conversion
 	return memcpy(kbuf, buf, len);
+}
+
+int copy_something2(char *buf, size_t len)
+{
+	char kbuf[800];
+
+	if (!buf || len == 0 || len > sizeof(kbuf))
+		return -1;
+
+	// ok: raptor-signed-unsigned-conversion
+	memcpy(kbuf, buf, len);
+	return 0;
 }
 
 // ruleid: raptor-signed-unsigned-conversion

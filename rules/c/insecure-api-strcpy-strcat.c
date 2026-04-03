@@ -5,7 +5,7 @@
 
 #define BUFSIZE 256
 
-void copy_append_string(char *string1, char *string2)
+void copy_append_string1(char *string1, char *string2)
 {
 	char buf[BUFSIZE];
 
@@ -14,6 +14,23 @@ void copy_append_string(char *string1, char *string2)
 
 	// ruleid: raptor-insecure-api-strcpy-strcat
 	strcat(buf, string2);
+}
+
+int copy_append_string2(const char *string1, const char *string2,
+					   char *buf, size_t bufsz)
+{
+	if (!string1 || !string2 || !buf || bufsz == 0)
+		return -1;
+
+	// ok: raptor-insecure-api-strcpy-strcat
+	if (strlcpy(buf, string1, bufsz) >= bufsz)
+		return -1; // truncation
+
+	// ok: raptor-insecure-api-strcpy-strcat
+	if (strlcat(buf, string2, bufsz) >= bufsz)
+		return -1; // truncation
+
+	return 0;
 }
 
 void copy_string(char *string)

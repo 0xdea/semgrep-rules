@@ -7,9 +7,13 @@ void assign_int(int int_var)
 	// ruleid: raptor-integer-truncation
 	char char_var = int_var;
 	short short_var;
+	int int_var2;
 
 	// ruleid: raptor-integer-truncation
 	short_var = int_var;
+
+	// ok: raptor-integer-truncation
+	int_var2 = int_var + 1;
 }
 
 void assign_long(long long_var)
@@ -20,6 +24,9 @@ void assign_long(long long_var)
 
 	// ruleid: raptor-integer-truncation
 	short_var = long_var;
+
+	// ok: raptor-integer-truncation
+	long long_var2 = long_var + 1;
 }
 
 void test_func()

@@ -36,6 +36,28 @@ int test2()
 	return 0;
 }
 
+int test2_ok(void)
+{
+	char tmp[SIZE];
+
+	// ok: raptor-overlapping-source-destination
+	snprintf(tmp, SIZE, "%s:%s:%s", prepend, buf, append);
+	// ok: raptor-overlapping-source-destination
+	strlcpy(buf, tmp, SIZE);
+
+	// ok: raptor-overlapping-source-destination
+	snprintf(tmp, SIZE, "%s:%s", prepend, buf);
+	// ok: raptor-overlapping-source-destination
+	strlcpy(buf, tmp, SIZE);
+
+	// ok: raptor-overlapping-source-destination
+	snprintf(tmp, SIZE, "%s some further text", buf);
+	// ok: raptor-overlapping-source-destination
+	strlcpy(buf, tmp, SIZE);
+
+	return 0;
+}
+
 int test3(char *buf)
 {
 	// ruleid: raptor-overlapping-source-destination

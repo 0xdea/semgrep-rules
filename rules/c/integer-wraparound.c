@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdckdint.h> // C23
 
 void bad1()
 {
@@ -15,6 +16,50 @@ void bad1()
 	table_ptr = (img_t *)malloc(sizeof(img_t) * num_imgs);
 
 	// ...
+}
+
+int good1(void)
+{
+	int num_imgs = get_num_imgs();
+	size_t alloc_size;
+
+	if (num_imgs <= 0)
+		return -1;
+
+	if (ckd_mul(&alloc_size, (size_t)num_imgs, sizeof(img_t)))
+		return -1; // overflow
+
+	// ok: raptor-integer-wraparound
+	img_t *table_ptr = malloc(alloc_size);
+	if (!table_ptr)
+		return -1;
+
+	// ...
+
+	free(table_ptr);
+	return 0;
+}
+
+int good2(void)
+{
+	int num_imgs = get_num_imgs();
+
+	if (num_imgs <= 0)
+		return -1;
+
+	if ((size_t)num_imgs > SIZE_MAX / sizeof(img_t))
+		return -1; // overflow
+
+	// the rule doesn't currently check for this pattern of overflow prevention, but it arguably should
+	// todook: raptor-integer-wraparound
+	img_t *table_ptr = malloc((size_t)num_imgs * sizeof(img_t));
+	if (!table_ptr)
+		return -1;
+
+	// ...
+
+	free(table_ptr);
+	return 0;
 }
 
 // https://vulncat.fortify.com/

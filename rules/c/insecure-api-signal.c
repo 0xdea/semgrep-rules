@@ -15,7 +15,7 @@ void handler(int sigNum)
 	exit(0);
 }
 
-int main(int argc, char *argv[])
+int bad_main(int argc, char *argv[])
 {
 	logMessage = strdup(argv[1]);
 
@@ -23,6 +23,23 @@ int main(int argc, char *argv[])
 	signal(SIGHUP, handler);
 	// ruleid: raptor-insecure-api-signal
 	signal(SIGTERM, handler);
+
+	sleep(10);
+
+	return 0;
+}
+
+int good_main(int argc, char *argv[])
+{
+	logMessage = strdup(argv[1]);
+
+	struct sigaction sa;
+	sa.sa_handler = handler;
+
+	// ok: raptor-insecure-api-signal
+	sigaction(SIGHUP, &sa, NULL);
+	// ok: raptor-insecure-api-signal
+	sigaction(SIGTERM, &sa, NULL);
 
 	sleep(10);
 

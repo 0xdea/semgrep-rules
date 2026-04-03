@@ -24,6 +24,17 @@ int bad2()
 	return 0;
 }
 
+int good1()
+{
+	size_t uvar;
+
+	// ok: raptor-incorrect-unsigned-comparison
+	if (uvar > 0)
+		return 1;
+
+	return 0;
+}
+
 int main()
 {
 	printf("Hello, World!");

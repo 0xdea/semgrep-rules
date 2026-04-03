@@ -48,7 +48,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Rename `insecure-api-atoi-atol-atof` into `insecure-api-ato`.
 * Rename `overlapping-src-dst` into `overlapping-source-destination`.
 * Rearrange rule order based on new subcategory/likelihood/impact metrics.
-* Improve documentation and indent style.
+* Improve code samples, documentation, and indent style.
 * Update SARIF output example.
 
 ### Security

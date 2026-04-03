@@ -121,6 +121,28 @@ void test_001_stack_overflow()
 	}
 }
 
+void ok()
+{
+	int fd = open("file.txt", O_RDONLY);
+	if (fd == -1)
+	{
+		perror("open");
+		return -1;
+	}
+
+	struct stat st;
+	// ok: raptor-insecure-api-access-stat
+	if (fstat(fd, &st) == -1)
+	{
+		perror("fstat");
+		close(fd);
+		return -1;
+	}
+
+	// Now safely use st.st_mode, st.st_size, etc. on the already-open fd
+	// ...
+}
+
 int main()
 {
 	printf("Hello, World!");

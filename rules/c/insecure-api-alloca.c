@@ -5,10 +5,18 @@
 
 #define MEMSIZE 256
 
-void allocate_memory()
+void allocate_memory1()
 {
 	// ruleid: raptor-insecure-api-alloca
-	alloca(MEMSIZE);
+	char *buf = alloca(MEMSIZE);
+
+	// ...
+}
+
+void allocate_memory2()
+{
+	// ok: raptor-insecure-api-alloca
+	char *buf = malloc(MEMSIZE);
 
 	// ...
 }

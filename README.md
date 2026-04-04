@@ -158,7 +158,7 @@ See also the included SARIF output [example](sarif-example).
 
 ### Short-term action items
 
-* Process [open issues](https://github.com/0xdea/semgrep-rules/issues) and [pull requests](https://github.com/0xdea/semgrep-rules/pulls).
+* Process open [issues](https://github.com/0xdea/semgrep-rules/issues) and [pull requests](https://github.com/0xdea/semgrep-rules/pulls).
 * Add **new checks** to the existing rules and add new rules where needed.
 * Improve overall **accuracy** and reduce false positives, without missing potential hot spots in code.
 * Check performance (see [test_public_repos.py](https://github.com/semgrep/semgrep-rules/blob/main/tests/performance/test_public_repos.py)).

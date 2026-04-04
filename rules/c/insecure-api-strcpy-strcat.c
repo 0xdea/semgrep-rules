@@ -17,7 +17,7 @@ void copy_append_string1(char *string1, char *string2)
 }
 
 int copy_append_string2(const char *string1, const char *string2,
-					   char *buf, size_t bufsz)
+						char *buf, size_t bufsz)
 {
 	if (!string1 || !string2 || !buf || bufsz == 0)
 		return -1;

@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+* Improve some detection patterns (`incorrect-use-of-memset`, `mismatched-memory-management`, `mismatched-memory-management-cpp`, `putenv-stack-var`, `unsafe-strlen`).
 * Improve code samples and documentation.
 
 ## [1.2.0] - 2026-04-03

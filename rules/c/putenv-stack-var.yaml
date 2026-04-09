@@ -31,7 +31,7 @@ rules:
     # NOTE: multi-dimensional arrays and other ways to create an array are not covered.
     # NOTE: multiple pointer assignments and other ways to persist after function returns (e.g., output parameter) are not covered.
     patterns:
-      - pattern: putenv($PTR);
+      - pattern: putenv($PTR)
       - pattern-either:
           # array
           - patterns:

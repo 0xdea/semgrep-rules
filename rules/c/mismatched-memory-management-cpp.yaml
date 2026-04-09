@@ -32,7 +32,7 @@ rules:
     pattern-either:
       # free
       - patterns:
-          - pattern: free($PTR);
+          - pattern: free($PTR)
           - pattern-not-inside: |
               $PTR = malloc(...);
               ...
@@ -59,18 +59,18 @@ rules:
               ...
       # delete[]
       - patterns:
-          - pattern: delete[]($PTR);
+          - pattern: delete[]($PTR)
           - pattern-not-inside: |
               $PTR = new $_[$_];
               ...
       # delete
       - patterns:
-          - pattern: delete($PTR);
+          - pattern: delete($PTR)
           - pattern-not-inside: |
               $PTR = new $_;
               ...
       - patterns:
-          - pattern: delete($PTR);
+          - pattern: delete($PTR)
           - pattern-inside: |
               $PTR = new $_[$_];
               ...

@@ -29,9 +29,9 @@ rules:
       - cpp
     # NOTE: refer also to `c.lang.security.insecure-use-memset.insecure-use-memset` and `cpp.lang.correctness.memset-removal.memset-removal` for a different potential flaw involving `memset` optimization.
     pattern-either:
-      - pattern: memset($_, $_, 0);
-      - pattern: memset($_, $_, '\0');
-      - pattern: memset($_, sizeof(...), $_);
-      - pattern: memset_explicit($_, $_, 0);
-      - pattern: memset_explicit($_, $_, '\0');
-      - pattern: memset_explicit($_, sizeof(...), $_);
+      - pattern: memset($_, $_, 0)
+      - pattern: memset($_, $_, '\0')
+      - pattern: memset($_, sizeof(...), $_)
+      - pattern: memset_explicit($_, $_, 0)
+      - pattern: memset_explicit($_, $_, '\0')
+      - pattern: memset_explicit($_, sizeof(...), $_)

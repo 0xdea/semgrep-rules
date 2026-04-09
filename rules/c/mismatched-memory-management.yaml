@@ -33,7 +33,7 @@ rules:
     pattern-either:
       # free
       - patterns:
-          - pattern: free($PTR);
+          - pattern: free($PTR)
           - pattern-not-inside: |
               $PTR = malloc(...);
               ...

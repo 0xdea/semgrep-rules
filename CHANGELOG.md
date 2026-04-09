@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+* Add the deep expression operator in some patterns (`regex-dos`).
 * Optimize memory allocation patterns (`mismatched-memory-management`, `mismatched-memory-management-cpp`, `unchecked-ret-malloc`).
 * Remove trailing semicolon from some detection patterns (`incorrect-use-of-memset`, `mismatched-memory-management`, `mismatched-memory-management-cpp`, `putenv-stack-var`, `unsafe-strlen`).
 * Improve code samples and documentation.

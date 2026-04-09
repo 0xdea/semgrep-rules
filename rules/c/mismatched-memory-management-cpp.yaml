@@ -37,19 +37,10 @@ rules:
               $PTR = malloc(...);
               ...
           - pattern-not-inside: |
-              $PTR = ($_)malloc(...);
-              ...
-          - pattern-not-inside: |
               $PTR = calloc(...);
               ...
           - pattern-not-inside: |
-              $PTR = ($_)calloc(...);
-              ...
-          - pattern-not-inside: |
               $PTR = realloc(...);
-              ...
-          - pattern-not-inside: |
-              $PTR = ($_)realloc(...);
               ...
           - pattern-not-inside: |
               $PTR = strdup(...);

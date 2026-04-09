@@ -34,7 +34,6 @@ rules:
     patterns:
       - pattern-either:
           - pattern: $RET = $FUN(...)
-          - pattern: $RET = ($_)$FUN(...)
       - metavariable-pattern:
           metavariable: $FUN
           pattern-either:

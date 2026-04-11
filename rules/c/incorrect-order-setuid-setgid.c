@@ -66,6 +66,30 @@ void good2()
 	seteuid(0);
 }
 
+void drop_priv_conditional_bad(int uid, int gid)
+{
+	// ruleid: raptor-incorrect-order-setuid-setgid
+	if (uid != -1 && setuid(uid)) {
+		fprintf(stderr, "Failed to set uid\n");
+	}
+
+	if (gid != -1) {
+		setgid(gid);
+	}
+}
+
+void drop_priv_conditional_ok(int uid, int gid)
+{
+	// ok: raptor-incorrect-order-setuid-setgid
+	if (gid != -1 && setgid(gid)) {
+		fprintf(stderr, "Failed to set gid\n");
+	}
+
+	if (uid != -1) {
+		setuid(uid);
+	}
+}
+
 int main()
 {
 	printf("Hello, World!");

@@ -14,6 +14,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Remove trailing semicolon from some detection patterns (`incorrect-use-of-memset`, `mismatched-memory-management`, `mismatched-memory-management-cpp`, `putenv-stack-var`, `unsafe-strlen`).
 * Improve code samples and documentation.
 
+### Security
+
+* Pin all action references to hashes and add zizmor GitHub workflow.
+
 ## [1.2.0] - 2026-04-03
 
 ### Added

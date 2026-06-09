@@ -164,7 +164,6 @@ See also the included SARIF output [example](sarif-example).
 * Check performance (see [test_public_repos.py](https://github.com/semgrep/semgrep-rules/blob/main/tests/performance/test_public_repos.py)).
 * Additional `--time` **benchmarking** against real-world code to spot slow rules in need of optimization.
 * Move **noisy rules** (e.g., `high-entropy-assignment`) to a specific folder to simplify publishing to the Semgrep registry.
-* Extensive **testing** before release v2.0.0 and publishing to the official **Semgrep registry**.
 
 ### Long-term action items
 

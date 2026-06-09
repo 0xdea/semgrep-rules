@@ -1,0 +1,13 @@
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    commit-message:
+      prefix: "actions"
+    schedule:
+      interval: weekly
+    groups:
+      actions-dependencies:
+        applies-to: version-updates
+        patterns:
+        - "*"

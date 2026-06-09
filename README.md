@@ -68,6 +68,8 @@ See also the included SARIF output [example](sarif-example).
 
 ### C/C++
 
+Battle tested C (and sometimes C++) ruleset.
+
 #### buffer overflows
 
 * [**insecure-api-gets**](rules/c/insecure-api-gets.yaml). Use of the insecure API function `gets`.
@@ -144,11 +146,13 @@ See also the included SARIF output [example](sarif-example).
 * [**missing-return**](rules/c/missing-return.yaml). Missing return statement in non-void function.
 * [**typos**](rules/c/typos.yaml). Potential typos with security implications.
 
-### Generic
+### Noisy
 
-#### miscellaneous
+These rules are considered potentially too noisy and unsuitable for general use.
 
-* [**bad-words**](rules/generic/bad-words.yaml). Keywords and comments that suggest the presence of bugs.
+#### Generic
+
+* [**bad-words**](rules/noisy/generic/bad-words.yaml). Keywords and comments that suggest the presence of bugs.
 
 ## Changelog
 

@@ -29,7 +29,7 @@ rules:
       procedures, and performance issues.
     severity: INFO
     languages:
-      - generic
+      - regex
     pattern-either:
       # interesting comments
       - pattern-regex: (TODO|XXX|FIXME|BUG|HACK|LATER|CVE-)

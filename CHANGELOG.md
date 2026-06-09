@@ -14,7 +14,9 @@ Current stable release.
 * Add the deep expression operator in some patterns (`incorrect-order-setuid-setgid`, `regex-dos`).
 * Optimize memory allocation patterns (`mismatched-memory-management`, `mismatched-memory-management-cpp`, `unchecked-ret-malloc`).
 * Remove trailing semicolon from some detection patterns (`incorrect-use-of-memset`, `mismatched-memory-management`, `mismatched-memory-management-cpp`, `putenv-stack-var`, `unsafe-strlen`).
+* Change language in `bad-words` from `generic` to `regex` to improve performance.
 * Improve code samples and documentation.
+* Refactor the directory tree to simplify integration with the official Semgrep registry.
 
 ### Security
 

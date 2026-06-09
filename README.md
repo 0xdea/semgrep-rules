@@ -41,8 +41,10 @@ A collection of my Semgrep rules to facilitate vulnerability research.
 ```sh
 # high priority scan (quick wins)
 semgrep --severity ERROR --config "p/0xdea"
+
 # high and medium priority scan (recommended)
 semgrep --severity ERROR --severity WARNING --config "p/0xdea"
+
 # full scan (might include marginal findings and more false positives)
 semgrep --config "p/0xdea"
 ```
@@ -52,6 +54,7 @@ Alternatively, you can clone this GitHub repository locally and run:
 ```sh
 # full scan
 semgrep --config semgrep-rules/rules /path/to/source
+
 # specific rule
 semgrep --config semgrep-rules/rules/c/command-injection.yaml /path/to/source
 ```

@@ -5,9 +5,9 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.0.0] - 2026-06-09
+## [2.0.0] - TBA
 
-Current stable release.
+First release to be published in the official [Semgrep registry](https://semgrep.dev/p/0xdea).
 
 ### Changed
 
@@ -15,8 +15,9 @@ Current stable release.
 * Optimize memory allocation patterns (`mismatched-memory-management`, `mismatched-memory-management-cpp`, `unchecked-ret-malloc`).
 * Remove trailing semicolon from some detection patterns (`incorrect-use-of-memset`, `mismatched-memory-management`, `mismatched-memory-management-cpp`, `putenv-stack-var`, `unsafe-strlen`).
 * Change language in `bad-words` from `generic` to `regex` to improve performance.
-* Improve code samples and documentation.
 * Refactor the directory tree to simplify integration with the official Semgrep registry.
+* Add link to the official Semgrep registry to the documentation.
+* Generally improve code samples and documentation.
 
 ### Security
 

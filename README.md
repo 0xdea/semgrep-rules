@@ -36,22 +36,30 @@ A collection of my Semgrep rules to facilitate vulnerability research.
 ## Setup and usage instructions
 
 1. Install [Semgrep](https://semgrep.dev/docs/getting-started/).
-2. Clone this GitHub repo.
-3. To use these rules, run:
+2. To use these rules via the [Semgrep registry](https://semgrep.dev/p/0xdea), run the following from the root folder of your target source code repository:
 
 ```sh
 # high priority scan (quick wins)
-semgrep --severity ERROR --config semgrep-rules/rules /path/to/source
+semgrep --severity ERROR --config "p/0xdea"
 # high and medium priority scan (recommended)
-semgrep --severity ERROR --severity WARNING --config semgrep-rules/rules /path/to/source
+semgrep --severity ERROR --severity WARNING --config "p/0xdea"
 # full scan (might include marginal findings and more false positives)
+semgrep --config "p/0xdea"
+```
+
+Alternatively, you can clone this GitHub repository locally and run:
+
+```sh
+# full scan
 semgrep --config semgrep-rules/rules /path/to/source
+# specific rule
+semgrep --config semgrep-rules/rules/c/command-injection.yaml /path/to/source
 ```
 
 > [!TIP]
 > Specify the `--no-git-ignore` switch to scan files regardless of git tracking status or `.gitignore` rules.
 
-For a better streamlined experience, I recommend saving Semgrep scan output in [SARIF](https://sarifweb.azurewebsites.net/) format and using [SARIF Explorer](https://marketplace.visualstudio.com/items?itemName=trailofbits.sarif-explorer) in [VS code](https://code.visualstudio.com/):
+For a better streamlined experience, I recommend saving the Semgrep scan output in [SARIF](https://sarifweb.azurewebsites.net/) format and using [SARIF Explorer](https://marketplace.visualstudio.com/items?itemName=trailofbits.sarif-explorer) in [VS code](https://code.visualstudio.com/):
 
 ```sh
 semgrep --sarif --sarif-output=/path/to/source/SEMGREP.sarif --config semgrep-rules/rules /path/to/source

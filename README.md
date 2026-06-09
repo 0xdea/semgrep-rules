@@ -62,7 +62,7 @@ See also the included SARIF output [example](sarif-example).
 
 ## Compatibility
 
-* Tested with Semgrep CLI 1.165.0
+Tested with Semgrep CLI 1.165.0.
 
 ## Rules
 
@@ -182,3 +182,4 @@ These rules are considered potentially too noisy and unsuitable for general use.
 * Implement dedicated **kernel rules** (Linux, BSD, macOS, etc.).
 * Implement dedicated [crypto](https://semgrep.dev/r?q=cpp.lang.security.crypto&lang=C%2CC%2B%2B) and [rng](https://semgrep.dev/r?q=cpp.lang.security.rng&lang=C%2CC%2B%2B) rules.
 * Implement dedicated [C++ rules](https://semgrep.dev/r?lang=C%2B%2B) and move them in another folder separated from the one for C rules.
+* Create a specific ruleset for **Rust**.

@@ -55,7 +55,7 @@ Alternatively, you can clone this GitHub repository locally and run:
 # full scan
 semgrep --config semgrep-rules/rules /path/to/source
 
-# specific rule
+# specific rule scan
 semgrep --config semgrep-rules/rules/c/command-injection.yaml /path/to/source
 ```
 

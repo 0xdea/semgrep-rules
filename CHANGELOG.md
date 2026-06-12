@@ -33,14 +33,14 @@ First release to be published in the official [Semgrep registry](https://semgrep
 * Add detections for missing `str*` family functions (`insecure-api-strcpy-strcat`, `interesting-api-calls`, `overlapping-source-destination`, `write-into-stack-buffer`).
 * Add detections for `mempcpy` and `wmempcpy` (`use-of-source-size-in-copy`, `interesting-api-calls`, `overlapping-source-destination`, `signed-unsigned-conversion`, `write-into-stack-buffer`).
 * Add detections for `swprintf` and `vswprintf` (`signed-insigned-conversion`, `write-into-stack-buffer`).
-* Add detection for `p2open` and `wordexp` (`command-injection`, `interesting-api-calls`).
+* Add detections for `p2open` and `wordexp` (`command-injection`, `interesting-api-calls`).
 * Add detections for `faccessat`, `faccessat2`, and `fstatat` (`insecure-api-access-stat`, `interesting-api-calls`).
 * Add detections for `rand48` family functions (`insecure-api-rand-srand`, `interesting-api-calls`).
 * Add detections for `syslog` and `err/warn` function families (`memory-address-exposure`).
 * Add detections for missing `signal` family functions (`insecure-api-signal`, `interesting-api-calls`).
-* Add detection for `tmpnam_r` (`insecure-api-mktemp-tmpnam-tempnam`, `interesting-api-calls`).
-* Add detection for `VirtualAlloc` (`integer-wraparound`).
-* Add detection for `syscall` (`interesting-api-calls`).
+* Add detections for `tmpnam_r` (`insecure-api-mktemp-tmpnam-tempnam`, `interesting-api-calls`).
+* Add detections for `VirtualAlloc` (`integer-wraparound`).
+* Add detections for `syscall` (`interesting-api-calls`).
 * Add some code samples (`command-injection`, `format-string-bugs`, `incorrect-use-of-sizeof`, `insecure-api-access-stat`, `insecure-api-gets`, `insecure-api-scanf`, `insecure-api-sprintf-vsprintf`, `interesting-api-calls`, `off-by-one`, `unsafe-ret-snprintf-vsnprintf`, `use-after-free`, `use-of-source-size-in-copy`, `unterminated-string-strncpy`).
 * Add [required metadata](https://semgrep.dev/docs/contributing/contributing-to-semgrep-rules-repository) to contribute rules to the Semgrep Registry.
 * Add metadata validation in GitHub workflow (see also ToB's [CONTRIBUTING](https://github.com/trailofbits/semgrep-rules/blob/main/CONTRIBUTING.md) document).

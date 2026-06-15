@@ -178,7 +178,6 @@ These rules are considered potentially too noisy and unsuitable for general use.
 * Improve overall **accuracy** and reduce false positives, without missing potential hot spots in code.
 * Check performance (see [test_public_repos.py](https://github.com/semgrep/semgrep-rules/blob/main/tests/performance/test_public_repos.py)).
 * Additional `--time` **benchmarking** against real-world code to spot slow rules in need of optimization.
-* Move **noisy rules** (e.g., `high-entropy-assignment`) to a specific folder to simplify publishing to the Semgrep registry.
 
 ### Long-term action items
 

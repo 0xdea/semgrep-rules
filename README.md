@@ -35,6 +35,9 @@ A collection of my Semgrep rules to facilitate vulnerability research.
 
 ## Setup and usage instructions
 
+> [!WARNING]
+> Use via Semgrep registry is not available yet. You should clone the repository locally instead.
+
 1. Install [Semgrep](https://semgrep.dev/docs/getting-started/).
 2. To use these rules via the [Semgrep registry](https://semgrep.dev/p/0xdea), run the following from the root folder of your target source code repository:
 

@@ -42,6 +42,8 @@ jobs:
         run: semgrep --config rules --validate
       - name: semgrep-test
         run: semgrep --test --test-ignore-todo
+      - name: semgrep-scan
+        run: semgrep --config rules rules
       - name: clone-semgrep-rules
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:

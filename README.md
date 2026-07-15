@@ -3,7 +3,7 @@
 [![](https://img.shields.io/github/stars/0xdea/semgrep-rules.svg?style=flat&color=yellow)](https://github.com/0xdea/semgrep-rules)
 [![](https://img.shields.io/github/forks/0xdea/semgrep-rules.svg?style=flat&color=green)](https://github.com/0xdea/semgrep-rules)
 [![](https://img.shields.io/github/watchers/0xdea/semgrep-rules.svg?style=flat&color=red)](https://github.com/0xdea/semgrep-rules)
-[![](https://img.shields.io/badge/semgrep-1.165.0-violet)](https://semgrep.dev/)
+[![](https://img.shields.io/badge/semgrep-1.169.0-violet)](https://semgrep.dev/)
 [![](https://img.shields.io/badge/twitter-%400xdea-blue.svg)](https://twitter.com/0xdea)
 [![](https://img.shields.io/badge/mastodon-%40raptor-purple.svg)](https://infosec.exchange/@raptor)
 [![validate](https://github.com/0xdea/semgrep-rules/actions/workflows/validate.yml/badge.svg)](https://github.com/0xdea/semgrep-rules/actions/workflows/validate.yml)
@@ -26,6 +26,7 @@ A collection of my Semgrep rules to facilitate vulnerability research.
 * <https://hnsecurity.it/blog/automating-binary-vulnerability-discovery-with-ghidra-and-semgrep>
 * <https://hnsecurity.it/blog/big-update-to-my-semgrep-c-cpp-ruleset>
 * <https://hnsecurity.it/blog/streamlining-vulnerability-research-with-the-idalib-rust-bindings-for-ida-9-2/>
+* <https://hnsecurity.it/blog/my-semgrep-c-cpp-ruleset-is-ready-for-prime-time-again/>
 
 ## See also
 
@@ -34,9 +35,6 @@ A collection of my Semgrep rules to facilitate vulnerability research.
 * <https://semgrep.dev/r>
 
 ## Setup and usage instructions
-
-> [!WARNING]
-> Use via Semgrep registry is not available yet. You should clone the repository locally instead.
 
 1. Install [Semgrep](https://semgrep.dev/docs/getting-started/).
 2. To use these rules via the [Semgrep registry](https://semgrep.dev/p/0xdea), run the following from the root folder of your target source code repository:
@@ -76,7 +74,7 @@ See also the included SARIF output [example](sarif-example).
 
 ## Compatibility
 
-Tested with Semgrep CLI 1.165.0.
+Tested with Semgrep CLI 1.169.0.
 
 ## Rules
 

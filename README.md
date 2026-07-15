@@ -80,7 +80,7 @@ Tested with Semgrep CLI 1.169.0.
 
 ### C/C++
 
-Battle tested C (and sometimes C++) ruleset.
+Battle-tested C (and sometimes C++) ruleset.
 
 #### buffer overflows
 

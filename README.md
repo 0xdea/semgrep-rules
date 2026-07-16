@@ -162,7 +162,7 @@ Battle-tested C (and sometimes C++) ruleset.
 
 These rules are considered potentially too noisy and unsuitable for general use.
 
-#### Generic
+#### generic
 
 * [**bad-words**](rules/noisy/generic/bad-words.yaml). Keywords and comments that suggest the presence of bugs.
 

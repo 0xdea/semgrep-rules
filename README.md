@@ -20,7 +20,7 @@ A collection of my Semgrep rules to facilitate vulnerability research.
 
 [![Program in C](https://img.youtube.com/vi/tas0O586t80/maxresdefault.jpg)](https://www.youtube.com/embed/tas0O586t80)
 
-## Blog posts
+## Articles
 
 * <https://hnsecurity.it/blog/semgrep-ruleset-for-c-c-vulnerability-research>
 * <https://hnsecurity.it/blog/automating-binary-vulnerability-discovery-with-ghidra-and-semgrep>

@@ -3,9 +3,8 @@
 [![](https://img.shields.io/github/stars/0xdea/semgrep-rules.svg?style=flat&color=yellow)](https://github.com/0xdea/semgrep-rules)
 [![](https://img.shields.io/github/forks/0xdea/semgrep-rules.svg?style=flat&color=green)](https://github.com/0xdea/semgrep-rules)
 [![](https://img.shields.io/github/watchers/0xdea/semgrep-rules.svg?style=flat&color=red)](https://github.com/0xdea/semgrep-rules)
-[![](https://img.shields.io/badge/semgrep-1.169.0-violet)](https://semgrep.dev/)
-[![](https://img.shields.io/badge/twitter-%400xdea-blue.svg)](https://twitter.com/0xdea)
-[![](https://img.shields.io/badge/mastodon-%40raptor-purple.svg)](https://infosec.exchange/@raptor)
+[![](https://img.shields.io/badge/semgrep-1.169.0-purple)](https://semgrep.dev/)
+[![](https://img.shields.io/badge/mastodon-%40raptor-blue.svg)](https://infosec.exchange/@raptor)
 [![validate](https://github.com/0xdea/semgrep-rules/actions/workflows/validate.yml/badge.svg)](https://github.com/0xdea/semgrep-rules/actions/workflows/validate.yml)
 
 > "The attack surface is the vulnerability. Finding a bug there is just a detail."
